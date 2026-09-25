@@ -6,6 +6,7 @@ import { initOpenStatus } from './ui/status';
 import { initConsent } from './ui/consent';
 import { initPalette } from './ui/palette';
 import { initSmooth } from './ui/smooth';
+import { initForms } from './ui/forms';
 
 initSmooth();
 initHeader();
@@ -18,6 +19,7 @@ initSelection();
 initOpenStatus();
 initConsent();
 initPalette();
+initForms();
 
 // Lightbox générique : [data-lightbox="url"]
 document.addEventListener('click', (e) => {

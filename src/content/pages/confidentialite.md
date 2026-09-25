@@ -30,7 +30,7 @@ Pour votre confort, certaines préférences sont mémorisées **uniquement sur v
 - **Mesure d'audience** (si activée) : uniquement avec votre consentement.
 - **Vidéos YouTube** : les vidéos sont chargées au format « sans cookie » (youtube-nocookie.com) et seulement lorsque vous cliquez pour les lire. YouTube peut alors déposer ses propres traceurs.
 - **Carte des installateurs** : les fonds de carte sont chargés auprès d'un fournisseur de tuiles cartographiques ; votre adresse IP lui est transmise techniquement.
-- **Recherche d'adresse** : lorsque vous recherchez une ville ou un code postal, la requête est envoyée à la Base Adresse Nationale (api-adresse.data.gouv.fr).
+- **Recherche d'adresse** : lorsque vous recherchez une ville ou un code postal, la requête est envoyée aux services publics de l'État (Base Adresse Nationale : api-adresse.data.gouv.fr, et geo.api.gouv.fr pour retrouver la commune d'un code postal dans les formulaires).
 
 Vous pouvez modifier vos choix à tout moment via le lien **« Gérer les cookies »** en bas de chaque page.
 
