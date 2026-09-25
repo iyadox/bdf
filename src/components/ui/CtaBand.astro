@@ -66,6 +66,7 @@ const { title = 'Un projet ? Parlons-en.', text = 'Particuliers, professionnels,
   }
   .cta__txt {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1rem;
   }
   .cta__txt .lead {
@@ -73,6 +74,7 @@ const { title = 'Un projet ? Parlons-en.', text = 'Particuliers, professionnels,
   }
   .cta__actions {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 0.8rem;
     justify-items: stretch;
   }
@@ -90,7 +92,7 @@ const { title = 'Un projet ? Parlons-en.', text = 'Particuliers, professionnels,
   }
   @media (max-width: 860px) {
     .cta__box {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
   }
 </style>

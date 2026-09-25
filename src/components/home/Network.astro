@@ -209,7 +209,7 @@ const depts = new Set(inst.map((i) => i.postalCode.slice(0, 2)).filter(Boolean))
   }
   @media (max-width: 960px) {
     .network__grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
     .network__stage {
       order: -1;

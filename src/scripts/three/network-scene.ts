@@ -66,7 +66,7 @@ export function createNetwork(canvas: HTMLCanvasElement, pts: [number, number][]
   const dummy = new THREE.Object3D();
   const cA = new THREE.Color('#ff6622').multiplyScalar(1.3);
   const cB = new THREE.Color('#ffc59a').multiplyScalar(1.25);
-  P.forEach((p, i) => {
+  P.forEach((_p, i) => {
     const t = Math.min(1, dens[i] / 80);
     cols.setColorAt(i, cA.clone().lerp(cB, t));
   });

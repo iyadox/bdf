@@ -29,7 +29,7 @@ const STYLE = 'https://tiles.openfreemap.org/styles/dark';
 function brandify(map: MLMap) {
   const set = (id: string, prop: string, val: unknown) => {
     try {
-      if (map.getLayer(id)) map.setPaintProperty(id, prop, val as any);
+      if (map.getLayer(id)) map.setPaintProperty(id, prop as any, val as any);
     } catch {
       /* couche absente */
     }

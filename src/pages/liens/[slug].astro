@@ -74,7 +74,7 @@ const toc = headings.filter((h) => h.depth === 2);
   }
   @media (max-width: 900px) {
     .legal {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
     .legal__toc {
       position: static;

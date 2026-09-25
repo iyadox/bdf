@@ -368,12 +368,12 @@ const nbDocs = groups.reduce((n, g) => n + g.items.reduce((m, p) => m + (p.downl
       grid-template-columns: 1fr 1fr;
     }
     .pro-docs {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
   }
   @media (max-width: 600px) {
     .pro-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
   }
 </style>

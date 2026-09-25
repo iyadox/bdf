@@ -127,7 +127,7 @@ const long = `${title} ${accent || ''}`.length > 30;
     margin: 0;
   }
   .phero--center .phero__main {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     justify-items: center;
     text-align: center;
   }
@@ -139,7 +139,7 @@ const long = `${title} ${accent || ''}`.length > 30;
   }
   @media (max-width: 900px) {
     .phero__main {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
     .phero__hex {
       opacity: 0.3;

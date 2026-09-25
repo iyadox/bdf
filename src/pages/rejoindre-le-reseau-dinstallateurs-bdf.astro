@@ -262,7 +262,7 @@ const skills = ['Pose de blocs-portes blindés', 'Blindage de portes existantes'
       row-gap: 1.8rem;
     }
     .jn-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
     .jn-side {
       position: static;
@@ -271,7 +271,7 @@ const skills = ['Pose de blocs-portes blindés', 'Blindage de portes existantes'
   @media (max-width: 600px) {
     .jn-perks,
     .jn-steps {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
   }
 </style>

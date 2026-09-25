@@ -50,7 +50,7 @@ export function createStage(o: StageOptions): Stage {
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   if (o.shadows) {
     renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.shadowMap.type = THREE.PCFShadowMap;
   }
 
   const scene = new THREE.Scene();
