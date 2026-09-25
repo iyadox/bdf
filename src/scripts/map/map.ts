@@ -87,6 +87,32 @@ export function createMap(container: HTMLElement, opts: { center?: [number, numb
   return map;
 }
 
+/** Bâtiments extrudés en 3D (vue inclinée autour du siège). */
+export function add3DBuildings(map: MLMap) {
+  if (map.getLayer('bdf-3d')) return;
+  const style = map.getStyle();
+  const src = Object.keys(style.sources).find((k) => (style.sources[k] as any).type === 'vector') || 'openmaptiles';
+  const firstSymbol = style.layers.find((l) => l.type === 'symbol')?.id;
+  if (map.getLayer('building')) map.setLayoutProperty('building', 'visibility', 'none');
+  map.addLayer(
+    {
+      id: 'bdf-3d',
+      type: 'fill-extrusion',
+      source: src,
+      'source-layer': 'building',
+      minzoom: 13,
+      paint: {
+        'fill-extrusion-color': ['interpolate', ['linear'], ['coalesce', ['get', 'render_height'], 6], 0, '#0c1b2e', 25, '#143050', 60, '#1f4a76'],
+        'fill-extrusion-height': ['coalesce', ['get', 'render_height'], 6],
+        'fill-extrusion-base': ['coalesce', ['get', 'render_min_height'], 0],
+        'fill-extrusion-opacity': 0.9,
+        'fill-extrusion-vertical-gradient': true,
+      },
+    },
+    firstSymbol,
+  );
+}
+
 export function hqMarker(map: MLMap, lngLat: [number, number], label = 'Siège & usine BDF') {
   const el = document.createElement('div');
   el.className = 'hq-marker';

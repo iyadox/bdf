@@ -1,0 +1,806 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Icon from '@/components/Icon.astro';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import { getProducts, productUrl } from '@/lib/catalog';
+import { RAL, WOODS } from '@/scripts/three/palette';
+
+const products = (await getProducts())
+  .filter((p) => p.filters?.vantaux?.length)
+  .map((p) => ({
+    slug: p.slug,
+    title: p.title,
+    url: productUrl(p),
+    image: p.image,
+    quote: p.quoteLabel || p.title,
+    v: p.filters?.vantaux || [],
+    c: p.filters?.certifications || [],
+    f: p.filters?.fermetures || [],
+    seg: p.segment,
+  }));
+const finishes = [
+  { id: 'lisse', label: 'Lisse laquée' },
+  { id: 'texture', label: 'Texturée' },
+  { id: 'bois', label: 'Décor bois' },
+  { id: 'acier', label: 'Acier brossé' },
+];
+const moldings = [
+  { id: 'aucune', label: 'Sans' },
+  { id: 'classique', label: 'Classique' },
+  { id: 'moderne', label: 'Moderne' },
+  { id: 'rainures', label: 'Rainures' },
+  { id: 'cadre', label: 'Cadre' },
+];
+const handles = [
+  { id: 'bequille', label: 'Béquille' },
+  { id: 'tirage', label: 'Barre de tirage' },
+  { id: 'barre', label: 'Anti-panique' },
+];
+const hardware = [
+  { id: 'inox', label: 'Inox', hex: '#d7dde3' },
+  { id: 'laiton', label: 'Laiton', hex: '#c9a45c' },
+  { id: 'noir', label: 'Noir mat', hex: '#1b1d20' },
+];
+const certs = [
+  { id: '', label: 'Non certifiée', filter: '' },
+  { id: 'bp1', label: 'A2P BP1', filter: 'A2P BP1' },
+  { id: 'bp2', label: 'A2P BP2', filter: 'A2P BP2' },
+  { id: 'bp3', label: 'A2P BP3', filter: 'A2P BP3' },
+  { id: 'cf30', label: 'Coupe-feu 30 min', filter: 'Coupe-feu 30 min' },
+  { id: 'cf60', label: 'Coupe-feu 60 min', filter: 'Coupe-feu 60 min' },
+  { id: 'pb', label: 'Pare-balles', filter: 'Pare-balles' },
+];
+const options = [
+  { id: 'j', key: 'peephole', label: 'Judas optique', icon: 'eye' },
+  { id: 'v', key: 'oculus', label: 'Oculus vitré', icon: 'square' },
+  { id: 'f', key: 'closer', label: 'Ferme-porte', icon: 'arrows-h' },
+  { id: 'g', key: 'grille', label: 'Grille de ventilation', icon: 'grid' },
+];
+const data = { products, ral: RAL, woods: WOODS, certs, options };
+---
+
+<BaseLayout title="Configurateur 3D de porte blindée" description="Composez votre porte blindée en 3D : dimensions, 1 ou 2 vantaux, couleurs RAL, décor bois, moulures, poignée, serrure multipoints et options. Partagez votre configuration et recevez votre devis." bodyClass="cfg-body">
+  <section class="cfg" data-cfg>
+    <div class="cfg-view" data-cfg-view>
+      <canvas class="cfg-canvas" data-cfg-canvas aria-label="Aperçu 3D de votre porte"></canvas>
+      <span class="cfg-dim mono" data-dim-w>930 mm</span>
+      <span class="cfg-dim mono" data-dim-h>2080 mm</span>
+      <div class="cfg-loading" data-cfg-loading>
+        <span class="cfg-loading__hex"></span>
+        <span class="mono">Chargement du modèle 3D…</span>
+      </div>
+      <div class="cfg-top">
+        <Breadcrumbs items={[{ label: 'Configurateur 3D' }]} />
+        <div class="seg seg--view" role="group" aria-label="Face affichée">
+          <button type="button" class="is-on" data-view="ext" aria-pressed="true">Extérieur</button>
+          <button type="button" data-view="int" aria-pressed="false">Intérieur</button>
+        </div>
+      </div>
+      <div class="cfg-tools" role="toolbar" aria-label="Outils de visualisation">
+        <button type="button" data-tool="open" aria-pressed="false" title="Ouvrir / fermer la porte"><Icon name="door-open" /><span>Ouvrir</span></button>
+        <button type="button" data-tool="xray" aria-pressed="false" title="Voir la structure interne"><Icon name="layers" /><span>Structure</span></button>
+        <button type="button" data-tool="dims" aria-pressed="true" title="Afficher les cotes"><Icon name="ruler" /><span>Cotes</span></button>
+        <button type="button" data-tool="amb" aria-pressed="false" title="Changer d'ambiance"><Icon name="sparkles" /><span>Ambiance</span></button>
+        <button type="button" data-tool="reset" title="Recentrer la vue"><Icon name="rotate-3d" /><span>Recentrer</span></button>
+        <button type="button" data-tool="shot" title="Télécharger une image"><Icon name="download" /><span>Image</span></button>
+        <button type="button" data-tool="full" title="Plein écran"><Icon name="maximize" /><span>Plein écran</span></button>
+      </div>
+      <div class="cfg-caption">
+        <p class="mono cfg-caption__k">Votre porte Blindages de France</p>
+        <p class="cfg-caption__v" data-caption>1 vantail · 930 × 2080 mm</p>
+      </div>
+      <p class="cfg-hint mono" data-hint><Icon name="pointer" size={14} /> Glissez pour tourner · molette pour zoomer</p>
+    </div>
+
+    <aside class="cfg-panel" aria-label="Options de configuration">
+      <header class="cfg-head">
+        <p class="eyebrow">Configurateur 3D</p>
+        <h1 class="h3">Composez votre porte</h1>
+        <p class="muted" data-from-model hidden>Point de départ : <a href="#" data-from-link></a></p>
+      </header>
+
+      <details class="cfg-sec" open>
+        <summary><span class="cfg-sec__n mono">01</span> Type & dimensions <span class="cfg-sec__v" data-sum="size"></span></summary>
+        <div class="cfg-sec__body">
+          <div class="seg seg--block" role="group" aria-label="Nombre de vantaux">
+            <button type="button" data-set="leaves" data-val="1" class="is-on">1 vantail</button>
+            <button type="button" data-set="leaves" data-val="2">2 vantaux</button>
+          </div>
+          <label class="rng">
+            <span class="rng__l">Largeur de passage <output class="mono" data-out="width"></output></span>
+            <input type="range" data-range="width" step="1" />
+            <span class="rng__mm mono"><span data-min="width"></span><span data-max="width"></span></span>
+          </label>
+          <label class="rng">
+            <span class="rng__l">Hauteur de passage <output class="mono" data-out="height"></output></span>
+            <input type="range" data-range="height" min="1620" max="2484" step="1" />
+            <span class="rng__mm mono"><span>1620</span><span>2484</span></span>
+          </label>
+          <p class="hint">Fabrication sur mesure : pour d'autres dimensions, précisez-les dans votre demande de devis.</p>
+        </div>
+      </details>
+
+      <details class="cfg-sec" open>
+        <summary><span class="cfg-sec__n mono">02</span> Face extérieure <span class="cfg-sec__v" data-sum="ext"></span></summary>
+        <div class="cfg-sec__body">
+          <p class="cfg-lbl">Finition</p>
+          <div class="chips-sel" role="group" aria-label="Finition">
+            {finishes.map((f) => <button type="button" data-set="finish" data-val={f.id}>{f.label}</button>)}
+          </div>
+          <p class="cfg-lbl" data-color-lbl>Couleur RAL</p>
+          <div class="swatches" data-swatches="color" role="group" aria-label="Couleur extérieure"></div>
+          <div class="swatches swatches--wood" data-swatches="wood" role="group" aria-label="Essence de bois" hidden></div>
+          <p class="cfg-lbl">Moulures</p>
+          <div class="chips-sel" role="group" aria-label="Moulures">
+            {moldings.map((f) => <button type="button" data-set="molding" data-val={f.id}>{f.label}</button>)}
+          </div>
+        </div>
+      </details>
+
+      <details class="cfg-sec">
+        <summary><span class="cfg-sec__n mono">03</span> Face intérieure & huisserie <span class="cfg-sec__v" data-sum="int"></span></summary>
+        <div class="cfg-sec__body">
+          <label class="switch"><input type="checkbox" data-same /> <span class="switch__ui"></span> Même couleur que l'extérieur</label>
+          <p class="cfg-lbl">Couleur intérieure</p>
+          <div class="swatches" data-swatches="colorInt" role="group" aria-label="Couleur intérieure"></div>
+          <p class="cfg-lbl">Couleur de l'huisserie</p>
+          <div class="swatches" data-swatches="frameColor" role="group" aria-label="Couleur de l'huisserie"></div>
+        </div>
+      </details>
+
+      <details class="cfg-sec">
+        <summary><span class="cfg-sec__n mono">04</span> Serrure & poignée <span class="cfg-sec__v" data-sum="lock"></span></summary>
+        <div class="cfg-sec__body">
+          <p class="cfg-lbl">Points de fermeture</p>
+          <div class="seg seg--block" role="group" aria-label="Points de fermeture">
+            {[1, 3, 5, 7].map((n) => <button type="button" data-set="lockPoints" data-val={n}>{n} pt{n > 1 ? 's' : ''}</button>)}
+          </div>
+          <p class="cfg-lbl">Poignée</p>
+          <div class="chips-sel" role="group" aria-label="Poignée">
+            {handles.map((f) => <button type="button" data-set="handle" data-val={f.id}>{f.label}</button>)}
+          </div>
+          <p class="cfg-lbl">Finition de la quincaillerie</p>
+          <div class="chips-sel" role="group" aria-label="Quincaillerie">
+            {hardware.map((f) => <button type="button" data-set="hardware" data-val={f.id}><i class="dot" style={`background:${f.hex}`}></i>{f.label}</button>)}
+          </div>
+        </div>
+      </details>
+
+      <details class="cfg-sec">
+        <summary><span class="cfg-sec__n mono">05</span> Options <span class="cfg-sec__v" data-sum="opts"></span></summary>
+        <div class="cfg-sec__body cfg-opts">
+          {
+            options.map((o) => (
+              <label class="option-tile">
+                <input type="checkbox" data-opt={o.key} />
+                <span class="tick" />
+                <Icon name={o.icon} size={16} /> {o.label}
+              </label>
+            ))
+          }
+        </div>
+      </details>
+
+      <details class="cfg-sec" open>
+        <summary><span class="cfg-sec__n mono">06</span> Niveau de protection <span class="cfg-sec__v" data-sum="cert"></span></summary>
+        <div class="cfg-sec__body">
+          <div class="chips-sel" role="group" aria-label="Certification">
+            {certs.map((c) => <button type="button" data-set="cert" data-val={c.id}>{c.label}</button>)}
+          </div>
+          <a href="/certification-porte-blindee" class="hint link-arrow">Comprendre les certifications <Icon name="arrow-right" size={13} /></a>
+          <div class="cfg-match" data-match></div>
+        </div>
+      </details>
+
+      <footer class="cfg-foot">
+        <div class="cfg-foot__sum">
+          <p class="mono">Récapitulatif</p>
+          <p data-summary></p>
+        </div>
+        <a href="/devis-porte-blindee" class="btn btn--block btn--lg" data-quote><Icon name="file-text" /> Demander un devis</a>
+        <div class="cfg-foot__row">
+          <button type="button" class="btn btn--ghost btn--sm" data-share><Icon name="share" /> Partager</button>
+          <button type="button" class="btn btn--ghost btn--sm" data-reset><Icon name="rotate" /> Réinitialiser</button>
+        </div>
+        <p class="hint">Rendu indicatif : les teintes à l'écran peuvent différer du nuancier RAL réel.</p>
+      </footer>
+    </aside>
+  </section>
+  <script type="application/json" id="cfg-data" set:html={JSON.stringify(data)} />
+</BaseLayout>
+
+<script>
+  import '@/scripts/pages/configurator';
+</script>
+
+<style>
+  :global(.cfg-body) {
+    --cfg-h: calc(100svh - var(--header-h, 76px));
+  }
+  /* en-tête toujours visible : l'aperçu 3D reste collé dessous */
+  :global(.cfg-body .site-header.is-hidden) {
+    transform: none;
+  }
+  @media (min-width: 1001px) {
+    :global(.cfg-body .dock) {
+      display: none;
+    }
+  }
+  .cfg {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 420px;
+    min-height: var(--cfg-h);
+    border-bottom: 1px solid var(--line);
+  }
+  .cfg-view {
+    position: sticky;
+    top: var(--header-h, 76px);
+    height: var(--cfg-h);
+    overflow: hidden;
+    background: #05080d;
+  }
+  .cfg-view:fullscreen {
+    height: 100vh;
+  }
+  .cfg-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+    cursor: grab;
+    outline: none;
+  }
+  .cfg-canvas:active {
+    cursor: grabbing;
+  }
+  .cfg-dim {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: #fff;
+    background: rgba(6, 14, 26, 0.85);
+    border: 1px solid rgba(255, 102, 34, 0.6);
+    border-radius: 6px;
+    pointer-events: none;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .cfg-loading {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 1rem;
+    color: var(--muted);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    background: #05080d;
+    transition: opacity 0.6s;
+  }
+  .cfg-loading.is-done {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .cfg-loading__hex {
+    width: 54px;
+    height: 60px;
+    background: conic-gradient(from 0deg, var(--orange), transparent 70%);
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+    animation: spin 1.1s linear infinite;
+  }
+  @keyframes spin {
+    to {
+      rotate: 360deg;
+    }
+  }
+  .cfg-top {
+    position: absolute;
+    top: 1rem;
+    left: 1.2rem;
+    right: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    pointer-events: none;
+  }
+  .cfg-top > * {
+    pointer-events: auto;
+  }
+  .cfg-top :global(.crumbs) {
+    padding: 0.45rem 0.8rem;
+    background: rgba(6, 14, 26, 0.72);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+  }
+  .seg {
+    display: inline-flex;
+    padding: 4px;
+    gap: 4px;
+    background: rgba(6, 14, 26, 0.8);
+    border: 1px solid var(--line-2);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+  }
+  .seg button {
+    padding: 0.5rem 0.95rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-2);
+    border-radius: 9px;
+    transition:
+      background 0.2s,
+      color 0.2s;
+  }
+  .seg button:hover {
+    color: #fff;
+  }
+  .seg button.is-on {
+    color: #fff;
+    background: linear-gradient(135deg, var(--orange), var(--orange-3));
+    box-shadow: 0 6px 18px rgba(255, 102, 34, 0.35);
+  }
+  .seg--block {
+    display: flex;
+    width: 100%;
+  }
+  .seg--block button {
+    flex: 1;
+  }
+  .cfg-tools {
+    position: absolute;
+    left: 1.2rem;
+    top: 50%;
+    translate: 0 -50%;
+    display: grid;
+    gap: 6px;
+    padding: 6px;
+    background: rgba(6, 14, 26, 0.78);
+    border: 1px solid var(--line-2);
+    border-radius: 14px;
+    backdrop-filter: blur(10px);
+  }
+  .cfg-tools button {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    color: var(--text-2);
+    border-radius: 10px;
+    transition:
+      background 0.2s,
+      color 0.2s;
+  }
+  .cfg-tools button:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.06);
+  }
+  .cfg-tools button[aria-pressed='true'] {
+    color: #fff;
+    background: rgba(255, 102, 34, 0.22);
+    box-shadow: inset 0 0 0 1px rgba(255, 102, 34, 0.6);
+  }
+  .cfg-tools button span {
+    position: absolute;
+    left: calc(100% + 10px);
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    color: #fff;
+    background: rgba(6, 14, 26, 0.95);
+    border: 1px solid var(--line-2);
+    border-radius: 6px;
+    opacity: 0;
+    translate: -6px 0;
+    pointer-events: none;
+    transition: all 0.2s;
+  }
+  .cfg-tools button:hover span,
+  .cfg-tools button:focus-visible span {
+    opacity: 1;
+    translate: 0 0;
+  }
+  .cfg-caption {
+    position: absolute;
+    left: 1.2rem;
+    bottom: 1.2rem;
+    padding: 0.8rem 1.1rem;
+    background: rgba(6, 14, 26, 0.72);
+    border: 1px solid var(--line);
+    border-left: 2px solid var(--orange);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    max-width: min(460px, calc(100% - 2.4rem));
+  }
+  .cfg-caption p {
+    margin: 0;
+  }
+  .cfg-caption__k {
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--orange-2);
+  }
+  .cfg-caption__v {
+    font-size: 0.92rem;
+    color: #fff;
+  }
+  .cfg-hint {
+    position: absolute;
+    right: 1.2rem;
+    bottom: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0;
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    transition: opacity 0.5s;
+  }
+  .cfg-panel {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(180deg, rgba(8, 18, 32, 0.96), rgba(4, 10, 20, 0.98));
+    border-left: 1px solid var(--line);
+  }
+  .cfg-head {
+    padding: 1.6rem 1.6rem 1rem;
+  }
+  .cfg-head h1 {
+    margin: 0.3rem 0 0;
+  }
+  .cfg-head p {
+    margin: 0.4rem 0 0;
+    font-size: 0.85rem;
+  }
+  .cfg-head a {
+    color: var(--orange-2);
+    text-decoration: underline;
+  }
+  .cfg-sec {
+    border-top: 1px solid var(--line);
+  }
+  .cfg-sec summary {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 1rem 1.6rem;
+    cursor: pointer;
+    list-style: none;
+    font-weight: 600;
+    color: #fff;
+  }
+  .cfg-sec summary::-webkit-details-marker {
+    display: none;
+  }
+  .cfg-sec summary::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    margin-left: 0.2rem;
+    border-right: 2px solid var(--muted);
+    border-bottom: 2px solid var(--muted);
+    rotate: 45deg;
+    translate: 0 -2px;
+    transition: rotate 0.25s;
+  }
+  .cfg-sec[open] summary::after {
+    rotate: 225deg;
+    translate: 0 2px;
+  }
+  .cfg-sec__n {
+    font-size: 0.66rem;
+    color: var(--orange);
+  }
+  .cfg-sec__v {
+    margin-left: auto;
+    max-width: 45%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--muted);
+  }
+  .cfg-sec__body {
+    display: grid;
+    gap: 0.8rem;
+    padding: 0 1.6rem 1.4rem;
+  }
+  .cfg-lbl {
+    margin: 0.3rem 0 -0.3rem;
+    font-family: var(--f-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .chips-sel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .chips-sel button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.5rem 0.85rem;
+    font-size: 0.82rem;
+    color: var(--text-2);
+    border: 1px solid var(--line-2);
+    border-radius: 99px;
+    transition: all 0.2s;
+  }
+  .chips-sel button:hover {
+    border-color: rgba(255, 102, 34, 0.5);
+    color: #fff;
+  }
+  .chips-sel button.is-on {
+    color: #fff;
+    border-color: var(--orange);
+    background: rgba(255, 102, 34, 0.14);
+  }
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(38px, 1fr));
+    gap: 0.45rem;
+  }
+  .swatches :global(button) {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: inset 0 -8px 14px rgba(0, 0, 0, 0.25);
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s;
+  }
+  .swatches :global(button:hover) {
+    transform: translateY(-2px) scale(1.05);
+  }
+  .swatches :global(button.is-on) {
+    box-shadow:
+      0 0 0 2px #05080d,
+      0 0 0 4px var(--orange);
+  }
+  .swatches--wood {
+    grid-template-columns: repeat(auto-fill, minmax(56px, 1fr));
+  }
+  .rng {
+    display: grid;
+    gap: 0.4rem;
+  }
+  .rng__l {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.86rem;
+    color: var(--text-2);
+  }
+  .rng__l output {
+    color: #fff;
+    font-size: 0.86rem;
+  }
+  .rng__mm {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.62rem;
+    color: var(--dim);
+  }
+  .rng input {
+    width: 100%;
+    appearance: none;
+    height: 6px;
+    border-radius: 6px;
+    background: linear-gradient(90deg, var(--orange) var(--p, 50%), rgba(148, 178, 212, 0.18) var(--p, 50%));
+    cursor: pointer;
+  }
+  .rng input::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    border: 4px solid var(--orange);
+    box-shadow: 0 0 14px var(--orange-glow);
+  }
+  .rng input::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #fff;
+    border: 4px solid var(--orange);
+  }
+  .switch {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-size: 0.88rem;
+    color: var(--text-2);
+    cursor: pointer;
+  }
+  .switch input {
+    position: absolute;
+    opacity: 0;
+  }
+  .switch__ui {
+    position: relative;
+    width: 38px;
+    height: 22px;
+    border-radius: 22px;
+    background: rgba(148, 178, 212, 0.2);
+    transition: background 0.2s;
+  }
+  .switch__ui::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff;
+    transition: translate 0.2s;
+  }
+  .switch input:checked + .switch__ui {
+    background: var(--orange);
+  }
+  .switch input:checked + .switch__ui::after {
+    translate: 16px 0;
+  }
+  .switch input:focus-visible + .switch__ui {
+    outline: 2px solid var(--orange);
+    outline-offset: 2px;
+  }
+  .cfg-opts {
+    grid-template-columns: 1fr 1fr;
+  }
+  .cfg-opts .option-tile {
+    font-size: 0.82rem;
+    padding: 0.75rem 0.8rem;
+  }
+  .cfg-match {
+    display: grid;
+    gap: 0.5rem;
+  }
+  .cfg-match :global(.m-t) {
+    margin: 0.5rem 0 0;
+    font-family: var(--f-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .cfg-match :global(a) {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.5rem;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    font-size: 0.86rem;
+    color: var(--text-2);
+    transition: all 0.2s;
+  }
+  .cfg-match :global(a:hover) {
+    border-color: rgba(255, 102, 34, 0.5);
+    color: #fff;
+  }
+  .cfg-match :global(img) {
+    width: 44px;
+    height: 56px;
+    object-fit: contain;
+    background: radial-gradient(circle, rgba(46, 104, 148, 0.35), transparent 70%);
+    border-radius: 6px;
+  }
+  .cfg-match :global(a span) {
+    flex: 1;
+  }
+  .cfg-match :global(a svg) {
+    color: var(--orange);
+  }
+  .cfg-foot {
+    position: sticky;
+    bottom: 0;
+    display: grid;
+    gap: 0.7rem;
+    margin-top: auto;
+    padding: 1.2rem 1.6rem 1.4rem;
+    background: rgba(4, 10, 20, 0.97);
+    border-top: 1px solid var(--line-2);
+    box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.4);
+  }
+  .cfg-foot p {
+    margin: 0;
+  }
+  .cfg-foot__sum .mono {
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--orange-2);
+  }
+  .cfg-foot__sum p:last-child {
+    font-size: 0.82rem;
+    color: var(--text-2);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .cfg-foot__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+  .cfg-foot .hint {
+    font-size: 0.72rem;
+  }
+  .cfg-nogl {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-content: center;
+    padding: 2rem;
+    text-align: center;
+    color: var(--muted);
+  }
+  @media (max-width: 1000px) {
+    .cfg {
+      grid-template-columns: 1fr;
+    }
+    .cfg-view {
+      position: sticky;
+      top: var(--header-h, 64px);
+      z-index: 2;
+      height: 52svh;
+    }
+    .cfg-panel {
+      border-left: 0;
+    }
+    .cfg-tools {
+      top: auto;
+      bottom: 0.8rem;
+      left: 50%;
+      translate: -50% 0;
+      grid-auto-flow: column;
+    }
+    .cfg-tools button {
+      width: 38px;
+      height: 38px;
+    }
+    .cfg-tools button span {
+      display: none;
+    }
+    .cfg-caption,
+    .cfg-hint {
+      display: none;
+    }
+    .cfg-top :global(.crumbs) {
+      display: none;
+    }
+    .cfg-top {
+      justify-content: center;
+    }
+    .cfg-view {
+      height: 46svh;
+    }
+    .cfg-foot {
+      position: static;
+      box-shadow: none;
+      padding-bottom: calc(1.4rem + 70px);
+    }
+  }
+</style>

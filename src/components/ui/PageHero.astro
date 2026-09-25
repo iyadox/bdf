@@ -10,6 +10,7 @@ interface Props {
   align?: 'left' | 'center';
 }
 const { title, eyebrow, lead, crumbs = [], accent, compact = false, align = 'left' } = Astro.props;
+const long = `${title} ${accent || ''}`.length > 30;
 ---
 
 <header class:list={['phero', { 'phero--compact': compact, 'phero--center': align === 'center' }]}>
@@ -23,7 +24,7 @@ const { title, eyebrow, lead, crumbs = [], accent, compact = false, align = 'lef
     <div class="phero__main">
       <div class="phero__txt">
         {eyebrow && <p class="eyebrow" data-reveal>{eyebrow}</p>}
-        <h1 class="h1 phero__title" data-reveal style="--d:.08s">
+        <h1 class:list={['h1 phero__title', { 'phero__title--long': long }]} data-reveal style="--d:.08s">
           {title}
           {accent && (
             <>
@@ -51,6 +52,9 @@ const { title, eyebrow, lead, crumbs = [], accent, compact = false, align = 'lef
     overflow: hidden;
     border-bottom: 1px solid var(--line);
     isolation: isolate;
+  }
+  .phero__title--long {
+    font-size: clamp(1.9rem, 1.1rem + 3vw, 3.6rem);
   }
   .phero--compact {
     padding-block: calc(var(--section) * 0.4);
