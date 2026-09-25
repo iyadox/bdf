@@ -1,0 +1,343 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/ui/PageHero.astro';
+import Icon from '@/components/Icon.astro';
+import { getInstallers, installerUrl } from '@/lib/catalog';
+import { settings, telHref } from '@/lib/site';
+import deps from '@/data/departements.json';
+const inst = await getInstallers();
+const withGeo = inst.filter((i) => i.lat != null && i.lng != null);
+const depCounts: Record<string, number> = {};
+inst.forEach((i) => {
+  const d = i.postalCode.slice(0, 2);
+  if (d) depCounts[d] = (depCounts[d] || 0) + 1;
+});
+const depList = Object.keys(depCounts).sort();
+const data = withGeo.map((i) => ({ slug: i.slug, name: i.name, address: i.address, cp: i.postalCode, city: i.city, phone: i.phone, lat: i.lat, lng: i.lng, premium: i.premium || undefined }));
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Installateurs agréés Blindages de France',
+  numberOfItems: inst.length,
+  itemListElement: inst.slice(0, 50).map((i, k) => ({ '@type': 'ListItem', position: k + 1, url: new URL(installerUrl(i), Astro.site).href, name: i.name })),
+};
+---
+
+<BaseLayout title="Trouver un installateur" description={`Trouvez parmi nos ${inst.length} installateurs agréés Blindages de France le professionnel le plus proche de chez vous pour la pose de votre porte blindée certifiée.`} jsonLd={ld}>
+  <PageHero title="Trouver un installateur" accent="certifié" eyebrow={`Réseau national · ${inst.length} installateurs agréés`} lead="Accédez à notre réseau d'installateurs agréés partout en France. Expertise technique et garantie fabricant." crumbs={[{ label: 'Trouver un installateur' }]} compact />
+
+  <section class="loc" data-locator>
+    <div class="container--wide loc__grid">
+      <aside class="loc__side">
+        <form class="loc__search panel" data-loc-form role="search">
+          <label class="loc__field">
+            <Icon name="search" size={18} />
+            <span class="sr-only">Nom, ville ou code postal</span>
+            <input type="search" name="q" placeholder="Nom, ville ou code postal…" autocomplete="off" data-loc-q />
+          </label>
+          <button type="submit" class="btn btn--sm">Chercher</button>
+        </form>
+        <div class="loc__tools">
+          <button type="button" class="chip" data-loc-near><Icon name="locate" size={15} /> Autour de moi</button>
+          <label class="loc__dep">
+            <span class="sr-only">Département</span>
+            <select class="select" data-loc-dep>
+              <option value="">Tous les départements</option>
+              {depList.map((d) => <option value={d}>{d} — {(deps as Record<string, string>)[d] || ''} ({depCounts[d]})</option>)}
+            </select>
+          </label>
+        </div>
+        <p class="loc__status" aria-live="polite" data-loc-status><strong>{inst.length}</strong> installateurs</p>
+        <ul class="loc__list" data-loc-list>
+          {
+            inst.map((i) => (
+              <li class="icard2" data-inst={i.slug} data-name={i.name.toLowerCase()} data-city={i.city.toLowerCase()} data-cp={i.postalCode} data-lat={i.lat ?? ''} data-lng={i.lng ?? ''}>
+                <div class="icard2__head">
+                  <h2 class="icard2__name">
+                    <a href={installerUrl(i)}>{i.name}</a>
+                  </h2>
+                  {i.premium && <span class="badge badge--fr">Partenaire premium</span>}
+                  <span class="icard2__dist mono" data-dist />
+                </div>
+                <p class="icard2__addr">
+                  {i.address}
+                  <br />
+                  {i.postalCode} {i.city}
+                </p>
+                <div class="icard2__actions">
+                  {i.phone && (
+                    <a href={telHref(i.phone)} class="icard2__btn">
+                      <Icon name="phone" size={15} /> {i.phone}
+                    </a>
+                  )}
+                  {i.lat != null && (
+                    <button type="button" class="icard2__btn" data-show-map={i.slug}>
+                      <Icon name="map-pin" size={15} /> Carte
+                    </button>
+                  )}
+                  {i.lat != null && (
+                    <a href={`https://www.google.com/maps/dir/?api=1&destination=${i.lat},${i.lng}`} class="icard2__btn" target="_blank" rel="noopener">
+                      <Icon name="navigation" size={15} /> Itinéraire
+                    </a>
+                  )}
+                  <a href={installerUrl(i)} class="icard2__btn icard2__btn--go">
+                    Fiche <Icon name="arrow-right" size={15} />
+                  </a>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+        <button type="button" class="btn btn--ghost btn--sm btn--block" data-loc-more hidden>Afficher plus</button>
+      </aside>
+      <div class="loc__mapwrap">
+        <div class="loc__map" data-loc-map aria-label="Carte des installateurs" role="region"></div>
+        <div class="loc__maphint mono" aria-hidden="true"><span class="lg lg--o"></span> Installateur <span class="lg lg--b"></span> Partenaire premium · Siège BDF</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container join panel panel--glow" data-reveal>
+      <img src="/media/2026-01/pictos-annuaire-pros.png" alt="" width="90" height="90" loading="lazy" />
+      <div>
+        <p class="eyebrow">Réseau partenaire</p>
+        <h2 class="h3">Vous êtes installateur ? Devenez installateur agréé BDF</h2>
+        <p class="muted">Rejoignez notre réseau de professionnels : visibilité dans l'annuaire, support technique et accès aux produits de haute sécurité.</p>
+      </div>
+      <div class="btn-row">
+        <a href="/rejoindre-le-reseau-dinstallateurs-bdf" class="btn">Nous rejoindre <Icon name="arrow-right" /></a>
+        <a href="/devis-porte-blindee" class="btn btn--ghost">Demander un devis</a>
+      </div>
+    </div>
+  </section>
+  <script type="application/json" id="loc-data" set:html={JSON.stringify({ list: data, hq: [settings.contact.geo.lng, settings.contact.geo.lat] })} />
+</BaseLayout>
+
+<script>
+  import '@/scripts/pages/installers';
+</script>
+
+<style>
+  .loc {
+    padding: 1.5rem 0 2rem;
+  }
+  .loc__grid {
+    display: grid;
+    grid-template-columns: minmax(340px, 440px) 1fr;
+    gap: 1.2rem;
+    align-items: start;
+  }
+  .loc__side {
+    display: grid;
+    gap: 0.8rem;
+  }
+  .loc__search {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.4rem;
+    border-radius: 14px;
+  }
+  .loc__field {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-left: 0.6rem;
+    color: var(--orange);
+  }
+  .loc__field input {
+    flex: 1;
+    min-width: 0;
+    height: 44px;
+    background: none;
+    border: 0;
+    outline: none;
+    color: var(--text);
+    font-size: 1rem;
+  }
+  .loc__search:focus-within {
+    border-color: var(--orange);
+  }
+  .loc__tools {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .loc__dep {
+    flex: 1;
+  }
+  .loc__dep .select {
+    min-height: 40px;
+    padding-block: 0.35rem;
+    font-size: 0.85rem;
+  }
+  .loc__status {
+    margin: 0.2rem 0;
+    font-size: 0.88rem;
+    color: var(--muted);
+  }
+  .loc__status :global(strong) {
+    color: #fff;
+    font-family: var(--f-display);
+  }
+  .loc__list {
+    list-style: none;
+    display: grid;
+    gap: 0.6rem;
+    max-height: calc(100vh - var(--header-h) - 250px);
+    min-height: 420px;
+    overflow-y: auto;
+    padding-right: 0.3rem;
+    scrollbar-width: thin;
+  }
+  .icard2 {
+    display: grid;
+    gap: 0.45rem;
+    padding: 1rem 1.1rem;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    background: rgba(8, 20, 38, 0.6);
+    transition:
+      border-color 0.25s,
+      background 0.25s;
+  }
+  .icard2:hover,
+  .icard2.is-active {
+    border-color: rgba(255, 102, 34, 0.55);
+    background: rgba(20, 36, 58, 0.7);
+  }
+  .icard2__head {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .icard2__name {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  .icard2__name a:hover {
+    color: var(--orange-2);
+  }
+  .icard2__dist {
+    margin-left: auto;
+    font-size: 0.72rem;
+    color: var(--orange);
+  }
+  .icard2__addr {
+    margin: 0;
+    font-size: 0.84rem;
+    color: var(--muted);
+    line-height: 1.45;
+  }
+  .icard2__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.2rem;
+  }
+  .icard2__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.6rem;
+    font-size: 0.76rem;
+    border-radius: 8px;
+    border: 1px solid var(--line-2);
+    color: var(--text-2);
+    transition: all 0.2s;
+  }
+  .icard2__btn:hover {
+    border-color: var(--orange);
+    color: #fff;
+  }
+  .icard2__btn--go {
+    margin-left: auto;
+    color: var(--orange-2);
+  }
+  .loc__mapwrap {
+    position: sticky;
+    top: calc(var(--header-h) + 1rem);
+  }
+  .loc__map {
+    height: calc(100vh - var(--header-h) - 3rem);
+    min-height: 520px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--line-2);
+    background:
+      radial-gradient(60% 60% at 50% 50%, rgba(4, 61, 108, 0.35), transparent 70%),
+      #060e1b;
+  }
+  .loc__maphint {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.7rem;
+    font-size: 0.64rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: rgba(3, 8, 16, 0.8);
+    border-radius: 8px;
+    pointer-events: none;
+  }
+  .lg {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .lg--o {
+    background: var(--orange);
+  }
+  .lg--b {
+    background: #5aa3e0;
+    margin-left: 0.5rem;
+  }
+  .join {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1.6rem;
+    align-items: center;
+    padding: 1.8rem;
+  }
+  .join img {
+    width: 90px;
+    height: 90px;
+    border-radius: 16px;
+    background: #fff;
+    padding: 8px;
+  }
+  .join .h3 {
+    margin: 0.6rem 0;
+  }
+  .join p {
+    margin: 0;
+  }
+  @media (max-width: 1000px) {
+    .loc__grid {
+      grid-template-columns: 1fr;
+    }
+    .loc__mapwrap {
+      position: relative;
+      top: 0;
+      order: -1;
+    }
+    .loc__map {
+      height: 46vh;
+      min-height: 320px;
+    }
+    .loc__list {
+      max-height: none;
+      overflow: visible;
+    }
+    .join {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

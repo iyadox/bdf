@@ -1,0 +1,612 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import Icon from '@/components/Icon.astro';
+import VideoEmbed from '@/components/ui/VideoEmbed.astro';
+import CtaBand from '@/components/ui/CtaBand.astro';
+import { getCollection } from 'astro:content';
+import { getInstallers, installerUrl, type Installer } from '@/lib/catalog';
+import { telHref } from '@/lib/site';
+import deps from '@/data/departements.json';
+
+export async function getStaticPaths() {
+  const inst = await getInstallers();
+  return inst.map((i) => ({ params: { slug: i.slug }, props: { i } }));
+}
+const { i } = Astro.props as { i: Installer };
+const all = await getInstallers();
+const dist = (a: Installer, b: Installer) => {
+  if (a.lat == null || b.lat == null || a.lng == null || b.lng == null) return Infinity;
+  const R = 6371,
+    r = (d: number) => (d * Math.PI) / 180;
+  const s = Math.sin(r(b.lat - a.lat) / 2) ** 2 + Math.cos(r(a.lat)) * Math.cos(r(b.lat)) * Math.sin(r(b.lng - a.lng) / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(s));
+};
+const nearby = all
+  .filter((x) => x.slug !== i.slug)
+  .map((x) => ({ x, d: dist(i, x) }))
+  .filter((o) => isFinite(o.d))
+  .sort((a, b) => a.d - b.d)
+  .slice(0, 5);
+const dep = i.postalCode.slice(0, 2);
+const depName = (deps as Record<string, string>)[dep] || '';
+const news = (await getCollection('news', (n) => n.data.installer === i.slug)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const accent = i.colors?.accent || '#ff6622';
+const itin = i.lat != null ? `https://www.google.com/maps/dir/?api=1&destination=${i.lat},${i.lng}` : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${i.address} ${i.postalCode} ${i.city}`)}`;
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: i.name,
+  address: { '@type': 'PostalAddress', streetAddress: i.address, postalCode: i.postalCode, addressLocality: i.city, addressCountry: 'FR' },
+  ...(i.phone ? { telephone: i.phone } : {}),
+  ...(i.website ? { url: i.website } : {}),
+  ...(i.lat != null ? { geo: { '@type': 'GeoCoordinates', latitude: i.lat, longitude: i.lng } } : {}),
+  ...(i.logo ? { logo: new URL(i.logo, Astro.site).href } : {}),
+  memberOf: { '@id': new URL('/#organisation', Astro.site).href },
+};
+const title = `${i.name} — installateur de portes blindées à ${i.city}`;
+---
+
+<BaseLayout title={title} description={`${i.name}, installateur agréé Blindages de France à ${i.city} (${i.postalCode}). Pose de portes blindées et blocs-portes certifiés. ${i.phone ? 'Tél. ' + i.phone : ''}`} jsonLd={ld} image={i.heroImages?.[0]}>
+  {
+    i.premium ? (
+      <header class="ph" style={`--acc:${accent}`}>
+        <div class="ph__slides" aria-hidden="true">
+          {(i.heroImages || []).map((im, k) => (
+            <img src={im} alt="" class:list={['ph__slide', { 'is-on': k === 0 }]} data-slide />
+          ))}
+        </div>
+        <div class="ph__shade" aria-hidden="true" />
+        <div class="container ph__in">
+          <Breadcrumbs items={[{ label: 'Installateurs', href: '/installateurs-portes-blindees' }, { label: i.name }]} />
+          <div class="ph__top">
+            {i.logo && <img src={i.logo} alt={i.name} class="ph__logo" />}
+            <span class="badge badge--fr">
+              <img src="/brand/bdf-mark.svg" alt="" width="16" height="16" /> Installateur partenaire certifié BDF
+            </span>
+          </div>
+          <p class="mono ph__loc">
+            {i.city.toUpperCase()} ({i.postalCode})
+          </p>
+          <h1 class="h1">{i.name}</h1>
+          {i.tagline && <p class="lead">{i.tagline}</p>}
+          <p class="ph__meta">
+            {i.certifications?.length && <span>{i.certifications.join(' · ')}</span>}
+            {i.partnerSince && <span>Partenaire BDF depuis {i.partnerSince}</span>}
+          </p>
+          <div class="btn-row">
+            <a href="#contact" class="btn">
+              Nous contacter <Icon name="arrow-down" />
+            </a>
+            {i.phone && (
+              <a href={telHref(i.phone)} class="btn btn--ghost">
+                <Icon name="phone" /> {i.phone}
+              </a>
+            )}
+          </div>
+        </div>
+      </header>
+    ) : (
+      <header class="sh">
+        <div class="container">
+          <Breadcrumbs items={[{ label: 'Installateurs', href: '/installateurs-portes-blindees' }, { label: i.name }]} />
+          <div class="sh__row">
+            <span class="sh__hex">{i.name.replace(/[^A-Za-z0-9]/g, '').slice(0, 2).toUpperCase()}</span>
+            <div>
+              <p class="eyebrow">Installateur partenaire certifié Blindages de France</p>
+              <h1 class="h1 sh__title">{i.name}</h1>
+              <p class="muted mono">
+                {i.city} ({i.postalCode}){depName && ` · ${depName}`}
+              </p>
+            </div>
+          </div>
+        </div>
+      </header>
+    )
+  }
+
+  {
+    i.premium && i.stats && (
+      <section class="section section--tight">
+        <div class="container">
+          <ul class="pstats" style={`--acc:${accent}`}>
+            {i.stats.map((s) => (
+              <li data-reveal>
+                <strong>{s.value}</strong>
+                <span>{s.label}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    i.premium && i.presentation && (
+      <section class="section section--tight" id="presentation">
+        <div class="container--narrow prose ppres" set:html={i.presentation} data-reveal />
+      </section>
+    )
+  }
+
+  {
+    i.premium && i.services && i.services.length > 0 && (
+      <section class="section section--tight" id="prestations">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">Savoir-faire</p>
+            <h2 class="h2">Nos prestations</h2>
+          </div>
+          <div class="psvc">
+            {i.services.map((s) => (
+              <div class="psvc__item panel" data-reveal>
+                <span class="icon-box">
+                  <Icon name={s.icon} />
+                </span>
+                <strong>{s.title}</strong>
+                {s.description && <span class="muted">{s.description}</span>}
+              </div>
+            ))}
+          </div>
+          {i.servicesText && <div class="prose psvc__txt" set:html={i.servicesText} />}
+        </div>
+      </section>
+    )
+  }
+
+  {
+    i.premium && ((i.gallery && i.gallery.length > 0) || news.length > 0) && (
+      <section class="section section--tight" id="realisations">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">Chantiers</p>
+            <h2 class="h2">Nos réalisations</h2>
+          </div>
+          <div class="pgal">
+            {news.map((n) => (
+              <a href={`/news-focus/${n.id}`} class="pgal__item pgal__item--news">
+                <img src={n.data.cover || `/media/video-thumbnails/${n.data.video}.jpg`} alt="" loading="lazy" />
+                <span>
+                  <strong>{n.data.title}</strong> La réalisation en détail →
+                </span>
+              </a>
+            ))}
+            {i.gallery?.map((g, k) => (
+              <button type="button" class="pgal__item" data-lightbox={g} data-alt={`${i.name} — réalisation ${k + 1}`}>
+                <img src={g} alt={`Réalisation ${k + 1}`} loading="lazy" />
+              </button>
+            ))}
+          </div>
+          {i.realisationsText && <div class="prose psvc__txt" set:html={i.realisationsText} />}
+          {i.videos?.map((v) => (
+            <div class="pvid">
+              <VideoEmbed id={v} title={`Découvrez ${i.name}`} />
+            </div>
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <section class="section section--tight" id="contact">
+    <div class="container cgrid">
+      <div class="ccard panel panel--glow">
+        <h2 class="h3">{i.premium ? "Contact & zone d'intervention" : 'Coordonnées'}</h2>
+        {i.zone && <p class="muted"><Icon name="compass" size={16} /> Zone d'intervention : {i.zone}</p>}
+        <ul class="clist">
+          <li>
+            <Icon name="map-pin" />
+            <span>
+              {i.address}
+              <br />
+              {i.postalCode} {i.city}
+            </span>
+          </li>
+          {
+            i.phone && (
+              <li>
+                <Icon name="phone" />
+                <a href={telHref(i.phone)} class="mono">
+                  {i.phone}
+                </a>
+              </li>
+            )
+          }
+          {
+            i.phone2 && (
+              <li>
+                <Icon name="phone" />
+                <a href={telHref(i.phone2)} class="mono">
+                  {i.phone2}
+                </a>
+              </li>
+            )
+          }
+          {
+            i.website && (
+              <li>
+                <Icon name="globe" />
+                <a href={i.website} target="_blank" rel="noopener nofollow">
+                  {i.website.replace(/^https?:\/\//, '').replace(/\/$/, '')}
+                </a>
+              </li>
+            )
+          }
+          {
+            i.email && (
+              <li>
+                <Icon name="mail" />
+                <a href={`mailto:${i.email}`}>{i.email}</a>
+              </li>
+            )
+          }
+          {
+            i.socials &&
+              Object.entries(i.socials).map(([k, v]) => (
+                <li>
+                  <Icon name={k} />
+                  <a href={v} target="_blank" rel="noopener nofollow">
+                    {k.charAt(0).toUpperCase() + k.slice(1)}
+                  </a>
+                </li>
+              ))
+          }
+        </ul>
+        {i.contactText && <p class="muted">{i.contactText}</p>}
+        <div class="btn-row">
+          <a href={itin} class="btn btn--sm" target="_blank" rel="noopener"><Icon name="navigation" /> Itinéraire</a>
+          {i.phone && <a href={telHref(i.phone)} class="btn btn--sm btn--ghost"><Icon name="phone" /> Appeler</a>}
+          <a href={`/devis-porte-blindee?installateur=${i.slug}`} class="btn btn--sm btn--ghost"><Icon name="file-text" /> Demander un devis</a>
+        </div>
+      </div>
+      <div class="cmap" data-imap data-lat={i.lat ?? ''} data-lng={i.lng ?? ''} data-name={i.name} role="region" aria-label={`Carte de localisation de ${i.name}`}>
+        {i.lat == null && <p class="muted">Localisation non disponible.</p>}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="trust panel">
+        <div>
+          <p class="eyebrow">Pourquoi un installateur agréé ?</p>
+          <ul>
+            <li><Icon name="badge-check" /> Pose conforme aux exigences de nos produits certifiés A2P, coupe-feu et pare-balles</li>
+            <li><Icon name="wrench" /> Support technique direct de l'usine Blindages de France</li>
+            <li><Icon name="shield" /> Garantie fabricant sur les produits BDF</li>
+          </ul>
+        </div>
+        {
+          nearby.length > 0 && (
+            <div>
+              <p class="eyebrow">Autres installateurs à proximité</p>
+              <ul class="near">
+                {nearby.map(({ x, d }) => (
+                  <li>
+                    <a href={installerUrl(x)}>
+                      <strong>{x.name}</strong> <span class="muted">{x.city}</span>
+                    </a>
+                    <span class="mono">{d < 10 ? d.toFixed(1).replace('.', ',') : Math.round(d)} km</span>
+                  </li>
+                ))}
+              </ul>
+              <a href={`/installateurs-portes-blindees?dep=${dep}`} class="link-arrow">
+                Tous les installateurs {depName ? `— ${depName}` : ''} <Icon name="arrow-right" />
+              </a>
+            </div>
+          )
+        }
+      </div>
+      <p class="own muted">Vous êtes {i.name} ? <a href={`/nous-contacter?objet=${encodeURIComponent('Mise à jour de ma fiche installateur')}`}>Mettez à jour votre fiche</a> ou demandez une page partenaire premium.</p>
+    </div>
+  </section>
+  <CtaBand />
+</BaseLayout>
+
+<script>
+  import { hasWebGL } from '@/scripts/ui/dom';
+  // diaporama (fiche premium)
+  const slides = [...document.querySelectorAll<HTMLImageElement>('[data-slide]')];
+  if (slides.length > 1) {
+    let k = 0;
+    setInterval(() => {
+      slides[k].classList.remove('is-on');
+      k = (k + 1) % slides.length;
+      slides[k].classList.add('is-on');
+    }, 5000);
+  }
+  // carte de localisation (chargée à l'approche)
+  const el = document.querySelector<HTMLElement>('[data-imap]');
+  if (el && el.dataset.lat && hasWebGL()) {
+    const io = new IntersectionObserver(async ([e]) => {
+      if (!e.isIntersecting) return;
+      io.disconnect();
+      const api = await import('@/scripts/map/map');
+      const ll: [number, number] = [+el.dataset.lng!, +el.dataset.lat!];
+      const map = api.createMap(el, { center: ll, zoom: 14 });
+      map.on('load', () => api.pointMarker(map, ll));
+    }, { rootMargin: '200px' });
+    io.observe(el);
+  }
+</script>
+
+<style>
+  .sh {
+    padding: 2rem 0 2.5rem;
+    border-bottom: 1px solid var(--line);
+    background: radial-gradient(50% 80% at 90% 0%, rgba(46, 104, 148, 0.25), transparent 70%);
+  }
+  .sh__row {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+    margin-top: 1.8rem;
+  }
+  .sh__hex {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 86px;
+    height: 98px;
+    font-family: var(--f-display);
+    font-size: 1.4rem;
+    color: #fff;
+    background: linear-gradient(160deg, #3a78ad, #043d6c);
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  }
+  .sh__title {
+    font-size: clamp(1.6rem, 1.1rem + 2vw, 2.8rem);
+    margin: 0.6rem 0 0.4rem;
+  }
+  .ph {
+    position: relative;
+    min-height: 70vh;
+    display: grid;
+    align-items: end;
+    padding: 2rem 0 3rem;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .ph__slides {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+  }
+  .ph__slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.4s;
+  }
+  .ph__slide.is-on {
+    opacity: 1;
+  }
+  .ph__shade {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(0deg, var(--bg) 5%, rgba(3, 7, 14, 0.6) 55%, rgba(3, 7, 14, 0.3));
+  }
+  .ph__in {
+    display: grid;
+    gap: 1rem;
+  }
+  .ph__top {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+  .ph__logo {
+    height: 64px;
+    width: auto;
+    background: #fff;
+    border-radius: 10px;
+    padding: 6px 10px;
+  }
+  .ph__loc {
+    margin: 0;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    color: var(--acc);
+  }
+  .ph .lead {
+    margin: 0;
+  }
+  .ph__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.4rem;
+    margin: 0;
+    font-family: var(--f-mono);
+    font-size: 0.74rem;
+    color: var(--text-2);
+  }
+  .pstats {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .pstats li {
+    display: grid;
+    padding: 1.2rem 1.4rem;
+    border-left: 3px solid var(--acc);
+    background: rgba(8, 20, 38, 0.55);
+    border-radius: 0 12px 12px 0;
+  }
+  .pstats strong {
+    font-family: var(--f-display);
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+  .pstats span {
+    color: var(--muted);
+  }
+  .ppres :global(img) {
+    float: left;
+    margin: 0 1.4rem 1rem 0;
+    max-width: 45%;
+    border-radius: 12px;
+  }
+  .psvc {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1rem;
+  }
+  .psvc__item {
+    display: grid;
+    gap: 0.6rem;
+    padding: 1.3rem;
+    align-content: start;
+  }
+  .psvc__item .muted {
+    font-size: 0.88rem;
+  }
+  .psvc__txt {
+    margin-top: 1.4rem;
+    max-width: 80ch;
+  }
+  .pgal {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.8rem;
+  }
+  .pgal__item {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    cursor: zoom-in;
+    background: #fff;
+  }
+  .pgal__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease);
+  }
+  .pgal__item:hover img {
+    transform: scale(1.06);
+  }
+  .pgal__item--news {
+    cursor: pointer;
+  }
+  .pgal__item--news span {
+    position: absolute;
+    inset: auto 0 0;
+    display: grid;
+    padding: 0.8rem;
+    font-size: 0.78rem;
+    color: #fff;
+    background: linear-gradient(0deg, rgba(3, 7, 14, 0.95), transparent);
+  }
+  .pvid {
+    margin-top: 1.6rem;
+    max-width: 900px;
+  }
+  .cgrid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 1.2rem;
+    align-items: stretch;
+  }
+  .ccard {
+    display: grid;
+    gap: 1.1rem;
+    align-content: start;
+    padding: 1.8rem;
+  }
+  .ccard p {
+    margin: 0;
+    display: flex;
+    gap: 0.5rem;
+  }
+  .clist {
+    list-style: none;
+    display: grid;
+    gap: 0.8rem;
+  }
+  .clist li {
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+    color: var(--text-2);
+  }
+  .clist :global(svg) {
+    color: var(--orange);
+    flex: none;
+    margin-top: 3px;
+  }
+  .clist a:hover {
+    color: var(--orange-2);
+  }
+  .cmap {
+    min-height: 380px;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid var(--line-2);
+    background: #060e1b;
+    display: grid;
+    place-items: center;
+  }
+  .trust {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 1.8rem;
+  }
+  .trust ul {
+    list-style: none;
+    display: grid;
+    gap: 0.7rem;
+    margin: 1rem 0;
+  }
+  .trust li {
+    display: flex;
+    gap: 0.7rem;
+    color: var(--text-2);
+  }
+  .trust li > :global(svg) {
+    color: var(--orange);
+    flex: none;
+    margin-top: 3px;
+  }
+  .near li {
+    justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 0.5rem;
+  }
+  .near a:hover strong {
+    color: var(--orange-2);
+  }
+  .near .mono {
+    color: var(--orange);
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+  .own {
+    margin-top: 1.2rem;
+    font-size: 0.86rem;
+  }
+  .own a {
+    color: var(--orange-2);
+    text-decoration: underline;
+  }
+  @media (max-width: 900px) {
+    .cgrid,
+    .trust {
+      grid-template-columns: 1fr;
+    }
+    .ppres :global(img) {
+      float: none;
+      max-width: 100%;
+    }
+  }
+</style>

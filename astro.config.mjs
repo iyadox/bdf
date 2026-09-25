@@ -18,5 +18,7 @@ export default defineConfig({
   ],
   vite: {
     build: { chunkSizeWarningLimit: 900 },
+    // le worker de MapLibre est un module ES
+    worker: { format: 'es' },
   },
 });
