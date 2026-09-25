@@ -12,12 +12,12 @@ export default defineConfig({
   prefetch: { prefetchAll: false, defaultStrategy: 'hover' },
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/admin') && !page.includes('/merci') && !page.includes('/404'),
+      filter: (page) => !/\/(admin|merci|404|selection)(\/|$)/.test(page),
       i18n: undefined,
     }),
   ],
   vite: {
-    build: { chunkSizeWarningLimit: 900 },
+    build: { chunkSizeWarningLimit: 1100 },
     // le worker de MapLibre est un module ES
     worker: { format: 'es' },
   },

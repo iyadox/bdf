@@ -21,6 +21,23 @@ initConsent();
 initPalette();
 initForms();
 
+// Mode allégé (sans 3D) : mémorisé sur l'appareil du visiteur
+document.querySelectorAll<HTMLButtonElement>('[data-lite-toggle]').forEach((b) => {
+  const on = document.documentElement.classList.contains('lite');
+  const state = b.querySelector('[data-lite-state]');
+  if (state) state.textContent = on ? 'activé' : 'désactivé';
+  b.setAttribute('aria-pressed', String(on));
+  if (document.documentElement.classList.contains('no-3d')) b.hidden = true;
+  b.addEventListener('click', () => {
+    try {
+      localStorage.setItem('bdf-lite', on ? '0' : '1');
+    } catch {
+      /* stockage indisponible */
+    }
+    location.reload();
+  });
+});
+
 // Lightbox générique : [data-lightbox="url"]
 document.addEventListener('click', (e) => {
   const t = (e.target as Element).closest<HTMLElement>('[data-lightbox]');
