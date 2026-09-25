@@ -5,7 +5,7 @@ interface Props {
   pct: number;
   color?: string;
 }
-const { value, unit, pct, color = '#ff6622' } = Astro.props;
+const { value, unit, pct, color = '#4a7396' } = Astro.props;
 const R = 52;
 const C = 2 * Math.PI * R;
 ---
@@ -35,7 +35,7 @@ const C = 2 * Math.PI * R;
   }
   .gauge__bg {
     fill: none;
-    stroke: rgba(148, 178, 212, 0.12);
+    stroke: rgba(74, 115, 150, 0.19);
     stroke-width: 7;
   }
   .gauge__fg {
@@ -52,7 +52,7 @@ const C = 2 * Math.PI * R;
     stroke-dashoffset: var(--off);
   }
   .gauge__tick {
-    stroke: rgba(148, 178, 212, 0.3);
+    stroke: rgba(74, 115, 150, 0.48);
     stroke-width: 1;
   }
   .gauge__txt {

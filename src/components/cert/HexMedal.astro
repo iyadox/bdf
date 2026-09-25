@@ -5,7 +5,7 @@ interface Props {
   color?: string;
   label?: string;
 }
-const { logo, alt, color = '#ff6622', label } = Astro.props;
+const { logo, alt, color = '#4a7396', label } = Astro.props;
 ---
 
 <div class="medal" style={`--mc:${color}`} data-tilt="14">
@@ -43,7 +43,7 @@ const { logo, alt, color = '#ff6622', label } = Astro.props;
   }
   .medal__orbit--b {
     inset: 13%;
-    border: 1px solid rgba(148, 178, 212, 0.2);
+    border: 1px solid rgba(74, 115, 150, 0.32);
     border-top-color: var(--mc);
     animation-duration: 9s;
     animation-direction: reverse;

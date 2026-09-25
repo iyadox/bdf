@@ -16,7 +16,7 @@ export const RAL = [
   { code: '5010', name: 'Bleu gentiane', hex: '#0e518d' },
   { code: '6005', name: 'Vert mousse', hex: '#0f4336' },
   { code: '6021', name: 'Vert pâle', hex: '#89ac76' },
-  { code: '2004', name: 'Orange pur', hex: '#f44611' },
+  { code: '7012', name: 'Gris basalte', hex: '#575d5e' },
   { code: '1021', name: 'Jaune colza', hex: '#eec900' },
 ];
 

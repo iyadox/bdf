@@ -32,7 +32,7 @@ L'interface d'administration est disponible à l'adresse **`/admin`** (par exemp
 
 - **Produits** : textes, images, PDF, filtres, serrures, options, certifications, référencement… ; masquer un produit en décochant « Publié ».
 - **Catégories** du catalogue.
-- **Installateurs** : ajouter, modifier, masquer une fiche ; cocher « Premium » pour une fiche vitrine (logo, galerie, vidéos, services, couleurs).
+- **Installateurs** : ajouter, modifier, masquer une fiche ; cocher « Premium » pour une fiche vitrine (logo, galerie, vidéos, services).
 - **Actualités** : rédaction d'articles avec image, vidéo YouTube et installateur lié.
 - **Pages légales** : CGV, mentions légales, confidentialité.
 - **Réglages du site** : téléphone, adresse, horaires, réseaux sociaux, bandeau d'annonce, chiffres clés, réception des formulaires, lien de l'Espace Pro, mesure d'audience, activation des effets 3D / de l'animation d'introduction / du configurateur / du comparateur.
@@ -115,7 +115,7 @@ src/
     map/          cartes MapLibre aux couleurs de la marque
     pages/        interactions propres à chaque page
     ui/           en-tête, recherche, sélection, comparateur, formulaires, cookies, effets
-  styles/         styles globaux et variables de la charte (orange #ff6622, bleu marine #001c3c)
+  styles/         styles globaux et variables de la charte (bleus du site d'origine : #4a7396, #30638b, #1a4a6e, marine #001c3c)
 public/
   admin/          interface d'administration
   media/          images et fiches PDF

@@ -10,7 +10,7 @@ import { settings, telHref } from '@/lib/site';
       <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52"></circle><path d="M38 62 l15 15 l30 -34"></path></svg>
     </div>
     <p class="eyebrow eyebrow--center">Demande reçue</p>
-    <h1 class="h1">Merci <span class="grad-orange">!</span></h1>
+    <h1 class="h1">Merci <span class="grad-accent">!</span></h1>
     <p class="lead" data-ty-msg>Votre demande a bien été transmise à nos équipes. Nous vous recontactons dans les meilleurs délais.</p>
     <div class="ty__next panel">
       <p class="mono">Et maintenant ?</p>
@@ -55,8 +55,8 @@ import { settings, telHref } from '@/lib/site';
     width: 120px;
   }
   .ty__check circle {
-    fill: rgba(62, 207, 142, 0.08);
-    stroke: #3ecf8e;
+    fill: rgba(48, 99, 139, 0.08);
+    stroke: #30638b;
     stroke-width: 4;
     stroke-dasharray: 330;
     stroke-dashoffset: 330;
@@ -64,7 +64,7 @@ import { settings, telHref } from '@/lib/site';
   }
   .ty__check path {
     fill: none;
-    stroke: #3ecf8e;
+    stroke: #30638b;
     stroke-width: 7;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -89,7 +89,7 @@ import { settings, telHref } from '@/lib/site';
     font-size: 0.68rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--orange);
+    color: var(--accent);
   }
   .ty__next ul {
     list-style: none;
@@ -103,10 +103,10 @@ import { settings, telHref } from '@/lib/site';
     color: var(--text-2);
   }
   .ty__next :global(svg) {
-    color: var(--orange);
+    color: var(--accent);
   }
   .ty__next a {
-    color: var(--orange-2);
+    color: var(--accent-2);
     text-decoration: underline;
   }
 </style>

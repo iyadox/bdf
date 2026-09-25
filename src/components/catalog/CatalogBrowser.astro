@@ -150,8 +150,8 @@ const groups = [
     color: var(--muted);
   }
   .cb__search:focus-within {
-    border-color: var(--orange);
-    box-shadow: 0 0 0 3px rgba(255, 102, 34, 0.14);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(74, 115, 150, 0.19);
   }
   .cb__search input {
     flex: 1;
@@ -165,7 +165,7 @@ const groups = [
   .fgroup {
     border: 1px solid var(--line);
     border-radius: 12px;
-    background: rgba(8, 20, 38, 0.5);
+    background: rgba(10, 25, 41, 0.5);
   }
   .fgroup summary {
     display: flex;
@@ -181,7 +181,7 @@ const groups = [
     display: none;
   }
   .fgroup summary :global(svg:first-child) {
-    color: var(--orange);
+    color: var(--accent);
   }
   :global(.fgroup__chev) {
     margin-left: auto;
@@ -195,7 +195,7 @@ const groups = [
     font-family: var(--f-mono);
     font-size: 0.65rem;
     color: #fff;
-    background: var(--orange);
+    background: var(--accent);
     border-radius: 99px;
     padding: 0.05rem 0.45rem;
   }
@@ -235,9 +235,9 @@ const groups = [
     transition: all 0.2s;
   }
   .fopt:has(input:checked) .fopt__box {
-    background: var(--orange);
-    border-color: var(--orange);
-    box-shadow: 0 0 10px var(--orange-glow);
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 10px var(--accent-glow);
   }
   .fopt:has(input:checked) .fopt__box::after {
     content: '';
@@ -251,7 +251,7 @@ const groups = [
     color: #fff;
   }
   .fopt:has(input:focus-visible) {
-    outline: 2px solid var(--orange);
+    outline: 2px solid var(--accent);
   }
   .fopt__label {
     flex: 1;
@@ -272,7 +272,7 @@ const groups = [
     color: var(--text-2);
   }
   .cb__help :global(svg) {
-    color: var(--orange);
+    color: var(--accent);
     flex: none;
     margin-top: 2px;
   }
@@ -280,7 +280,7 @@ const groups = [
     margin: 0;
   }
   .cb__help a {
-    color: var(--orange-2);
+    color: var(--accent-2);
     text-decoration: underline;
   }
   .cb__bar {
@@ -299,7 +299,7 @@ const groups = [
     min-width: 20px;
     height: 20px;
     border-radius: 99px;
-    background: var(--orange);
+    background: var(--accent);
     color: #fff;
     font-size: 0.65rem;
     display: grid;
@@ -326,12 +326,12 @@ const groups = [
     padding: 0.25rem 0.6rem;
     font-size: 0.76rem;
     border-radius: 99px;
-    background: rgba(255, 102, 34, 0.12);
-    border: 1px solid rgba(255, 102, 34, 0.5);
-    color: #ffd2bb;
+    background: rgba(74, 115, 150, 0.16);
+    border: 1px solid rgba(74, 115, 150, 0.68);
+    color: #e9f0f7;
   }
   .cb__chips :global(button:hover) {
-    background: rgba(255, 102, 34, 0.25);
+    background: rgba(74, 115, 150, 0.34);
   }
   .cb__right {
     display: flex;
@@ -357,8 +357,8 @@ const groups = [
     color: var(--muted);
   }
   .cb__views button[aria-pressed='true'] {
-    background: rgba(255, 102, 34, 0.15);
-    color: var(--orange);
+    background: rgba(74, 115, 150, 0.2);
+    color: var(--accent);
   }
   .cb__grid {
     display: grid;
@@ -376,7 +376,7 @@ const groups = [
     text-align: center;
   }
   .cb__empty :global(svg) {
-    color: var(--orange);
+    color: var(--accent);
   }
   .cb__empty p {
     margin: 0;

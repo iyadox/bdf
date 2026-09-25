@@ -10,7 +10,7 @@ const perks = [
   { icon: 'shield-check', title: 'Produits de haute sécurité', text: 'Blocs-portes certifiés A2P, coupe-feu et pare-balles, blindages et travaux spéciaux fabriqués en France.' },
   { icon: 'wrench', title: 'Support technique', text: "Un interlocuteur à l'usine pour vos métrés, vos cas particuliers et le suivi de vos chantiers." },
   { icon: 'file-text', title: 'Espace professionnel', text: 'Tarifs professionnels, fiches techniques détaillées, devis sur mesure et historique de vos demandes.' },
-  { icon: 'star', title: 'Fiche vitrine premium', text: 'Galerie de réalisations, vidéos, présentation et services : une page à vos couleurs pour convaincre vos clients.' },
+  { icon: 'star', title: 'Fiche vitrine premium', text: 'Galerie de réalisations, vidéos, présentation et services : une page complète pour convaincre vos clients.' },
   { icon: 'users', title: 'Demandes de vos clients', text: 'Les particuliers de votre secteur peuvent vous contacter directement depuis le site et demander un devis.' },
 ];
 const steps = [
@@ -37,7 +37,7 @@ const skills = ['Pose de blocs-portes blindés', 'Blindage de portes existantes'
     <div class="container">
       <header class="section-head" data-reveal>
         <p class="eyebrow">Pourquoi nous rejoindre</p>
-        <h2 class="h2">Un fabricant français <span class="grad-orange">à vos côtés</span></h2>
+        <h2 class="h2">Un fabricant français <span class="grad-accent">à vos côtés</span></h2>
       </header>
       <div class="jn-perks">
         {
@@ -166,8 +166,8 @@ const skills = ['Pose de blocs-portes blindés', 'Blindage de portes existantes'
     place-items: center;
     width: 48px;
     height: 54px;
-    color: var(--orange);
-    background: rgba(255, 102, 34, 0.1);
+    color: var(--accent);
+    background: rgba(74, 115, 150, 0.14);
     clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
   }
   .jn-steps {
@@ -193,13 +193,13 @@ const skills = ['Pose de blocs-portes blindés', 'Blindage de portes existantes'
     left: 0;
     width: 9px;
     height: 9px;
-    background: var(--orange);
+    background: var(--accent);
     transform: rotate(45deg);
-    box-shadow: 0 0 12px var(--orange-glow);
+    box-shadow: 0 0 12px var(--accent-glow);
   }
   .jn-steps__n {
     font-size: 0.7rem;
-    color: var(--orange);
+    color: var(--accent);
     letter-spacing: 0.14em;
   }
   .jn-steps strong {
@@ -220,7 +220,7 @@ const skills = ['Pose de blocs-portes blindés', 'Blindage de portes existantes'
     margin: 0.3rem 0 0;
   }
   .ul {
-    color: var(--orange-2);
+    color: var(--accent-2);
     text-decoration: underline;
   }
   .jn-side {
@@ -249,7 +249,7 @@ const skills = ['Pose de blocs-portes blindés', 'Blindage de portes existantes'
     gap: 0.5rem;
   }
   .jn-list :global(svg) {
-    color: var(--orange);
+    color: var(--accent);
     flex: none;
     margin-top: 3px;
   }

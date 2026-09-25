@@ -223,7 +223,7 @@ const ann = settings.announcement;
   .announce {
     position: relative;
     z-index: 60;
-    background: linear-gradient(90deg, #c7400c, var(--orange) 50%, #c7400c);
+    background: linear-gradient(90deg, #30638b, var(--accent) 50%, #30638b);
     color: #fff;
     font-size: var(--fs-sm);
   }
@@ -293,7 +293,7 @@ const ann = settings.announcement;
     letter-spacing: 0.04em;
   }
   .topbar__tel:hover {
-    color: var(--orange);
+    color: var(--accent);
   }
   .topbar__status {
     display: flex;
@@ -315,7 +315,7 @@ const ann = settings.announcement;
     transition: color 0.2s;
   }
   .topbar__links a:hover {
-    color: var(--orange);
+    color: var(--accent);
   }
   .site-header.is-scrolled .topbar {
     margin-top: -37px;
@@ -348,8 +348,8 @@ const ann = settings.announcement;
     width: 100%;
     transform-origin: 0 50%;
     transform: scaleX(var(--p, 0));
-    background: linear-gradient(90deg, var(--orange-3), var(--orange), #ffb07a);
-    box-shadow: 0 0 12px var(--orange-glow);
+    background: linear-gradient(90deg, var(--accent-3), var(--accent), #4a7396);
+    box-shadow: 0 0 12px var(--accent-glow);
   }
   .brand {
     display: flex;
@@ -363,7 +363,7 @@ const ann = settings.announcement;
     transition: filter 0.4s;
   }
   .brand:hover .brand__logo {
-    filter: drop-shadow(0 0 14px rgba(58, 120, 173, 0.65));
+    filter: drop-shadow(0 0 14px rgba(48, 99, 139, 0.65));
   }
   .brand__tag {
     display: none;
@@ -412,11 +412,11 @@ const ann = settings.announcement;
     right: 0.85rem;
     bottom: 0.2rem;
     height: 2px;
-    background: var(--orange);
+    background: var(--accent);
     transform: scaleX(0);
     transform-origin: 0 50%;
     transition: transform 0.35s var(--ease);
-    box-shadow: 0 0 10px var(--orange-glow);
+    box-shadow: 0 0 10px var(--accent-glow);
   }
   .main-nav__link:hover,
   .main-nav__item:focus-within > .main-nav__link,
@@ -563,9 +563,9 @@ const ann = settings.announcement;
     border-radius: 12px;
     overflow: hidden;
     background:
-      radial-gradient(120% 90% at 100% 0%, rgba(255, 102, 34, 0.28), transparent 55%),
-      linear-gradient(160deg, #0f2d4d, #07172b);
-    border: 1px solid rgba(255, 102, 34, 0.35);
+      radial-gradient(120% 90% at 100% 0%, rgba(74, 115, 150, 0.38), transparent 55%),
+      linear-gradient(160deg, #152e60, #0a1929);
+    border: 1px solid rgba(74, 115, 150, 0.47);
     font-size: 0.86rem;
     color: var(--text-2);
   }
@@ -576,7 +576,7 @@ const ann = settings.announcement;
     position: absolute;
     right: 1.2rem;
     top: 1.2rem;
-    color: var(--orange);
+    color: var(--accent);
     opacity: 0.9;
   }
   .mega__feature strong {
@@ -601,7 +601,7 @@ const ann = settings.announcement;
     color: #fff;
   }
   .mega__quick :global(svg) {
-    color: var(--orange);
+    color: var(--accent);
   }
 
   .bar__actions {
@@ -623,7 +623,7 @@ const ann = settings.announcement;
     transition: all 0.2s;
   }
   .search-btn:hover {
-    border-color: rgba(255, 102, 34, 0.6);
+    border-color: rgba(74, 115, 150, 0.81);
     color: var(--text);
   }
   .icon-btn {
@@ -638,8 +638,8 @@ const ann = settings.announcement;
     transition: all 0.2s;
   }
   .icon-btn:hover {
-    color: var(--orange);
-    border-color: rgba(255, 102, 34, 0.6);
+    color: var(--accent);
+    border-color: rgba(74, 115, 150, 0.81);
   }
   .sel-count {
     position: absolute;
@@ -649,13 +649,13 @@ const ann = settings.announcement;
     height: 18px;
     padding: 0 4px;
     border-radius: 99px;
-    background: var(--orange);
+    background: var(--accent);
     color: #fff;
     font-size: 0.65rem;
     font-weight: 700;
     display: grid;
     place-items: center;
-    box-shadow: 0 0 12px var(--orange-glow);
+    box-shadow: 0 0 12px var(--accent-glow);
   }
   .burger {
     display: none;
@@ -682,7 +682,7 @@ const ann = settings.announcement;
   .burger span:nth-child(2) {
     top: 21px;
     right: 17px;
-    background: var(--orange);
+    background: var(--accent);
   }
   .burger span:nth-child(3) {
     top: 28px;
@@ -754,7 +754,7 @@ const ann = settings.announcement;
   .mm-item summary :global(svg) {
     margin-left: auto;
     transition: transform 0.3s;
-    color: var(--orange);
+    color: var(--accent);
   }
   .mm-item details[open] summary :global(svg) {
     transform: rotate(180deg);

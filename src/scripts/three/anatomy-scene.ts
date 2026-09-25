@@ -50,11 +50,11 @@ export function createAnatomy(canvas: HTMLCanvasElement) {
   const handleBase = handles.map((h) => h.position.clone());
 
   // lumières
-  scene.add(new THREE.HemisphereLight('#8fb3d9', '#070a0f', 0.35));
+  scene.add(new THREE.HemisphereLight('#4a7396', '#070a0f', 0.35));
   const key = new THREE.DirectionalLight('#ffffff', 1.5);
   key.position.set(-2, 3, 4);
   scene.add(key);
-  const rim = new THREE.PointLight('#ff6a2a', 8, 8, 1.6);
+  const rim = new THREE.PointLight('#4a7396', 8, 8, 1.6);
   rim.position.set(1.8, 0.8, -1);
   scene.add(rim);
   const blue = new THREE.PointLight('#2e6894', 6, 8, 1.4);
@@ -62,7 +62,7 @@ export function createAnatomy(canvas: HTMLCanvasElement) {
   scene.add(blue);
 
   // socle holographique
-  const grid = gridTexture(1024, 16, '#2e6894', '#ff6622');
+  const grid = gridTexture(1024, 16, '#2e6894', '#4a7396');
   grid.repeat.set(2, 2);
   const disc = new THREE.Mesh(
     new THREE.CircleGeometry(1.6, 64),
@@ -71,7 +71,7 @@ export function createAnatomy(canvas: HTMLCanvasElement) {
   disc.rotation.x = -Math.PI / 2;
   disc.position.y = -1.05;
   scene.add(disc);
-  const ringMat = new THREE.MeshBasicMaterial({ color: new THREE.Color('#ff6622').multiplyScalar(1.8), toneMapped: false, transparent: true, opacity: 0.8 });
+  const ringMat = new THREE.MeshBasicMaterial({ color: new THREE.Color('#4a7396').multiplyScalar(1.8), toneMapped: false, transparent: true, opacity: 0.8 });
   const ring = new THREE.Mesh(new THREE.RingGeometry(1.2, 1.212, 96), ringMat);
   ring.rotation.x = -Math.PI / 2;
   ring.position.y = -1.04;
@@ -100,13 +100,23 @@ export function createAnatomy(canvas: HTMLCanvasElement) {
 
   const state = { explode: 0, targetExplode: 0, focus: '' as string, rot: 0 };
   const ptr = pointer();
+  const look = new THREE.Vector3(0.08, 0, 0);
   const camDir = new THREE.Vector3(2.2, 0.8, 3.4).normalize();
+  const camDirPortrait = new THREE.Vector3(2.2, 0.8, 3.4).normalize();
   let camDist = 6;
+  let spread = 1; // amplitude de l'éclatement
+  let portrait = false;
   stage.onResize((w, h) => {
     const a = w / h;
-    camDist = Math.max(5.6, 4.9 / a);
+    // écran vertical ou petite zone d'affichage (téléphone) : cadrage dédié
+    portrait = a < 0.95 || h < 560;
+    // écran vertical (téléphone) : éclatement resserré et porte cadrée sur toute la hauteur
+    spread = portrait ? 0.6 : 1;
+    const fit = 2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
+    camDist = portrait ? Math.max(3.1, 2.45 / a) / fit : Math.max(5.6, 4.9 / a);
+    // sur téléphone, l'en-tête peut recouvrir le haut : la porte est légèrement abaissée
+    look.y = portrait ? 0.2 : 0;
   });
-  const look = new THREE.Vector3(0.08, 0, 0);
 
   const focusGroups: Record<string, string[]> = {
     front: ['front', 'back', 'decor'],
@@ -124,12 +134,13 @@ export function createAnatomy(canvas: HTMLCanvasElement) {
     for (const [k, o] of Object.entries(L)) {
       const b = base.get(o)!;
       const d = off[k];
-      if (d) o.position.set(b.x + d.x * e, b.y + d.y * e, b.z + d.z * e);
+      const amp = e * spread;
+      if (d) o.position.set(b.x + d.x * amp, b.y + d.y * amp, b.z + d.z * amp);
     }
     handles.forEach((h, i) => {
       const side = i === 0 ? 1 : -1;
       const d = side > 0 ? off.front.z : off.back.z;
-      h.position.set(handleBase[i].x, handleBase[i].y, handleBase[i].z + d * e);
+      h.position.set(handleBase[i].x, handleBase[i].y, handleBase[i].z + d * e * spread);
     });
     // mise en valeur
     const active = focusGroups[state.focus] || [];
@@ -141,8 +152,9 @@ export function createAnatomy(canvas: HTMLCanvasElement) {
         mat.opacity += (target - mat.opacity) * Math.min(1, dt * 6);
         mat.depthWrite = mat.opacity > 0.6;
         if ('emissive' in mat && mat.emissive) {
-          const glowK = on && state.focus ? 0.18 + Math.sin(t * 3) * 0.08 : 0;
-          mat.emissive.setRGB(glowK, glowK * 0.45, glowK * 0.15);
+          const glowK = on && state.focus ? 0.26 + Math.sin(t * 3) * 0.1 : 0;
+          // lueur bleue (#4a7396) sur la couche décrite
+          mat.emissive.setRGB(glowK * 0.22, glowK * 0.56, glowK);
         }
       }
     }
@@ -150,7 +162,7 @@ export function createAnatomy(canvas: HTMLCanvasElement) {
     const m = ptr.update(0.05);
     state.rot += dt * 0.12;
     root.rotation.y = -0.78 + Math.sin(state.rot) * 0.16 + m.x * 0.25;
-    camera.position.copy(camDir).multiplyScalar(camDist);
+    camera.position.copy(portrait ? camDirPortrait : camDir).multiplyScalar(camDist);
     camera.position.x += m.x * 0.25;
     camera.position.y -= m.y * 0.2;
     camera.lookAt(look);

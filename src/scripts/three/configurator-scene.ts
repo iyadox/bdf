@@ -24,9 +24,9 @@ export function createConfigurator(canvas: HTMLCanvasElement, labels: { w: HTMLE
   scene.fog = new THREE.Fog(bg, 9, 24);
 
   // ---------------------------------------------------------------- lumières
-  const hemi = new THREE.HemisphereLight('#9dbbe0', '#0a0d12', 0.45);
+  const hemi = new THREE.HemisphereLight('#4a7396', '#0a0d12', 0.45);
   scene.add(hemi);
-  const key = new THREE.DirectionalLight('#fff4ea', 1.6);
+  const key = new THREE.DirectionalLight('#ffffff', 1.6);
   key.position.set(-2.2, 4.2, 4.5);
   key.castShadow = true;
   key.shadow.mapSize.set(1024, 1024);
@@ -37,18 +37,18 @@ export function createConfigurator(canvas: HTMLCanvasElement, labels: { w: HTMLE
   key.shadow.bias = -0.0004;
   key.shadow.normalBias = 0.02;
   scene.add(key);
-  const back = new THREE.DirectionalLight('#dfe8f5', 1.1);
+  const back = new THREE.DirectionalLight('#e8eef4', 1.1);
   back.position.set(2.4, 3.6, -4.5);
   scene.add(back);
-  const rimO = new THREE.PointLight('#ff6a2a', 5, 6, 1.6);
+  const rimO = new THREE.PointLight('#4a7396', 5, 6, 1.6);
   rimO.position.set(1.6, 2.4, 1.1);
   scene.add(rimO);
-  const rimB = new THREE.PointLight('#3f87c9', 4, 6, 1.6);
+  const rimB = new THREE.PointLight('#2e6894', 4, 6, 1.6);
   rimB.position.set(-1.6, 0.6, 1.4);
   scene.add(rimB);
 
   // ---------------------------------------------------------------- sol
-  const grid = gridTexture(1024, 16, '#2e6894', '#ff6622').clone();
+  const grid = gridTexture(1024, 16, '#2e6894', '#4a7396').clone();
   grid.wrapS = grid.wrapT = THREE.RepeatWrapping;
   grid.repeat.set(10, 10);
   grid.needsUpdate = true;
@@ -66,8 +66,8 @@ export function createConfigurator(canvas: HTMLCanvasElement, labels: { w: HTMLE
   scene.add(floorGrid);
 
   // ---------------------------------------------------------------- mur (reconstruit selon la taille)
-  const wallMat = new THREE.MeshStandardMaterial({ color: '#0f1926', roughness: 0.88, metalness: 0.05, normalMap: grainNormal(), normalScale: new THREE.Vector2(0.25, 0.25) });
-  const LED = () => new THREE.Color('#ff6622').multiplyScalar(1.5);
+  const wallMat = new THREE.MeshStandardMaterial({ color: '#0a1929', roughness: 0.88, metalness: 0.05, normalMap: grainNormal(), normalScale: new THREE.Vector2(0.25, 0.25) });
+  const LED = () => new THREE.Color('#4a7396').multiplyScalar(1.5);
   const ledMat = new THREE.MeshBasicMaterial({ color: LED(), toneMapped: false });
   const wallGroup = new THREE.Group();
   scene.add(wallGroup);
@@ -109,7 +109,7 @@ export function createConfigurator(canvas: HTMLCanvasElement, labels: { w: HTMLE
   };
 
   // lumière derrière la porte (visible à l'ouverture)
-  const glowMat = new THREE.MeshBasicMaterial({ map: glowTexture('rgba(255,214,180,1)', 'rgba(255,102,34,0)'), transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, opacity: 0 });
+  const glowMat = new THREE.MeshBasicMaterial({ map: glowTexture('rgba(232,238,244,1)', 'rgba(74, 115, 150, 0)'), transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, opacity: 0 });
   const glowBack = new THREE.Mesh(new THREE.PlaneGeometry(4, 4), glowMat);
   glowBack.position.set(0, 1.1, -1.4);
   scene.add(glowBack);
@@ -120,7 +120,7 @@ export function createConfigurator(canvas: HTMLCanvasElement, labels: { w: HTMLE
   scene.add(glowFront);
 
   // ---------------------------------------------------------------- cotes
-  const dimMat = new THREE.LineBasicMaterial({ color: '#ff8a4c', transparent: true, opacity: 0.9, toneMapped: false });
+  const dimMat = new THREE.LineBasicMaterial({ color: '#4a7396', transparent: true, opacity: 0.9, toneMapped: false });
   const dims = new THREE.Group();
   scene.add(dims);
   const anchors = { w: new THREE.Vector3(), h: new THREE.Vector3() };
@@ -278,11 +278,11 @@ export function createConfigurator(canvas: HTMLCanvasElement, labels: { w: HTMLE
     const day = a === 'jour';
     bg.set(day ? '#c9d0d6' : '#05080d');
     (scene.fog as THREE.Fog).color.copy(bg);
-    wallMat.color.set(day ? '#e4dfd6' : '#0f1926');
-    floorMat.color.set(day ? '#8d8479' : '#0a121c');
+    wallMat.color.set(day ? '#e8eef4' : '#0a1929');
+    floorMat.color.set(day ? '#9aa4ad' : '#0a121c');
     floorMat.roughness = day ? 0.6 : 0.5;
     floorGrid.visible = !day;
-    ledMat.color.copy(day ? new THREE.Color('#f3efe8') : LED());
+    ledMat.color.copy(day ? new THREE.Color('#ffffff') : LED());
     hemi.intensity = day ? 1.3 : 0.45;
     key.intensity = day ? 2.2 : 1.6;
     back.intensity = day ? 1.6 : 1.1;
@@ -290,7 +290,7 @@ export function createConfigurator(canvas: HTMLCanvasElement, labels: { w: HTMLE
     rimB.intensity = day ? 0 : 4;
     (scene as any).environmentIntensity = day ? 1 : 0.75;
     if (stage.bloom) stage.bloom.strength = day ? 0.12 : 0.32;
-    dimMat.color.set(day ? '#d9480f' : '#ff8a4c');
+    dimMat.color.set(day ? '#1a4a6e' : '#4a7396');
     applyPose();
   };
 

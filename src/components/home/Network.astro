@@ -12,7 +12,7 @@ const depts = new Set(inst.map((i) => i.postalCode.slice(0, 2)).filter(Boolean))
   <div class="container--wide network__grid">
     <div class="network__txt">
       <p class="eyebrow" data-reveal>Réseau national</p>
-      <h2 id="network-title" class="h2" data-reveal style="--d:.1s">Trouvez votre installateur <span class="grad-orange">certifié</span></h2>
+      <h2 id="network-title" class="h2" data-reveal style="--d:.1s">Trouvez votre installateur <span class="grad-accent">certifié</span></h2>
       <p class="lead" data-reveal style="--d:.2s">Accédez à notre réseau d'installateurs agréés partout en France. Expertise technique et garantie fabricant.</p>
 
       <form class="finder panel" action="/installateurs-portes-blindees" method="get" data-reveal style="--d:.3s" role="search">
@@ -76,7 +76,7 @@ const depts = new Set(inst.map((i) => i.postalCode.slice(0, 2)).filter(Boolean))
     border-radius: 14px;
   }
   :global(.finder__ic) {
-    color: var(--orange);
+    color: var(--accent);
   }
   .finder__in {
     flex: 1;
@@ -92,8 +92,8 @@ const depts = new Set(inst.map((i) => i.postalCode.slice(0, 2)).filter(Boolean))
     color: var(--dim);
   }
   .finder:focus-within {
-    border-color: rgba(255, 102, 34, 0.7);
-    box-shadow: 0 0 0 4px rgba(255, 102, 34, 0.12);
+    border-color: rgba(74, 115, 150, 0.94);
+    box-shadow: 0 0 0 4px rgba(74, 115, 150, 0.16);
   }
   .network__kpis {
     list-style: none;
@@ -124,7 +124,7 @@ const depts = new Set(inst.map((i) => i.postalCode.slice(0, 2)).filter(Boolean))
     transition: border-color 0.3s;
   }
   .joincard:hover {
-    border-color: rgba(255, 102, 34, 0.55);
+    border-color: rgba(74, 115, 150, 0.74);
   }
   .joincard img {
     width: 64px;
@@ -146,13 +146,13 @@ const depts = new Set(inst.map((i) => i.postalCode.slice(0, 2)).filter(Boolean))
     font-size: 0.64rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--orange);
+    color: var(--accent);
   }
   :global(.joincard__go) {
     position: absolute;
     right: 1.1rem;
     top: 1.1rem;
-    color: var(--orange);
+    color: var(--accent);
     transition: transform 0.3s var(--ease);
   }
   .joincard:hover :global(.joincard__go) {
@@ -200,12 +200,12 @@ const depts = new Set(inst.map((i) => i.postalCode.slice(0, 2)).filter(Boolean))
     border-radius: 50%;
   }
   .lg--o {
-    background: var(--orange);
-    box-shadow: 0 0 10px var(--orange);
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
   }
   .lg--b {
-    background: #5aa3e0;
-    box-shadow: 0 0 10px #5aa3e0;
+    background: #4a7396;
+    box-shadow: 0 0 10px #4a7396;
   }
   @media (max-width: 960px) {
     .network__grid {

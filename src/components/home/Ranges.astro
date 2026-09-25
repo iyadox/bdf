@@ -122,7 +122,7 @@ const items = await Promise.all(
     color: var(--muted);
   }
   .ranges__count span {
-    color: var(--orange);
+    color: var(--accent);
     font-size: 1.6rem;
   }
   .ranges__viewport {
@@ -153,7 +153,7 @@ const items = await Promise.all(
       transform 0.5s var(--ease);
   }
   .rcard__in:hover {
-    border-color: rgba(255, 102, 34, 0.55);
+    border-color: rgba(74, 115, 150, 0.74);
     transform: translateY(-6px);
   }
   .rcard__img {
@@ -180,7 +180,7 @@ const items = await Promise.all(
     font-family: var(--f-display);
     font-size: 0.8rem;
     color: #fff;
-    background: var(--orange);
+    background: var(--accent);
     clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
   }
   .rcard__idx {
@@ -208,7 +208,7 @@ const items = await Promise.all(
   .rcard__n {
     flex: none;
     font-size: 0.7rem;
-    color: var(--orange);
+    color: var(--accent);
   }
   .rcard__body p {
     margin: 0;
@@ -235,7 +235,7 @@ const items = await Promise.all(
     align-items: flex-start;
   }
   .rcard__body li :global(svg) {
-    color: var(--orange);
+    color: var(--accent);
     margin-top: 3px;
   }
   .rcard__body .link-arrow {
@@ -247,13 +247,13 @@ const items = await Promise.all(
     justify-content: center;
     gap: 1rem;
     padding: 2rem;
-    border: 1px dashed rgba(255, 102, 34, 0.45);
+    border: 1px dashed rgba(74, 115, 150, 0.61);
     border-radius: var(--radius);
-    background: radial-gradient(90% 70% at 50% 0%, rgba(255, 102, 34, 0.12), transparent 70%);
+    background: radial-gradient(90% 70% at 50% 0%, rgba(74, 115, 150, 0.16), transparent 70%);
     min-height: 100%;
   }
   .rcard__all :global(svg) {
-    color: var(--orange);
+    color: var(--accent);
   }
   .ranges__foot {
     display: flex;
@@ -276,7 +276,7 @@ const items = await Promise.all(
   .ranges__bar i {
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, var(--orange), #ffb07a);
+    background: linear-gradient(90deg, var(--accent), #4a7396);
     transform-origin: 0 50%;
     transform: scaleX(var(--rp, 0.05));
   }

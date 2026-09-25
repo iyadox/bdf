@@ -141,17 +141,17 @@ export function buildDoor(partial: Partial<DoorOptions> = {}): DoorRig {
   const matDark = new THREE.MeshStandardMaterial({ color: '#0b0e12', metalness: 0.4, roughness: 0.6 });
   const matGroove = new THREE.MeshStandardMaterial({ color: new THREE.Color(o.color).multiplyScalar(0.45), metalness: 0.4, roughness: 0.6 });
   const matGlass = new THREE.MeshPhysicalMaterial({
-    color: '#9fc4e6',
+    color: '#e8eef4',
     metalness: 0.1,
     roughness: 0.04,
     transparent: true,
     opacity: 0.42,
     clearcoat: 1,
   });
-  const matOrange = new THREE.MeshStandardMaterial({ color: '#ff6622', emissive: '#ff4a0a', emissiveIntensity: 1.4, metalness: 0.2, roughness: 0.4 });
+  const matAccent = new THREE.MeshStandardMaterial({ color: '#4a7396', emissive: '#30638b', emissiveIntensity: 1.4, metalness: 0.2, roughness: 0.4 });
   const matWool = new THREE.MeshStandardMaterial({ map: woolTexture(), roughness: 1, metalness: 0 });
 
-  const materials: Record<string, THREE.Material> = { matExt, matInt, matEdge, matFrame, matMetal, matChrome, matSteel, matDark, matGroove, matGlass, matOrange, matWool };
+  const materials: Record<string, THREE.Material> = { matExt, matInt, matEdge, matFrame, matMetal, matChrome, matSteel, matDark, matGroove, matGlass, matAccent, matWool };
   const layers: Record<string, THREE.Object3D> = {};
 
   const W = o.width;
@@ -333,7 +333,7 @@ export function buildDoor(partial: Partial<DoorOptions> = {}): DoorRig {
     leaf.add(hinges);
     if (isMain) layers.hinges = hinges;
     if (o.internals && isMain) {
-      const sealMat = new THREE.MeshStandardMaterial({ color: '#c0392b', emissive: '#7a1208', emissiveIntensity: 0.6, roughness: 0.7 });
+      const sealMat = new THREE.MeshStandardMaterial({ color: '#1a4a6e', emissive: '#043d6c', emissiveIntensity: 0.6, roughness: 0.7 });
       materials.matSeal = sealMat;
       const seals = new THREE.Group();
       seals.name = 'joints';
@@ -442,7 +442,7 @@ export function buildDoor(partial: Partial<DoorOptions> = {}): DoorRig {
         // barre anti-panique face intérieure
         const bar = box(lw - 0.22, 0.05, 0.05, matSteel, 0.012);
         bar.position.set(-dir * 0.02, hy, -T / 2 - 0.045);
-        const bar2 = box(lw - 0.34, 0.03, 0.03, matOrange, 0.01);
+        const bar2 = box(lw - 0.34, 0.03, 0.03, matAccent, 0.01);
         bar2.position.set(-dir * 0.02, hy, -T / 2 - 0.074);
         leaf.add(bar, bar2);
       }

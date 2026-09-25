@@ -72,8 +72,8 @@ export function createHero(canvas: HTMLCanvasElement, opts: { skipIntro?: boolea
     s.position.set(x, wallH / 2, zWall + wallDepth / 2 + 0.001);
     scene.add(s);
   }
-  // liseré LED orange autour de l'ouverture
-  const ledMat = new THREE.MeshBasicMaterial({ color: new THREE.Color('#ff6622').multiplyScalar(2.2), toneMapped: false });
+  // liseré lumineux bleu autour de l'ouverture
+  const ledMat = new THREE.MeshBasicMaterial({ color: new THREE.Color('#4a7396').multiplyScalar(1.7), toneMapped: false });
   const ledOff = 0.16;
   const led = new THREE.Group();
   const lw = holeW + ledOff * 2;
@@ -90,7 +90,7 @@ export function createHero(canvas: HTMLCanvasElement, opts: { skipIntro?: boolea
   mk(lw + lt, lt, 0, lh);
   scene.add(led);
   // halo du liseré sur le mur (bandes douces le long des LED, sans recouvrir la porte)
-  const haloMat = new THREE.MeshBasicMaterial({ map: lineGlowTexture('255,110,50'), transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, opacity: 0.22 });
+  const haloMat = new THREE.MeshBasicMaterial({ map: lineGlowTexture('74,115,150'), transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, opacity: 0.4 });
   const halo = new THREE.Group();
   const hg = (w: number, h: number, x: number, y: number, rot = 0) => {
     const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), haloMat);
@@ -105,10 +105,10 @@ export function createHero(canvas: HTMLCanvasElement, opts: { skipIntro?: boolea
   scene.add(halo);
 
   // témoins de verrouillage (alignés sur les pênes, montant côté serrure)
-  const indOn = new THREE.Color('#ff6622');
-  const indOff = new THREE.Color('#3ecf8e');
+  const indOn = new THREE.Color('#4a7396');
+  const indOff = new THREE.Color('#e8eef4');
   const indicators: THREE.Mesh[] = door.bolts.map((b) => {
-    const m = new THREE.Mesh(new THREE.PlaneGeometry(0.012, 0.05), new THREE.MeshBasicMaterial({ color: indOn.clone().multiplyScalar(2.2), toneMapped: false }));
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(0.012, 0.05), new THREE.MeshBasicMaterial({ color: indOn.clone().multiplyScalar(1.8), toneMapped: false }));
     const wp = b.getWorldPosition(new THREE.Vector3());
     m.position.set(W / 2 + fw / 2, wp.y, 0.047);
     scene.add(m);
@@ -116,12 +116,12 @@ export function createHero(canvas: HTMLCanvasElement, opts: { skipIntro?: boolea
   });
 
   // ---------------------------------------------------------------- lumière derrière la porte
-  const backMat = new THREE.MeshBasicMaterial({ color: new THREE.Color('#ffd2b0'), toneMapped: false });
+  const backMat = new THREE.MeshBasicMaterial({ color: new THREE.Color('#e8eef4'), toneMapped: false });
   const back = new THREE.Mesh(new THREE.PlaneGeometry(6, 6), backMat);
   back.position.set(0, 2.5, -2.4);
   scene.add(back);
   backMat.color.setScalar(0);
-  const beamMat = new THREE.MeshBasicMaterial({ map: beamTexture('255,200,160'), transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, opacity: 0, side: THREE.DoubleSide });
+  const beamMat = new THREE.MeshBasicMaterial({ map: beamTexture('232,238,244'), transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, opacity: 0, side: THREE.DoubleSide });
   const beams = new THREE.Group();
   for (let i = 0; i < 5; i++) {
     const b = new THREE.Mesh(new THREE.PlaneGeometry(0.55 + i * 0.1, 4.2), beamMat);
@@ -130,7 +130,7 @@ export function createHero(canvas: HTMLCanvasElement, opts: { skipIntro?: boolea
     beams.add(b);
   }
   scene.add(beams);
-  const doorLight = new THREE.PointLight('#ffb27a', 0, 6, 1.6);
+  const doorLight = new THREE.PointLight('#e8eef4', 0, 6, 1.6);
   doorLight.position.set(0, 1.2, -0.6);
   scene.add(doorLight);
 
@@ -154,7 +154,7 @@ export function createHero(canvas: HTMLCanvasElement, opts: { skipIntro?: boolea
     scene.add(floor);
   }
   // voile + grille au sol
-  const grid = gridTexture(1024, 16, '#2e6894', '#ff6622');
+  const grid = gridTexture(1024, 16, '#2e6894', '#4a7396');
   grid.repeat.set(7, 5);
   const overlay = new THREE.Mesh(
     new THREE.PlaneGeometry(14, 10),
@@ -178,15 +178,15 @@ export function createHero(canvas: HTMLCanvasElement, opts: { skipIntro?: boolea
   scene.add(contact);
 
   // ---------------------------------------------------------------- lumières
-  scene.add(new THREE.HemisphereLight('#6d8fb3', '#05070a', 0.35));
-  const key = new THREE.SpotLight('#dbe8ff', 46, 16, 0.36, 0.7, 1.5);
+  scene.add(new THREE.HemisphereLight('#4a7396', '#05070a', 0.35));
+  const key = new THREE.SpotLight('#ffffff', 46, 16, 0.36, 0.7, 1.5);
   key.position.set(-2.2, 4.6, 4.2);
   key.target.position.set(0, 1.0, 0);
   key.castShadow = !mobile;
   key.shadow.mapSize.set(1024, 1024);
   key.shadow.bias = -0.0004;
   scene.add(key, key.target);
-  const rim = new THREE.SpotLight('#ff6a2a', 9, 10, 0.3, 0.9, 1.4);
+  const rim = new THREE.SpotLight('#4a7396', 9, 10, 0.3, 0.9, 1.4);
   rim.position.set(2.2, 2.6, 0.9);
   rim.target.position.set(0.2, 1.1, 0);
   scene.add(rim, rim.target);
@@ -208,7 +208,7 @@ export function createHero(canvas: HTMLCanvasElement, opts: { skipIntro?: boolea
   pg.setAttribute('position', new THREE.BufferAttribute(pos, 3));
   const pm = new THREE.PointsMaterial({
     size: 0.018,
-    map: glowTexture('rgba(255,200,160,1)', 'rgba(255,120,60,0)', 64),
+    map: glowTexture('rgba(232,238,244,1)', 'rgba(74,115,150,0)', 64),
     transparent: true,
     depthWrite: false,
     blending: THREE.AdditiveBlending,
@@ -219,13 +219,13 @@ export function createHero(canvas: HTMLCanvasElement, opts: { skipIntro?: boolea
   scene.add(dust);
 
   // ligne de scan (intro)
-  const scanMat = new THREE.MeshBasicMaterial({ color: new THREE.Color('#ff8a4c').multiplyScalar(3), transparent: true, opacity: 0, toneMapped: false, blending: THREE.AdditiveBlending, depthWrite: false });
+  const scanMat = new THREE.MeshBasicMaterial({ color: new THREE.Color('#4a7396').multiplyScalar(2), transparent: true, opacity: 0, toneMapped: false, blending: THREE.AdditiveBlending, depthWrite: false });
   const scan = new THREE.Mesh(new THREE.PlaneGeometry(W + 0.5, 0.006), scanMat);
   scan.position.z = 0.1;
   scene.add(scan);
   const scanGlow = new THREE.Mesh(
     new THREE.PlaneGeometry(W + 1.2, 0.35),
-    new THREE.MeshBasicMaterial({ map: beamTexture('255,140,80'), transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false }),
+    new THREE.MeshBasicMaterial({ map: beamTexture('74,115,150'), transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false }),
   );
   scanGlow.position.z = 0.09;
   scene.add(scanGlow);
@@ -258,14 +258,14 @@ export function createHero(canvas: HTMLCanvasElement, opts: { skipIntro?: boolea
     door.setOpen(open * 0.95);
     // lumière
     const li = Math.pow(open, 1.2);
-    backMat.color.set('#ffc49a').multiplyScalar(li * 0.95);
+    backMat.color.set('#e8eef4').multiplyScalar(li * 0.9);
     beamMat.opacity = li * 0.16;
     doorLight.intensity = li * 7;
     indicators.forEach((m, i) => {
       const k = THREE.MathUtils.clamp(unlock * 1.3 - i * 0.06, 0, 1);
-      (m.material as THREE.MeshBasicMaterial).color.copy(indOn).lerp(indOff, k).multiplyScalar(2.2);
+      (m.material as THREE.MeshBasicMaterial).color.copy(indOn).lerp(indOff, k).multiplyScalar(1.8);
     });
-    ledMat.color.set('#ff6622').multiplyScalar(2.2 + li * 1.5);
+    ledMat.color.set('#4a7396').multiplyScalar(1.7 + li * 0.6);
     // caméra
     if (open < 1 && push === 0) {
       tmpPos.lerpVectors(camA.pos, camB.pos, open);

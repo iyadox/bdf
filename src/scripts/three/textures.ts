@@ -127,7 +127,7 @@ export function woolTexture(size = 512) {
   const key = 'wool';
   if (cache.has(key)) return cache.get(key)!;
   const [c, ctx] = canvas(size, size);
-  ctx.fillStyle = '#9c8246';
+  ctx.fillStyle = '#8a9096';
   ctx.fillRect(0, 0, size, size);
   const noise = makeNoise(5);
   const img = ctx.getImageData(0, 0, size, size);
@@ -149,7 +149,7 @@ export function woolTexture(size = 512) {
 }
 
 /** Grille lumineuse au sol (lignes fines + dégradé radial) */
-export function gridTexture(size = 1024, divisions = 16, color = '#2e6894', accent = '#ff6622') {
+export function gridTexture(size = 1024, divisions = 16, color = '#2e6894', accent = '#4a7396') {
   const key = `grid-${divisions}-${color}`;
   if (cache.has(key)) return cache.get(key)!;
   const [c, ctx] = canvas(size, size);
@@ -189,7 +189,7 @@ export function gridTexture(size = 1024, divisions = 16, color = '#2e6894', acce
 }
 
 /** Halo radial (sprites, lumières) */
-export function glowTexture(inner = 'rgba(255,170,110,1)', outer = 'rgba(255,102,34,0)', size = 256) {
+export function glowTexture(inner = 'rgba(232,238,244,1)', outer = 'rgba(74, 115, 150, 0)', size = 256) {
   const key = `glow-${inner}-${outer}`;
   if (cache.has(key)) return cache.get(key)!;
   const [c, ctx] = canvas(size, size);
@@ -206,7 +206,7 @@ export function glowTexture(inner = 'rgba(255,170,110,1)', outer = 'rgba(255,102
 }
 
 /** Dégradé vertical (faisceaux lumineux) */
-export function beamTexture(color = '255,190,140') {
+export function beamTexture(color = '232,238,244') {
   const key = 'beam' + color;
   if (cache.has(key)) return cache.get(key)!;
   const [c, ctx] = canvas(64, 256);
@@ -230,7 +230,7 @@ export function beamTexture(color = '255,190,140') {
 }
 
 /** Halo linéaire (lueur autour d'un tube LED) : dégradé transversal, constant en longueur. */
-export function lineGlowTexture(color = '255,120,60') {
+export function lineGlowTexture(color = '74,115,150') {
   const key = 'lineglow' + color;
   if (cache.has(key)) return cache.get(key)!;
   const [c, ctx] = canvas(8, 128);

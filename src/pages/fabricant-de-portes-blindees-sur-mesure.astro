@@ -103,7 +103,7 @@ const labs = [
     <div class="container">
       <div class="section-head center">
         <p class="eyebrow eyebrow--center" data-reveal>Nos valeurs</p>
-        <h2 class="h2" data-reveal style="--d:.08s">Les piliers de notre <span class="grad-orange">engagement</span></h2>
+        <h2 class="h2" data-reveal style="--d:.08s">Les piliers de notre <span class="grad-accent">engagement</span></h2>
       </div>
       <div class="vals">
         {
@@ -153,7 +153,7 @@ const labs = [
       <div class="fac__head">
         <div class="section-head">
           <p class="eyebrow" data-reveal>Nos installations</p>
-          <h2 class="h2" data-reveal style="--d:.08s">Découvrez nos ateliers <span class="grad-orange">et showroom</span></h2>
+          <h2 class="h2" data-reveal style="--d:.08s">Découvrez nos ateliers <span class="grad-accent">et showroom</span></h2>
         </div>
         <div class="tabs" role="tablist" data-reveal>
           <button type="button" role="tab" class="chip is-active" aria-selected="true" data-fac="ateliers">Nos ateliers</button>
@@ -193,7 +193,7 @@ const labs = [
     <div class="container">
       <div class="section-head">
         <p class="eyebrow" data-reveal>Nos certifications</p>
-        <h2 class="h2" data-reveal style="--d:.08s">Expert dans le domaine <span class="grad-orange">de la sécurité</span></h2>
+        <h2 class="h2" data-reveal style="--d:.08s">Expert dans le domaine <span class="grad-accent">de la sécurité</span></h2>
         <p class="lead" data-reveal style="--d:.16s">Cette constante aspiration à la recherche de la performance a permis à Blindages de France de se positionner aujourd'hui comme experte dans le domaine de la sécurité.</p>
       </div>
       <div class="labs">
@@ -244,7 +244,7 @@ const labs = [
     <div class="container">
       <div class="section-head center">
         <p class="eyebrow eyebrow--center" data-reveal>Contactez-nous</p>
-        <h2 class="h2" data-reveal style="--d:.08s">Votre projet <span class="grad-orange">démarre ici</span></h2>
+        <h2 class="h2" data-reveal style="--d:.08s">Votre projet <span class="grad-accent">démarre ici</span></h2>
       </div>
       <div class="two">
         <a href="/installateurs-portes-blindees" class="two__card panel" data-reveal="left" data-spot>
@@ -299,8 +299,19 @@ const labs = [
     gap: 6px;
   }
   .ehero__img {
+    position: relative;
     overflow: hidden;
     will-change: transform;
+  }
+  /* virage bleu (couleur du site) sur les photos d'ambiance de l'en-tête */
+  .ehero__img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #1a4a6e;
+    mix-blend-mode: color;
+    opacity: 0.85;
+    pointer-events: none;
   }
   .ehero__img:first-child {
     grid-row: span 2;
@@ -309,7 +320,7 @@ const labs = [
     width: 100%;
     height: 118%;
     object-fit: cover;
-    filter: saturate(0.85) brightness(0.8);
+    filter: grayscale(0.6) brightness(0.8);
     animation: kenburns 24s ease-in-out infinite alternate;
     animation-delay: calc(var(--i) * -6s);
   }
@@ -354,7 +365,7 @@ const labs = [
     right: 0;
     top: 5.1rem;
     height: 2px;
-    background: linear-gradient(90deg, var(--orange), rgba(46, 104, 148, 0.8), rgba(46, 104, 148, 0.1));
+    background: linear-gradient(90deg, var(--accent), rgba(46, 104, 148, 0.8), rgba(46, 104, 148, 0.1));
   }
   .hist__step {
     display: grid;
@@ -365,16 +376,16 @@ const labs = [
     font-family: var(--f-display);
     font-size: clamp(2rem, 1.4rem + 1.6vw, 3rem);
     color: transparent;
-    -webkit-text-stroke: 1px rgba(255, 102, 34, 0.9);
+    -webkit-text-stroke: 1px rgba(74, 115, 150, 1);
   }
   .hist__dot {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background: var(--orange);
+    background: var(--accent);
     box-shadow:
-      0 0 0 6px rgba(255, 102, 34, 0.2),
-      0 0 20px var(--orange-glow);
+      0 0 0 6px rgba(74, 115, 150, 0.27),
+      0 0 20px var(--accent-glow);
   }
   .hist__card {
     display: grid;
@@ -387,7 +398,7 @@ const labs = [
   }
   .nums {
     border-block: 1px solid var(--line);
-    background: linear-gradient(90deg, rgba(4, 61, 108, 0.2), rgba(255, 102, 34, 0.06));
+    background: linear-gradient(90deg, rgba(4, 61, 108, 0.2), rgba(74, 115, 150, 0.08));
   }
   .nums__t {
     margin: 0.8rem 0 2rem;
@@ -403,7 +414,7 @@ const labs = [
     display: grid;
     gap: 0.3rem;
     padding-left: 1.2rem;
-    border-left: 2px solid var(--orange);
+    border-left: 2px solid var(--accent);
   }
   .nums__item strong {
     font-family: var(--f-display);
@@ -441,11 +452,11 @@ const labs = [
     padding: 0.7rem 0.9rem;
     border: 1px solid var(--line);
     border-radius: 10px;
-    background: rgba(8, 20, 38, 0.55);
+    background: rgba(10, 25, 41, 0.55);
     font-size: 0.9rem;
   }
   .kh__list .mono {
-    color: var(--orange);
+    color: var(--accent);
     font-size: 0.72rem;
     padding-top: 0.15rem;
   }
@@ -469,7 +480,7 @@ const labs = [
     right: 0;
     height: 30%;
     top: -30%;
-    background: linear-gradient(180deg, transparent, rgba(255, 102, 34, 0.25), transparent);
+    background: linear-gradient(180deg, transparent, rgba(74, 115, 150, 0.34), transparent);
     animation: scan 4s var(--ease-io) infinite;
     mix-blend-mode: screen;
   }
@@ -497,7 +508,7 @@ const labs = [
     padding: 2rem 1.6rem;
     border-radius: 20px;
     border: 1px solid var(--line-2);
-    background: linear-gradient(170deg, rgba(20, 44, 74, 0.6), rgba(5, 13, 25, 0.85));
+    background: linear-gradient(170deg, rgba(21, 46, 96, 0.6), rgba(5, 13, 25, 0.85));
     transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
     transition:
       transform 0.6s var(--ease),
@@ -508,7 +519,7 @@ const labs = [
     transition: border-color 0.3s;
   }
   .val:hover {
-    border-color: rgba(255, 102, 34, 0.5);
+    border-color: rgba(74, 115, 150, 0.68);
   }
   .val p {
     margin: 0;
@@ -520,9 +531,9 @@ const labs = [
     width: 84px;
     height: 94px;
     color: #fff;
-    background: linear-gradient(160deg, var(--orange-2), var(--orange-3));
+    background: linear-gradient(160deg, var(--accent-2), var(--accent-3));
     clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
-    box-shadow: 0 0 40px var(--orange-glow);
+    box-shadow: 0 0 40px var(--accent-glow);
   }
   .org {
     display: grid;
@@ -599,7 +610,7 @@ const labs = [
     color: var(--text-2);
   }
   .fac__item .mono {
-    color: var(--orange);
+    color: var(--accent);
     font-size: 0.72rem;
     margin-right: 0.3rem;
   }
@@ -617,7 +628,7 @@ const labs = [
     transition: border-color 0.3s;
   }
   .lab:hover {
-    border-color: rgba(255, 102, 34, 0.5);
+    border-color: rgba(74, 115, 150, 0.68);
   }
   .lab__img {
     display: grid;
@@ -640,8 +651,8 @@ const labs = [
     align-items: center;
     padding: clamp(1.6rem, 1rem + 3vw, 3.4rem);
     background:
-      radial-gradient(60% 80% at 100% 50%, rgba(62, 207, 142, 0.12), transparent 70%),
-      linear-gradient(160deg, rgba(20, 44, 74, 0.6), rgba(6, 16, 30, 0.8));
+      radial-gradient(60% 80% at 100% 50%, rgba(48, 99, 139, 0.12), transparent 70%),
+      linear-gradient(160deg, rgba(21, 46, 96, 0.6), rgba(6, 16, 30, 0.8));
   }
   .env__txt {
     display: grid;
@@ -662,7 +673,7 @@ const labs = [
     color: var(--text-2);
   }
   .env__txt li :global(svg) {
-    color: #3ecf8e;
+    color: #30638b;
     flex: none;
     margin-top: 2px;
   }
@@ -682,7 +693,7 @@ const labs = [
     position: absolute;
     inset: 0;
     border-radius: 50%;
-    border: 2px dashed rgba(62, 207, 142, 0.5);
+    border: 2px dashed rgba(48, 99, 139, 0.5);
     animation: spin 30s linear infinite;
   }
   .env__ring::after {
@@ -690,8 +701,8 @@ const labs = [
     position: absolute;
     inset: 12%;
     border-radius: 50%;
-    border: 1px solid rgba(62, 207, 142, 0.3);
-    background: radial-gradient(circle, rgba(62, 207, 142, 0.14), transparent 70%);
+    border: 1px solid rgba(48, 99, 139, 0.3);
+    background: radial-gradient(circle, rgba(48, 99, 139, 0.14), transparent 70%);
   }
   .env__badge strong {
     font-family: var(--f-display);
@@ -704,7 +715,7 @@ const labs = [
     font-size: 0.72rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #8fe3bd;
+    color: #4a7396;
   }
   .env__badge em {
     font-style: normal;
@@ -727,10 +738,10 @@ const labs = [
     transition: border-color 0.3s;
   }
   .two__card:hover {
-    border-color: rgba(255, 102, 34, 0.5);
+    border-color: rgba(74, 115, 150, 0.68);
   }
   .two__card > :global(svg) {
-    color: var(--orange);
+    color: var(--accent);
   }
   @media (max-width: 1000px) {
     .hist {

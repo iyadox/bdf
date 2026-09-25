@@ -17,7 +17,7 @@ import Icon from '@/components/Icon.astro';
     </div>
     <div class="nf__txt">
       <p class="eyebrow">Erreur 404 · Accès verrouillé</p>
-      <h1 class="h1">Cette porte <span class="grad-orange">reste fermée</span></h1>
+      <h1 class="h1">Cette porte <span class="grad-accent">reste fermée</span></h1>
       <p class="lead">La page demandée n'existe pas ou a été déplacée. Même nos portes blindées ne s'ouvrent pas sans la bonne clé…</p>
       <div class="btn-row">
         <a href="/" class="btn"><Icon name="home" /> Retour à l'accueil</a>
@@ -58,9 +58,9 @@ import Icon from '@/components/Icon.astro';
     height: 400px;
     padding: 12px;
     background: linear-gradient(180deg, #1b2129, #0d1117);
-    border: 2px solid var(--orange);
+    border: 2px solid var(--accent);
     box-shadow:
-      0 0 40px rgba(255, 102, 34, 0.4),
+      0 0 40px rgba(74, 115, 150, 0.54),
       inset 0 0 20px rgba(0, 0, 0, 0.8);
     transform: rotateY(-18deg);
     animation: shake 5s ease-in-out infinite;
@@ -113,15 +113,15 @@ import Icon from '@/components/Icon.astro';
     width: 16px;
     height: 7px;
     border-radius: 3px;
-    background: #ff6622;
-    box-shadow: 0 0 12px var(--orange);
+    background: #4a7396;
+    box-shadow: 0 0 12px var(--accent);
   }
   .nf__glow {
     position: absolute;
     bottom: -40px;
     width: 360px;
     height: 80px;
-    background: radial-gradient(closest-side, rgba(255, 102, 34, 0.35), transparent);
+    background: radial-gradient(closest-side, rgba(74, 115, 150, 0.47), transparent);
   }
   @media (max-width: 860px) {
     .nf {

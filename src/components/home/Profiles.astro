@@ -66,19 +66,19 @@ import Icon from '@/components/Icon.astro';
     transform-style: preserve-3d;
     transition: transform 0.6s var(--ease), border-color 0.4s;
     background:
-      radial-gradient(80% 60% at 100% 0%, rgba(255, 102, 34, 0.14), transparent 60%),
-      linear-gradient(160deg, rgba(20, 44, 74, 0.6), rgba(6, 16, 30, 0.8));
+      radial-gradient(80% 60% at 100% 0%, rgba(74, 115, 150, 0.19), transparent 60%),
+      linear-gradient(160deg, rgba(21, 46, 96, 0.6), rgba(6, 16, 30, 0.8));
   }
   .pcard--pro {
     background:
       radial-gradient(80% 60% at 100% 0%, rgba(46, 104, 148, 0.35), transparent 60%),
-      linear-gradient(160deg, rgba(20, 44, 74, 0.6), rgba(6, 16, 30, 0.8));
+      linear-gradient(160deg, rgba(21, 46, 96, 0.6), rgba(6, 16, 30, 0.8));
   }
   :global(.pcard.is-tilting) {
     transition: border-color 0.4s;
   }
   .pcard:hover {
-    border-color: rgba(255, 102, 34, 0.45);
+    border-color: rgba(74, 115, 150, 0.61);
   }
   .pcard__glare {
     position: absolute;
@@ -116,7 +116,7 @@ import Icon from '@/components/Icon.astro';
     transition: color 0.2s, padding 0.3s var(--ease);
   }
   .pcard__list a :global(svg:first-child) {
-    color: var(--orange);
+    color: var(--accent);
   }
   .pcard__list a:hover {
     color: #fff;
@@ -144,7 +144,7 @@ import Icon from '@/components/Icon.astro';
     font-size: clamp(4rem, 3rem + 4vw, 7.5rem);
     line-height: 1;
     color: transparent;
-    -webkit-text-stroke: 1px rgba(148, 178, 212, 0.14);
+    -webkit-text-stroke: 1px rgba(74, 115, 150, 0.22);
     pointer-events: none;
   }
 </style>

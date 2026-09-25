@@ -17,7 +17,7 @@ const g = settings.contact.geo;
       <p class="eyebrow" data-reveal>{settings.company.baseline}</p>
       <h1 class="hero__title display">
         <span class="hero__l1" data-split data-reveal>Protégez ce qui</span>
-        <span class="hero__l2 grad-orange" data-split data-reveal style="--d:.25s">compte vraiment</span>
+        <span class="hero__l2 grad-accent" data-split data-reveal style="--d:.25s">compte vraiment</span>
       </h1>
       <p class="lead hero__lead" data-reveal style="--d:.45s">
         Portes blindées certifiées A2P et solutions de sécurité sur mesure. Conception, fabrication et installation <strong>100&nbsp;% Made in France</strong>.
@@ -91,7 +91,7 @@ const g = settings.contact.geo;
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(40% 55% at 68% 55%, rgba(255, 102, 34, 0.18), transparent 70%),
+      radial-gradient(40% 55% at 68% 55%, rgba(74, 115, 150, 0.24), transparent 70%),
       radial-gradient(60% 60% at 70% 40%, rgba(46, 104, 148, 0.25), transparent 70%);
     opacity: 1;
     transition: opacity 1.2s;
@@ -156,7 +156,7 @@ const g = settings.contact.geo;
     gap: 0.45rem;
   }
   .hero__trust :global(svg) {
-    color: var(--orange);
+    color: var(--accent);
   }
 
   .hero__welcome {
@@ -176,7 +176,7 @@ const g = settings.contact.geo;
     font-size: 0.72rem;
     letter-spacing: 0.4em;
     text-transform: uppercase;
-    color: #b8450f;
+    color: #30638b;
     margin: 0;
   }
   .hero__welcome-t {
@@ -185,13 +185,13 @@ const g = settings.contact.geo;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: #fff;
-    text-shadow: 0 0 40px rgba(255, 150, 90, 0.9), 0 0 2px rgba(120, 40, 0, 0.4);
+    text-shadow: 0 0 40px rgba(74, 115, 150, 0.9), 0 0 2px rgba(26, 74, 110, 0.4);
   }
   .hero__welcome-s {
     margin: 0;
     font-size: var(--fs-lg);
     color: #fff;
-    text-shadow: 0 0 20px rgba(120, 40, 0, 0.6);
+    text-shadow: 0 0 20px rgba(26, 74, 110, 0.6);
   }
 
   /* HUD */
@@ -222,9 +222,9 @@ const g = settings.contact.geo;
     height: 12px;
     margin-left: -6px;
     border-radius: 50%;
-    border: 2px solid var(--orange);
-    background: rgba(255, 102, 34, 0.25);
-    box-shadow: 0 0 14px var(--orange-glow);
+    border: 2px solid var(--accent);
+    background: rgba(74, 115, 150, 0.34);
+    box-shadow: 0 0 14px var(--accent-glow);
     animation: pulse-dot 2.2s infinite;
     flex: none;
   }
@@ -235,7 +235,7 @@ const g = settings.contact.geo;
     top: 50%;
     width: 46px;
     height: 1px;
-    background: linear-gradient(90deg, var(--orange), rgba(255, 102, 34, 0.2));
+    background: linear-gradient(90deg, var(--accent), rgba(74, 115, 150, 0.27));
   }
   .hud__txt {
     display: grid;
@@ -244,7 +244,7 @@ const g = settings.contact.geo;
     font-size: 0.72rem;
     color: var(--text-2);
     background: rgba(3, 8, 16, 0.7);
-    border: 1px solid rgba(255, 102, 34, 0.35);
+    border: 1px solid rgba(74, 115, 150, 0.47);
     border-radius: 6px;
     backdrop-filter: blur(6px);
     white-space: nowrap;
@@ -267,7 +267,7 @@ const g = settings.contact.geo;
   .hud__tag--left .hud__dot::after {
     left: auto;
     right: 100%;
-    background: linear-gradient(270deg, var(--orange), rgba(255, 102, 34, 0.2));
+    background: linear-gradient(270deg, var(--accent), rgba(74, 115, 150, 0.27));
   }
   .hud__tag--left .hud__txt {
     margin-left: 0;
@@ -315,10 +315,10 @@ const g = settings.contact.geo;
   .hero__rail-bar i {
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, var(--orange), #ffb07a);
+    background: linear-gradient(90deg, var(--accent), #4a7396);
     transform-origin: 0 50%;
     transform: scaleX(var(--hp, 0.02));
-    box-shadow: 0 0 10px var(--orange-glow);
+    box-shadow: 0 0 10px var(--accent-glow);
   }
 
   .hero__meta {
@@ -358,7 +358,7 @@ const g = settings.contact.geo;
     height: 7px;
     margin-left: -1.5px;
     border-radius: 2px;
-    background: var(--orange);
+    background: var(--accent);
     animation: wheel 1.8s var(--ease) infinite;
   }
   @keyframes wheel {

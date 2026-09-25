@@ -272,7 +272,7 @@ collections:
   - name: installateurs
     label: Installateurs
     label_singular: Installateur
-    description: Annuaire du réseau (carte et fiches). Cochez « Premium » pour une fiche vitrine enrichie.
+    description: Annuaire du réseau (carte et fiches). Cochez « Premium » pour une fiche vitrine enrichie (logo, galerie, vidéos, services).
     folder: src/content/installers
     extension: json
     format: json
@@ -314,15 +314,6 @@ collections:
           - { label: Instagram, name: instagram, widget: string, required: false }
           - { label: LinkedIn, name: linkedin, widget: string, required: false }
           - { label: YouTube, name: youtube, widget: string, required: false }
-      - label: Couleurs
-        name: colors
-        widget: object
-        collapsed: true
-        required: false
-        fields:
-          - { label: Couleur dominante, name: dominante, widget: color, required: false }
-          - { label: Couleur d'accent, name: accent, widget: color, required: false }
-          - { label: Couleur d'alternance, name: alternance, widget: color, required: false }
       - label: Chiffres clés
         name: stats
         widget: list

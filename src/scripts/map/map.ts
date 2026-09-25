@@ -34,20 +34,20 @@ function brandify(map: MLMap) {
       /* couche absente */
     }
   };
-  set('background', 'background-color', '#060e1b');
-  set('water', 'fill-color', '#0a1d33');
-  set('waterway', 'line-color', '#0a1d33');
-  set('landuse_residential', 'fill-color', '#0a1628');
-  set('landcover_wood', 'fill-color', '#0a1729');
-  set('landuse_park', 'fill-color', '#0a1729');
-  set('building', 'fill-color', '#0b1626');
-  set('building', 'fill-outline-color', '#12243a');
-  for (const id of ['highway_minor', 'highway_major_inner', 'highway_major_subtle', 'highway_motorway_subtle']) set(id, 'line-color', '#12263f');
-  set('highway_motorway_inner', 'line-color', '#1d3b5c');
+  set('background', 'background-color', '#050d18');
+  set('water', 'fill-color', '#001c3c');
+  set('waterway', 'line-color', '#001c3c');
+  set('landuse_residential', 'fill-color', '#0a1929');
+  set('landcover_wood', 'fill-color', '#0a1929');
+  set('landuse_park', 'fill-color', '#0a1929');
+  set('building', 'fill-color', '#0a1929');
+  set('building', 'fill-outline-color', '#152e60');
+  for (const id of ['highway_minor', 'highway_major_inner', 'highway_major_subtle', 'highway_motorway_subtle']) set(id, 'line-color', '#152e60');
+  set('highway_motorway_inner', 'line-color', '#1a4a6e');
   set('highway_major_casing', 'line-color', 'rgba(46,104,148,0.35)');
   set('highway_motorway_casing', 'line-color', 'rgba(46,104,148,0.45)');
-  set('boundary_country_z0-4', 'line-color', 'rgba(255,102,34,0.55)');
-  set('boundary_country_z5-', 'line-color', 'rgba(255,102,34,0.55)');
+  set('boundary_country_z0-4', 'line-color', 'rgba(74, 115, 150, 0.74)');
+  set('boundary_country_z5-', 'line-color', 'rgba(74, 115, 150, 0.74)');
   set('boundary_state', 'line-color', 'rgba(74,115,150,0.5)');
   for (const id of ['place_city', 'place_city_large', 'place_town', 'place_village', 'place_suburb', 'place_other', 'place_state']) {
     set(id, 'text-color', '#8397ad');
@@ -102,7 +102,7 @@ export function add3DBuildings(map: MLMap) {
       'source-layer': 'building',
       minzoom: 13,
       paint: {
-        'fill-extrusion-color': ['interpolate', ['linear'], ['coalesce', ['get', 'render_height'], 6], 0, '#0c1b2e', 25, '#143050', 60, '#1f4a76'],
+        'fill-extrusion-color': ['interpolate', ['linear'], ['coalesce', ['get', 'render_height'], 6], 0, '#0a1929', 25, '#152e60', 60, '#1a4a6e'],
         'fill-extrusion-height': ['coalesce', ['get', 'render_height'], 6],
         'fill-extrusion-base': ['coalesce', ['get', 'render_min_height'], 0],
         'fill-extrusion-opacity': 0.9,
@@ -145,7 +145,7 @@ export function addInstallerLayers(map: MLMap, list: InstallerPoint[], onClick: 
     source: 'inst',
     filter: ['has', 'point_count'],
     paint: {
-      'circle-color': '#ff6622',
+      'circle-color': '#4a7396',
       'circle-opacity': 0.18,
       'circle-radius': ['step', ['get', 'point_count'], 26, 10, 32, 50, 42, 150, 54],
       'circle-blur': 0.6,
@@ -157,7 +157,7 @@ export function addInstallerLayers(map: MLMap, list: InstallerPoint[], onClick: 
     source: 'inst',
     filter: ['has', 'point_count'],
     paint: {
-      'circle-color': ['step', ['get', 'point_count'], '#ff8844', 10, '#ff6622', 50, '#e55510'],
+      'circle-color': ['step', ['get', 'point_count'], '#4a7396', 10, '#30638b', 50, '#1a4a6e'],
       'circle-radius': ['step', ['get', 'point_count'], 15, 10, 19, 50, 25, 150, 32],
       'circle-stroke-width': 2,
       'circle-stroke-color': 'rgba(255,255,255,0.85)',
@@ -177,10 +177,10 @@ export function addInstallerLayers(map: MLMap, list: InstallerPoint[], onClick: 
     source: 'inst',
     filter: ['!', ['has', 'point_count']],
     paint: {
-      'circle-color': ['case', ['==', ['get', 'premium'], 1], '#5aa3e0', '#ff6622'],
+      'circle-color': ['case', ['==', ['get', 'premium'], 1], '#ffffff', '#4a7396'],
       'circle-radius': 8,
       'circle-stroke-width': 2,
-      'circle-stroke-color': '#ffffff',
+      'circle-stroke-color': ['case', ['==', ['get', 'premium'], 1], '#4a7396', '#ffffff'],
     },
   });
   map.addLayer({

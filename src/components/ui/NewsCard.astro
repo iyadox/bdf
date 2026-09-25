@@ -36,14 +36,14 @@ const img = cover || (video ? `/media/video-thumbnails/${video}.jpg` : '/media/q
     transition: border-color 0.3s, transform 0.5s var(--ease);
   }
   .ncard:hover {
-    border-color: rgba(255, 102, 34, 0.5);
+    border-color: rgba(74, 115, 150, 0.68);
     transform: translateY(-4px);
   }
   .ncard__img {
     position: relative;
     aspect-ratio: 16 / 9;
     overflow: hidden;
-    background: #0a1628;
+    background: #0a1929;
   }
   .ncard__img img {
     width: 100%;
@@ -63,7 +63,7 @@ const img = cover || (video ? `/media/video-thumbnails/${video}.jpg` : '/media/q
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    background: var(--orange);
+    background: var(--accent);
     color: #fff;
   }
   .ncard__body {
@@ -84,7 +84,7 @@ const img = cover || (video ? `/media/video-thumbnails/${video}.jpg` : '/media/q
     color: var(--muted);
   }
   .ncard__meta span {
-    color: var(--orange);
+    color: var(--accent);
   }
   .ncard__title {
     font-size: 1.08rem;

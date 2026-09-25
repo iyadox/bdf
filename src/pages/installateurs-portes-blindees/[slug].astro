@@ -31,7 +31,8 @@ const nearby = all
 const dep = i.postalCode.slice(0, 2);
 const depName = (deps as Record<string, string>)[dep] || '';
 const news = (await getCollection('news', (n) => n.data.installer === i.slug)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-const accent = i.colors?.accent || '#ff6622';
+// les fiches premium restent aux couleurs du site (bleu d'origine)
+const accent = '#4a7396';
 const itin = i.lat != null ? `https://www.google.com/maps/dir/?api=1&destination=${i.lat},${i.lng}` : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${i.address} ${i.postalCode} ${i.city}`)}`;
 const ld = {
   '@context': 'https://schema.org',
@@ -352,7 +353,7 @@ const title = `${i.name} — installateur de portes blindées à ${i.city}`;
     font-family: var(--f-display);
     font-size: 1.4rem;
     color: #fff;
-    background: linear-gradient(160deg, #3a78ad, #043d6c);
+    background: linear-gradient(160deg, #30638b, #043d6c);
     clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
   }
   .sh__title {
@@ -437,7 +438,7 @@ const title = `${i.name} — installateur de portes blindées à ${i.city}`;
     display: grid;
     padding: 1.2rem 1.4rem;
     border-left: 3px solid var(--acc);
-    background: rgba(8, 20, 38, 0.55);
+    background: rgba(10, 25, 41, 0.55);
     border-radius: 0 12px 12px 0;
   }
   .pstats strong {
@@ -540,12 +541,12 @@ const title = `${i.name} — installateur de portes blindées à ${i.city}`;
     color: var(--text-2);
   }
   .clist :global(svg) {
-    color: var(--orange);
+    color: var(--accent);
     flex: none;
     margin-top: 3px;
   }
   .clist a:hover {
-    color: var(--orange-2);
+    color: var(--accent-2);
   }
   .cmap {
     min-height: 380px;
@@ -574,7 +575,7 @@ const title = `${i.name} — installateur de portes blindées à ${i.city}`;
     color: var(--text-2);
   }
   .trust li > :global(svg) {
-    color: var(--orange);
+    color: var(--accent);
     flex: none;
     margin-top: 3px;
   }
@@ -584,10 +585,10 @@ const title = `${i.name} — installateur de portes blindées à ${i.city}`;
     padding-bottom: 0.5rem;
   }
   .near a:hover strong {
-    color: var(--orange-2);
+    color: var(--accent-2);
   }
   .near .mono {
-    color: var(--orange);
+    color: var(--accent);
     font-size: 0.75rem;
     white-space: nowrap;
   }
@@ -596,7 +597,7 @@ const title = `${i.name} — installateur de portes blindées à ${i.city}`;
     font-size: 0.86rem;
   }
   .own a {
-    color: var(--orange-2);
+    color: var(--accent-2);
     text-decoration: underline;
   }
   @media (max-width: 900px) {

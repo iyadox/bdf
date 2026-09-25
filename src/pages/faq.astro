@@ -90,10 +90,10 @@ const ld = {
     border: 1px solid var(--line-2);
     border-radius: 14px;
     background: rgba(4, 12, 24, 0.7);
-    color: var(--orange);
+    color: var(--accent);
   }
   .fsearch:focus-within {
-    border-color: var(--orange);
+    border-color: var(--accent);
   }
   .fsearch input {
     flex: 1;
@@ -134,11 +134,11 @@ const ld = {
   .qa {
     border: 1px solid var(--line);
     border-radius: 14px;
-    background: rgba(8, 20, 38, 0.55);
+    background: rgba(10, 25, 41, 0.55);
     transition: border-color 0.3s;
   }
   .qa[open] {
-    border-color: rgba(255, 102, 34, 0.45);
+    border-color: rgba(74, 115, 150, 0.61);
   }
   .qa summary {
     display: flex;
@@ -161,18 +161,18 @@ const ld = {
     height: 32px;
     border-radius: 50%;
     border: 1px solid var(--line-2);
-    color: var(--orange);
+    color: var(--accent);
     transition: transform 0.35s var(--ease);
   }
   .qa[open] .qa__ic {
     transform: rotate(45deg);
-    background: rgba(255, 102, 34, 0.15);
+    background: rgba(74, 115, 150, 0.2);
   }
   .qa__a {
     padding: 0 1.3rem 1.2rem;
   }
   .faq__none a {
-    color: var(--orange-2);
+    color: var(--accent-2);
     text-decoration: underline;
   }
   @media (max-width: 900px) {

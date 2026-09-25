@@ -147,6 +147,8 @@ function initAnatomy() {
   const label = $('[data-anatomy-label]', sec);
   const steps = $$('[data-astep]', sec);
   const toggle = $('[data-anatomy-toggle]', sec);
+  const track = $('[data-anatomy-track]', sec)!;
+  const mq = window.matchMedia('(max-width: 960px)');
   let api: { setExplode: (v: number) => void; setFocus: (id: string) => void } | null = null;
   let manual: number | null = null;
   let current = '';
@@ -165,12 +167,14 @@ function initAnatomy() {
 
   const apply = () => {
     if (!api) return;
-    const i = steps.findIndex((s) => s.dataset.astep === current);
     api.setFocus(current);
-    api.setExplode(manual ?? (i < 0 ? 0 : 1));
+    api.setExplode(manual ?? (current ? 1 : 0));
   };
+
+  // ---------------------------------------------------------------- ordinateur : étapes à droite
   const io = new IntersectionObserver(
     (entries) => {
+      if (mq.matches) return;
       for (const e of entries) {
         if (e.isIntersecting) {
           const el = e.target as HTMLElement;
@@ -187,6 +191,7 @@ function initAnatomy() {
   // sortie de section : on réassemble
   const io2 = new IntersectionObserver(
     ([e]) => {
+      if (mq.matches) return;
       if (!e.isIntersecting) {
         current = '';
         steps.forEach((s) => s.classList.remove('is-active'));
@@ -202,6 +207,67 @@ function initAnatomy() {
     manual = on ? 1 : 0;
     apply();
   });
+
+  // ---------------------------------------------------------------- mobile : scène épinglée + fiche
+  const deck = $('[data-adeck]', sec);
+  if (!deck) return;
+  const cards = $$('[data-adeck-card]', deck);
+  const segs = $$('[data-adeck-seg]', deck);
+  const kicker = $('[data-adeck-k]', deck)!;
+  const count = $('[data-adeck-count]', deck)!;
+  const prev = $<HTMLButtonElement>('[data-adeck-prev]', deck)!;
+  const next = $<HTMLButtonElement>('[data-adeck-next]', deck)!;
+  const states = cards.length; // vue d'ensemble + une par couche
+  const pad = (n: number) => String(n).padStart(2, '0');
+  let idx = -1;
+
+  const setState = (i: number) => {
+    if (i === idx) return;
+    idx = i;
+    cards.forEach((c, k) => {
+      c.classList.toggle('is-active', k === i);
+      c.classList.toggle('is-before', k < i);
+    });
+    segs.forEach((g, k) => {
+      g.classList.toggle('is-done', k < i);
+      g.classList.toggle('is-on', k === i);
+    });
+    kicker.textContent = i === 0 ? 'Vue d’ensemble' : steps[i - 1]?.dataset.k || '';
+    count.textContent = `${pad(i)} / ${pad(states - 1)}`;
+    prev.disabled = i === 0;
+    next.disabled = i === states - 1;
+    current = i === 0 ? '' : steps[i - 1]?.dataset.astep || '';
+    manual = null;
+    apply();
+  };
+  const progress = () => {
+    const r = track.getBoundingClientRect();
+    const total = r.height - window.innerHeight;
+    return total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 0;
+  };
+  const onScroll = () => {
+    if (!mq.matches) return;
+    const f = progress() * states;
+    const i = Math.min(states - 1, Math.floor(f));
+    setState(i);
+    segs[i]?.style.setProperty('--sp', `${Math.round((f - i) * 100)}%`);
+  };
+  const go = (i: number) => {
+    const r = track.getBoundingClientRect();
+    const total = r.height - window.innerHeight;
+    const top = window.scrollY + r.top + ((i + 0.5) / states) * total;
+    window.scrollTo({ top, behavior: reducedMotion() ? 'auto' : 'smooth' });
+  };
+  prev.addEventListener('click', () => go(Math.max(0, idx - 1)));
+  next.addEventListener('click', () => go(Math.min(states - 1, idx + 1)));
+  window.addEventListener('scroll', onScroll, { passive: true });
+  mq.addEventListener('change', () => {
+    idx = -1;
+    current = '';
+    apply();
+    onScroll();
+  });
+  onScroll();
 }
 
 // ======================================================================= CARROUSEL 3D

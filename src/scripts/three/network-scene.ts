@@ -19,7 +19,7 @@ export function createNetwork(canvas: HTMLCanvasElement, pts: [number, number][]
 
   // ---------------------------------------------------------------- territoire
   const shapes: THREE.Shape[] = [];
-  const lineMat = new THREE.LineBasicMaterial({ color: new THREE.Color('#ff6622').multiplyScalar(1.6), transparent: true, opacity: 0.9, toneMapped: false });
+  const lineMat = new THREE.LineBasicMaterial({ color: new THREE.Color('#4a7396').multiplyScalar(1.6), transparent: true, opacity: 0.9, toneMapped: false });
   for (const ring of outline.rings as number[][][]) {
     const v = ring.map(([lng, lat]) => project(lat, lng));
     shapes.push(new THREE.Shape(v));
@@ -29,8 +29,8 @@ export function createNetwork(canvas: HTMLCanvasElement, pts: [number, number][]
   const geo = new THREE.ExtrudeGeometry(shapes, { depth: 0.06, bevelEnabled: true, bevelThickness: 0.012, bevelSize: 0.012, bevelSegments: 2 });
   geo.rotateX(Math.PI / 2);
   geo.translate(0, 0.06, 0);
-  const topMat = new THREE.MeshPhysicalMaterial({ color: '#0b2440', metalness: 0.3, roughness: 0.45, clearcoat: 0.6, transparent: true, opacity: 0.94 });
-  const sideMat = new THREE.MeshStandardMaterial({ color: '#113a61', emissive: '#0d3a66', emissiveIntensity: 0.9, metalness: 0.4, roughness: 0.5 });
+  const topMat = new THREE.MeshPhysicalMaterial({ color: '#001c3c', metalness: 0.3, roughness: 0.45, clearcoat: 0.6, transparent: true, opacity: 0.94 });
+  const sideMat = new THREE.MeshStandardMaterial({ color: '#043d6c', emissive: '#043d6c', emissiveIntensity: 0.9, metalness: 0.4, roughness: 0.5 });
   const land = new THREE.Mesh(geo, [topMat, sideMat]);
   world.add(land);
   // mailles hexagonales sur le territoire (texture de points)
@@ -64,8 +64,8 @@ export function createNetwork(canvas: HTMLCanvasElement, pts: [number, number][]
   const cols = new THREE.InstancedMesh(colGeo, colMat, P.length);
   const heights = dens.map((d) => 0.06 + Math.min(1, Math.log(1 + d) / Math.log(120)) * 0.9);
   const dummy = new THREE.Object3D();
-  const cA = new THREE.Color('#ff6622').multiplyScalar(1.3);
-  const cB = new THREE.Color('#ffc59a').multiplyScalar(1.25);
+  const cA = new THREE.Color('#4a7396').multiplyScalar(1.3);
+  const cB = new THREE.Color('#e8eef4').multiplyScalar(1.1);
   P.forEach((_p, i) => {
     const t = Math.min(1, dens[i] / 80);
     cols.setColorAt(i, cA.clone().lerp(cB, t));
@@ -76,7 +76,7 @@ export function createNetwork(canvas: HTMLCanvasElement, pts: [number, number][]
   tipGeo.setAttribute('position', new THREE.BufferAttribute(tipPos, 3));
   const tips = new THREE.Points(
     tipGeo,
-    new THREE.PointsMaterial({ map: glowTexture('rgba(255,190,140,1)', 'rgba(255,102,34,0)', 64), size: 0.06, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending }),
+    new THREE.PointsMaterial({ map: glowTexture('rgba(232,238,244,1)', 'rgba(74, 115, 150, 0)', 64), size: 0.06, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending }),
   );
   world.add(tips);
 
@@ -85,11 +85,11 @@ export function createNetwork(canvas: HTMLCanvasElement, pts: [number, number][]
   const beacon = new THREE.Group();
   beacon.position.set(H.x, 0.075, H.y);
   const hexGeo = new THREE.CylinderGeometry(0.05, 0.05, 0.02, 6);
-  const hex = new THREE.Mesh(hexGeo, new THREE.MeshBasicMaterial({ color: new THREE.Color('#5aa3e0').multiplyScalar(1.1), toneMapped: false }));
+  const hex = new THREE.Mesh(hexGeo, new THREE.MeshBasicMaterial({ color: new THREE.Color('#4a7396').multiplyScalar(1.1), toneMapped: false }));
   beacon.add(hex);
   const beam = new THREE.Mesh(
     new THREE.CylinderGeometry(0.006, 0.02, 1.6, 12, 1, true),
-    new THREE.MeshBasicMaterial({ color: new THREE.Color('#5aa3e0').multiplyScalar(1.1), transparent: true, opacity: 0.4, toneMapped: false, blending: THREE.AdditiveBlending, depthWrite: false }),
+    new THREE.MeshBasicMaterial({ color: new THREE.Color('#4a7396').multiplyScalar(1.1), transparent: true, opacity: 0.4, toneMapped: false, blending: THREE.AdditiveBlending, depthWrite: false }),
   );
   beam.position.y = 0.8;
   beacon.add(beam);
@@ -97,7 +97,7 @@ export function createNetwork(canvas: HTMLCanvasElement, pts: [number, number][]
   for (let i = 0; i < 3; i++) {
     const r = new THREE.Mesh(
       new THREE.RingGeometry(0.05, 0.058, 48),
-      new THREE.MeshBasicMaterial({ color: new THREE.Color('#5aa3e0').multiplyScalar(2), transparent: true, toneMapped: false, side: THREE.DoubleSide, depthWrite: false }),
+      new THREE.MeshBasicMaterial({ color: new THREE.Color('#4a7396').multiplyScalar(2), transparent: true, toneMapped: false, side: THREE.DoubleSide, depthWrite: false }),
     );
     r.rotation.x = -Math.PI / 2;
     r.userData.off = i / 3;
@@ -115,7 +115,7 @@ export function createNetwork(canvas: HTMLCanvasElement, pts: [number, number][]
     if (chosen.length >= 14) break;
   }
   const arcs: { line: THREE.Line; mat: THREE.LineDashedMaterial; off: number; curve: THREE.QuadraticBezierCurve3; comet: THREE.Sprite }[] = [];
-  const cometMat = new THREE.SpriteMaterial({ map: glowTexture('rgba(255,220,190,1)', 'rgba(255,102,34,0)', 64), transparent: true, depthWrite: false, blending: THREE.AdditiveBlending });
+  const cometMat = new THREE.SpriteMaterial({ map: glowTexture('rgba(232,238,244,1)', 'rgba(74, 115, 150, 0)', 64), transparent: true, depthWrite: false, blending: THREE.AdditiveBlending });
   for (const c of chosen) {
     const a = new THREE.Vector3(H.x, 0.08, H.y);
     const b = new THREE.Vector3(c.x, 0.08, c.y);
@@ -123,7 +123,7 @@ export function createNetwork(canvas: HTMLCanvasElement, pts: [number, number][]
     mid.y += 0.25 + a.distanceTo(b) * 0.35;
     const curve = new THREE.QuadraticBezierCurve3(a, mid, b);
     const g = new THREE.BufferGeometry().setFromPoints(curve.getPoints(60));
-    const mat = new THREE.LineDashedMaterial({ color: new THREE.Color('#ff8a4c').multiplyScalar(1.6), dashSize: 0.05, gapSize: 0.04, transparent: true, opacity: 0.8, toneMapped: false });
+    const mat = new THREE.LineDashedMaterial({ color: new THREE.Color('#4a7396').multiplyScalar(1.6), dashSize: 0.05, gapSize: 0.04, transparent: true, opacity: 0.8, toneMapped: false });
     const line = new THREE.Line(g, mat);
     line.computeLineDistances();
     world.add(line);
@@ -134,7 +134,7 @@ export function createNetwork(canvas: HTMLCanvasElement, pts: [number, number][]
   }
 
   // ---------------------------------------------------------------- lumières / sol
-  scene.add(new THREE.HemisphereLight('#8fb3d9', '#05070a', 1.1));
+  scene.add(new THREE.HemisphereLight('#4a7396', '#05070a', 1.1));
   const dl = new THREE.DirectionalLight('#ffffff', 1.4);
   dl.position.set(-2, 4, 3);
   scene.add(dl);

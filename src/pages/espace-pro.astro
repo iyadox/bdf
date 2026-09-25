@@ -54,7 +54,7 @@ const nbDocs = groups.reduce((n, g) => n + g.items.reduce((m, p) => m + (p.downl
     <div class="container">
       <header class="section-head" data-reveal>
         <p class="eyebrow">Votre espace</p>
-        <h2 class="h2">Tout ce qu'il faut <span class="grad-orange">pour vos chantiers</span></h2>
+        <h2 class="h2">Tout ce qu'il faut <span class="grad-accent">pour vos chantiers</span></h2>
       </header>
       <div class="pro-grid">
         {
@@ -78,7 +78,7 @@ const nbDocs = groups.reduce((n, g) => n + g.items.reduce((m, p) => m + (p.downl
       <header class="section-head pro-docs__head" data-reveal>
         <div>
           <p class="eyebrow">Documentation technique</p>
-          <h2 class="h2">Fiches techniques <span class="grad-orange">en libre accès</span></h2>
+          <h2 class="h2">Fiches techniques <span class="grad-accent">en libre accès</span></h2>
           <p class="lead">{nbDocs} documents PDF à télécharger, classés par gamme.</p>
         </div>
         <label class="pro-docs__search">
@@ -152,10 +152,10 @@ const nbDocs = groups.reduce((n, g) => n + g.items.reduce((m, p) => m + (p.downl
     width: min(420px, 100%);
     padding: 2rem;
     overflow: hidden;
-    border-color: rgba(255, 102, 34, 0.35);
+    border-color: rgba(74, 115, 150, 0.47);
     box-shadow:
       0 30px 80px rgba(0, 0, 0, 0.45),
-      0 0 0 1px rgba(255, 102, 34, 0.08) inset;
+      0 0 0 1px rgba(74, 115, 150, 0.11) inset;
   }
   .pro-login p {
     margin: 0;
@@ -163,7 +163,7 @@ const nbDocs = groups.reduce((n, g) => n + g.items.reduce((m, p) => m + (p.downl
   .pro-login__scan {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 0%, rgba(255, 102, 34, 0.12) 50%, transparent 52%);
+    background: linear-gradient(180deg, transparent 0%, rgba(74, 115, 150, 0.16) 50%, transparent 52%);
     background-size: 100% 260%;
     animation: scan 5s linear infinite;
     pointer-events: none;
@@ -182,9 +182,9 @@ const nbDocs = groups.reduce((n, g) => n + g.items.reduce((m, p) => m + (p.downl
     width: 58px;
     height: 64px;
     color: #fff;
-    background: linear-gradient(160deg, var(--orange), var(--orange-3));
+    background: linear-gradient(160deg, var(--accent), var(--accent-3));
     clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
-    box-shadow: 0 0 30px var(--orange-glow);
+    box-shadow: 0 0 30px var(--accent-glow);
   }
   .pro-login__sep {
     display: flex;
@@ -229,8 +229,8 @@ const nbDocs = groups.reduce((n, g) => n + g.items.reduce((m, p) => m + (p.downl
     place-items: center;
     width: 52px;
     height: 58px;
-    color: var(--orange);
-    background: rgba(255, 102, 34, 0.1);
+    color: var(--accent);
+    background: rgba(74, 115, 150, 0.14);
     clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
   }
   .pro-b--soon {
@@ -290,8 +290,8 @@ const nbDocs = groups.reduce((n, g) => n + g.items.reduce((m, p) => m + (p.downl
   .pro-cat__n {
     padding: 0.15rem 0.55rem;
     font-size: 0.7rem;
-    color: var(--orange-2);
-    background: rgba(255, 102, 34, 0.12);
+    color: var(--accent-2);
+    background: rgba(74, 115, 150, 0.16);
     border-radius: 99px;
   }
   .pro-cat :global(.pro-cat__chev) {
@@ -329,7 +329,7 @@ const nbDocs = groups.reduce((n, g) => n + g.items.reduce((m, p) => m + (p.downl
       color 0.2s;
   }
   .pro-doc:hover {
-    background: rgba(255, 102, 34, 0.07);
+    background: rgba(74, 115, 150, 0.09);
     color: #fff;
   }
   .pro-doc__ic {
@@ -339,14 +339,14 @@ const nbDocs = groups.reduce((n, g) => n + g.items.reduce((m, p) => m + (p.downl
     font-size: 0.6rem;
     font-weight: 700;
     color: #fff;
-    background: #c9302c;
+    background: #30638b;
     border-radius: 4px;
   }
   .pro-doc__t {
     flex: 1;
   }
   .pro-doc :global(svg) {
-    color: var(--orange);
+    color: var(--accent);
   }
   .pro-doc__more {
     display: grid;
@@ -356,7 +356,7 @@ const nbDocs = groups.reduce((n, g) => n + g.items.reduce((m, p) => m + (p.downl
     border-left: 1px solid var(--line);
   }
   .pro-doc__more:hover {
-    color: var(--orange);
+    color: var(--accent);
   }
   .pro-empty {
     padding: 2rem;

@@ -10,11 +10,6 @@
   "website": "https://serrurerie-lhostis.com/",
   "email": "serrurerie.lhostis@hotmail.fr",
   "premium": true,
-  "colors": {
-    "dominante": "#444",
-    "accent": "#e80a0a",
-    "alternance": "#cccccc"
-  },
   "logo": "/media/2026-06/logo-hostis.webp",
   "heroImages": [
     "/media/2026-05/l-hostis.webp",

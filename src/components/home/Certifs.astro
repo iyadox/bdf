@@ -6,7 +6,7 @@ const certs = [
     logo: '/media/custom-blocks/certification-labos-cnpp-trans.png',
     name: 'Anti-effraction A2P',
     icon: 'shield',
-    color: 'var(--orange)',
+    color: 'var(--accent)',
     text: "La certification A2P garantit la résistance de nos portes blindées aux tentatives d'effraction. Délivrée par le CNPP, elle classe les portes selon 3 niveaux de sécurité.",
     levels: [
       { k: 'BP1', v: '5 min', d: 'Tentative opportuniste', w: 33 },
@@ -21,7 +21,7 @@ const certs = [
     logo: '/media/custom-blocks/certification-labos-efectis-trans.png',
     name: 'Coupe-feu',
     icon: 'flame',
-    color: 'var(--fire)',
+    color: 'var(--steel-2)',
     text: 'La certification coupe-feu EFECTIS garantit la résistance au feu de nos portes, protégeant vos biens et les personnes contre la propagation des incendies.',
     levels: [
       { k: 'EI 30', v: '30 min', d: 'Locaux techniques', w: 25 },
@@ -56,7 +56,7 @@ const certs = [
   <div class="container">
     <div class="section-head center">
       <p class="eyebrow eyebrow--center" data-reveal>Nos garanties de qualité</p>
-      <h2 id="certifs-title" class="h2" data-reveal style="--d:.1s">Savoir-faire <span class="grad-orange">certifié</span></h2>
+      <h2 id="certifs-title" class="h2" data-reveal style="--d:.1s">Savoir-faire <span class="grad-accent">certifié</span></h2>
       <p class="lead" data-reveal style="--d:.2s">Des portes blindées testées et certifiées par les laboratoires officiels français. Tests rigoureux reconnus par les assurances et normes françaises.</p>
     </div>
     <div class="certifs__grid">
@@ -121,7 +121,7 @@ const certs = [
     z-index: -1;
     background:
       radial-gradient(50% 40% at 50% 0%, rgba(46, 104, 148, 0.25), transparent 70%),
-      repeating-linear-gradient(120deg, transparent 0 60px, rgba(148, 178, 212, 0.025) 60px 61px);
+      repeating-linear-gradient(120deg, transparent 0 60px, rgba(74, 115, 150, 0.04) 60px 61px);
   }
   .certifs__grid {
     display: grid;
@@ -140,7 +140,7 @@ const certs = [
     padding: 1.8rem;
     border-radius: 18px;
     border: 1px solid var(--line-2);
-    background: linear-gradient(165deg, rgba(20, 44, 74, 0.7), rgba(5, 13, 25, 0.85));
+    background: linear-gradient(165deg, rgba(21, 46, 96, 0.7), rgba(5, 13, 25, 0.85));
     overflow: hidden;
     transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
     transition:
@@ -160,7 +160,7 @@ const certs = [
   .ccard__holo {
     position: absolute;
     inset: -40%;
-    background: conic-gradient(from 0deg at var(--gx, 50%) var(--gy, 50%), transparent 0 20%, rgba(255, 102, 34, 0.1) 25%, rgba(46, 104, 148, 0.16) 35%, transparent 45% 70%, rgba(255, 255, 255, 0.06) 80%, transparent 90%);
+    background: conic-gradient(from 0deg at var(--gx, 50%) var(--gy, 50%), transparent 0 20%, rgba(74, 115, 150, 0.14) 25%, rgba(46, 104, 148, 0.16) 35%, transparent 45% 70%, rgba(255, 255, 255, 0.06) 80%, transparent 90%);
     opacity: 0;
     transition: opacity 0.5s;
     pointer-events: none;
@@ -233,7 +233,7 @@ const certs = [
     position: relative;
     height: 6px;
     border-radius: 6px;
-    background: rgba(148, 178, 212, 0.12);
+    background: rgba(74, 115, 150, 0.19);
     overflow: hidden;
   }
   .lv__bar i {
@@ -277,6 +277,6 @@ const certs = [
     text-align: center;
   }
   .certifs__note > :global(svg) {
-    color: var(--orange);
+    color: var(--accent);
   }
 </style>

@@ -10,7 +10,7 @@ const n = featured.length;
   <div class="container">
     <div class="section-head center">
       <p class="eyebrow eyebrow--center" data-reveal>Haute sécurité</p>
-      <h2 id="featured-title" class="h2" data-reveal style="--d:.1s">Nos produits <span class="grad-orange">phares</span></h2>
+      <h2 id="featured-title" class="h2" data-reveal style="--d:.1s">Nos produits <span class="grad-accent">phares</span></h2>
       <p class="lead" data-reveal style="--d:.2s">Faites pivoter le carrousel 3D : glissez, utilisez les flèches ou votre clavier.</p>
     </div>
   </div>
@@ -123,10 +123,10 @@ const n = featured.length;
     filter: brightness(0.55) saturate(0.7);
   }
   .citem.is-active {
-    border-color: rgba(255, 102, 34, 0.7);
+    border-color: rgba(74, 115, 150, 0.94);
     box-shadow:
-      0 0 0 1px rgba(255, 102, 34, 0.3),
-      0 30px 90px rgba(255, 102, 34, 0.25);
+      0 0 0 1px rgba(74, 115, 150, 0.41),
+      0 30px 90px rgba(74, 115, 150, 0.34);
     filter: none;
   }
   .citem__img {
@@ -148,7 +148,7 @@ const n = featured.length;
     border-top: 1px solid var(--line);
   }
   .citem__cap .mono {
-    color: var(--orange);
+    color: var(--accent);
     font-size: 0.72rem;
   }
   .citem__cap strong {
@@ -164,7 +164,7 @@ const n = featured.length;
     width: min(1100px, 95vw);
     height: 140px;
     translate: -50% 0;
-    background: radial-gradient(50% 50% at 50% 50%, rgba(255, 102, 34, 0.16), transparent 70%);
+    background: radial-gradient(50% 50% at 50% 50%, rgba(74, 115, 150, 0.22), transparent 70%);
     transform: perspective(500px) rotateX(70deg);
   }
   .fdetail {
@@ -227,8 +227,8 @@ const n = featured.length;
     transition: all 0.25s;
   }
   .navbtn:hover {
-    border-color: var(--orange);
-    color: var(--orange);
+    border-color: var(--accent);
+    color: var(--accent);
   }
   .fdetail__dots {
     display: flex;
@@ -242,9 +242,9 @@ const n = featured.length;
     transition: all 0.3s;
   }
   .dot[aria-selected='true'] {
-    background: var(--orange);
+    background: var(--accent);
     width: 44px;
-    box-shadow: 0 0 10px var(--orange-glow);
+    box-shadow: 0 0 10px var(--accent-glow);
   }
   @media (max-width: 760px) {
     .fdetail {
