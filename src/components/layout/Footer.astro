@@ -1,0 +1,307 @@
+---
+import Icon from '@/components/Icon.astro';
+import { FOOTER_COLUMNS, LEGAL_LINKS, settings, telHref } from '@/lib/site';
+const year = new Date().getFullYear();
+const s = settings.socials;
+const socials = [
+  { href: s.linkedin, icon: 'linkedin', label: 'LinkedIn' },
+  { href: s.youtube, icon: 'youtube', label: 'YouTube' },
+  { href: s.x, icon: 'x-logo', label: 'X (Twitter)' },
+].filter((x) => x.href);
+const a = settings.contact.address;
+---
+
+<footer class="site-footer">
+  <div class="floor" aria-hidden="true"></div>
+  <div class="container--wide">
+    <div class="labs" aria-label="Certifications officielles">
+      <p class="eyebrow">Certifié par les laboratoires officiels</p>
+      <div class="labs__logos">
+        <a href="/certifications/anti-effraction" class="lab"><img src="/media/custom-blocks/certification-labos-cnpp-trans.png" alt="CNPP — A2P" loading="lazy" width="150" height="110" /></a>
+        <a href="/certification-porte-blindee/coupe-feu" class="lab"><img src="/media/custom-blocks/certification-labos-efectis-trans.png" alt="EFECTIS — coupe-feu" loading="lazy" width="150" height="110" /></a>
+        <a href="/certification-porte-blindee/pare-balles" class="lab"><img src="/media/custom-blocks/certification-labos-banc-national-trans.png" alt="Banc National d'Épreuves — pare-balles" loading="lazy" width="150" height="110" /></a>
+        <span class="lab lab--fr"><img src="/media/editeur/fabrique-en-france.png" alt="Fabriqué en France" loading="lazy" width="110" height="110" /></span>
+        <span class="lab lab--fr"><img src="/media/editeur/garantie-10-ans.png" alt="Garantie 10 ans" loading="lazy" width="110" height="110" /></span>
+      </div>
+    </div>
+
+    <div class="grid-main">
+      <div class="brandcol">
+        <a href="/" aria-label="Accueil"><img src="/brand/logo-bdf-blanc.svg" alt="Blindages de France" width="240" height="60" loading="lazy" /></a>
+        <p class="muted">{settings.company.tagline}. {settings.company.baseline}.</p>
+        <ul class="contact-list">
+          <li>
+            <Icon name="phone" />
+            <a href={telHref()} class="mono">{settings.contact.phone}</a>
+          </li>
+          {
+            settings.contact.fax && (
+              <li>
+                <Icon name="printer" />
+                <span class="mono">Fax : {settings.contact.fax}</span>
+              </li>
+            )
+          }
+          <li>
+            <Icon name="map-pin" />
+            <a href={settings.contact.mapsUrl} target="_blank" rel="noopener">{a.street}<br />{a.postalCode} {a.city}</a>
+          </li>
+          <li data-open-status>
+            <Icon name="clock" />
+            <span><span data-open-text>Lun.–ven. 8h00–18h30</span></span>
+          </li>
+        </ul>
+        <div class="socials">
+          {
+            socials.map((x) => (
+              <a href={x.href} target="_blank" rel="noopener" aria-label={x.label} class="social">
+                <Icon name={x.icon} size={18} />
+              </a>
+            ))
+          }
+        </div>
+      </div>
+      {
+        FOOTER_COLUMNS.map((col) => (
+          <nav class="col" aria-label={col.title}>
+            <p class="col__title">{col.title}</p>
+            <ul>
+              {col.links.map((l) => (
+                <li>
+                  <a href={l.href}>{l.label}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ))
+      }
+    </div>
+
+    <div class="bottom">
+      <p>© 2014-{year} {settings.company.name}. Tous droits réservés.</p>
+      <nav aria-label="Liens légaux" class="legal">
+        {LEGAL_LINKS.map((l) => <a href={l.href}>{l.label}</a>)}
+        <button type="button" data-cookie-settings>Gérer les cookies</button>
+        <button type="button" data-lite-toggle title="Désactive les animations 3D pour économiser la batterie et les données">Mode allégé : <span data-lite-state>désactivé</span></button>
+      </nav>
+      <a href="#top" class="totop" aria-label="Revenir en haut" data-to-top><Icon name="arrow-up" size={18} /></a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    position: relative;
+    margin-top: 2rem;
+    padding: 4rem 0 2rem;
+    border-top: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(3, 8, 16, 0.4), #02050a 60%);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .floor {
+    position: absolute;
+    left: -20%;
+    right: -20%;
+    bottom: -10%;
+    height: 70%;
+    z-index: -1;
+    background-image:
+      linear-gradient(rgba(255, 102, 34, 0.18) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(46, 104, 148, 0.22) 1px, transparent 1px);
+    background-size: 70px 70px;
+    transform: perspective(600px) rotateX(62deg);
+    transform-origin: 50% 100%;
+    mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent 85%);
+    animation: floor 8s linear infinite;
+    opacity: 0.55;
+  }
+  @keyframes floor {
+    to {
+      background-position:
+        0 70px,
+        0 0;
+    }
+  }
+  .labs {
+    display: grid;
+    gap: 1.2rem;
+    justify-items: center;
+    padding-bottom: 3rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .labs__logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .lab {
+    display: grid;
+    place-items: center;
+    width: 170px;
+    height: 96px;
+    padding: 0.8rem 1.2rem;
+    border-radius: 12px;
+    background: rgba(246, 249, 252, 0.94);
+    transition:
+      transform 0.4s var(--ease),
+      box-shadow 0.4s;
+  }
+  .lab img {
+    max-height: 70px;
+    width: auto;
+    object-fit: contain;
+  }
+  .lab--fr {
+    width: 96px;
+    background: transparent;
+    padding: 0;
+  }
+  .lab--fr img {
+    max-height: 86px;
+  }
+  a.lab:hover {
+    transform: translateY(-4px) rotateX(8deg);
+    box-shadow: 0 16px 40px rgba(255, 102, 34, 0.25);
+  }
+  .grid-main {
+    display: grid;
+    grid-template-columns: 1.4fr repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+  .brandcol img {
+    height: 54px;
+    width: auto;
+    margin-bottom: 1.2rem;
+  }
+  .brandcol > p {
+    font-size: var(--fs-sm);
+    max-width: 36ch;
+  }
+  .contact-list {
+    list-style: none;
+    display: grid;
+    gap: 0.75rem;
+    margin: 1.4rem 0;
+    font-size: var(--fs-sm);
+    color: var(--text-2);
+  }
+  .contact-list li {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+  .contact-list :global(svg) {
+    color: var(--orange);
+    margin-top: 3px;
+  }
+  .contact-list a:hover {
+    color: var(--orange);
+  }
+  .socials {
+    display: flex;
+    gap: 0.6rem;
+  }
+  .social {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--line-2);
+    clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+    background: rgba(46, 104, 148, 0.18);
+    transition: all 0.3s;
+  }
+  .social:hover {
+    background: var(--orange);
+    color: #fff;
+  }
+  .col__title {
+    font-family: var(--f-display);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.2rem;
+    color: #fff;
+  }
+  .col ul {
+    list-style: none;
+    display: grid;
+    gap: 0.6rem;
+  }
+  .col a {
+    font-size: var(--fs-sm);
+    color: var(--muted);
+    transition:
+      color 0.2s,
+      padding 0.3s var(--ease);
+  }
+  .col a:hover {
+    color: var(--text);
+    padding-left: 6px;
+  }
+  .bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 2rem;
+    margin-top: 3.5rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.8rem;
+    color: var(--dim);
+  }
+  .bottom p {
+    margin: 0;
+  }
+  .legal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.4rem;
+  }
+  .legal a,
+  .legal button {
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+  .legal a:hover,
+  .legal button:hover {
+    color: var(--orange);
+  }
+  .totop {
+    margin-left: auto;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--line-2);
+    border-radius: 12px;
+    transition: all 0.3s;
+  }
+  .totop:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+    transform: translateY(-3px);
+  }
+  @media (max-width: 1000px) {
+    .grid-main {
+      grid-template-columns: 1fr 1fr;
+    }
+    .brandcol {
+      grid-column: 1 / -1;
+    }
+  }
+  @media (max-width: 560px) {
+    .grid-main {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .lab {
+      width: 140px;
+    }
+    .site-footer {
+      padding-bottom: 6rem;
+    }
+  }
+</style>

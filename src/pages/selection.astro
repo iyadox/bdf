@@ -1,0 +1,145 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/ui/PageHero.astro';
+import Icon from '@/components/Icon.astro';
+---
+
+<BaseLayout title="Ma sélection" description="Retrouvez les produits Blindages de France que vous avez sélectionnés et demandez un devis groupé." noindex>
+  <PageHero title="Ma" accent="sélection" eyebrow="Vos produits favoris" lead="Mémorisée sur cet appareil. Demandez un devis groupé en un clic ou partagez votre sélection." crumbs={[{ label: 'Ma sélection' }]} compact />
+  <section class="section section--tight">
+    <div class="container">
+      <div class="sel-bar">
+        <p class="muted" data-sel-info></p>
+        <div class="btn-row">
+          <button type="button" class="btn btn--ghost btn--sm" data-sel-share><Icon name="share" /> Partager</button>
+          <button type="button" class="btn btn--ghost btn--sm" data-sel-clear><Icon name="trash" /> Vider</button>
+          <a href="/devis-porte-blindee" class="btn btn--sm" data-sel-quote><Icon name="file-text" /> Devis pour ma sélection</a>
+        </div>
+      </div>
+      <ul class="sel-grid" data-sel-grid></ul>
+      <div class="sel-empty panel" data-sel-empty hidden>
+        <Icon name="heart" size={40} />
+        <p class="h4">Votre sélection est vide</p>
+        <p class="muted">Cliquez sur le cœur d'un produit pour l'ajouter ici.</p>
+        <a href="/catalogue" class="btn">Parcourir le catalogue <Icon name="arrow-right" /></a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  import { $, escapeHtml, toast } from '@/scripts/ui/dom';
+  import { selection } from '@/scripts/ui/selection';
+  const grid = $('[data-sel-grid]')!;
+  const empty = $('[data-sel-empty]')!;
+  const info = $('[data-sel-info]')!;
+  const quote = $<HTMLAnchorElement>('[data-sel-quote]')!;
+
+  // sélection partagée par lien (?p=titre|url,...)
+  const shared = new URLSearchParams(location.search).get('s');
+  if (shared) {
+    try {
+      const items = JSON.parse(decodeURIComponent(atob(shared)));
+      items.forEach((i: any) => selection.add(i));
+      history.replaceState(null, '', location.pathname);
+    } catch {}
+  }
+  const render = () => {
+    const items = selection.all();
+    empty.hidden = items.length > 0;
+    info.textContent = items.length ? `${items.length} produit${items.length > 1 ? 's' : ''} sélectionné${items.length > 1 ? 's' : ''}` : '';
+    grid.innerHTML = items
+      .map(
+        (i) => `<li class="sel-item panel"><a href="${i.url}" class="sel-item__img product-stage">${i.image ? `<img src="${i.image}" alt="">` : ''}</a>
+        <div class="sel-item__body"><a href="${i.url}" class="sel-item__t">${escapeHtml(i.title)}</a>
+        <div class="sel-item__btns"><a class="link-arrow" href="/devis-porte-blindee?produit=${encodeURIComponent(i.quote || i.title)}">Devis</a>
+        <button type="button" data-rm="${i.slug}" class="sel-item__rm">Retirer</button></div></div></li>`,
+      )
+      .join('');
+    quote.href = `/devis-porte-blindee?produit=${encodeURIComponent(items.map((i) => i.quote || i.title).join(' ; '))}`;
+    quote.classList.toggle('is-disabled', !items.length);
+  };
+  grid.addEventListener('click', (e) => {
+    const b = (e.target as Element).closest<HTMLElement>('[data-rm]');
+    if (b) selection.remove(b.dataset.rm!);
+  });
+  $('[data-sel-clear]')?.addEventListener('click', () => selection.clear());
+  $('[data-sel-share]')?.addEventListener('click', async () => {
+    const payload = btoa(encodeURIComponent(JSON.stringify(selection.all())));
+    const url = `${location.origin}/selection?s=${payload}`;
+    try {
+      if (navigator.share) await navigator.share({ title: 'Ma sélection Blindages de France', url });
+      else {
+        await navigator.clipboard.writeText(url);
+        toast('Lien de votre sélection copié');
+      }
+    } catch {}
+  });
+  document.addEventListener('selection:change', render);
+  render();
+</script>
+
+<style>
+  .sel-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.4rem;
+  }
+  .sel-bar p {
+    margin: 0;
+  }
+  .sel-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+  .sel-grid :global(.sel-item) {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .sel-grid :global(.sel-item__img) {
+    height: 220px;
+  }
+  .sel-grid :global(.sel-item__img img) {
+    height: 88%;
+    width: auto;
+  }
+  .sel-grid :global(.sel-item__body) {
+    display: grid;
+    gap: 0.8rem;
+    padding: 1rem 1.2rem 1.2rem;
+  }
+  .sel-grid :global(.sel-item__t) {
+    font-family: var(--f-display);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+  }
+  .sel-grid :global(.sel-item__btns) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .sel-grid :global(.sel-item__rm) {
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-decoration: underline;
+  }
+  .sel-empty {
+    display: grid;
+    justify-items: center;
+    gap: 0.7rem;
+    padding: 3rem 1.5rem;
+    text-align: center;
+  }
+  .sel-empty :global(svg) {
+    color: var(--orange);
+  }
+  .sel-empty p {
+    margin: 0;
+  }
+</style>

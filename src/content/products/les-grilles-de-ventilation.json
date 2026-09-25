@@ -1,0 +1,60 @@
+{
+  "title": "Les grilles de ventilation",
+  "slug": "les-grilles-de-ventilation",
+  "segment": "grilles-et-accessoires",
+  "categories": [
+    "grilles-et-accessoires-73"
+  ],
+  "family": "Les grilles de ventilation",
+  "order": 87,
+  "featured": false,
+  "image": "/media/fiches-produits/grille-ventilation-0.png",
+  "seo": {
+    "title": "Les grilles de ventilation",
+    "description": ""
+  },
+  "filters": {
+    "vantaux": [],
+    "certifications": [],
+    "fermetures": []
+  },
+  "composition": "<p>Les grilles de ventilation sont conçues pour ventiler efficacement le bâti et assainir l'air.</p><p>Blindages de France conçoit et fabrique sur mesure depuis plus de 30 ans dans son usine en France des grilles de ventilation en acier.</p>",
+  "quoteLabel": "Les grilles de ventilation",
+  "options": {
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet",
+        "title": "Époxy mono couleur",
+        "description": "180 couleurs RAL au choix."
+      }
+    ]
+  },
+  "characteristics": {
+    "html": "<p>Les grilles de ventilation peuvent se fixer au choix:</p><ul><li>en applique</li><li>en tableau</li></ul><p><img alt=\"\" loading=\"lazy\" src=\"/media/editeur/fixation-grille-ventilation.jpg\"/><br/>Nous vous proposons également d’ajouter à votre grille de ventilation:</p><ul><li>une huisserie tubulaire</li><li>une grille anti-rongeurs</li></ul>"
+  }
+}

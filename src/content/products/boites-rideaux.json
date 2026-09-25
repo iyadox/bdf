@@ -1,0 +1,66 @@
+{
+  "title": "Boîtes à rideaux",
+  "slug": "boites-rideaux",
+  "segment": "tolerie-pliage-et-profils",
+  "categories": [
+    "tolerie-pliage-et-profils-71"
+  ],
+  "family": "Boîtes à rideaux",
+  "order": 66,
+  "featured": false,
+  "image": "/media/fiches-produits/boites-a-rideaux.jpg",
+  "seo": {
+    "title": "Boîtes à rideaux",
+    "description": ""
+  },
+  "filters": {
+    "vantaux": [],
+    "certifications": [],
+    "fermetures": []
+  },
+  "composition": "<p>Les boîtes à rideaux métalliques sont composées de tôle électrozinguée ou galvanisée 15/10.</p><p>Les caissons pour boîtes à rideaux métalliques permettent de loger des rideaux métalliques par exemple pour une façade de boutique.</p>",
+  "downloads": [
+    {
+      "label": "boite-a-rideaux.pdf",
+      "file": "/media/fichiers/boite-a-rideaux.pdf"
+    }
+  ],
+  "quoteLabel": "Boîtes à rideaux",
+  "options": {
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet",
+        "title": "Époxy mono couleur",
+        "description": "180 couleurs RAL au choix."
+      }
+    ]
+  },
+  "characteristics": {
+    "html": "<p>Blindages de France vous propose plusieurs profils standard de coffre à rideau métallique en fonction de votre configuration.</p><p><img alt=\"\" loading=\"lazy\" src=\"/media/editeur/boites-a-rideaux.jpg\"/></p><p><img alt=\"\" loading=\"lazy\" src=\"/media/editeur/boites-a-rideaux-2.jpg\"/></p><p> <img alt=\"\" loading=\"lazy\" src=\"/media/editeur/boites-a-rideaux-3.jpg\"/></p><p><img alt=\"\" loading=\"lazy\" src=\"/media/editeur/eclisse.png\"/></p><p>Pour raccorder entre eux plusieurs éléments d’un caisson à rideaux métalliques, nous vous proposons des éclisses en tôle électrozinguée ou galvanisée, soudées ou non soudées.</p><p>Les boîtes à rideaux métalliques de plus de 3 mètres sont réalisées respectivement en 2 et 3 tôles, prévoir plusieurs éléments suivant la longueur désirée.</p><p>Pour obturer les extrémités des boîtes à rideaux métalliques, nous vous proposons des joues:</p><ul><li>soudées</li><li>pliées 3 côtés non soudées</li><li>pliées 4 côtés non soudées</li></ul>"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "title": "Blocs-portes VISUAL portes blindées vitrées",
+  "slug": "blocs-portes-visual-portes-blindees-vitrees",
+  "segment": "blocs-portes-blindes-vitres",
+  "categories": [
+    "blocs-portes-blindes-vitres-69"
+  ],
+  "family": "Blocs-portes VISUAL portes blindées vitrées",
+  "order": 61,
+  "featured": false,
+  "image": "/media/fiches-produits/porte-blindee-visual.png",
+  "seo": {
+    "title": "Notre bloc-porte blindé vitré Visual sur mesure et modulable à l'infini",
+    "description": ""
+  },
+  "filters": {
+    "vantaux": [],
+    "certifications": [],
+    "fermetures": []
+  },
+  "downloads": [
+    {
+      "label": "blocs-portes-visual.pdf",
+      "file": "/media/fichiers/blocs-portes-visual-0.pdf"
+    }
+  ],
+  "quoteLabel": "Blocs-portes VISUAL portes blindées vitrées",
+  "options": {
+    "intro": "  ",
+    "html": "<h4>Options huisserie</h4><h4>Équipements complémentaires</h4>",
+    "groups": [
+      {
+        "title": "Options huisserie",
+        "icon": "ruler-combined",
+        "items": []
+      },
+      {
+        "title": "Équipements complémentaires",
+        "icon": "circle-plus",
+        "items": []
+      },
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      }
+    ],
+    "note": ""
+  }
+}

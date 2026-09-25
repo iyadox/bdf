@@ -1,0 +1,19 @@
+---
+import { youtubeThumb } from '@/lib/site';
+interface Props {
+  id: string;
+  title?: string;
+  thumb?: string;
+  class?: string;
+}
+const { id, title = 'Vidéo', thumb, class: cls = '' } = Astro.props;
+---
+
+<div class:list={['yt', cls]} data-yt={id} data-title={title} role="button" tabindex="0" aria-label={`Lire la vidéo : ${title}`}>
+  <img src={thumb || youtubeThumb(id)} alt="" loading="lazy" width="640" height="360" />
+  <div class="yt__play">
+    <span class="yt__btn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3l15 9-15 9z"></path></svg></span>
+    <span class="yt__title">{title}</span>
+    <span class="yt__note">Lecture via YouTube (cookies tiers au lancement)</span>
+  </div>
+</div>

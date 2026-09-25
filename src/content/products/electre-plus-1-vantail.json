@@ -1,0 +1,176 @@
+{
+  "title": "ELECTRE PLUS 1 vantail",
+  "slug": "electre-plus-1-vantail",
+  "segment": "blocs-portes-certifies",
+  "categories": [
+    "blocs-portes-certifies-59",
+    "blocs-portes-techniques-61"
+  ],
+  "family": "ELECTRE PLUS",
+  "order": 10,
+  "featured": false,
+  "image": "/media/fiches-produits/electre-plus-1v.png",
+  "badges": [
+    "Pare balles"
+  ],
+  "seo": {
+    "title": "Porte blindée Electre Plus 1 vantail certifiée Pare-balles NF",
+    "description": "La porte blindée BDF Electre Plus, garantie 10 ans, équipée d'un verrou motorisé est certifiée anti-effraction par le CNPP reconnu par les assurances et pare-balles par le Banc National d'Epreuve"
+  },
+  "specs": {
+    "vantaux": "1 vantail",
+    "fermeture": "Serrure motorisée",
+    "certification": "Pare balles"
+  },
+  "filters": {
+    "vantaux": [
+      "1 vantail"
+    ],
+    "certifications": [
+      "Pare-balles"
+    ],
+    "fermetures": [
+      "Serrure motorisée"
+    ]
+  },
+  "composition": "<p><strong>Certifiée BANC NATIONAL D'EPREUVE Porte Pare balles</strong></p><p>La porte blindée ELECTRE PLUS est composée de:</p><ul><li>2 faces en acier de 20/10ème électrozinguée</li><li>5 omégas raidisseurs</li><li>4 paumelles soudées de 140 mm à billes</li><li>laine de roche</li><li>un cadre de rénovation soudé 4 côtés</li><li>un anti-dégondage par tenon mortaise</li><li>un ferme porte</li></ul>",
+  "downloads": [
+    {
+      "label": "electre-plus-1v.pdf",
+      "file": "/media/fichiers/electre-plus-1v.pdf"
+    }
+  ],
+  "quoteLabel": "ELECTRE PLUS 1 vantail",
+  "locks": {
+    "intro": "La porte blindée ELECTRE PLUS est proposée avec une serrure motorisée encastrée 3 points de fermeture. La mise en service de la serrure est effectuée par Sersys (tarif comprenant leur prestation en IDF).",
+    "extras": [
+      {
+        "title": "Inclus avec la serrure",
+        "icon": "key",
+        "html": "<p>Le poteau technique avec platine de gestion de la serrure comprend:</p><ul><li>une alimentation chargeur 12 Vcc</li><li>un bouton moleté d'ouverture d'urgence</li><li>un bouton poussoir de sortie à LED.</li></ul>"
+      },
+      {
+        "title": "Options fermeture",
+        "icon": "circle-plus",
+        "html": "<p>En option vous avez la possibilité d’inclure une résistance pare-balles à votre bloc-porte.</p><p>L’ensemble extérieur est proposé en option avec:</p><ul><li>un aileron intérieur et/ou extérieur.</li><li>une poignée bâton de maréchal inox petit modèle largeur 400 intérieur et/ou extérieur.</li><li>une poignée bâton de maréchal inox grand modèle largeur 1700 intérieur et/ou extérieur.</li></ul>"
+      }
+    ]
+  },
+  "frame": {
+    "intro": "L’huisserie de la porte blindée ELECTRE PLUS est composée de tôle multi-plis en 20/10ème électrozinguée.\n\nSelon la configuration de votre installation, vous avez le choix entre les huisseries suivantes:",
+    "cards": [
+      {
+        "icon": "square",
+        "title": "En applique",
+        "description": "Pose en surface sur la maçonnerie existante."
+      },
+      {
+        "icon": "rotate",
+        "title": "Rénovation",
+        "description": "Remplacement sans gros travaux. Installation rapide sur bâti existant."
+      }
+    ]
+  },
+  "options": {
+    "intro": "Avec l’huisserie choisie vous avez la possibilité d’intégrer des pattes à scellement soudées. Nous vous proposons également d’ajouter un oculus blindé vitrage certifié EN 356 P8B à votre porte ELECTRE PLUS.",
+    "html": "<h4>Options huisserie</h4><h4>Équipements complémentaires</h4>",
+    "groups": [
+      {
+        "title": "Options huisserie",
+        "icon": "ruler-combined",
+        "items": []
+      },
+      {
+        "title": "Équipements complémentaires",
+        "icon": "circle-plus",
+        "items": []
+      },
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      }
+    ],
+    "note": "<p>Avec l’huisserie choisie vous avez la possibilité d’intégrer des pattes à scellement soudées.</p>"
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet",
+        "title": "Époxy mono couleur",
+        "description": "180 couleurs RAL au choix."
+      },
+      {
+        "icon": "brush",
+        "title": "Grenaillage polyzing",
+        "description": "Finition texturée résistante."
+      }
+    ]
+  },
+  "certification": {
+    "badges": [
+      {
+        "type": "balles",
+        "label": "Pare-balles FB6"
+      }
+    ],
+    "labs": "Certifié par Banc National d'Epreuve",
+    "logos": [
+      {
+        "image": "/media/editeur/certification-pare-balles.jpg",
+        "caption": "Banc National d'Epreuve FB6",
+        "alt": "Certification Banc National d'Epreuve NF-EN-1522/1523 FB6 NS"
+      },
+      {
+        "image": "/media/editeur/certification-pare-balles-2.jpg",
+        "caption": "Certifié Pare Balles",
+        "alt": "Certifié Pare Balles"
+      }
+    ],
+    "description": "<p>Vidéo du test de résistance balistique des portes</p><p>ELECTRE PLUS est une porte blindée 1 vantail avec un niveau de certification pare-balles NF -EN-1522/1523 FB6 NS certifié par le Banc National d’Epreuve Saint-Etienne.</p>",
+    "norms": "<h3>Certifications CNPP :</h3><ul><li>XP P20320 Niveau 5 B</li><li>XP ENV 1627 Niveau 4</li><li>XP ENV 1630 Niveau 4</li><li>NF P20311 Niveau 5</li><li>NF P20551 Niveau 5 B</li></ul>",
+    "video": "_8vfvCZxY9M",
+    "videoTitle": "Vidéo de test en laboratoire"
+  },
+  "usages": {
+    "intro": "La porte blindée ELECTRE PLUS est destinée à tous les espaces susceptibles d’être vandalisés nécessitant des mesures de sécurité pour les personnes et les marchandises tels que:",
+    "items": [
+      {
+        "icon": "landmark",
+        "title": "Bâtiments publics"
+      },
+      {
+        "icon": "shield-halved",
+        "title": "Centres de données"
+      },
+      {
+        "icon": "truck-field",
+        "title": "Transport de fonds"
+      },
+      {
+        "icon": "city",
+        "title": "Utilité publique"
+      },
+      {
+        "icon": "triangle-exclamation",
+        "title": "Zones à risque"
+      }
+    ]
+  }
+}

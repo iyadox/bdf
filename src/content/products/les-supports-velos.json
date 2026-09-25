@@ -1,0 +1,66 @@
+{
+  "title": "Les supports à vélos",
+  "slug": "les-supports-velos",
+  "segment": "grilles-et-accessoires",
+  "categories": [
+    "grilles-et-accessoires-73"
+  ],
+  "family": "Les supports à vélos",
+  "order": 73,
+  "featured": false,
+  "image": "/media/fiches-produits/support-velos-equerres-2.png",
+  "seo": {
+    "title": "Les supports à vélos",
+    "description": ""
+  },
+  "filters": {
+    "vantaux": [],
+    "certifications": [],
+    "fermetures": []
+  },
+  "composition": "<p>Un support à vélos est un dispositif permettant de ranger et fixer les vélos. Il permet un gain d'espace.<br/><br/>Blindages de France conçoit et fabrique sur mesure depuis plus de 30 ans dans son usine en France des supports à vélos en acier.</p>",
+  "downloads": [
+    {
+      "label": "support-velo.pdf",
+      "file": "/media/fichiers/support-velo.pdf"
+    }
+  ],
+  "quoteLabel": "Les supports à vélos",
+  "options": {
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet",
+        "title": "Époxy mono couleur",
+        "description": "180 couleurs RAL au choix."
+      }
+    ]
+  },
+  "characteristics": {
+    "html": "<p>Blindages de France vous propose deux types de supports à vélos:</p><ul><li>Support à équerres</li></ul><p><img alt=\"\" loading=\"lazy\" src=\"/media/editeur/support-velos-equerres-2.png\"/></p><ul><li>Support à platines</li></ul><p><img alt=\"\" loading=\"lazy\" src=\"/media/editeur/support-velos-a-platines-2.png\"/></p><p>Nos portes vélos sur mesure en acier possèdent 3 crochets par mètre en dimension alternée pour la fixation des vélos.</p>"
+  }
+}

@@ -1,0 +1,297 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/ui/PageHero.astro';
+import Certifs from '@/components/home/Certifs.astro';
+import CtaBand from '@/components/ui/CtaBand.astro';
+import Icon from '@/components/Icon.astro';
+import certs from '@/data/certifications.json';
+const o = certs.overview;
+const rows = [
+  { k: 'Protection', a: "Contre l'effraction", f: "Contre l'incendie", b: 'Contre les tirs' },
+  { k: 'Laboratoire', a: 'CNPP', f: 'EFECTIS', b: "Banc National d'Épreuves (Saint-Étienne)" },
+  { k: 'Norme', a: 'NF · EN 1627-1630', f: 'EN 1634-1 · classement EN 13501-2', b: 'EN 1522-1523' },
+  { k: 'Niveaux', a: 'BP1 · BP2 · BP3', f: 'EI 30 · EI 60 · EI 90 · EI 120', b: 'FB4 · FB5 · FB6 · FB7' },
+  { k: 'Mesure', a: 'Temps de résistance : 5, 10, 15 min', f: 'Durée de résistance au feu : 30 à 120 min', b: 'Calibre arrêté : .357 Magnum → 7.62×39' },
+  { k: 'Pour qui ?', a: 'Logements, commerces, bureaux', f: 'ERP, IGH, chaufferies, parkings', b: 'Banques, ambassades, sites sensibles' },
+];
+---
+
+<BaseLayout title="Nos certifications" description="Savoir-faire certifié : portes blindées certifiées anti-effraction A2P (CNPP), coupe-feu (EFECTIS) et pare-balles (Banc National d'Épreuves). Tests en laboratoire, conformité et traçabilité.">
+  <PageHero title={o.title.split(' ')[0]} accent={o.title.split(' ').slice(1).join(' ')} eyebrow="Nos garanties de qualité" lead={o.lead} crumbs={[{ label: 'Nos certifications' }]}>
+    <ul class="hl" data-reveal style="--d:.24s">
+      {
+        o.highlights.map((h) => (
+          <li class="panel">
+            <span class="icon-box">
+              <Icon name={h.icon} />
+            </span>
+            <span>
+              <strong>{h.title}</strong>
+              <span class="muted">{h.text}</span>
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </PageHero>
+
+  <Certifs />
+
+  <section class="section section--tight">
+    <div class="container--narrow intro" data-reveal>
+      <p>{o.intro}</p>
+      <p>{o.intro2}</p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" data-reveal>Comparatif</p>
+        <h2 class="h2" data-reveal style="--d:.08s">Quelle certification <span class="grad-orange">pour quel besoin ?</span></h2>
+      </div>
+      <div class="ctable-wrap" data-reveal>
+        <table class="ctable">
+          <thead>
+            <tr>
+              <th></th>
+              <th><a href="/certifications/anti-effraction"><Icon name="shield" /> Anti-effraction A2P</a></th>
+              <th><a href="/certification-porte-blindee/coupe-feu"><Icon name="flame" /> Coupe-feu</a></th>
+              <th><a href="/certification-porte-blindee/pare-balles"><Icon name="crosshair" /> Pare-balles</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              rows.map((r) => (
+                <tr>
+                  <th scope="row">{r.k}</th>
+                  <td>{r.a}</td>
+                  <td>{r.f}</td>
+                  <td>{r.b}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" data-reveal>Vos garanties</p>
+        <h2 class="h2" data-reveal style="--d:.08s">Pourquoi choisir une porte <span class="grad-orange">certifiée ?</span></h2>
+        <p class="lead" data-reveal style="--d:.16s">Les certifications officielles vous apportent des garanties concrètes et mesurables.</p>
+      </div>
+      <div class="why">
+        {
+          o.why.map((w, i) => (
+            <div class="why__card panel spot" data-reveal style={`--d:${i * 0.08}s`} data-spot>
+              <span class="icon-box">
+                <Icon name={w.icon} />
+              </span>
+              <h3 class="h4">{w.title}</h3>
+              <p class="muted">{w.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section process">
+    <div class="container">
+      <div class="section-head center">
+        <p class="eyebrow eyebrow--center" data-reveal>Notre engagement qualité</p>
+        <h2 class="h2" data-reveal style="--d:.08s">Le processus de <span class="grad-orange">certification</span></h2>
+        <p class="lead" data-reveal style="--d:.16s">De la conception à la validation finale, découvrez les étapes qui garantissent la qualité de nos portes blindées certifiées.</p>
+      </div>
+      <ol class="tl">
+        {
+          o.process.map((s, i) => (
+            <li class="tl__step" data-reveal={i % 2 ? 'right' : 'left'}>
+              <span class="tl__num">{i + 1}</span>
+              <div class="tl__card panel">
+                <h3 class="h4">{s.title}</h3>
+                <p class="muted">{s.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+      <p class="center tag mono" data-reveal>3 certifications officielles · Des tests en conditions réelles · Une garantie de performance</p>
+    </div>
+  </section>
+
+  <CtaBand title="Besoin d'une porte certifiée ?" text="Nos experts vous conseillent pour choisir la certification adaptée à vos besoins." />
+</BaseLayout>
+
+<style>
+  .hl {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 0.8rem;
+    margin-top: 0.6rem;
+  }
+  .hl li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .hl li > span:last-child {
+    display: grid;
+    font-size: 0.86rem;
+  }
+  .intro {
+    font-size: var(--fs-md);
+    color: var(--text-2);
+    text-align: center;
+  }
+  .ctable-wrap {
+    overflow-x: auto;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    background: rgba(6, 16, 30, 0.6);
+  }
+  .ctable {
+    min-width: 760px;
+  }
+  .ctable th,
+  .ctable td {
+    padding: 1rem 1.2rem;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.92rem;
+  }
+  .ctable thead th {
+    font-family: var(--f-display);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    background: rgba(8, 20, 38, 0.8);
+  }
+  .ctable thead a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .ctable thead a:hover {
+    color: var(--orange);
+  }
+  .ctable thead :global(svg) {
+    color: var(--orange);
+  }
+  .ctable tbody th {
+    font-family: var(--f-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 400;
+    width: 160px;
+  }
+  .ctable td {
+    color: var(--text-2);
+  }
+  .ctable tbody tr:hover {
+    background: rgba(46, 104, 148, 0.1);
+  }
+  .why {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+    gap: 1rem;
+  }
+  .why__card {
+    position: relative;
+    display: grid;
+    gap: 0.8rem;
+    align-content: start;
+    padding: 1.6rem;
+    overflow: hidden;
+  }
+  .why__card p {
+    margin: 0;
+    font-size: 0.92rem;
+  }
+  .tl {
+    list-style: none;
+    position: relative;
+    display: grid;
+    gap: 1.4rem;
+    max-width: 980px;
+    margin: 0 auto 2rem;
+  }
+  .tl::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    translate: -1px 0;
+    background: linear-gradient(180deg, var(--orange), rgba(46, 104, 148, 0.6), transparent);
+  }
+  .tl__step {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 64px 1fr;
+    align-items: center;
+  }
+  .tl__num {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 58px;
+    font-family: var(--f-display);
+    color: #fff;
+    background: var(--orange);
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+    box-shadow: 0 0 30px var(--orange-glow);
+    z-index: 1;
+  }
+  .tl__card {
+    grid-row: 1;
+    padding: 1.3rem 1.4rem;
+    display: grid;
+    gap: 0.5rem;
+  }
+  .tl__card p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+  .tl__step:nth-child(odd) .tl__card {
+    grid-column: 1;
+    text-align: right;
+  }
+  .tl__step:nth-child(even) .tl__card {
+    grid-column: 3;
+  }
+  .tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  @media (max-width: 760px) {
+    .tl::before {
+      left: 26px;
+    }
+    .tl__step {
+      grid-template-columns: 52px 1fr;
+      gap: 0.8rem;
+    }
+    .tl__num {
+      grid-column: 1;
+    }
+    .tl__step:nth-child(odd) .tl__card,
+    .tl__step:nth-child(even) .tl__card {
+      grid-column: 2;
+      text-align: left;
+    }
+  }
+</style>

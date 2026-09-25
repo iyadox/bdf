@@ -1,0 +1,121 @@
+{
+  "title": "SUPER BLINDAGE à cadre 2 vantaux",
+  "slug": "super-blindage-cadre-2-vantaux",
+  "segment": "blindages-de-porte",
+  "categories": [
+    "blindages-de-porte-67"
+  ],
+  "family": "SUPER BLINDAGE à cadre",
+  "order": 59,
+  "featured": false,
+  "image": "/media/fiches-produits/super-blindage-a-cadre-2v.png",
+  "badges": [
+    "Sans certification"
+  ],
+  "seo": {
+    "title": "Notre blindage de porte Super Blindage à cadre 2 vantaux en acier",
+    "description": "Vous souhaitez renforcer votre porte en bois? Notre Blindage de porte Super Blindage à cadre 2 vantaux est spécialement conçu pour conserver votre porte d’origine en la rendant blindée et anti-effraction"
+  },
+  "specs": {
+    "vantaux": "2 vantaux",
+    "dimensions": "Notre tarif pour le blindage de porte SUPER BLINDAGE 2 vantaux s’applique pour les dimensions maximum 2000 x 2300 (mm).\nFabricant de blocs portes sur mesure, pour toutes autres dimensions nous vous proposerons une solution personnalisée, n’hésitez pas à nous contacter.",
+    "fermeture": "Sans serrure",
+    "certification": "Sans certification"
+  },
+  "filters": {
+    "vantaux": [
+      "2 vantaux"
+    ],
+    "certifications": [
+      "Sans certification"
+    ],
+    "fermetures": [
+      "Sans serrure"
+    ]
+  },
+  "composition": "<p>Le blindage de porte SUPER BLINDAGE 2 vantaux est composé de:</p><ul><li>1 face en acier 15 ou 20/10ème électrozinguée</li><li>4 paumelles soudées de 140 mm à billes par vantail</li><li>un cadre soudé 3 côtés en tôle pliée 20/10</li><li>le choix entre 4 blindages de configuration différente en 15/10 ou 20/10</li></ul><p>Le blindage de porte SUPER BLINDAGE 2 vantaux permet de récupérer votre porte en bois d’origine.</p>",
+  "downloads": [
+    {
+      "label": "super-blindage-a-cadre-2v.pdf",
+      "file": "/media/fichiers/super-blindage-a-cadre-2v.pdf"
+    }
+  ],
+  "quoteLabel": "SUPER BLINDAGE à cadre 2 vantaux",
+  "locks": {
+    "intro": "Le blindage de porte SUPER BLINDAGE 2 vantaux est fourni sans serrure."
+  },
+  "options": {
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Options huisserie",
+        "icon": "ruler-combined",
+        "items": [
+          {
+            "label": "Barre de seuil",
+            "picto": "/media/pictos-options/12-barre-seuil.jpg"
+          },
+          {
+            "label": "Renforts de paumelles",
+            "picto": "/media/pictos-options/1-renforts-paumelles.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet",
+        "title": "Époxy mono couleur",
+        "description": "180 couleurs RAL au choix."
+      },
+      {
+        "icon": "brush",
+        "title": "Grenaillage polyzing",
+        "description": "Finition texturée résistante."
+      }
+    ]
+  },
+  "usages": {
+    "intro": "Le blindage de porte SUPER BLINDAGE 2 vantaux est destiné à fermer les locaux où la porte existante doit être conservée comme par exemple:",
+    "items": [
+      {
+        "icon": "building",
+        "title": "Appartements"
+      },
+      {
+        "icon": "briefcase",
+        "title": "Cabinets"
+      },
+      {
+        "icon": "people-roof",
+        "title": "Espaces publics"
+      },
+      {
+        "icon": "house",
+        "title": "Maisons individuelles"
+      }
+    ]
+  }
+}

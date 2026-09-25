@@ -1,0 +1,69 @@
+{
+  "title": "Barres de pivotement",
+  "slug": "barres-de-pivotement",
+  "segment": "tolerie-pliage-et-profils",
+  "categories": [
+    "tolerie-pliage-et-profils-71"
+  ],
+  "family": "Barres de pivotement",
+  "order": 64,
+  "featured": false,
+  "image": "/media/fiches-produits/barre-de-pivotement-en-l.jpg",
+  "seo": {
+    "title": "Barres de pivotement",
+    "description": ""
+  },
+  "specs": {
+    "dimensions": "Blindages de France conçoit vos barres de pivotement totalement sur mesure."
+  },
+  "filters": {
+    "vantaux": [],
+    "certifications": [],
+    "fermetures": []
+  },
+  "composition": "<p>La barre de pivotement est l’un des systèmes de pivotement qui permet de renforcer la sécurité de votre porte.<br/><br/>Il consiste à remplacer les charnières existantes de votre porte blindée ou blindage de porte afin d'avoir un pivot et une résistance accrue du fait de l'augmentation du poids de la porte.</p><p>La barre de pivotement est une barre métallique constituée d’acier.</p>",
+  "downloads": [
+    {
+      "label": "barres-de-pivotement.pdf",
+      "file": "/media/fichiers/barres-de-pivotement.pdf"
+    }
+  ],
+  "quoteLabel": "Barres de pivotement",
+  "options": {
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet",
+        "title": "Époxy mono couleur",
+        "description": "180 couleurs RAL au choix."
+      }
+    ]
+  },
+  "characteristics": {
+    "html": "<p>Pour s'adapter à vos besoins, Blindages de France fabrique plusieurs versions de barres de pivotement:</p><ul><li>Barre de pivotement en L </li></ul><p><img alt=\"\" loading=\"lazy\" src=\"/media/editeur/barre-de-pivotement-en-l.jpg\"/></p><ul><li>Barre de pivotement en fer plat horizontal ou vertical</li></ul><p><img alt=\"\" loading=\"lazy\" src=\"/media/editeur/barre-de-pivotement-en-fer-plat.jpg\"/></p><ul><li>Barre de pivotement 1/2 plat 1/2 pliage</li></ul><p><img alt=\"\" loading=\"lazy\" src=\"/media/editeur/barre-de-pivotement-plat-pliage.jpg\"/></p><ul><li>Barre de pivotement pour porte à recouvrement</li></ul><p><img alt=\"\" loading=\"lazy\" src=\"/media/editeur/barre-de-pivotement-porte-recouvrement.jpg\"/></p><ul><li>Barre de pivotement à cadre</li></ul><p><img alt=\"\" loading=\"lazy\" src=\"/media/editeur/barre-de-pivotement-a-cadre.jpg\"/></p><p>Blindages de France vous propose également d’ajouter en option à votre barre de pivotement pour porte blindée ou blindage de porte:</p><ul><li>3 renforts de paumelle</li><li>le perçage et le fraisage en usine</li><li>le décalage d'épaisseur</li></ul>"
+  }
+}

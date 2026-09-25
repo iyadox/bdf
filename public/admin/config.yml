@@ -1,0 +1,603 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  Administration du site Blindages de France — https://www.blindagesdefrance.fr/admin
+#  Chaque enregistrement crée un commit sur GitHub, puis le site se reconstruit
+#  automatiquement (1 à 2 minutes). Voir le fichier README.md, rubrique « Administration ».
+# ─────────────────────────────────────────────────────────────────────────────
+backend:
+  name: github
+  repo: iyadox/bdf
+  branch: main
+  commit_messages:
+    create: "Ajout {{collection}} : {{slug}}"
+    update: "Mise à jour {{collection}} : {{slug}}"
+    delete: "Suppression {{collection}} : {{slug}}"
+    uploadMedia: "Ajout du média {{path}}"
+    deleteMedia: "Suppression du média {{path}}"
+
+locale: fr
+site_url: https://www.blindagesdefrance.fr
+display_url: https://www.blindagesdefrance.fr
+logo_url: /brand/bdf-mark.svg
+media_folder: public/media/uploads
+public_folder: /media/uploads
+
+collections:
+  # ───────────────────────────── PRODUITS
+  - name: produits
+    label: Produits
+    label_singular: Produit
+    description: Fiches du catalogue (blocs-portes, blindages, grilles, tôlerie…).
+    folder: src/content/products
+    extension: json
+    format: json
+    create: true
+    delete: true
+    identifier_field: title
+    slug: "{{fields.slug}}"
+    summary: "{{title}} · {{segment}}"
+    sortable_fields: [title, order, segment]
+    view_filters:
+      - { label: "Mis en avant", field: featured, pattern: true }
+      - { label: "Masqués", field: published, pattern: false }
+    view_groups:
+      - { label: Gamme, field: segment }
+    fields:
+      - { label: Nom du produit, name: title, widget: string }
+      - { label: "Identifiant d'URL", name: slug, widget: string, pattern: ['^[a-z0-9-]+$', "Minuscules, chiffres et tirets uniquement"], hint: "Ex. signature-bp1-1-vantail — ne pas modifier après publication (sinon l'ancienne adresse ne fonctionnera plus)." }
+      - label: Gamme (adresse)
+        name: segment
+        widget: select
+        options:
+          - { label: Blocs-portes certifiés, value: blocs-portes-certifies }
+          - { label: Blocs-portes d'appartement, value: blocs-portes-d-appartement }
+          - { label: Blocs-portes de cave, value: blocs-portes-de-cave }
+          - { label: Blocs-portes techniques, value: blocs-portes-techniques }
+          - { label: Blindages de porte, value: blindages-de-porte }
+          - { label: Blocs-portes blindés vitrés, value: blocs-portes-blindes-vitres }
+          - { label: Grilles et accessoires, value: grilles-et-accessoires }
+          - { label: Tôlerie, pliage et profils, value: tolerie-pliage-et-profils }
+          - { label: Travaux spéciaux, value: travaux-speciaux }
+      - { label: Catégories, name: categories, widget: relation, collection: categories, value_field: slug, search_fields: [title], display_fields: [title], multiple: true, required: false }
+      - { label: Famille, name: family, widget: string, required: false, hint: "Regroupe les variantes 1 et 2 vantaux (ex. SIGNATURE BP1)." }
+      - { label: Ordre d'affichage, name: order, widget: number, value_type: int, default: 999 }
+      - { label: Mis en avant sur l'accueil, name: featured, widget: boolean, default: false }
+      - { label: Publié, name: published, widget: boolean, default: true }
+      - { label: Image principale, name: image, widget: image, required: false }
+      - { label: Galerie, name: gallery, widget: list, field: { label: Image, name: image, widget: image }, required: false }
+      - { label: Photo en situation, name: situationImage, widget: image, required: false }
+      - { label: Accroche (liste), name: teaser, widget: text, required: false }
+      - { label: Badges, name: badges, widget: list, required: false, hint: "Ex. A2P BP1, Coupe-feu 60 min, Made in France" }
+      - label: Référencement (SEO)
+        name: seo
+        widget: object
+        collapsed: true
+        required: false
+        fields:
+          - { label: Titre de la page, name: title, widget: string, required: false }
+          - { label: Description (≈155 caractères), name: description, widget: text, required: false }
+      - { label: Résumé, name: summary, widget: text, required: false, hint: "Texte HTML (balises <p>, <strong>, <ul><li>, <a> autorisées)." }
+      - label: Caractéristiques clés
+        name: specs
+        widget: object
+        required: false
+        fields:
+          - { label: Vantaux, name: vantaux, widget: string, required: false }
+          - { label: Dimensions, name: dimensions, widget: text, required: false }
+          - { label: Fermeture, name: fermeture, widget: string, required: false }
+          - { label: Certification, name: certification, widget: string, required: false }
+      - label: Filtres du catalogue
+        name: filters
+        widget: object
+        fields:
+          - { label: Vantaux, name: vantaux, widget: select, multiple: true, required: false, options: ["1 vantail", "2 vantaux"] }
+          - { label: Certifications, name: certifications, widget: select, multiple: true, required: false, options: ["Sans certification", "A2P BP1", "A2P BP2", "A2P BP3", "Coupe-feu 30 min", "Coupe-feu 60 min", "Pare-balles"] }
+          - label: Fermetures
+            name: fermetures
+            widget: select
+            multiple: true
+            required: false
+            options: ["Serrure encastrée multipoints", "Serrures multi-points en applique", "Serrure encastrée 1 point", "Sans serrure", "Anti-panique en applique", "Anti-panique encastrée", "Contrôle d'accès", "Serrure motorisée", "Serrure à verrouillage contrôlé", "Verrous", "Fermeture provisoire"]
+      - { label: Composition, name: composition, widget: text, required: false, hint: "Texte HTML (balises <p>, <strong>, <ul><li>, <a> autorisées)." }
+      - label: Documents à télécharger
+        name: downloads
+        widget: list
+        required: false
+        fields:
+          - { label: Libellé, name: label, widget: string, required: false }
+          - { label: Fichier (PDF), name: file, widget: file }
+      - { label: Libellé pour le devis, name: quoteLabel, widget: string, required: false }
+      - label: Serrures
+        name: locks
+        widget: object
+        collapsed: true
+        required: false
+        fields:
+          - { label: Introduction, name: intro, widget: text, required: false }
+          - { label: En-têtes du tableau, name: tableHeads, widget: list, required: false }
+          - label: Tableau des serrures
+            name: table
+            widget: list
+            required: false
+            fields:
+              - { label: Marque, name: brand, widget: string, required: false }
+              - { label: Modèle, name: model, widget: string, required: false }
+              - { label: Points, name: points, widget: string, required: false }
+              - { label: Certification, name: certification, widget: string, required: false }
+              - { label: Niveau, name: level, widget: string, required: false }
+          - label: Encadrés
+            name: extras
+            widget: list
+            required: false
+            fields:
+              - { label: Titre, name: title, widget: string }
+              - &icon { label: Icône, name: icon, widget: string, required: false, hint: "Nom d'icône : shield, flame, crosshair, key, lock, door-closed, factory, users, check, star, truck, wrench, award…" }
+              - { label: Contenu, name: html, widget: text, required: false, hint: "Texte HTML (balises <p>, <strong>, <ul><li>, <a> autorisées)." }
+          - { label: Texte complémentaire, name: html, widget: text, required: false, hint: "Texte HTML (balises <p>, <strong>, <ul><li>, <a> autorisées)." }
+          - label: Blocs supplémentaires
+            name: more
+            widget: list
+            required: false
+            fields:
+              - { label: Titre, name: title, widget: string, required: false }
+              - { label: Contenu, name: html, widget: text, required: false, hint: "Texte HTML (balises <p>, <strong>, <ul><li>, <a> autorisées)." }
+      - label: Huisserie
+        name: frame
+        widget: object
+        collapsed: true
+        required: false
+        fields:
+          - { label: Introduction, name: intro, widget: text, required: false }
+          - { label: Texte, name: html, widget: text, required: false, hint: "Texte HTML (balises <p>, <strong>, <ul><li>, <a> autorisées)." }
+          - label: Cartes
+            name: cards
+            widget: list
+            required: false
+            fields: &card
+              - *icon
+              - { label: Titre, name: title, widget: string }
+              - { label: Description, name: description, widget: text, required: false }
+      - label: Options
+        name: options
+        widget: object
+        collapsed: true
+        required: false
+        fields:
+          - { label: Introduction, name: intro, widget: text, required: false }
+          - { label: Texte, name: html, widget: text, required: false, hint: "Texte HTML (balises <p>, <strong>, <ul><li>, <a> autorisées)." }
+          - { label: Note, name: note, widget: text, required: false }
+          - label: Groupes d'options
+            name: groups
+            widget: list
+            required: false
+            fields:
+              - { label: Titre, name: title, widget: string }
+              - *icon
+              - label: Options
+                name: items
+                widget: list
+                fields:
+                  - { label: Libellé, name: label, widget: string }
+                  - { label: Pictogramme, name: picto, widget: image, required: false }
+      - label: Finitions
+        name: finishes
+        widget: object
+        collapsed: true
+        required: false
+        fields:
+          - { label: De série, name: standard, widget: list, required: false }
+          - { label: En option, name: options, widget: list, required: false, fields: *card }
+          - { label: Texte, name: html, widget: text, required: false, hint: "Texte HTML (balises <p>, <strong>, <ul><li>, <a> autorisées)." }
+      - label: Certification
+        name: certification
+        widget: object
+        collapsed: true
+        required: false
+        fields:
+          - label: Badges
+            name: badges
+            widget: list
+            required: false
+            fields:
+              - { label: Type, name: type, widget: select, options: [a2p, feu, balles, fr, solid] }
+              - { label: Libellé, name: label, widget: string }
+          - { label: Laboratoires, name: labs, widget: string, required: false }
+          - label: Logos
+            name: logos
+            widget: list
+            required: false
+            fields:
+              - { label: Image, name: image, widget: image }
+              - { label: Légende, name: caption, widget: string, required: false }
+              - { label: Texte alternatif, name: alt, widget: string, required: false }
+          - { label: Description, name: description, widget: text, required: false, hint: "Texte HTML (balises <p>, <strong>, <ul><li>, <a> autorisées)." }
+          - { label: Normes, name: norms, widget: text, required: false, hint: "Texte HTML (balises <p>, <strong>, <ul><li>, <a> autorisées)." }
+          - { label: Vidéo YouTube (identifiant), name: video, widget: string, required: false, hint: "Ex. 84tSU8-mMf4 (la partie après v= dans l'adresse YouTube)" }
+          - { label: Titre de la vidéo, name: videoTitle, widget: string, required: false }
+          - { label: Liens, name: links, widget: list, required: false }
+      - label: Conclusion
+        name: closing
+        widget: object
+        collapsed: true
+        required: false
+        fields:
+          - { label: Introduction, name: intro, widget: text, required: false }
+          - { label: Texte, name: html, widget: text, required: false, hint: "Texte HTML (balises <p>, <strong>, <ul><li>, <a> autorisées)." }
+          - { label: Cartes, name: cards, widget: list, required: false, fields: *card }
+      - label: Usages
+        name: usages
+        widget: object
+        collapsed: true
+        required: false
+        fields:
+          - { label: Introduction, name: intro, widget: text, required: false }
+          - { label: Texte, name: html, widget: text, required: false, hint: "Texte HTML (balises <p>, <strong>, <ul><li>, <a> autorisées)." }
+          - label: Usages
+            name: items
+            widget: list
+            required: false
+            fields:
+              - *icon
+              - { label: Titre, name: title, widget: string }
+      - label: Caractéristiques détaillées
+        name: characteristics
+        widget: object
+        collapsed: true
+        required: false
+        fields:
+          - { label: Contenu, name: html, widget: text, required: false, hint: "Texte HTML (balises <p>, <strong>, <ul><li>, <a> autorisées)." }
+
+  # ───────────────────────────── CATÉGORIES
+  - name: categories
+    label: Catégories
+    label_singular: Catégorie
+    folder: src/content/categories
+    extension: json
+    format: json
+    create: true
+    identifier_field: title
+    slug: "{{fields.slug}}"
+    sortable_fields: [title, order]
+    fields:
+      - { label: Titre, name: title, widget: string }
+      - { label: "Identifiant d'URL", name: slug, widget: string, hint: "Ex. blocs-portes-techniques-61" }
+      - { label: Gamme (adresse des produits), name: segment, widget: string }
+      - { label: Ordre, name: order, widget: number, value_type: int, default: 99 }
+      - { label: Description, name: description, widget: text }
+      - { label: Points forts, name: highlights, widget: list, required: false }
+      - *icon
+      - { label: Badge, name: badge, widget: string, required: false }
+      - { label: Image, name: image, widget: image, required: false }
+
+  # ───────────────────────────── INSTALLATEURS
+  - name: installateurs
+    label: Installateurs
+    label_singular: Installateur
+    description: Annuaire du réseau (carte et fiches). Cochez « Premium » pour une fiche vitrine enrichie.
+    folder: src/content/installers
+    extension: json
+    format: json
+    create: true
+    identifier_field: name
+    slug: "{{fields.slug}}"
+    summary: "{{name}} · {{postalCode}} {{city}}"
+    sortable_fields: [name, city, postalCode]
+    view_filters:
+      - { label: Premium, field: premium, pattern: true }
+      - { label: Masqués, field: published, pattern: false }
+    fields:
+      - { label: Nom, name: name, widget: string }
+      - { label: "Identifiant d'URL", name: slug, widget: string, pattern: ['^[a-z0-9-]+$', "Minuscules, chiffres et tirets uniquement"] }
+      - { label: Adresse, name: address, widget: string, required: false }
+      - { label: Code postal, name: postalCode, widget: string, required: false }
+      - { label: Ville, name: city, widget: string, required: false }
+      - { label: Téléphone, name: phone, widget: string, required: false }
+      - { label: Téléphone 2, name: phone2, widget: string, required: false }
+      - { label: E-mail, name: email, widget: string, required: false }
+      - { label: Site internet, name: website, widget: string, required: false }
+      - { label: Latitude, name: lat, widget: number, value_type: float, required: false, hint: "Position sur la carte. Astuce : clic droit sur Google Maps → les coordonnées s'affichent." }
+      - { label: Longitude, name: lng, widget: number, value_type: float, required: false }
+      - { label: Publié, name: published, widget: boolean, default: true }
+      - { label: Premium (fiche vitrine), name: premium, widget: boolean, default: false }
+      - { label: Ancien identifiant (redirection), name: legacyId, widget: number, value_type: int, required: false, hint: "Numéro de l'ancienne page /node/… — ne pas modifier." }
+      - { label: Logo, name: logo, widget: image, required: false }
+      - { label: Images d'en-tête, name: heroImages, widget: list, field: { label: Image, name: image, widget: image }, required: false }
+      - { label: Slogan, name: tagline, widget: string, required: false }
+      - { label: Partenaire depuis (année), name: partnerSince, widget: number, value_type: int, required: false }
+      - { label: Certifications, name: certifications, widget: list, required: false }
+      - label: Réseaux sociaux
+        name: socials
+        widget: object
+        collapsed: true
+        required: false
+        fields:
+          - { label: Facebook, name: facebook, widget: string, required: false }
+          - { label: Instagram, name: instagram, widget: string, required: false }
+          - { label: LinkedIn, name: linkedin, widget: string, required: false }
+          - { label: YouTube, name: youtube, widget: string, required: false }
+      - label: Couleurs
+        name: colors
+        widget: object
+        collapsed: true
+        required: false
+        fields:
+          - { label: Couleur dominante, name: dominante, widget: color, required: false }
+          - { label: Couleur d'accent, name: accent, widget: color, required: false }
+          - { label: Couleur d'alternance, name: alternance, widget: color, required: false }
+      - label: Chiffres clés
+        name: stats
+        widget: list
+        required: false
+        fields:
+          - { label: Valeur, name: value, widget: string }
+          - { label: Libellé, name: label, widget: string }
+      - { label: Présentation, name: presentation, widget: text, required: false, hint: "Texte HTML (balises <p>, <strong>, <ul><li>, <a> autorisées)." }
+      - { label: Services, name: services, widget: list, required: false, fields: *card }
+      - { label: Texte services, name: servicesText, widget: text, required: false }
+      - { label: Galerie de réalisations, name: gallery, widget: list, field: { label: Image, name: image, widget: image }, required: false }
+      - { label: Texte réalisations, name: realisationsText, widget: text, required: false }
+      - { label: Vidéos YouTube (identifiants), name: videos, widget: list, required: false }
+      - { label: Zone d'intervention, name: zone, widget: text, required: false }
+      - { label: Texte contact, name: contactText, widget: text, required: false }
+
+  # ───────────────────────────── ACTUALITÉS
+  - name: news
+    label: Actualités
+    label_singular: Actualité
+    folder: src/content/news
+    extension: md
+    format: frontmatter
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} · {{date}}"
+    sortable_fields: [date, title]
+    fields:
+      - { label: Titre, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime, format: "YYYY-MM-DD", time_format: false, date_format: "DD/MM/YYYY" }
+      - label: Catégorie
+        name: category
+        widget: select
+        default: "Actualité de l'entreprise"
+        options: ["Actualité de l'entreprise", "Réalisations", "Certifications", "Portes certifiées", "Salons et événements"]
+      - { label: Chapeau, name: excerpt, widget: text, required: false }
+      - { label: Image de couverture, name: cover, widget: image, required: false }
+      - { label: Vidéo YouTube (identifiant), name: video, widget: string, required: false }
+      - { label: Installateur lié, name: installer, widget: relation, collection: installateurs, value_field: slug, search_fields: [name, city], display_fields: ["{{name}} ({{city}})"], required: false }
+      - { label: Publié, name: published, widget: boolean, default: true }
+      - { label: À la une, name: featured, widget: boolean, default: false }
+      - { label: Article, name: body, widget: markdown }
+
+  # ───────────────────────────── PAGES LÉGALES
+  - name: pages
+    label: Pages légales
+    label_singular: Page
+    folder: src/content/pages
+    extension: md
+    format: frontmatter
+    create: false
+    fields:
+      - { label: Titre, name: title, widget: string }
+      - { label: Description, name: description, widget: text, required: false }
+      - { label: Mise à jour, name: updated, widget: datetime, format: "YYYY-MM-DD", time_format: false, required: false }
+      - { label: Contenu, name: body, widget: markdown }
+
+  # ───────────────────────────── RÉGLAGES
+  - name: reglages
+    label: Réglages du site
+    format: json
+    files:
+      - name: settings
+        label: Coordonnées, horaires, formulaires & options
+        file: src/data/settings.json
+        fields:
+          - label: Entreprise
+            name: company
+            widget: object
+            fields:
+              - { label: Nom, name: name, widget: string }
+              - { label: Nom court, name: shortName, widget: string }
+              - { label: Slogan, name: tagline, widget: string }
+              - { label: Signature, name: baseline, widget: string }
+              - { label: Année de création, name: founded, widget: number, value_type: int }
+              - { label: Description (référencement), name: description, widget: text }
+          - label: Contact
+            name: contact
+            widget: object
+            fields:
+              - { label: Téléphone affiché, name: phone, widget: string }
+              - { label: Téléphone international, name: phoneIntl, widget: string, hint: "Format +33148653278 (utilisé pour les liens d'appel)" }
+              - { label: Fax, name: fax, widget: string, required: false }
+              - { label: E-mail affiché, name: email, widget: string, required: false, hint: "Laisser vide pour n'afficher que le formulaire." }
+              - label: Adresse
+                name: address
+                widget: object
+                fields:
+                  - { label: Rue, name: street, widget: string }
+                  - { label: Code postal, name: postalCode, widget: string }
+                  - { label: Ville, name: city, widget: string }
+                  - { label: Pays, name: country, widget: string }
+              - label: Coordonnées GPS
+                name: geo
+                widget: object
+                fields:
+                  - { label: Latitude, name: lat, widget: number, value_type: float }
+                  - { label: Longitude, name: lng, widget: number, value_type: float }
+              - { label: Lien Google Maps, name: mapsUrl, widget: string }
+          - label: Horaires
+            name: hours
+            widget: object
+            fields:
+              - { label: Intitulé, name: label, widget: string }
+              - label: Jours
+                name: days
+                widget: list
+                allow_add: false
+                fields:
+                  - { label: Jour, name: day, widget: string }
+                  - { label: Ouverture (HH:MM), name: open, widget: string, required: false, hint: "Laisser vide si fermé" }
+                  - { label: Fermeture (HH:MM), name: close, widget: string, required: false }
+          - label: Réseaux sociaux
+            name: socials
+            widget: object
+            fields:
+              - { label: LinkedIn, name: linkedin, widget: string, required: false }
+              - { label: YouTube, name: youtube, widget: string, required: false }
+              - { label: X (Twitter), name: x, widget: string, required: false }
+          - label: Bandeau d'annonce
+            name: announcement
+            widget: object
+            fields:
+              - { label: Afficher le bandeau, name: enabled, widget: boolean }
+              - { label: Texte, name: text, widget: string }
+              - { label: Lien, name: link, widget: string, required: false }
+              - { label: Texte du lien, name: linkLabel, widget: string, required: false }
+          - label: Chiffres clés (accueil)
+            name: stats
+            widget: list
+            fields:
+              - { label: Valeur, name: value, widget: string }
+              - { label: Libellé, name: label, widget: string }
+          - label: Formulaires
+            name: forms
+            widget: object
+            hint: "Où arrivent les demandes de devis, de contact et d'adhésion."
+            fields:
+              - label: Service d'envoi
+                name: provider
+                widget: select
+                options:
+                  - { label: "Netlify Forms (recommandé si le site est hébergé sur Netlify)", value: netlify }
+                  - { label: "Web3Forms (gratuit, clé à renseigner)", value: web3forms }
+                  - { label: "Formspree", value: formspree }
+                  - { label: "Adresse personnalisée (API)", value: custom }
+                  - { label: "Messagerie du visiteur (mailto)", value: mailto }
+              - { label: Adresse d'envoi (Formspree / API), name: endpoint, widget: string, required: false }
+              - { label: Clé Web3Forms, name: web3formsKey, widget: string, required: false }
+              - { label: E-mail de réception, name: recipientEmail, widget: string, required: false, hint: "Utilisé en secours et pour le mode mailto." }
+              - { label: Page de remerciement, name: successPage, widget: string, default: /merci }
+          - label: Espace Pro
+            name: pro
+            widget: object
+            fields:
+              - { label: Adresse de connexion, name: loginUrl, widget: string, required: false, hint: "Adresse de la plateforme professionnelle. Vide = bouton « Demander mes accès »." }
+              - { label: Mot de passe oublié, name: passwordUrl, widget: string, required: false }
+              - { label: Création de compte, name: registerUrl, widget: string }
+          - label: Mesure d'audience
+            name: analytics
+            widget: object
+            hint: "Chargée uniquement après consentement du visiteur."
+            fields:
+              - { label: Domaine Plausible, name: plausibleDomain, widget: string, required: false }
+              - { label: Identifiant Google Analytics (G-…), name: gaMeasurementId, widget: string, required: false }
+          - label: Fonctionnalités
+            name: features
+            widget: object
+            fields:
+              - { label: Effets 3D, name: enable3D, widget: boolean }
+              - { label: Animation d'introduction, name: introAnimation, widget: boolean }
+              - { label: Configurateur 3D, name: showConfigurator, widget: boolean }
+              - { label: Comparateur, name: showCompare, widget: boolean }
+
+      - name: faq
+        label: Questions fréquentes (FAQ)
+        file: src/data/faq.json
+        fields:
+          - label: Thèmes
+            name: groups
+            widget: list
+            fields:
+              - { label: Thème, name: title, widget: string }
+              - *icon
+              - label: Questions
+                name: items
+                widget: list
+                summary: "{{fields.q}}"
+                fields:
+                  - { label: Question, name: q, widget: string }
+                  - { label: Réponse, name: a, widget: text, hint: "**gras**, [lien](/catalogue) et retours à la ligne acceptés." }
+
+      - name: company
+        label: Page « L'entreprise »
+        file: src/data/company.json
+        fields:
+          - label: En-tête
+            name: hero
+            widget: object
+            fields:
+              - { label: Surtitre, name: eyebrow, widget: string }
+              - { label: Titre, name: title, widget: string }
+              - { label: Introduction, name: lead, widget: text }
+              - { label: Images, name: images, widget: list, field: { label: Image, name: image, widget: image } }
+          - label: Historique
+            name: history
+            widget: object
+            fields:
+              - { label: Titre, name: title, widget: string }
+              - { label: Introduction, name: lead, widget: text }
+              - label: Étapes
+                name: steps
+                widget: list
+                fields:
+                  - { label: Année, name: year, widget: string }
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Texte, name: text, widget: text }
+          - label: Chiffres
+            name: stats
+            widget: list
+            fields:
+              - { label: Préfixe, name: prefix, widget: string, required: false }
+              - { label: Valeur, name: value, widget: number, value_type: int }
+              - { label: Suffixe, name: suffix, widget: string, required: false }
+              - { label: Libellé, name: label, widget: string }
+          - label: Savoir-faire
+            name: knowhow
+            widget: object
+            fields:
+              - { label: Titre, name: title, widget: string }
+              - { label: Sous-titre, name: subtitle, widget: string }
+              - { label: Paragraphes, name: text, widget: list, field: { label: Paragraphe, name: p, widget: text } }
+              - { label: Liste, name: list, widget: list }
+              - { label: Image, name: image, widget: image }
+          - label: Valeurs
+            name: values
+            widget: list
+            fields:
+              - *icon
+              - { label: Titre, name: title, widget: string }
+              - { label: Texte, name: text, widget: text }
+          - label: Organisation
+            name: organisation
+            widget: object
+            fields:
+              - { label: Titre, name: title, widget: string }
+              - { label: Texte, name: text, widget: text }
+              - label: Équipes
+                name: teams
+                widget: list
+                fields:
+                  - *icon
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Texte, name: text, widget: text }
+          - label: Locaux
+            name: facilities
+            widget: object
+            fields:
+              - label: Ateliers
+                name: workshops
+                widget: list
+                fields:
+                  - { label: Image, name: image, widget: image }
+                  - { label: Légende, name: caption, widget: string }
+              - label: Accueil et showroom
+                name: showroom
+                widget: list
+                fields:
+                  - { label: Image, name: image, widget: image }
+                  - { label: Légende, name: caption, widget: string }
+          - label: Environnement
+            name: environment
+            widget: object
+            fields:
+              - { label: Titre, name: title, widget: string }
+              - { label: Texte, name: text, widget: text }
+              - { label: Badge, name: badge, widget: string }
+              - { label: Liste, name: list, widget: list }

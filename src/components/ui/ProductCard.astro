@@ -1,0 +1,244 @@
+---
+import Icon from '@/components/Icon.astro';
+import { productUrl, quoteUrl, type Product } from '@/lib/catalog';
+import { badgeKind, fold, stripHtml } from '@/lib/site';
+interface Props {
+  p: Product;
+  catNames?: Record<string, string>;
+  compare?: boolean;
+  lazy?: boolean;
+}
+const { p, catNames = {}, compare = true, lazy = true } = Astro.props;
+const url = productUrl(p);
+const cat = p.categories.map((c) => catNames[c]).filter(Boolean)[0];
+const certs = p.filters.certifications.filter((c) => c !== 'Sans certification');
+const search = fold([p.title, p.family, p.categories.map((c) => catNames[c]).join(' '), p.badges.join(' '), p.filters.fermetures.join(' '), stripHtml(p.composition || '').slice(0, 240)].join(' '));
+---
+
+<article
+  class="pcard2"
+  data-product
+  data-slug={p.slug}
+  data-cats={p.categories.join('|')}
+  data-vantaux={p.filters.vantaux.join('|')}
+  data-certs={p.filters.certifications.join('|')}
+  data-fermetures={p.filters.fermetures.join('|')}
+  data-title={fold(p.title)}
+  data-order={p.order}
+  data-search={search}
+>
+  <a href={url} class="pcard2__media product-stage" data-tilt="8" aria-label={p.title}>
+    {p.image ? <img src={p.image} alt={p.title} loading={lazy ? 'lazy' : 'eager'} decoding="async" width="240" height="320" /> : <Icon name="door-closed" size={64} class="pcard2__ph" />}
+    <span class="pcard2__shine" aria-hidden="true"></span>
+    {
+      certs.length > 0 && (
+        <span class="pcard2__certs">
+          {certs.map((c) => (
+            <span class={`badge badge--${badgeKind(c)}`}>{c}</span>
+          ))}
+        </span>
+      )
+    }
+  </a>
+  <div class="pcard2__body">
+    {cat && <p class="pcard2__cat mono">{cat}</p>}
+    <h3 class="pcard2__title"><a href={url}>{p.title}</a></h3>
+    <ul class="pcard2__meta">
+      {p.filters.vantaux[0] && <li><Icon name="door-closed" size={14} /> {p.filters.vantaux.join(' / ')}</li>}
+      {p.filters.fermetures[0] && <li><Icon name="lock" size={14} /> {p.filters.fermetures[0]}{p.filters.fermetures.length > 1 ? ` +${p.filters.fermetures.length - 1}` : ''}</li>}
+    </ul>
+    <div class="pcard2__actions">
+      <a href={url} class="link-arrow">Fiche <Icon name="arrow-right" /></a>
+      <div class="pcard2__tools">
+        {
+          compare && (
+            <label class="cmp" title="Comparer">
+              <input type="checkbox" data-compare={p.slug} data-title={p.title} data-image={p.image} />
+              <Icon name="scale" size={16} />
+              <span class="sr-only">Comparer {p.title}</span>
+            </label>
+          )
+        }
+        <button type="button" class="fav" data-fav={p.slug} data-title={p.title} data-url={url} data-image={p.image} data-quote={p.quoteLabel || p.title} aria-pressed="false" aria-label={`Ajouter ${p.title} à ma sélection`}>
+          <Icon name="heart" size={16} />
+        </button>
+        <a href={quoteUrl(p)} class="quote" aria-label={`Demander un devis pour ${p.title}`} title="Demander un devis"><Icon name="file-text" size={16} /></a>
+      </div>
+    </div>
+  </div>
+</article>
+
+<style>
+  .pcard2 {
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    border: 1px solid var(--line);
+    background: linear-gradient(170deg, rgba(20, 44, 74, 0.5), rgba(6, 16, 30, 0.75));
+    overflow: hidden;
+    transition:
+      border-color 0.35s,
+      transform 0.5s var(--ease),
+      box-shadow 0.4s;
+  }
+  .pcard2:hover {
+    border-color: rgba(255, 102, 34, 0.5);
+    transform: translateY(-4px);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  }
+  .pcard2__media {
+    position: relative;
+    aspect-ratio: 4 / 4.2;
+    transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transition: transform 0.5s var(--ease);
+  }
+  :global(.pcard2__media.is-tilting) {
+    transition: none;
+  }
+  .pcard2__media img {
+    width: auto;
+    height: 86%;
+    max-width: 88%;
+    object-fit: contain;
+    transition: transform 0.7s var(--ease);
+    filter: drop-shadow(0 14px 16px rgba(0, 28, 60, 0.25));
+  }
+  .pcard2:hover .pcard2__media img {
+    transform: scale(1.05) translateY(-4px);
+  }
+  :global(.pcard2__ph) {
+    color: #9fb3c8;
+  }
+  .pcard2__shine {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(400px circle at var(--gx, 50%) var(--gy, 0%), rgba(255, 255, 255, 0.5), transparent 40%);
+    mix-blend-mode: soft-light;
+    opacity: 0;
+    transition: opacity 0.4s;
+    pointer-events: none;
+  }
+  .pcard2__media:hover .pcard2__shine {
+    opacity: 1;
+  }
+  .pcard2__certs {
+    position: absolute;
+    left: 0.7rem;
+    top: 0.7rem;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+  .pcard2__certs .badge {
+    background: rgba(3, 12, 24, 0.85);
+    backdrop-filter: blur(4px);
+    font-size: 0.6rem;
+    padding: 0.2rem 0.55rem;
+  }
+  .pcard2__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem 1.1rem 1.1rem;
+    flex: 1;
+  }
+  .pcard2__cat {
+    margin: 0;
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+  .pcard2__title {
+    font-family: var(--f-display);
+    font-size: 0.92rem;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+  .pcard2__title a:hover {
+    color: var(--orange-2);
+  }
+  .pcard2__meta {
+    list-style: none;
+    display: grid;
+    gap: 0.25rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .pcard2__meta li {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .pcard2__actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    margin-top: auto;
+    padding-top: 0.7rem;
+    border-top: 1px solid var(--line);
+  }
+  .pcard2__actions .link-arrow {
+    font-size: 0.68rem;
+  }
+  .pcard2__tools {
+    display: flex;
+    gap: 0.35rem;
+  }
+  .cmp,
+  .fav,
+  .quote {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    border: 1px solid var(--line-2);
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .cmp:hover,
+  .fav:hover,
+  .quote:hover {
+    color: var(--orange);
+    border-color: rgba(255, 102, 34, 0.6);
+  }
+  .cmp input {
+    position: absolute;
+    opacity: 0;
+    inset: 0;
+    cursor: pointer;
+  }
+  .cmp:has(input:checked) {
+    background: rgba(46, 104, 148, 0.35);
+    border-color: #5aa3e0;
+    color: #cfe6ff;
+  }
+  .cmp:has(input:focus-visible) {
+    outline: 2px solid var(--orange);
+  }
+  :global(.fav.is-on) {
+    background: rgba(255, 102, 34, 0.15);
+    border-color: var(--orange);
+    color: var(--orange);
+  }
+  :global(.fav.is-on svg) {
+    fill: currentColor;
+  }
+  /* vue liste */
+  :global(.is-list) .pcard2 {
+    flex-direction: row;
+  }
+  :global(.is-list) .pcard2__media {
+    width: 180px;
+    aspect-ratio: auto;
+    flex: none;
+  }
+  :global(.is-list) .pcard2__certs {
+    display: none;
+  }
+</style>

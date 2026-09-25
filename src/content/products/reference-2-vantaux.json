@@ -1,0 +1,189 @@
+{
+  "title": "REFERENCE 2 vantaux",
+  "slug": "reference-2-vantaux",
+  "segment": "blocs-portes-d-appartement",
+  "categories": [
+    "blocs-portes-dappartement-65"
+  ],
+  "family": "REFERENCE",
+  "order": 38,
+  "featured": false,
+  "image": "/media/fiches-produits/reference-2v-0.png",
+  "badges": [
+    "Sans certification"
+  ],
+  "seo": {
+    "title": "Notre bloc-porte blindé d'appartement Reference 2 vantaux avec serrure certifiée encastrée",
+    "description": "La porte blindée d'appartement, Reference 2V, fabriquée sur mesure, garantie 10 ans, est proposée avec plusieurs serrures multi-points certifiées anti-effraction reconnues par les assurances"
+  },
+  "specs": {
+    "vantaux": "2 vantaux",
+    "dimensions": "Notre tarif pour le bloc porte REFERENCE 2 vantaux s’applique pour les dimensions maximum 2000 x 2300 (mm).\nFabricant de blocs portes sur mesure, pour toutes autres dimensions nous vous proposerons une solution personnalisée, n’hésitez pas à nous contacter.",
+    "fermeture": "Serrure encastrée multipoints",
+    "certification": "Sans certification"
+  },
+  "filters": {
+    "vantaux": [
+      "2 vantaux"
+    ],
+    "certifications": [
+      "Sans certification"
+    ],
+    "fermetures": [
+      "Serrure encastrée multipoints"
+    ]
+  },
+  "composition": "<p>Le bloc porte REFERENCE 2 vantaux est composé de:</p><ul><li>2 faces en acier 20/10ème électrozinguée</li><li>4 paumelles soudées de 140 mm à billes par vantail</li><li>un cadre anti-pince soudé 4 côtés</li><li>un recouvrement anti-pince</li><li>une barre de seuil</li><li>un anti-dégondage par tenon mortaise BDF</li><li>de laine de roche</li><li>de verrous de condamnation haut et bas sur le vantail semi-fixe</li></ul>",
+  "downloads": [
+    {
+      "label": "reference-2v.pdf",
+      "file": "/media/fichiers/reference-2v-0.pdf"
+    }
+  ],
+  "quoteLabel": "REFERENCE 2 vantaux",
+  "locks": {
+    "intro": "Le bloc porte REFERENCE 2 vantaux est proposé avec plusieurs configurations de serrures encastrées:",
+    "table": [
+      {
+        "brand": "AM Locks",
+        "points": "3 pts"
+      },
+      {
+        "brand": "Vachette",
+        "points": "3 pts"
+      },
+      {
+        "brand": "AM Locks",
+        "points": "3 pts",
+        "certification": "A2P*",
+        "level": "Standard"
+      },
+      {
+        "brand": "Vachette",
+        "points": "3 pts",
+        "certification": "A2P*",
+        "level": "Standard"
+      },
+      {
+        "brand": "Vachette",
+        "points": "3 pts",
+        "certification": "A2P**",
+        "level": "Renforce"
+      },
+      {
+        "brand": "Vachette",
+        "points": "3 pts",
+        "certification": "A2P***",
+        "level": "Maximum"
+      },
+      {
+        "brand": "Vachette",
+        "points": "5 pts",
+        "certification": "A2P***",
+        "level": "Maximum"
+      }
+    ],
+    "extras": [
+      {
+        "title": "Inclus avec la serrure",
+        "icon": "key",
+        "html": "<p>La serrure Vachette 3 points est équipée avec la poignée HOPPE et un cylindre standard sans label.</p><p>Les serrures Vachette certifiées sont équipées avec les poignées Vachette et un cylindre A2P.</p>"
+      },
+      {
+        "title": "Options fermeture",
+        "icon": "circle-plus",
+        "html": "<p>En série l’ensemble extérieur est proposé:</p><ul><li>en béquille intérieure et extérieure</li><li>en béquille intérieure et poignée de tirage extérieure.</li></ul>"
+      }
+    ]
+  },
+  "frame": {
+    "intro": "L’huisserie avec joint du bloc porte REFERENCE 2 vantaux est composée de tôle multi-plis en 20/10ème électrozinguée. Selon la configuration de votre installation vous avez le choix entre les huisseries suivantes:",
+    "cards": [
+      {
+        "icon": "rotate",
+        "title": "Rénovation",
+        "description": "Remplacement sans gros travaux. Installation rapide sur bâti existant."
+      },
+      {
+        "icon": "hammer",
+        "title": "Tubulaire",
+        "description": "Constructions neuves et sur mesure. Intégration parfaite en neuf."
+      }
+    ]
+  },
+  "options": {
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Équipements complémentaires",
+        "icon": "circle-plus",
+        "items": [
+          {
+            "label": "Gâche électrique",
+            "picto": "/media/pictos-options/17-gache-electrique.jpg"
+          },
+          {
+            "label": "Judas optique",
+            "picto": "/media/pictos-options/6-judas-optique.jpg"
+          },
+          {
+            "label": "Moulures",
+            "picto": "/media/pictos-options/8-moulures.jpg"
+          },
+          {
+            "label": "Oculus",
+            "picto": "/media/pictos-options/9-oculus.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet-slash",
+        "title": "Époxy bi-couleur",
+        "description": "2 couleurs différentes intérieur/extérieur, 180 RAL."
+      },
+      {
+        "icon": "droplet",
+        "title": "Époxy mono couleur",
+        "description": "180 couleurs RAL au choix."
+      },
+      {
+        "icon": "brush",
+        "title": "Grenaillage polyzing",
+        "description": "Finition texturée résistante."
+      },
+      {
+        "icon": "tree",
+        "title": "Ton bois",
+        "description": "6 décors aspect bois naturel."
+      }
+    ]
+  },
+  "usages": {
+    "intro": "Le bloc porte REFERENCE 2 vantaux est principalement destiné à la fermeture des appartements mais peut également équiper des commerces, des entreprises ou des sites sensibles.",
+    "items": []
+  }
+}

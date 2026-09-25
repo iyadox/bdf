@@ -1,0 +1,433 @@
+---
+import Icon from '@/components/Icon.astro';
+import ProductCard from '@/components/ui/ProductCard.astro';
+import CompareBar from '@/components/catalog/CompareBar.astro';
+import { FILTER_ORDER, type Category, type Product } from '@/lib/catalog';
+interface Props {
+  products: Product[];
+  categories: Category[];
+  preset?: string; // slug de catégorie imposée
+}
+const { products, categories, preset } = Astro.props;
+const catNames = Object.fromEntries(categories.map((c) => [c.slug, c.title]));
+const count = (fn: (p: Product) => boolean) => products.filter(fn).length;
+const groups = [
+  ...(preset
+    ? []
+    : [
+        {
+          key: 'categorie',
+          label: 'Catégorie',
+          icon: 'grid',
+          values: categories.map((c) => ({ v: c.slug, label: c.title, n: count((p) => p.categories.includes(c.slug)) })),
+        },
+      ]),
+  { key: 'vantaux', label: 'Vantaux', icon: 'door-closed', values: FILTER_ORDER.vantaux.map((v) => ({ v, label: v, n: count((p) => p.filters.vantaux.includes(v)) })) },
+  {
+    key: 'certification',
+    label: 'Certification',
+    icon: 'shield',
+    values: FILTER_ORDER.certifications.map((v) => ({ v, label: v, n: count((p) => p.filters.certifications.includes(v)) })),
+  },
+  { key: 'fermeture', label: 'Fermeture', icon: 'lock', values: FILTER_ORDER.fermetures.map((v) => ({ v, label: v, n: count((p) => p.filters.fermetures.includes(v)) })) },
+].map((g) => ({ ...g, values: g.values.filter((x) => x.n > 0) }));
+---
+
+<div class="cb" data-catalog data-preset={preset || ''}>
+  <aside class="cb__side" data-filters-panel aria-label="Filtres">
+    <div class="cb__side-head">
+      <p class="h4">Filtrer</p>
+      <button type="button" class="cb__close" data-filters-close aria-label="Fermer les filtres"><Icon name="x" /></button>
+    </div>
+    <div class="cb__search">
+      <Icon name="search" size={18} />
+      <input type="search" placeholder="Rechercher dans le catalogue…" data-q aria-label="Rechercher un produit" />
+    </div>
+    {
+      groups.map((g, gi) => (
+        <details class="fgroup" open={gi < 3}>
+          <summary>
+            <Icon name={g.icon} size={16} /> {g.label}
+            <span class="fgroup__sel" data-sel-count={g.key} />
+            <Icon name="chevron-down" size={16} class="fgroup__chev" />
+          </summary>
+          <ul>
+            {g.values.map((x) => (
+              <li>
+                <label class="fopt">
+                  <input type="checkbox" data-filter={g.key} value={x.v} />
+                  <span class="fopt__box" aria-hidden="true" />
+                  <span class="fopt__label">{x.label}</span>
+                  <span class="fopt__n mono" data-count-for={`${g.key}::${x.v}`}>
+                    {x.n}
+                  </span>
+                </label>
+              </li>
+            ))}
+          </ul>
+        </details>
+      ))
+    }
+    <button type="button" class="btn btn--ghost btn--sm btn--block" data-reset><Icon name="rotate" /> Réinitialiser</button>
+    <div class="cb__help panel">
+      <Icon name="info" />
+      <p>Besoin d'aide pour choisir&nbsp;? <a href="/nous-contacter">Nos experts vous conseillent</a> ou <a href="/configurateur">configurez votre porte en 3D</a>.</p>
+    </div>
+  </aside>
+
+  <div class="cb__main">
+    <div class="cb__bar">
+      <button type="button" class="btn btn--ghost btn--sm cb__open" data-filters-open><Icon name="filter" /> Filtres <span class="cb__badge" data-active-count hidden></span></button>
+      <p class="cb__count" aria-live="polite"><strong data-results>{products.length}</strong> produit<span data-plural>s</span></p>
+      <div class="cb__chips" data-chips></div>
+      <div class="cb__right">
+        <label class="cb__sort">
+          <span class="sr-only">Trier par</span>
+          <select class="select" data-sort>
+            <option value="pertinence">Pertinence</option>
+            <option value="az">Nom A → Z</option>
+            <option value="za">Nom Z → A</option>
+            <option value="certif">Certifiés d'abord</option>
+          </select>
+        </label>
+        <div class="cb__views" role="group" aria-label="Affichage">
+          <button type="button" data-view="grid" aria-pressed="true" aria-label="Grille"><Icon name="grid" size={16} /></button>
+          <button type="button" data-view="list" aria-pressed="false" aria-label="Liste"><Icon name="list" size={16} /></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="cb__grid" data-grid>
+      {products.map((p, i) => <ProductCard p={p} catNames={catNames} lazy={i > 7} />)}
+    </div>
+    <div class="cb__empty panel" data-empty hidden>
+      <Icon name="search" size={34} />
+      <p class="h4">Aucun produit ne correspond</p>
+      <p class="muted">Modifiez vos filtres ou décrivez-nous votre besoin : nous fabriquons aussi sur mesure.</p>
+      <div class="btn-row">
+        <button type="button" class="btn btn--sm" data-reset>Réinitialiser les filtres</button>
+        <a href="/devis-porte-blindee" class="btn btn--ghost btn--sm">Demande sur mesure</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<CompareBar />
+
+<style>
+  .cb {
+    display: grid;
+    grid-template-columns: 290px 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  .cb__side {
+    position: sticky;
+    top: calc(var(--header-h) + 1rem);
+    display: grid;
+    gap: 0.9rem;
+    max-height: calc(100vh - var(--header-h) - 2rem);
+    overflow-y: auto;
+    padding-right: 0.3rem;
+    scrollbar-width: thin;
+  }
+  .cb__side-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cb__close {
+    display: none;
+  }
+  .cb__search {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0 0.9rem;
+    border: 1px solid var(--line-2);
+    border-radius: 10px;
+    background: rgba(4, 12, 24, 0.6);
+    color: var(--muted);
+  }
+  .cb__search:focus-within {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 3px rgba(255, 102, 34, 0.14);
+  }
+  .cb__search input {
+    flex: 1;
+    min-width: 0;
+    height: 46px;
+    background: none;
+    border: 0;
+    outline: none;
+    color: var(--text);
+  }
+  .fgroup {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: rgba(8, 20, 38, 0.5);
+  }
+  .fgroup summary {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1rem;
+    cursor: pointer;
+    list-style: none;
+    font-weight: 600;
+    font-size: 0.92rem;
+  }
+  .fgroup summary::-webkit-details-marker {
+    display: none;
+  }
+  .fgroup summary :global(svg:first-child) {
+    color: var(--orange);
+  }
+  :global(.fgroup__chev) {
+    margin-left: auto;
+    transition: transform 0.3s;
+    color: var(--muted);
+  }
+  .fgroup[open] :global(.fgroup__chev) {
+    transform: rotate(180deg);
+  }
+  .fgroup__sel:not(:empty) {
+    font-family: var(--f-mono);
+    font-size: 0.65rem;
+    color: #fff;
+    background: var(--orange);
+    border-radius: 99px;
+    padding: 0.05rem 0.45rem;
+  }
+  .fgroup ul {
+    list-style: none;
+    display: grid;
+    gap: 0.1rem;
+    padding: 0 0.5rem 0.7rem;
+  }
+  .fopt {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.45rem 0.5rem;
+    border-radius: 8px;
+    font-size: 0.86rem;
+    color: var(--text-2);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .fopt:hover {
+    background: rgba(46, 104, 148, 0.18);
+  }
+  .fopt input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .fopt__box {
+    flex: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    border: 1px solid var(--line-2);
+    display: grid;
+    place-items: center;
+    transition: all 0.2s;
+  }
+  .fopt:has(input:checked) .fopt__box {
+    background: var(--orange);
+    border-color: var(--orange);
+    box-shadow: 0 0 10px var(--orange-glow);
+  }
+  .fopt:has(input:checked) .fopt__box::after {
+    content: '';
+    width: 9px;
+    height: 5px;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: translateY(-1px) rotate(-45deg);
+  }
+  .fopt:has(input:checked) {
+    color: #fff;
+  }
+  .fopt:has(input:focus-visible) {
+    outline: 2px solid var(--orange);
+  }
+  .fopt__label {
+    flex: 1;
+  }
+  .fopt__n {
+    font-size: 0.68rem;
+    color: var(--muted);
+  }
+  .fopt:has(input:disabled) {
+    opacity: 0.4;
+    cursor: default;
+  }
+  .cb__help {
+    display: flex;
+    gap: 0.7rem;
+    padding: 1rem;
+    font-size: 0.82rem;
+    color: var(--text-2);
+  }
+  .cb__help :global(svg) {
+    color: var(--orange);
+    flex: none;
+    margin-top: 2px;
+  }
+  .cb__help p {
+    margin: 0;
+  }
+  .cb__help a {
+    color: var(--orange-2);
+    text-decoration: underline;
+  }
+  .cb__bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.8rem 1rem;
+    margin-bottom: 1.4rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .cb__open {
+    display: none;
+  }
+  .cb__badge {
+    min-width: 20px;
+    height: 20px;
+    border-radius: 99px;
+    background: var(--orange);
+    color: #fff;
+    font-size: 0.65rem;
+    display: grid;
+    place-items: center;
+  }
+  .cb__count {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  .cb__count strong {
+    color: #fff;
+    font-family: var(--f-display);
+  }
+  .cb__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .cb__chips :global(button) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.76rem;
+    border-radius: 99px;
+    background: rgba(255, 102, 34, 0.12);
+    border: 1px solid rgba(255, 102, 34, 0.5);
+    color: #ffd2bb;
+  }
+  .cb__chips :global(button:hover) {
+    background: rgba(255, 102, 34, 0.25);
+  }
+  .cb__right {
+    display: flex;
+    gap: 0.6rem;
+    margin-left: auto;
+  }
+  .cb__sort .select {
+    min-height: 40px;
+    padding-block: 0.4rem;
+    font-size: 0.86rem;
+  }
+  .cb__views {
+    display: flex;
+    border: 1px solid var(--line-2);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .cb__views button {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    color: var(--muted);
+  }
+  .cb__views button[aria-pressed='true'] {
+    background: rgba(255, 102, 34, 0.15);
+    color: var(--orange);
+  }
+  .cb__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 1.1rem;
+  }
+  .cb__grid.is-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .cb__empty {
+    display: grid;
+    justify-items: center;
+    gap: 0.6rem;
+    padding: 3rem 1.5rem;
+    text-align: center;
+  }
+  .cb__empty :global(svg) {
+    color: var(--orange);
+  }
+  .cb__empty p {
+    margin: 0;
+  }
+
+  @media (max-width: 1000px) {
+    .cb {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .cb__open {
+      display: inline-flex;
+    }
+    .cb__side {
+      position: fixed;
+      inset: 0 auto 0 0;
+      z-index: 80;
+      width: min(360px, 88vw);
+      max-height: none;
+      padding: 1.2rem;
+      background: rgba(4, 12, 24, 0.98);
+      border-right: 1px solid var(--line-2);
+      transform: translateX(-105%);
+      transition: transform 0.45s var(--ease);
+    }
+    :global(.cb.filters-open) .cb__side {
+      transform: none;
+      box-shadow: 30px 0 80px rgba(0, 0, 0, 0.6);
+    }
+    .cb__close {
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--line-2);
+      border-radius: 10px;
+    }
+    .cb__right {
+      margin-left: 0;
+      width: 100%;
+    }
+    .cb__sort {
+      flex: 1;
+    }
+    .cb__sort .select {
+      width: 100%;
+    }
+  }
+  @media (max-width: 560px) {
+    .cb__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.7rem;
+    }
+  }
+</style>

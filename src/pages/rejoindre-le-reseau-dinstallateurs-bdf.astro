@@ -1,0 +1,277 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/ui/PageHero.astro';
+import Icon from '@/components/Icon.astro';
+import HexMedal from '@/components/cert/HexMedal.astro';
+import { getInstallers } from '@/lib/catalog';
+const count = (await getInstallers()).length;
+const perks = [
+  { icon: 'map-pin', title: 'Visibilité nationale', text: `Votre entreprise référencée dans l'annuaire et sur la carte interactive aux côtés de ${count} installateurs, avec une fiche dédiée.` },
+  { icon: 'shield-check', title: 'Produits de haute sécurité', text: 'Blocs-portes certifiés A2P, coupe-feu et pare-balles, blindages et travaux spéciaux fabriqués en France.' },
+  { icon: 'wrench', title: 'Support technique', text: "Un interlocuteur à l'usine pour vos métrés, vos cas particuliers et le suivi de vos chantiers." },
+  { icon: 'file-text', title: 'Espace professionnel', text: 'Tarifs professionnels, fiches techniques détaillées, devis sur mesure et historique de vos demandes.' },
+  { icon: 'star', title: 'Fiche vitrine premium', text: 'Galerie de réalisations, vidéos, présentation et services : une page à vos couleurs pour convaincre vos clients.' },
+  { icon: 'users', title: 'Demandes de vos clients', text: 'Les particuliers de votre secteur peuvent vous contacter directement depuis le site et demander un devis.' },
+];
+const steps = [
+  { t: 'Vous remplissez le formulaire', d: 'Quelques informations sur votre entreprise suffisent.' },
+  { t: 'Nous vous contactons sans délai', d: 'Un échange pour faire connaissance et valider votre activité.' },
+  { t: 'Votre fiche est publiée', d: "Vous apparaissez dans l'annuaire et sur la carte des installateurs." },
+  { t: 'Accès à votre Espace Pro', d: 'Tarifs, documentation et devis depuis le catalogue.' },
+];
+const skills = ['Pose de blocs-portes blindés', 'Blindage de portes existantes', 'Serrurerie / dépannage', 'Menuiserie métallique', 'Portes coupe-feu', 'Contrôle d’accès'];
+---
+
+<BaseLayout title="Rejoindre le réseau d'installateurs BDF" description="Serruriers, menuisiers, installateurs : inscrivez-vous dans l'annuaire des installateurs Blindages de France et accédez aux produits de haute sécurité et au support technique.">
+  <PageHero title="Rejoindre le réseau" accent="d'installateurs BDF" eyebrow="Inscription dans l'annuaire des installateurs" lead="Vous souhaitez figurer dans notre annuaire&nbsp;? Remplissez le formulaire ci-dessous et nous vous contacterons sans délai." crumbs={[{ label: 'Installateurs', href: '/installateurs-portes-blindees' }, { label: 'Rejoindre le réseau' }]}>
+    <div class="btn-row">
+      <a href="#inscription" class="btn btn--lg"><Icon name="plus-circle" /> Je m'inscris</a>
+      <a href="/installateurs-portes-blindees" class="btn btn--lg btn--ghost"><Icon name="map-pin" /> Voir le réseau</a>
+    </div>
+    <div slot="aside" class="jn-medal">
+      <HexMedal logo="/brand/bdf-mark.svg" alt="Blindages de France" label={`${count} installateurs`} />
+    </div>
+  </PageHero>
+
+  <section class="section">
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <p class="eyebrow">Pourquoi nous rejoindre</p>
+        <h2 class="h2">Un fabricant français <span class="grad-orange">à vos côtés</span></h2>
+      </header>
+      <div class="jn-perks">
+        {
+          perks.map((p, i) => (
+            <article class="jn-perk panel" data-reveal style={`--d:${(i % 3) * 0.07}s`} data-spotlight>
+              <span class="jn-perk__ic">
+                <Icon name={p.icon} size={22} />
+              </span>
+              <h3 class="h4">{p.title}</h3>
+              <p class="muted">{p.text}</p>
+            </article>
+          ))
+        }
+      </div>
+      <ol class="jn-steps" data-reveal>
+        {
+          steps.map((s, i) => (
+            <li>
+              <span class="jn-steps__n mono">0{i + 1}</span>
+              <strong>{s.t}</strong>
+              <span class="muted">{s.d}</span>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--tight" id="inscription">
+    <div class="container jn-grid">
+      <form class="panel jn-form" name="adhesion-reseau" method="POST" action="/merci" data-netlify="true" netlify-honeypot="bot-field" data-bdf-form data-autosave data-form-label="Adhésion au réseau d'installateurs">
+        <input type="hidden" name="form-name" value="adhesion-reseau" />
+        <p class="hp-field"><label>Ne pas remplir <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+        <div>
+          <p class="eyebrow">Formulaire d'inscription</p>
+          <h2 class="h3">Votre entreprise</h2>
+        </div>
+        <div class="form-grid">
+          <label class="field" data-label="Société"><span>Société <b class="req">*</b></span><input class="input" name="societe" required autocomplete="organization" /></label>
+          <label class="field" data-label="SIRET"><span>SIRET</span><input class="input" name="siret" inputmode="numeric" pattern="[0-9 ]{14,17}" placeholder="14 chiffres" /></label>
+          <label class="field full" data-label="Adresse"><span>Adresse <b class="req">*</b></span><input class="input" name="adresse" required autocomplete="street-address" /></label>
+          <label class="field" data-label="Code postal"><span>Code postal <b class="req">*</b></span><input class="input" name="code_postal" required inputmode="numeric" pattern="[0-9]{5}" autocomplete="postal-code" /></label>
+          <label class="field" data-label="Ville"><span>Ville</span><input class="input" name="ville" autocomplete="address-level2" /></label>
+          <label class="field" data-label="Site internet"><span>Site internet</span><input class="input" type="url" name="site" placeholder="https://" autocomplete="url" /></label>
+          <label class="field" data-label="Zone d'intervention"
+            ><span>Zone d'intervention</span>
+            <select class="select" name="zone">
+              <option value="">— Choisir —</option>
+              <option>Mon département</option>
+              <option>Plusieurs départements</option>
+              <option>Toute la région</option>
+              <option>France entière</option>
+            </select>
+          </label>
+        </div>
+        <fieldset class="field" data-label="Compétences">
+          <legend class="field-label">Vos compétences</legend>
+          <div class="tiles">
+            {skills.map((s) => <label class="option-tile"><input type="checkbox" name="competences" value={s} /><span class="tick"></span>{s}</label>)}
+          </div>
+        </fieldset>
+        <div>
+          <h2 class="h3">Vos coordonnées</h2>
+        </div>
+        <div class="form-grid">
+          <label class="field" data-label="Nom"><span>Nom <b class="req">*</b></span><input class="input" name="nom" required autocomplete="family-name" /></label>
+          <label class="field" data-label="Prénom"><span>Prénom <b class="req">*</b></span><input class="input" name="prenom" required autocomplete="given-name" /></label>
+          <label class="field" data-label="E-mail"><span>E-mail <b class="req">*</b></span><input class="input" type="email" name="email" required autocomplete="email" /></label>
+          <label class="field" data-label="Téléphone"><span>Téléphone <b class="req">*</b></span><input class="input" type="tel" name="telephone" required autocomplete="tel" /></label>
+          <label class="field full" data-label="Message"><span>Message complémentaire</span><textarea class="textarea" name="message" rows="4"></textarea></label>
+        </div>
+        <label class="check">
+          <input type="checkbox" name="consent" value="oui" required />
+          <span>J'accepte que ces informations soient utilisées pour étudier ma demande et, après validation, publier ma fiche dans l'annuaire (<a href="/liens/confidentialite" target="_blank" class="ul">confidentialité</a>). <b class="req">*</b></span>
+        </label>
+        <div class="btn-row">
+          <button type="submit" class="btn btn--lg"><Icon name="send" /> Envoyer ma demande</button>
+        </div>
+      </form>
+
+      <aside class="jn-side">
+        <div class="panel jn-card">
+          <p class="eyebrow">Espace Professionnel</p>
+          <p class="h4">Votre espace installateur BDF</p>
+          <ul class="jn-list">
+            <li><Icon name="check" size={15} /> Devis sur mesure depuis le catalogue</li>
+            <li><Icon name="check" size={15} /> Fiches techniques détaillées</li>
+            <li><Icon name="check" size={15} /> Tarifs professionnels</li>
+            <li><Icon name="check" size={15} /> Historique de vos demandes</li>
+            <li><Icon name="check" size={15} /> Support technique et gestion annuaire</li>
+          </ul>
+          <a href="/espace-pro" class="link-arrow">Déjà installateur ? Connectez-vous <Icon name="arrow-right" /></a>
+        </div>
+        <div class="panel jn-card">
+          <p class="eyebrow">Vous préférez rester anonyme ?</p>
+          <p class="muted">Demandez un devis directement, sans inscription.</p>
+          <a href="/devis-porte-blindee" class="btn btn--ghost btn--block"><Icon name="file-text" /> Demander un devis</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .jn-medal {
+    display: grid;
+    place-items: center;
+  }
+  .jn-perks {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .jn-perk {
+    display: grid;
+    align-content: start;
+    gap: 0.6rem;
+    padding: 1.6rem;
+  }
+  .jn-perk h3,
+  .jn-perk p {
+    margin: 0;
+  }
+  .jn-perk__ic {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 54px;
+    color: var(--orange);
+    background: rgba(255, 102, 34, 0.1);
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  }
+  .jn-steps {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 2.5rem;
+    counter-reset: s;
+  }
+  .jn-steps li {
+    position: relative;
+    display: grid;
+    gap: 0.35rem;
+    padding: 1.2rem 0 0;
+    border-top: 1px solid var(--line-2);
+    font-size: 0.9rem;
+  }
+  .jn-steps li::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 0;
+    width: 9px;
+    height: 9px;
+    background: var(--orange);
+    transform: rotate(45deg);
+    box-shadow: 0 0 12px var(--orange-glow);
+  }
+  .jn-steps__n {
+    font-size: 0.7rem;
+    color: var(--orange);
+    letter-spacing: 0.14em;
+  }
+  .jn-steps strong {
+    color: #fff;
+  }
+  .jn-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  .jn-form {
+    display: grid;
+    gap: 1.3rem;
+    padding: clamp(1.3rem, 0.8rem + 2vw, 2.4rem);
+  }
+  .jn-form h2 {
+    margin: 0.3rem 0 0;
+  }
+  .ul {
+    color: var(--orange-2);
+    text-decoration: underline;
+  }
+  .jn-side {
+    position: sticky;
+    top: calc(var(--header-h) + 1rem);
+    display: grid;
+    gap: 1rem;
+  }
+  .jn-card {
+    display: grid;
+    gap: 0.75rem;
+    padding: 1.4rem;
+  }
+  .jn-card p {
+    margin: 0;
+  }
+  .jn-list {
+    list-style: none;
+    display: grid;
+    gap: 0.4rem;
+    font-size: 0.88rem;
+    color: var(--text-2);
+  }
+  .jn-list li {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .jn-list :global(svg) {
+    color: var(--orange);
+    flex: none;
+    margin-top: 3px;
+  }
+  @media (max-width: 1000px) {
+    .jn-perks {
+      grid-template-columns: 1fr 1fr;
+    }
+    .jn-steps {
+      grid-template-columns: 1fr 1fr;
+      row-gap: 1.8rem;
+    }
+    .jn-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .jn-side {
+      position: static;
+    }
+  }
+  @media (max-width: 600px) {
+    .jn-perks,
+    .jn-steps {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

@@ -1,0 +1,171 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import Icon from '@/components/Icon.astro';
+import VideoEmbed from '@/components/ui/VideoEmbed.astro';
+import NewsCard from '@/components/ui/NewsCard.astro';
+import CtaBand from '@/components/ui/CtaBand.astro';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import { getInstallers, installerUrl } from '@/lib/catalog';
+import { formatDate, telHref } from '@/lib/site';
+
+export async function getStaticPaths() {
+  const news = await getCollection('news', (n) => n.data.published !== false);
+  return news.map((n) => ({ params: { slug: n.id }, props: { entry: n } }));
+}
+const { entry } = Astro.props as { entry: CollectionEntry<'news'> };
+const { Content } = await render(entry);
+const d = entry.data;
+const installer = d.installer ? (await getInstallers()).find((i) => i.slug === d.installer) : undefined;
+const others = (await getCollection('news', (n) => n.data.published !== false && n.id !== entry.id)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 3);
+const cover = d.cover || (d.video ? `/media/video-thumbnails/${d.video}.jpg` : undefined);
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: d.title,
+  datePublished: d.date.toISOString(),
+  image: cover ? new URL(cover, Astro.site).href : undefined,
+  author: { '@type': 'Organization', name: 'Blindages de France' },
+  publisher: { '@id': new URL('/#organisation', Astro.site).href },
+  description: d.excerpt,
+};
+---
+
+<BaseLayout title={d.title} description={d.excerpt || d.title} image={cover} type="article" jsonLd={ld}>
+  <article>
+    <header class="ahead">
+      <div class="container--narrow">
+        <Breadcrumbs items={[{ label: 'Actualités', href: '/news-focus' }, { label: d.title }]} />
+        <p class="ameta mono" data-reveal><span>{d.category}</span> · <time datetime={d.date.toISOString()}>{formatDate(d.date)}</time></p>
+        <h1 class="h1 atitle" data-reveal style="--d:.08s">{d.title}</h1>
+        {d.excerpt && <p class="lead" data-reveal style="--d:.16s">{d.excerpt}</p>}
+      </div>
+    </header>
+    <div class="container--narrow abody">
+      {cover && !d.video && <img src={cover} alt="" class="acover" />}
+      <div class="prose" data-reveal><Content /></div>
+      {d.video && <div class="avideo" data-reveal><VideoEmbed id={d.video} title={d.title} thumb={cover} /></div>}
+
+      {
+        installer && (
+          <aside class="inst panel panel--glow" data-reveal>
+            <p class="mono inst__k">Installation réalisée par</p>
+            <div class="inst__row">
+              {installer.logo ? <img src={installer.logo} alt="" class="inst__logo" /> : <span class="inst__init">{installer.name.slice(0, 2).toUpperCase()}</span>}
+              <div>
+                <p class="h4">{installer.name}</p>
+                <p class="muted">
+                  {installer.city.toUpperCase()} ({installer.postalCode})
+                </p>
+                {installer.certifications && <p class="inst__certs">{installer.certifications.join(' · ')}</p>}
+              </div>
+            </div>
+            <p class="muted">Votre projet mérite un installateur certifié. Découvrez ses réalisations et demandez un devis personnalisé.</p>
+            <div class="btn-row">
+              <a href={installerUrl(installer)} class="btn btn--sm">
+                Découvrir cet installateur <Icon name="arrow-right" />
+              </a>
+              {installer.phone && (
+                <a href={telHref(installer.phone)} class="btn btn--sm btn--ghost">
+                  <Icon name="phone" /> {installer.phone}
+                </a>
+              )}
+            </div>
+          </aside>
+        )
+      }
+      <div class="ashare">
+        <a href="/news-focus" class="link-arrow"><Icon name="arrow-left" /> Toutes les actualités</a>
+      </div>
+    </div>
+  </article>
+
+  {
+    others.length > 0 && (
+      <section class="section section--tight">
+        <div class="container">
+          <p class="eyebrow">Plus de contenu</p>
+          <div class="grid grid-3" style="margin-top:1.4rem">
+            {others.map((n) => (
+              <NewsCard id={n.id} {...n.data} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+  <CtaBand />
+</BaseLayout>
+
+<style>
+  .ahead {
+    padding: 2rem 0 2rem;
+  }
+  .ameta {
+    margin: 2rem 0 1rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .ameta span {
+    color: var(--orange);
+  }
+  .atitle {
+    font-size: clamp(1.7rem, 1.1rem + 2.2vw, 3rem);
+    margin-bottom: 1.2rem;
+  }
+  .abody {
+    display: grid;
+    gap: 2rem;
+    padding-bottom: 3rem;
+  }
+  .acover {
+    border-radius: 18px;
+    width: 100%;
+  }
+  .abody .prose {
+    font-size: 1.05rem;
+  }
+  .inst {
+    display: grid;
+    gap: 1rem;
+    padding: 1.6rem;
+  }
+  .inst p {
+    margin: 0;
+  }
+  .inst__k {
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+  .inst__row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .inst__logo {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    background: #fff;
+    border-radius: 12px;
+    padding: 6px;
+  }
+  .inst__init {
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 72px;
+    font-family: var(--f-display);
+    background: linear-gradient(160deg, #2e6894, #043d6c);
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  }
+  .inst__certs {
+    font-family: var(--f-mono);
+    font-size: 0.72rem;
+    color: #ffb088;
+  }
+</style>

@@ -1,0 +1,521 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/ui/PageHero.astro';
+import Icon from '@/components/Icon.astro';
+import { settings, telHref } from '@/lib/site';
+import { getInstallers } from '@/lib/catalog';
+const installers = (await getInstallers()).map((i) => ({ slug: i.slug, name: i.name, city: i.city }));
+const steps = ['Votre projet', 'Vos coordonnées', 'Compléments', 'Récapitulatif'];
+const usages = ['Industrie', 'Grand public', 'Habitation individuelle/collective', 'Parties communes/cave/sous-sol'];
+const vantaux = ['1 vantail', '2 vantaux', 'Je ne sais pas'];
+const serrures = ['Sans serrure', 'Serrure 1 point', 'Serrure 3 points', 'Serrures 5 points', 'Anti-panique', 'Je ne sais pas'];
+const certifs = ['A2P BP1', 'A2P BP2', 'A2P BP3', 'Coupe-feu', 'Pare-balles', 'À définir'];
+---
+
+<BaseLayout title="Demande de devis" description="Demandez gratuitement votre devis de porte blindée, bloc-porte certifié A2P, coupe-feu ou pare-balles, blindage de porte ou travaux spéciaux sur mesure. Fabrication française.">
+  <PageHero title="Demande" accent="de devis" eyebrow="Gratuit · sans engagement" lead="Décrivez votre projet en quelques étapes : nos équipes l'étudient et vous recontactent rapidement." crumbs={[{ label: 'Demande de devis' }]} compact />
+
+  <section class="section section--tight">
+    <div class="container qgrid">
+      <form
+        class="wizard panel"
+        name="devis"
+        method="POST"
+        action="/merci"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        enctype="multipart/form-data"
+        data-bdf-form
+        data-autosave
+        data-form-label="Demande de devis"
+        data-wizard
+        novalidate
+      >
+        <input type="hidden" name="form-name" value="devis" />
+        <p class="hp-field"><label>Ne pas remplir <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+
+        <ol class="wz-steps" aria-label="Étapes">
+          {
+            steps.map((s, i) => (
+              <li class:list={['wz-step', { 'is-current': i === 0 }]} data-wz-dot={i}>
+                <span class="wz-step__n">{i + 1}</span>
+                <span class="wz-step__l">{s}</span>
+              </li>
+            ))
+          }
+        </ol>
+        <div class="wz-bar"><i data-wz-bar></i></div>
+
+        <!-- ÉTAPE 1 -->
+        <fieldset class="wz-panel" data-wz-panel="0">
+          <legend class="h3">Informations sur votre projet</legend>
+          <div class="field full" data-label="Produit(s)">
+            <span>Produit(s) concerné(s)</span>
+            <textarea class="textarea" name="produits" rows="2" placeholder="Ex. SIGNATURE BP1 1 vantail, blindage de porte…" data-prefill-produit style="min-height:80px"></textarea>
+            <div class="sel-add" data-sel-add hidden>
+              <span class="hint">Depuis votre sélection :</span>
+              <div class="sel-add__chips" data-sel-chips></div>
+            </div>
+            <a href="/catalogue" class="hint link-arrow" target="_blank">Parcourir le catalogue <Icon name="external-link" size={13} /></a>
+          </div>
+          <div class="cfg-box panel" data-cfg-box hidden>
+            <p class="mono"><Icon name="cube" size={14} /> Configuration 3D jointe</p>
+            <p data-cfg-text></p>
+            <input type="hidden" name="configuration" data-cfg-input />
+          </div>
+          <div class="inst-box" data-inst-box hidden>
+            <Icon name="map-pin" size={16} /> Installateur souhaité : <strong data-inst-name></strong>
+            <input type="hidden" name="installateur" data-inst-input />
+          </div>
+
+          <fieldset class="field full" data-label="Usages">
+            <legend class="field-label">Usages</legend>
+            <div class="tiles">
+              {usages.map((u) => <label class="option-tile"><input type="checkbox" name="usages" value={u} /><span class="tick"></span>{u}</label>)}
+            </div>
+          </fieldset>
+          <div class="form-grid">
+            <fieldset class="field" data-label="Vantaux">
+              <legend class="field-label">Vantaux</legend>
+              <div class="tiles tiles--sm">
+                {vantaux.map((u) => <label class="option-tile"><input type="radio" name="vantaux" value={u} /><span class="tick"></span>{u}</label>)}
+              </div>
+            </fieldset>
+            <fieldset class="field" data-label="Serrures">
+              <legend class="field-label">Serrures</legend>
+              <div class="tiles tiles--sm">
+                {serrures.map((u) => <label class="option-tile"><input type="radio" name="serrures" value={u} /><span class="tick"></span>{u}</label>)}
+              </div>
+            </fieldset>
+          </div>
+          <fieldset class="field full" data-label="Certification souhaitée">
+            <legend class="field-label">Certification souhaitée</legend>
+            <div class="tiles">
+              {certifs.map((u) => <label class="option-tile"><input type="checkbox" name="certification" value={u} /><span class="tick"></span>{u}</label>)}
+            </div>
+          </fieldset>
+          <div class="form-grid">
+            <label class="field full" data-label="Dimensions">
+              <span>Dimensions</span>
+              <textarea class="textarea" name="dimensions" rows="2" placeholder="Largeur × hauteur de passage (mm), épaisseur de mur…" style="min-height:80px"></textarea>
+            </label>
+            <label class="field" data-label="Quantité">
+              <span>Quantité</span>
+              <input class="input" type="number" name="quantite" min="1" step="1" value="1" inputmode="numeric" />
+            </label>
+            <label class="field" data-label="Installation">
+              <span>Pose souhaitée</span>
+              <select class="select" name="pose">
+                <option value="">— Choisir —</option>
+                <option>Fourniture et pose par un installateur agréé</option>
+                <option>Fourniture seule (je suis installateur)</option>
+                <option>À définir</option>
+              </select>
+            </label>
+            <label class="field full" data-label="Options">
+              <span>Options</span>
+              <textarea class="textarea" name="options" rows="3" placeholder="Couleur RAL, finition, judas, ferme-porte, oculus, contrôle d'accès…" style="min-height:90px"></textarea>
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- ÉTAPE 2 -->
+        <fieldset class="wz-panel" data-wz-panel="1" hidden>
+          <legend class="h3">Informations de contact</legend>
+          <fieldset class="field full" data-label="Vous êtes">
+            <legend class="field-label">Vous êtes</legend>
+            <div class="tiles">
+              {['Particulier', 'Professionnel / installateur', 'Syndic, bailleur, collectivité'].map((u, i) => <label class="option-tile"><input type="radio" name="profil" value={u} checked={i === 0} /><span class="tick"></span>{u}</label>)}
+            </div>
+          </fieldset>
+          <div class="form-grid">
+            <label class="field full" data-label="Société"><span>Société</span><input class="input" name="societe" autocomplete="organization" /></label>
+            <label class="field" data-label="Nom"><span>Nom <b class="req">*</b></span><input class="input" name="nom" required autocomplete="family-name" /></label>
+            <label class="field" data-label="Prénom"><span>Prénom <b class="req">*</b></span><input class="input" name="prenom" required autocomplete="given-name" /></label>
+            <label class="field" data-label="E-mail"><span>E-mail <b class="req">*</b></span><input class="input" type="email" name="email" required autocomplete="email" /></label>
+            <label class="field" data-label="Téléphone"><span>Téléphone <b class="req">*</b></span><input class="input" type="tel" name="telephone" required autocomplete="tel" pattern="\+?[0-9 .\-]{10,}" /></label>
+            <label class="field" data-label="Code postal"><span>Code postal <b class="req">*</b></span><input class="input" name="code_postal" required inputmode="numeric" pattern="[0-9]{5}" autocomplete="postal-code" data-cp /></label>
+            <label class="field" data-label="Ville"><span>Ville</span><input class="input" name="ville" autocomplete="address-level2" data-city list="cities" /></label>
+            <datalist id="cities" data-cities></datalist>
+          </div>
+        </fieldset>
+
+        <!-- ÉTAPE 3 -->
+        <fieldset class="wz-panel" data-wz-panel="2" hidden>
+          <legend class="h3">Informations complémentaires</legend>
+          <div class="form-grid">
+            <label class="field" data-label="Délai"><span>Délai souhaité</span>
+              <select class="select" name="delai">
+                <option value="">— Choisir —</option>
+                <option>Urgent (moins d'un mois)</option>
+                <option>1 à 3 mois</option>
+                <option>Plus de 3 mois</option>
+                <option>Pas de délai particulier</option>
+              </select>
+            </label>
+            <label class="field" data-label="Source"><span>Comment nous avez-vous connus ?</span>
+              <select class="select" name="source">
+                <option value="">— Choisir —</option>
+                <option>Moteur de recherche</option>
+                <option>Installateur / serrurier</option>
+                <option>Recommandation</option>
+                <option>Salon professionnel</option>
+                <option>Réseaux sociaux / YouTube</option>
+                <option>Autre</option>
+              </select>
+            </label>
+            <label class="field full" data-label="Message"><span>Votre message</span><textarea class="textarea" name="message" rows="5" placeholder="Précisez votre projet : type de local, contraintes, porte existante…"></textarea></label>
+            <label class="field full drop" data-label="Pièce jointe">
+              <span>Photo ou plan (optionnel)</span>
+              <span class="drop__zone"><Icon name="upload" size={22} /> <span data-file-name>Déposez un fichier ou cliquez (JPG, PNG, PDF · 8 Mo max)</span></span>
+              <input type="file" name="piece_jointe" accept=".jpg,.jpeg,.png,.webp,.pdf,.heic" data-file />
+            </label>
+          </div>
+          <label class="check consent" data-label="Consentement">
+            <input type="checkbox" name="consent" value="oui" required />
+            <span>J'accepte que mes données soient utilisées pour traiter ma demande, conformément à la <a href="/liens/confidentialite" target="_blank">politique de confidentialité</a>. <b class="req">*</b></span>
+          </label>
+        </fieldset>
+
+        <!-- ÉTAPE 4 -->
+        <div class="wz-panel" data-wz-panel="3" hidden>
+          <h2 class="h3">Récapitulatif de votre demande</h2>
+          <dl class="recap" data-recap></dl>
+          <p class="hint">Vérifiez vos informations avant l'envoi. Vous pouvez revenir aux étapes précédentes pour les modifier.</p>
+        </div>
+
+        <div class="wz-nav">
+          <button type="button" class="btn btn--ghost" data-wz-prev hidden><Icon name="arrow-left" /> Précédent</button>
+          <span class="wz-nav__saved mono" data-saved><Icon name="check" size={13} /> Brouillon enregistré</span>
+          <button type="button" class="btn" data-wz-next>Suivant <Icon name="arrow-right" /></button>
+          <button type="submit" class="btn" data-wz-submit hidden><Icon name="send" /> Envoyer ma demande</button>
+        </div>
+      </form>
+
+      <aside class="qside">
+        <div class="panel qside__card">
+          <p class="eyebrow">Besoin d'aide ?</p>
+          <p class="h4">Parlez à un conseiller</p>
+          <a href={telHref()} class="qside__tel mono"><Icon name="phone" /> {settings.contact.phone}</a>
+          <p class="muted" data-open-status><span class="live-dot live-dot--off"></span> <span data-open-text>Lun.–ven. 8h00–18h30</span></p>
+        </div>
+        <div class="panel qside__card">
+          <p class="eyebrow">Espace Professionnel</p>
+          <p class="h4">Votre espace installateur BDF</p>
+          <ul class="qside__list">
+            <li><Icon name="check" size={15} /> Devis sur mesure depuis le catalogue</li>
+            <li><Icon name="check" size={15} /> Fiches techniques détaillées</li>
+            <li><Icon name="check" size={15} /> Tarifs professionnels</li>
+            <li><Icon name="check" size={15} /> Historique de vos demandes</li>
+            <li><Icon name="check" size={15} /> Support technique et gestion annuaire</li>
+          </ul>
+          <a href="/rejoindre-le-reseau-dinstallateurs-bdf" class="btn btn--sm btn--block">Créer mon compte pro</a>
+          <a href="/espace-pro" class="link-arrow">Déjà installateur ? Connectez-vous <Icon name="arrow-right" /></a>
+        </div>
+        <div class="panel qside__card">
+          <p class="eyebrow">Particulier</p>
+          <p class="muted">Pour la fourniture et la pose, vous pouvez aussi contacter directement un installateur agréé près de chez vous.</p>
+          <a href="/installateurs-portes-blindees" class="link-arrow">Trouver un installateur <Icon name="arrow-right" /></a>
+        </div>
+      </aside>
+    </div>
+  </section>
+  <script type="application/json" id="inst-names" set:html={JSON.stringify(installers)} />
+</BaseLayout>
+
+<script>
+  import '@/scripts/pages/devis';
+</script>
+
+<style>
+  .qgrid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  .wizard {
+    display: grid;
+    gap: 1.4rem;
+    padding: clamp(1.2rem, 0.8rem + 2vw, 2.4rem);
+  }
+  .wz-steps {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+  }
+  .wz-step {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  .wz-step__n {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 34px;
+    height: 38px;
+    font-family: var(--f-display);
+    font-size: 0.8rem;
+    color: var(--muted);
+    background: rgba(148, 178, 212, 0.08);
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+    transition: all 0.3s;
+  }
+  .wz-step.is-current .wz-step__n,
+  .wz-step.is-done .wz-step__n {
+    background: var(--orange);
+    color: #fff;
+  }
+  .wz-step.is-current {
+    color: #fff;
+    font-weight: 600;
+  }
+  .wz-step.is-done .wz-step__n {
+    background: #2e6894;
+  }
+  .wz-bar {
+    height: 3px;
+    background: var(--line);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .wz-bar i {
+    display: block;
+    height: 100%;
+    width: var(--wp, 25%);
+    background: linear-gradient(90deg, var(--orange-3), var(--orange), #ffb07a);
+    transition: width 0.5s var(--ease);
+    box-shadow: 0 0 12px var(--orange-glow);
+  }
+  .wz-panel {
+    display: grid;
+    gap: 1.3rem;
+    animation: wzin 0.5s var(--ease);
+  }
+  @keyframes wzin {
+    from {
+      opacity: 0;
+      transform: translateX(16px);
+    }
+  }
+  .tiles--sm {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  .sel-add {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .sel-add__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+  .sel-add__chips :global(button) {
+    padding: 0.25rem 0.6rem;
+    font-size: 0.76rem;
+    border-radius: 99px;
+    border: 1px dashed rgba(255, 102, 34, 0.6);
+    color: #ffd2bb;
+  }
+  .cfg-box {
+    padding: 1rem 1.2rem;
+    border-color: rgba(90, 163, 224, 0.5);
+  }
+  .cfg-box p {
+    margin: 0;
+    font-size: 0.88rem;
+  }
+  .cfg-box .mono {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8fc6f5;
+    margin-bottom: 0.4rem;
+  }
+  .inst-box {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-2);
+  }
+  .inst-box :global(svg) {
+    color: var(--orange);
+  }
+  .drop {
+    position: relative;
+  }
+  .drop__zone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    min-height: 90px;
+    padding: 1rem;
+    border: 1px dashed var(--line-2);
+    border-radius: 12px;
+    color: var(--muted) !important;
+    font-family: var(--f-body) !important;
+    font-size: 0.86rem !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+  .drop:hover .drop__zone,
+  .drop:focus-within .drop__zone {
+    border-color: var(--orange);
+  }
+  .drop input {
+    position: absolute;
+    inset: 1.4rem 0 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .consent {
+    margin-top: 0.4rem;
+  }
+  .consent a {
+    color: var(--orange-2);
+    text-decoration: underline;
+  }
+  .recap {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 0;
+    margin: 0;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .recap :global(dt),
+  .recap :global(dd) {
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid var(--line);
+    margin: 0;
+  }
+  .recap :global(dt) {
+    font-family: var(--f-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: rgba(8, 20, 38, 0.6);
+  }
+  .recap :global(dd) {
+    color: var(--text);
+    white-space: pre-line;
+  }
+  .recap :global(dd button) {
+    float: right;
+    font-size: 0.75rem;
+    color: var(--orange-2);
+    text-decoration: underline;
+  }
+  .wz-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--line);
+  }
+  .wz-nav [data-wz-next],
+  .wz-nav [data-wz-submit] {
+    margin-left: auto;
+  }
+  .wz-nav__saved {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    color: var(--dim);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .wz-nav__saved.is-on {
+    opacity: 1;
+  }
+  .qside {
+    position: sticky;
+    top: calc(var(--header-h) + 1rem);
+    display: grid;
+    gap: 1rem;
+  }
+  .qside__card {
+    display: grid;
+    gap: 0.7rem;
+    padding: 1.4rem;
+  }
+  .qside__card p {
+    margin: 0;
+  }
+  .qside__tel {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.3rem;
+    color: #fff;
+  }
+  .qside__tel :global(svg) {
+    color: var(--orange);
+  }
+  .qside [data-open-status] {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+  }
+  .qside__list {
+    list-style: none;
+    display: grid;
+    gap: 0.35rem;
+    font-size: 0.86rem;
+    color: var(--text-2);
+  }
+  .qside__list li {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .qside__list :global(svg) {
+    color: var(--orange);
+    flex: none;
+    margin-top: 3px;
+  }
+  @media (max-width: 1000px) {
+    .qgrid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .qside {
+      position: static;
+    }
+  }
+  @media (max-width: 640px) {
+    .wz-step__l {
+      display: none;
+    }
+    .wz-steps {
+      display: flex;
+      justify-content: space-between;
+    }
+    .recap {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .recap :global(dt) {
+      border-bottom: 0;
+      padding-bottom: 0.2rem;
+    }
+    .wz-nav__saved {
+      display: none;
+    }
+  }
+</style>

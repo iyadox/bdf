@@ -1,0 +1,12 @@
+{
+  "name": "Scpn",
+  "address": "11 Rue des Gatines",
+  "postalCode": "75020",
+  "city": "Paris",
+  "phone": "01 46 36 41 18",
+  "lat": 48.8654688,
+  "lng": 2.3974581,
+  "legacyId": 1350,
+  "website": "http://www.scpn.fr/",
+  "slug": "scpn-paris"
+}

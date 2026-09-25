@@ -1,0 +1,148 @@
+---
+import Breadcrumbs, { type Crumb } from './Breadcrumbs.astro';
+interface Props {
+  title: string;
+  eyebrow?: string;
+  lead?: string;
+  crumbs?: Crumb[];
+  accent?: string;
+  compact?: boolean;
+  align?: 'left' | 'center';
+}
+const { title, eyebrow, lead, crumbs = [], accent, compact = false, align = 'left' } = Astro.props;
+const long = `${title} ${accent || ''}`.length > 30;
+---
+
+<header class:list={['phero', { 'phero--compact': compact, 'phero--center': align === 'center' }]}>
+  <div class="phero__bg" aria-hidden="true">
+    <div class="phero__grid"></div>
+    <div class="phero__glow"></div>
+    <div class="phero__hex"></div>
+  </div>
+  <div class="container phero__in">
+    {crumbs.length > 0 && <Breadcrumbs items={crumbs} />}
+    <div class="phero__main">
+      <div class="phero__txt">
+        {eyebrow && <p class="eyebrow" data-reveal>{eyebrow}</p>}
+        <h1 class:list={['h1 phero__title', { 'phero__title--long': long }]} data-reveal style="--d:.08s">
+          {title}
+          {accent && (
+            <>
+              {' '}
+              <span class="grad-orange">{accent}</span>
+            </>
+          )}
+        </h1>
+        {lead && <p class="lead" data-reveal style="--d:.16s" set:html={lead} />}
+        <slot />
+      </div>
+      {Astro.slots.has('aside') && (
+        <div class="phero__aside" data-reveal="right" style="--d:.2s">
+          <slot name="aside" />
+        </div>
+      )}
+    </div>
+  </div>
+</header>
+
+<style>
+  .phero {
+    position: relative;
+    padding: calc(var(--section) * 0.55) 0 calc(var(--section) * 0.55);
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+    isolation: isolate;
+  }
+  .phero__title--long {
+    font-size: clamp(1.9rem, 1.1rem + 3vw, 3.6rem);
+  }
+  .phero--compact {
+    padding-block: calc(var(--section) * 0.4);
+  }
+  .phero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+  .phero__grid {
+    position: absolute;
+    inset: -1px;
+    background-image:
+      linear-gradient(rgba(148, 178, 212, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148, 178, 212, 0.07) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: linear-gradient(180deg, #000, transparent 90%);
+    transform: perspective(800px) rotateX(35deg) scale(1.6);
+    transform-origin: 50% 0;
+    animation: gridmove 20s linear infinite;
+  }
+  @keyframes gridmove {
+    to {
+      background-position:
+        0 48px,
+        48px 0;
+    }
+  }
+  .phero__glow {
+    position: absolute;
+    right: -10%;
+    top: -40%;
+    width: 60%;
+    height: 160%;
+    background:
+      radial-gradient(closest-side, rgba(255, 102, 34, 0.18), transparent),
+      radial-gradient(closest-side at 30% 60%, rgba(46, 104, 148, 0.35), transparent);
+  }
+  .phero__hex {
+    position: absolute;
+    right: 6%;
+    top: 50%;
+    width: min(420px, 38vw);
+    aspect-ratio: 1 / 1.1547;
+    translate: 0 -50%;
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+    background: linear-gradient(160deg, rgba(46, 104, 148, 0.18), rgba(4, 61, 108, 0.04));
+    border: 1px solid var(--line);
+    opacity: 0.8;
+  }
+  .phero__in {
+    display: grid;
+    gap: 1.6rem;
+  }
+  .phero__main {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: center;
+  }
+  .phero__txt {
+    display: grid;
+    gap: 1.1rem;
+    max-width: 860px;
+  }
+  .phero__title {
+    font-size: clamp(1.8rem, 1.1rem + 2.6vw, 3.4rem);
+  }
+  .phero__txt .lead {
+    margin: 0;
+  }
+  .phero--center .phero__main {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    text-align: center;
+  }
+  .phero--center .phero__txt {
+    justify-items: center;
+  }
+  .phero--center .phero__hex {
+    display: none;
+  }
+  @media (max-width: 900px) {
+    .phero__main {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .phero__hex {
+      opacity: 0.3;
+    }
+  }
+</style>

@@ -1,0 +1,69 @@
+{
+  "title": "Profils anti-pinces - Plat de recouvrement",
+  "slug": "profils-anti-pinces-plat-de-recouvrement",
+  "segment": "tolerie-pliage-et-profils",
+  "categories": [
+    "tolerie-pliage-et-profils-71"
+  ],
+  "family": "Profils anti-pinces - Plat de recouvrement",
+  "order": 63,
+  "featured": false,
+  "image": "/media/fiches-produits/plat-de-recouvrement.jpg",
+  "seo": {
+    "title": "Profils anti-pinces - Plat de recouvrement",
+    "description": ""
+  },
+  "specs": {
+    "dimensions": "Nos plats de recouvrement pour porte blindée ou blindages de porte sont disponibles en plusieurs hauteurs:\n2300 mm\n2500 mm\n3000 mm"
+  },
+  "filters": {
+    "vantaux": [],
+    "certifications": [],
+    "fermetures": []
+  },
+  "composition": "<p>Une cornière ou profil anti-pince ou cornière anti effraction se prémunit des risques d’atteinte du cylindre ou de l’espace vide entre la porte blindée et l’huisserie.<br/><br/>Les cambrioleurs utilisent généralement un pied de biche ou tournevis pour accéder à cet espace vide qui leur permet de faire sauter les serrures ou les verrous. La cornière anti-pince fait le tour de la porte blindée ou blindage de porte et comble cet espace vide.</p>",
+  "downloads": [
+    {
+      "label": "profils-anti-pinces.pdf",
+      "file": "/media/fichiers/profils-anti-pinces.pdf"
+    }
+  ],
+  "quoteLabel": "Profils anti-pinces - Plat de recouvrement",
+  "options": {
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet",
+        "title": "Époxy mono couleur",
+        "description": "180 couleurs RAL au choix."
+      }
+    ]
+  },
+  "characteristics": {
+    "html": "<p>Nos plats de recouvrement pour porte blindée ou blindage de porte sont constitués de:</p><ul><li>tôle électrozinguée 15/10e</li><li>tôle électrozinguée 20/10e</li><li>tôle électrozinguée 25/10e</li><li>tôle décor imitation bois</li></ul><p>Vous avez la possibilité d’intégrer en option à votre plat de recouvrement pour porte blindée ou blindage de porte:</p><ul><li>son perçage et fraisage de l'huisserie en usine</li><li>son capot à coller</li></ul>"
+  }
+}

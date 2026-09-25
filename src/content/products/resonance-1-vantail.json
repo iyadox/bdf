@@ -1,0 +1,175 @@
+{
+  "title": "RÉSONANCE 1 vantail",
+  "slug": "resonance-1-vantail",
+  "segment": "blocs-portes-d-appartement",
+  "categories": [
+    "blocs-portes-dappartement-65"
+  ],
+  "family": "RÉSONANCE",
+  "order": 41,
+  "featured": false,
+  "image": "/media/fiches-produits/resonance-1v-0.png",
+  "badges": [
+    "Sans certification"
+  ],
+  "seo": {
+    "title": "RÉSONANCE 1 vantail",
+    "description": ""
+  },
+  "specs": {
+    "vantaux": "1 vantail",
+    "dimensions": "Notre tarif pour le bloc porte RESONANCE 1 vantail s’applique pour les dimensions maximum 1000 x 2300 (mm).\nFabricant de blocs portes sur mesure, pour toutes autres dimensions nous vous proposerons une solution personnalisée, n’hésitez pas à nous contacter.",
+    "fermeture": "Sans serrure Serrures multi-points en applique",
+    "certification": "Sans certification"
+  },
+  "filters": {
+    "vantaux": [
+      "1 vantail"
+    ],
+    "certifications": [
+      "Sans certification"
+    ],
+    "fermetures": [
+      "Sans serrure",
+      "Serrures multi-points en applique"
+    ]
+  },
+  "composition": "<p>Le bloc porte RESONANCE 1 vantail est composé de:</p><ul><li>2 faces en acier 20/10ème électrozinguée</li><li>4 paumelles soudées de 140 mm à billes</li><li>un cadre anti-pince soudé 4 côtés</li><li>une barre de seuil avec joint</li><li>de laine de roche</li></ul>",
+  "downloads": [
+    {
+      "label": "resonance-1v.pdf",
+      "file": "/media/fichiers/resonance-1v.pdf"
+    }
+  ],
+  "quoteLabel": "RÉSONANCE 1 vantail",
+  "locks": {
+    "intro": "Le bloc porte RESONANCE 1 vantail est proposé avec plusieurs configurations de serrures en applique:",
+    "table": [
+      {
+        "brand": "Sans serrure (option)"
+      },
+      {
+        "brand": "Vachette",
+        "certification": "A2P*",
+        "level": "Standard"
+      },
+      {
+        "brand": "Vachette",
+        "certification": "A2P***",
+        "level": "Maximum"
+      },
+      {
+        "brand": "Picard",
+        "model": "Ermetis",
+        "points": "4/6 pts",
+        "certification": "A2P*",
+        "level": "Standard"
+      },
+      {
+        "brand": "Picard",
+        "model": "Serenis 710",
+        "points": "5/7 pts",
+        "certification": "A2P***",
+        "level": "Maximum"
+      }
+    ],
+    "extras": [
+      {
+        "title": "Inclus avec la serrure",
+        "icon": "key",
+        "html": "<p>Pour la serrure 5/7 points Picard Serenis 710 A2P*** un entrebâilleur est intégré.</p>"
+      },
+      {
+        "title": "Options fermeture",
+        "icon": "circle-plus",
+        "html": "<p>En option vous avez la possibilité d’ajouter des points de fermeture haut et bas</p><p>En option l’ensemble extérieur est proposé en:</p><ul><li>béquille intérieure et extérieure</li><li>béquille intérieure et poignée de tirage extérieure.</li></ul>"
+      }
+    ]
+  },
+  "frame": {
+    "intro": "L’huisserie avec joint du bloc porte RESONANCE 1 vantail est composée de tôle multi-plis en 20/10ème électrozinguée.\n\nSelon la configuration de votre installation vous avez le choix entre les huisseries suivantes:",
+    "cards": [
+      {
+        "icon": "rotate",
+        "title": "Rénovation",
+        "description": "Remplacement sans gros travaux. Installation rapide sur bâti existant."
+      },
+      {
+        "icon": "hammer",
+        "title": "Tubulaire",
+        "description": "Constructions neuves et sur mesure. Intégration parfaite en neuf."
+      }
+    ]
+  },
+  "options": {
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Équipements complémentaires",
+        "icon": "circle-plus",
+        "items": [
+          {
+            "label": "Judas optique",
+            "picto": "/media/pictos-options/6-judas-optique.jpg"
+          },
+          {
+            "label": "Moulures",
+            "picto": "/media/pictos-options/8-moulures.jpg"
+          },
+          {
+            "label": "Oculus",
+            "picto": "/media/pictos-options/9-oculus.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet-slash",
+        "title": "Époxy bi-couleur",
+        "description": "2 couleurs différentes intérieur/extérieur, 180 RAL."
+      },
+      {
+        "icon": "droplet",
+        "title": "Époxy mono couleur",
+        "description": "180 couleurs RAL au choix."
+      },
+      {
+        "icon": "brush",
+        "title": "Grenaillage polyzing",
+        "description": "Finition texturée résistante."
+      },
+      {
+        "icon": "tree",
+        "title": "Ton bois",
+        "description": "6 décors aspect bois naturel."
+      }
+    ]
+  },
+  "usages": {
+    "intro": "Le bloc porte RESONANCE 1 vantail est principalement destiné à la fermeture des appartements mais peut également équiper mais peut également équiper des commerces, des entreprises ou des sites sensibles.",
+    "items": []
+  }
+}

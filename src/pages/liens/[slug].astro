@@ -1,0 +1,83 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/ui/PageHero.astro';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import { formatDate } from '@/lib/site';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('pages');
+  return pages.map((p) => ({ params: { slug: p.id }, props: { entry: p } }));
+}
+const { entry } = Astro.props as { entry: CollectionEntry<'pages'> };
+const { Content, headings } = await render(entry);
+const toc = headings.filter((h) => h.depth === 2);
+---
+
+<BaseLayout title={entry.data.title} description={entry.data.description}>
+  <PageHero title={entry.data.title} crumbs={[{ label: entry.data.title }]} compact eyebrow={entry.data.updated ? `Mise à jour : ${formatDate(entry.data.updated)}` : undefined} />
+  <section class="section section--tight">
+    <div class="container legal">
+      {
+        toc.length > 2 && (
+          <nav class="legal__toc panel" aria-label="Sommaire">
+            <p class="mono">Sommaire</p>
+            <ol>
+              {toc.map((h) => (
+                <li>
+                  <a href={`#${h.slug}`}>{h.text}</a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        )
+      }
+      <div class="prose legal__body"><Content /></div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 3rem;
+    align-items: start;
+  }
+  .legal__toc {
+    position: sticky;
+    top: calc(var(--header-h) + 1rem);
+    padding: 1.2rem;
+  }
+  .legal__toc .mono {
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+  .legal__toc ol {
+    list-style: none;
+    display: grid;
+    gap: 0.4rem;
+    font-size: 0.88rem;
+  }
+  .legal__toc a {
+    color: var(--text-2);
+  }
+  .legal__toc a:hover {
+    color: var(--orange);
+  }
+  .legal__body {
+    max-width: 78ch;
+  }
+  .legal__body :global(h2) {
+    scroll-margin-top: calc(var(--header-h) + 20px);
+  }
+  @media (max-width: 900px) {
+    .legal {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .legal__toc {
+      position: static;
+    }
+  }
+</style>

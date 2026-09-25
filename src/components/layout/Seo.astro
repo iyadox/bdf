@@ -1,0 +1,68 @@
+---
+import { settings } from '@/lib/site';
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article' | 'product';
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+}
+const { title, description = settings.company.description, image = '/og/default.jpg', type = 'website', noindex = false, jsonLd } = Astro.props;
+const site = Astro.site ?? new URL('https://www.blindagesdefrance.fr');
+const cleanPath = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/+$/, '');
+const canonical = new URL(cleanPath, site).href;
+const fullTitle = title.includes(settings.company.name) ? title : `${title} | ${settings.company.name}`;
+const img = new URL(image, site).href;
+const a = settings.contact.address;
+
+const org = {
+  '@context': 'https://schema.org',
+  '@type': ['Organization', 'LocalBusiness'],
+  '@id': new URL('/#organisation', site).href,
+  name: settings.company.name,
+  alternateName: 'BDF',
+  url: site.href,
+  logo: new URL('/brand/bdf-mark.svg', site).href,
+  image: new URL('/og/default.jpg', site).href,
+  description: settings.company.description,
+  foundingDate: String(settings.company.founded),
+  telephone: settings.contact.phoneIntl,
+  faxNumber: settings.contact.fax,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: a.street,
+    postalCode: a.postalCode,
+    addressLocality: a.city,
+    addressCountry: 'FR',
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: settings.contact.geo.lat, longitude: settings.contact.geo.lng },
+  openingHoursSpecification: settings.hours.days
+    .filter((d) => d.open)
+    .map((d) => ({
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: { Lundi: 'Monday', Mardi: 'Tuesday', Mercredi: 'Wednesday', Jeudi: 'Thursday', Vendredi: 'Friday', Samedi: 'Saturday', Dimanche: 'Sunday' }[d.day],
+      opens: d.open,
+      closes: d.close,
+    })),
+  sameAs: Object.values(settings.socials).filter(Boolean),
+};
+const ld = [org, ...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [])];
+---
+
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+{noindex && <meta name="robots" content="noindex, follow" />}
+<meta property="og:site_name" content={settings.company.name} />
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:type" content={type === 'product' ? 'website' : type} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={img} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={img} />
+<script type="application/ld+json" set:html={JSON.stringify(ld.length === 1 ? ld[0] : ld)} />

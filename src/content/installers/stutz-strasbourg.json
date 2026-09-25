@@ -1,0 +1,12 @@
+{
+  "name": "Stutz",
+  "address": "12 Rue de l'Epine",
+  "postalCode": "67000",
+  "city": "Strasbourg",
+  "phone": "03 88 10 10 20",
+  "lat": 48.5804994,
+  "lng": 7.7483015,
+  "legacyId": 1251,
+  "website": "http://www.stutz.fr/",
+  "slug": "stutz-strasbourg"
+}

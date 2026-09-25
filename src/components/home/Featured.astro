@@ -1,0 +1,260 @@
+---
+import Icon from '@/components/Icon.astro';
+import { getProducts, productUrl, quoteUrl } from '@/lib/catalog';
+import { badgeKind } from '@/lib/site';
+const featured = (await getProducts()).filter((p) => p.featured);
+const n = featured.length;
+---
+
+<section class="section featured" data-featured aria-labelledby="featured-title">
+  <div class="container">
+    <div class="section-head center">
+      <p class="eyebrow eyebrow--center" data-reveal>Haute sécurité</p>
+      <h2 id="featured-title" class="h2" data-reveal style="--d:.1s">Nos produits <span class="grad-orange">phares</span></h2>
+      <p class="lead" data-reveal style="--d:.2s">Faites pivoter le carrousel 3D : glissez, utilisez les flèches ou votre clavier.</p>
+    </div>
+  </div>
+
+  <div class="carousel" data-carousel style={`--n:${n}`} tabindex="0" aria-roledescription="carrousel" aria-label="Produits phares">
+    <div class="carousel__ring" data-ring>
+      {
+        featured.map((p, i) => (
+          <a href={productUrl(p)} class="citem" style={`--i:${i}`} data-citem aria-label={p.title} tabindex="-1">
+            <div class="citem__img product-stage">
+              <img src={p.situationImage || p.image} alt="" loading="lazy" width="420" height="300" />
+            </div>
+            <div class="citem__cap">
+              <span class="mono">{String(i + 1).padStart(2, '0')}</span>
+              <strong>{p.title}</strong>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+    <div class="carousel__floor" aria-hidden="true"></div>
+  </div>
+
+  <div class="container">
+    <div class="fdetail panel panel--glow" data-fdetail aria-live="polite">
+      {
+        featured.map((p, i) => (
+          <div class="fdetail__item" data-fitem={i} hidden={i !== 0}>
+            <div class="fdetail__main">
+              <div class="fdetail__badges">
+                {p.badges
+                  .filter((b) => b !== 'Sans certification')
+                  .map((b) => (
+                    <span class={`badge badge--${badgeKind(b)}`}>
+                      <Icon name="shield" /> {b}
+                    </span>
+                  ))}
+                <span class="badge badge--fr">Fabriqué en France</span>
+              </div>
+              <h3 class="h3">{p.title}</h3>
+              <p>{p.teaser}</p>
+            </div>
+            <div class="fdetail__actions">
+              <a href={productUrl(p)} class="btn">
+                Fiche détaillée <Icon name="arrow-right" />
+              </a>
+              <a href={quoteUrl(p)} class="btn btn--ghost">
+                Demander un devis
+              </a>
+            </div>
+          </div>
+        ))
+      }
+      <div class="fdetail__nav">
+        <button type="button" class="navbtn" data-prev aria-label="Produit précédent"><Icon name="chevron-left" /></button>
+        <div class="fdetail__dots" role="tablist">
+          {featured.map((p, i) => <button type="button" class="dot" data-dot={i} aria-label={p.title} aria-selected={i === 0 ? 'true' : 'false'} />)}
+        </div>
+        <button type="button" class="navbtn" data-next aria-label="Produit suivant"><Icon name="chevron-right" /></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .featured {
+    overflow: hidden;
+  }
+  .carousel {
+    --r: clamp(260px, 30vw, 460px);
+    --w: clamp(210px, 20vw, 300px);
+    position: relative;
+    height: clamp(380px, 42vw, 520px);
+    perspective: 1500px;
+    perspective-origin: 50% 35%;
+    cursor: grab;
+    touch-action: pan-y;
+    user-select: none;
+    outline: none;
+  }
+  .carousel:active {
+    cursor: grabbing;
+  }
+  .carousel__ring {
+    position: absolute;
+    left: 50%;
+    top: 8%;
+    width: var(--w);
+    height: calc(var(--w) * 1.25);
+    margin-left: calc(var(--w) / -2);
+    transform-style: preserve-3d;
+    transform: translateZ(calc(var(--r) * -1)) rotateY(var(--angle, 0deg));
+    will-change: transform;
+  }
+  .citem {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--line-2);
+    background: rgba(6, 16, 30, 0.9);
+    transform: rotateY(calc(var(--i) * 360deg / var(--n))) translateZ(var(--r));
+    backface-visibility: hidden;
+    transition:
+      border-color 0.4s,
+      box-shadow 0.4s,
+      filter 0.4s;
+    filter: brightness(0.55) saturate(0.7);
+  }
+  .citem.is-active {
+    border-color: rgba(255, 102, 34, 0.7);
+    box-shadow:
+      0 0 0 1px rgba(255, 102, 34, 0.3),
+      0 30px 90px rgba(255, 102, 34, 0.25);
+    filter: none;
+  }
+  .citem__img {
+    flex: 1;
+  }
+  .citem__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    mix-blend-mode: normal;
+    pointer-events: none;
+  }
+  .citem__cap {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.9rem 1rem;
+    font-size: 0.85rem;
+    border-top: 1px solid var(--line);
+  }
+  .citem__cap .mono {
+    color: var(--orange);
+    font-size: 0.72rem;
+  }
+  .citem__cap strong {
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .carousel__floor {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: min(1100px, 95vw);
+    height: 140px;
+    translate: -50% 0;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(255, 102, 34, 0.16), transparent 70%);
+    transform: perspective(500px) rotateX(70deg);
+  }
+  .fdetail {
+    position: relative;
+    margin-top: 1rem;
+    padding: 1.6rem 1.8rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1.2rem 2rem;
+    align-items: center;
+  }
+  .fdetail__item {
+    display: contents;
+  }
+  .fdetail__item[hidden] {
+    display: none;
+  }
+  .fdetail__main {
+    display: grid;
+    gap: 0.6rem;
+    animation: fadein 0.6s var(--ease);
+  }
+  @keyframes fadein {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+  }
+  .fdetail__main p {
+    margin: 0;
+    color: var(--text-2);
+    max-width: 80ch;
+  }
+  .fdetail__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .fdetail__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+  }
+  .fdetail__nav {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+  }
+  .navbtn {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    border: 1px solid var(--line-2);
+    transition: all 0.25s;
+  }
+  .navbtn:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+  }
+  .fdetail__dots {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .dot {
+    width: 28px;
+    height: 4px;
+    border-radius: 4px;
+    background: var(--line-2);
+    transition: all 0.3s;
+  }
+  .dot[aria-selected='true'] {
+    background: var(--orange);
+    width: 44px;
+    box-shadow: 0 0 10px var(--orange-glow);
+  }
+  @media (max-width: 760px) {
+    .fdetail {
+      grid-template-columns: minmax(0, 1fr);
+      padding: 1.3rem;
+    }
+    .carousel {
+      --r: 200px;
+      --w: 190px;
+      height: 340px;
+    }
+  }
+</style>

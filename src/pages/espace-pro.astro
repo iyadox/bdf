@@ -1,0 +1,379 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/ui/PageHero.astro';
+import Icon from '@/components/Icon.astro';
+import { settings } from '@/lib/site';
+import { getCategories, getProducts, productUrl } from '@/lib/catalog';
+const pro = settings.pro as { loginUrl?: string; passwordUrl?: string; registerUrl?: string };
+const register = pro.registerUrl || '/rejoindre-le-reseau-dinstallateurs-bdf';
+const requestAccess = `/nous-contacter?objet=${encodeURIComponent("Accès à l'Espace Pro")}`;
+const benefits = [
+  { icon: 'file-text', title: 'Devis sur mesure depuis le catalogue', text: 'Composez vos demandes directement depuis les fiches produits.' },
+  { icon: 'layers', title: 'Fiches techniques détaillées', text: 'Coupes, compositions, options et documentation à jour.' },
+  { icon: 'badge-check', title: 'Tarifs professionnels', text: 'Vos conditions tarifaires installateur, consultables à tout moment.' },
+  { icon: 'clock', title: 'Historique de vos demandes', text: 'Retrouvez vos devis et le suivi de vos commandes.' },
+  { icon: 'wrench', title: 'Support technique et gestion annuaire', text: 'Un interlocuteur dédié et la mise à jour de votre fiche installateur.' },
+  { icon: 'sparkles', title: 'Et plus à venir…', text: 'De nouveaux outils sont régulièrement ajoutés à votre espace.' },
+];
+const [cats, products] = await Promise.all([getCategories(), getProducts()]);
+const groups = cats
+  .map((c) => ({
+    cat: c,
+    items: products.filter((p) => p.segment === c.segment && p.downloads?.length),
+  }))
+  .filter((g) => g.items.length);
+const nbDocs = groups.reduce((n, g) => n + g.items.reduce((m, p) => m + (p.downloads?.length || 0), 0), 0);
+---
+
+<BaseLayout title="Espace Pro installateurs" description="Espace professionnel des installateurs Blindages de France : tarifs professionnels, fiches techniques, devis sur mesure, historique et support technique.">
+  <PageHero title="Espace" accent="Professionnel" eyebrow="Installateurs BDF" lead="Votre espace installateur&nbsp;: tarifs, documentation technique, devis depuis le catalogue et support dédié." crumbs={[{ label: 'Espace Pro' }]}>
+    <div slot="aside" class="pro-login panel" data-spotlight>
+      <div class="pro-login__scan" aria-hidden="true"></div>
+      <span class="pro-login__ic"><Icon name="lock" size={26} /></span>
+      <p class="h4">Accès installateurs</p>
+      {
+        pro.loginUrl ? (
+          <>
+            <p class="muted">Connectez-vous à votre compte professionnel.</p>
+            <a href={pro.loginUrl} class="btn btn--block"><Icon name="log-in" /> Se connecter</a>
+            {pro.passwordUrl && <a href={pro.passwordUrl} class="link-arrow">Mot de passe oublié <Icon name="arrow-right" /></a>}
+          </>
+        ) : (
+          <>
+            <p class="muted">Vous êtes installateur partenaire&nbsp;? Demandez vos identifiants à nos équipes.</p>
+            <a href={requestAccess} class="btn btn--block"><Icon name="log-in" /> Demander mes accès</a>
+          </>
+        )
+      }
+      <div class="pro-login__sep"><span>Pas encore partenaire ?</span></div>
+      <a href={register} class="btn btn--ghost btn--block"><Icon name="plus-circle" /> Créer mon compte pro</a>
+    </div>
+  </PageHero>
+
+  <section class="section">
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <p class="eyebrow">Votre espace</p>
+        <h2 class="h2">Tout ce qu'il faut <span class="grad-orange">pour vos chantiers</span></h2>
+      </header>
+      <div class="pro-grid">
+        {
+          benefits.map((b, i) => (
+            <article class:list={['pro-b panel', { 'pro-b--soon': i === benefits.length - 1 }]} data-reveal style={`--d:${(i % 3) * 0.07}s`} data-tilt="6" data-spotlight>
+              <span class="pro-b__n mono">{String(i + 1).padStart(2, '0')}</span>
+              <span class="pro-b__ic">
+                <Icon name={b.icon} size={24} />
+              </span>
+              <h3 class="h4">{b.title}</h3>
+              <p class="muted">{b.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight" id="documentation">
+    <div class="container">
+      <header class="section-head pro-docs__head" data-reveal>
+        <div>
+          <p class="eyebrow">Documentation technique</p>
+          <h2 class="h2">Fiches techniques <span class="grad-orange">en libre accès</span></h2>
+          <p class="lead">{nbDocs} documents PDF à télécharger, classés par gamme.</p>
+        </div>
+        <label class="pro-docs__search">
+          <Icon name="search" size={18} />
+          <input type="search" class="input" placeholder="Modèle, gamme, BP2, 2 vantaux…" data-doc-q aria-label="Rechercher une fiche technique" />
+        </label>
+      </header>
+      <div class="pro-docs" data-docs>
+        {
+          groups.map((g) => (
+            <details class="pro-cat panel" open data-doc-group>
+              <summary>
+                <span class="pro-cat__t">{g.cat.title}</span>
+                <span class="pro-cat__n mono" data-doc-count>{g.items.length}</span>
+                <Icon name="chevron-down" class="pro-cat__chev" />
+              </summary>
+              <ul class="pro-list">
+                {g.items.map((p) =>
+                  (p.downloads || []).map((d) => (
+                    <li data-doc={`${p.title} ${p.family || ''} ${(p.badges || []).join(' ')}`.toLowerCase()}>
+                      <a href={d.file} target="_blank" rel="noopener" class="pro-doc" download>
+                        <span class="pro-doc__ic">PDF</span>
+                        <span class="pro-doc__t">{p.title}</span>
+                        <Icon name="download" size={16} />
+                      </a>
+                      <a href={productUrl(p)} class="pro-doc__more" aria-label={`Voir la fiche ${p.title}`}>
+                        <Icon name="arrow-up-right" size={15} />
+                      </a>
+                    </li>
+                  )),
+                )}
+              </ul>
+            </details>
+          ))
+        }
+      </div>
+      <p class="pro-empty panel" data-doc-empty hidden>Aucune fiche ne correspond à votre recherche.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  import { $, $$, fold } from '@/scripts/ui/dom';
+  const q = $<HTMLInputElement>('[data-doc-q]');
+  const groups = $$<HTMLDetailsElement>('[data-doc-group]');
+  const empty = $('[data-doc-empty]')!;
+  q?.addEventListener('input', () => {
+    const terms = fold(q.value.trim()).split(/\s+/).filter(Boolean);
+    let total = 0;
+    groups.forEach((g) => {
+      let n = 0;
+      $$<HTMLElement>('[data-doc]', g).forEach((li) => {
+        const ok = terms.every((t) => fold(li.dataset.doc).includes(t));
+        li.hidden = !ok;
+        if (ok) n++;
+      });
+      g.hidden = n === 0;
+      if (terms.length) g.open = true;
+      $('[data-doc-count]', g)!.textContent = String(n);
+      total += n;
+    });
+    empty.hidden = total > 0;
+  });
+</script>
+
+<style>
+  .pro-login {
+    position: relative;
+    display: grid;
+    gap: 0.9rem;
+    width: min(420px, 100%);
+    padding: 2rem;
+    overflow: hidden;
+    border-color: rgba(255, 102, 34, 0.35);
+    box-shadow:
+      0 30px 80px rgba(0, 0, 0, 0.45),
+      0 0 0 1px rgba(255, 102, 34, 0.08) inset;
+  }
+  .pro-login p {
+    margin: 0;
+  }
+  .pro-login__scan {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(255, 102, 34, 0.12) 50%, transparent 52%);
+    background-size: 100% 260%;
+    animation: scan 5s linear infinite;
+    pointer-events: none;
+  }
+  @keyframes scan {
+    from {
+      background-position: 0 100%;
+    }
+    to {
+      background-position: 0 -160%;
+    }
+  }
+  .pro-login__ic {
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 64px;
+    color: #fff;
+    background: linear-gradient(160deg, var(--orange), var(--orange-3));
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+    box-shadow: 0 0 30px var(--orange-glow);
+  }
+  .pro-login__sep {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.78rem;
+    color: var(--dim);
+  }
+  .pro-login__sep::before,
+  .pro-login__sep::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+  .pro-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .pro-b {
+    position: relative;
+    display: grid;
+    align-content: start;
+    gap: 0.6rem;
+    padding: 1.7rem;
+  }
+  .pro-b h3,
+  .pro-b p {
+    margin: 0;
+  }
+  .pro-b__n {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.4rem;
+    font-size: 0.7rem;
+    color: var(--dim);
+    letter-spacing: 0.14em;
+  }
+  .pro-b__ic {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 58px;
+    color: var(--orange);
+    background: rgba(255, 102, 34, 0.1);
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  }
+  .pro-b--soon {
+    border-style: dashed;
+    background: transparent;
+  }
+  .pro-docs__head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .pro-docs__search {
+    position: relative;
+    flex: 0 1 420px;
+  }
+  .pro-docs__search :global(svg) {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    translate: 0 -50%;
+    color: var(--muted);
+  }
+  .pro-docs__search .input {
+    padding-left: 2.8rem;
+  }
+  .pro-docs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    align-items: start;
+  }
+  .pro-cat {
+    padding: 0;
+    overflow: hidden;
+  }
+  .pro-cat summary {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1.1rem 1.3rem;
+    cursor: pointer;
+    list-style: none;
+  }
+  .pro-cat summary::-webkit-details-marker {
+    display: none;
+  }
+  .pro-cat__t {
+    flex: 1;
+    font-family: var(--f-display);
+    font-size: 0.86rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .pro-cat__n {
+    padding: 0.15rem 0.55rem;
+    font-size: 0.7rem;
+    color: var(--orange-2);
+    background: rgba(255, 102, 34, 0.12);
+    border-radius: 99px;
+  }
+  .pro-cat :global(.pro-cat__chev) {
+    color: var(--muted);
+    transition: rotate 0.3s;
+  }
+  .pro-cat[open] :global(.pro-cat__chev) {
+    rotate: 180deg;
+  }
+  .pro-list {
+    list-style: none;
+    display: grid;
+    border-top: 1px solid var(--line);
+    max-height: 420px;
+    overflow: auto;
+  }
+  .pro-list li {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--line);
+  }
+  .pro-list li:last-child {
+    border-bottom: 0;
+  }
+  .pro-doc {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.7rem 1.3rem;
+    font-size: 0.9rem;
+    color: var(--text-2);
+    transition:
+      background 0.2s,
+      color 0.2s;
+  }
+  .pro-doc:hover {
+    background: rgba(255, 102, 34, 0.07);
+    color: #fff;
+  }
+  .pro-doc__ic {
+    flex: none;
+    padding: 0.2rem 0.35rem;
+    font-family: var(--f-mono);
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: #fff;
+    background: #c9302c;
+    border-radius: 4px;
+  }
+  .pro-doc__t {
+    flex: 1;
+  }
+  .pro-doc :global(svg) {
+    color: var(--orange);
+  }
+  .pro-doc__more {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    color: var(--muted);
+    border-left: 1px solid var(--line);
+  }
+  .pro-doc__more:hover {
+    color: var(--orange);
+  }
+  .pro-empty {
+    padding: 2rem;
+    text-align: center;
+    color: var(--muted);
+  }
+  @media (max-width: 1000px) {
+    .pro-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .pro-docs {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  @media (max-width: 600px) {
+    .pro-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

@@ -1,0 +1,65 @@
+---
+import Icon from '@/components/Icon.astro';
+interface Props {
+  id: string;
+  icon: string;
+  title: string;
+  sub?: string;
+  num: string;
+  tone?: 'dark' | 'panel' | 'certif';
+}
+const { id, icon, title, sub, num, tone = 'dark' } = Astro.props;
+---
+
+<section id={id} class:list={['psec', `psec--${tone}`]} data-psec>
+  <div class="container">
+    <header class="psec__head" data-reveal>
+      <span class="psec__num mono">{num}</span>
+      <span class="icon-box"><Icon name={icon} /></span>
+      <div>
+        <h2 class="h3">{title}</h2>
+        {sub && <p class="muted">{sub}</p>}
+      </div>
+    </header>
+    <div class="psec__body" data-reveal style="--d:.1s">
+      <slot />
+    </div>
+  </div>
+</section>
+
+<style>
+  .psec {
+    position: relative;
+    padding-block: clamp(3rem, 2rem + 4vw, 5.5rem);
+    scroll-margin-top: calc(var(--header-h) + 60px);
+  }
+  .psec + .psec {
+    border-top: 1px solid var(--line);
+  }
+  .psec--panel {
+    background: linear-gradient(180deg, rgba(10, 26, 46, 0.55), rgba(3, 7, 14, 0));
+  }
+  .psec--certif {
+    background:
+      radial-gradient(60% 80% at 100% 0%, rgba(255, 102, 34, 0.1), transparent 60%),
+      linear-gradient(180deg, rgba(90, 108, 125, 0.18), rgba(3, 7, 14, 0));
+  }
+  .psec__head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .psec__head p {
+    margin: 0.25rem 0 0;
+    font-size: 0.92rem;
+  }
+  .psec__num {
+    font-size: 0.72rem;
+    color: var(--orange);
+    letter-spacing: 0.1em;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    opacity: 0.8;
+  }
+</style>

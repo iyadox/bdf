@@ -1,0 +1,196 @@
+{
+  "title": "Consonance 1 vantail",
+  "slug": "consonance-1-vantail",
+  "segment": "blindages-de-porte",
+  "categories": [
+    "blindages-de-porte-67"
+  ],
+  "family": "Consonance",
+  "order": 48,
+  "featured": false,
+  "image": "/media/fiches-produits/consonance-1v-0.png",
+  "badges": [
+    "Sans certification"
+  ],
+  "seo": {
+    "title": "Notre blindage de porte Consonance 1 vantail en acier électrozingué",
+    "description": "Vous souhaitez renforcer votre porte en bois? Notre Blindage de porte Consonance 1 vantail est spécialement conçu pour conserver votre porte d’origine en la rendant blindée et anti-effraction"
+  },
+  "specs": {
+    "vantaux": "1 vantail",
+    "dimensions": "Notre tarif pour le blindage de porte CONSONANCE 1 vantail  s’applique pour les dimensions maximum 1000 x 2300 (mm).\nFabricant de blocs portes sur mesure, pour toutes autres dimensions nous vous proposerons une solution personnalisée, n’hésitez pas à nous contacter.",
+    "fermeture": "Sans serrure Serrures multi-points en applique",
+    "certification": "Sans certification"
+  },
+  "filters": {
+    "vantaux": [
+      "1 vantail"
+    ],
+    "certifications": [
+      "Sans certification"
+    ],
+    "fermetures": [
+      "Sans serrure",
+      "Serrures multi-points en applique"
+    ]
+  },
+  "composition": "<p>Le blindage de porte CONSONANCE 1 vantail est composé de:</p><ul><li>1 face en acier 20/10ème électrozinguée (25/10ème en option)</li><li>4 paumelles soudées de 140 mm à billes</li><li>un cadre anti-pince soudé 4 côtés</li><li>une contre plaque soudée</li></ul><p>Le blindage de porte CONSONANCE 1 vantail permet de récupérer votre porte en bois d’origine.</p>",
+  "downloads": [
+    {
+      "label": "consonance-1v.pdf",
+      "file": "/media/fichiers/consonance-1v.pdf"
+    }
+  ],
+  "quoteLabel": "Consonance 1 vantail",
+  "locks": {
+    "intro": "Le blindage de porte CONSONANCE 1 vantail est proposé avec plusieurs configurations de serrures en applique:",
+    "table": [
+      {
+        "brand": "Sans serrure (option)"
+      },
+      {
+        "brand": "Vachette",
+        "model": "Exclusive",
+        "certification": "A2P*",
+        "level": "Standard"
+      },
+      {
+        "brand": "Vachette",
+        "model": "Exclusive",
+        "certification": "A2P***",
+        "level": "Maximum"
+      },
+      {
+        "brand": "Picard",
+        "model": "Ermetis",
+        "points": "4/6 pts",
+        "certification": "A2P*",
+        "level": "Standard"
+      },
+      {
+        "brand": "Picard",
+        "model": "Serenis 710",
+        "points": "5/7 pts",
+        "certification": "A2P***",
+        "level": "Maximum"
+      }
+    ],
+    "extras": [
+      {
+        "title": "Inclus avec la serrure",
+        "icon": "key",
+        "html": "<p>Pour les serrures 5/7 points Picard Serenis 710 A2P*** et Vachette Exclusive A2P* et A2P*** un entrebâilleur est intégré.</p>"
+      },
+      {
+        "title": "Options fermeture",
+        "icon": "circle-plus",
+        "html": "<p>En option vous avez la possibilité d’ajouter des points de fermeture haut et bas.</p><p>En option l’ensemble extérieur est proposé en:</p><ul><li>béquille intérieure et extérieure</li><li>béquille intérieure et poignée de tirage extérieure.</li></ul>"
+      }
+    ]
+  },
+  "frame": {
+    "intro": "L’huisserie du blindage de porte CONSONANCE 1 vantail est composée de tôle multi-plis en 20/10ème électrozinguée.\n\nSelon la configuration de votre installation vous avez le choix entre les huisseries suivantes:",
+    "cards": [
+      {
+        "icon": "rotate",
+        "title": "Rénovation",
+        "description": "Remplacement sans gros travaux. Installation rapide sur bâti existant."
+      },
+      {
+        "icon": "hammer",
+        "title": "Tubulaire",
+        "description": "Constructions neuves et sur mesure. Intégration parfaite en neuf."
+      }
+    ]
+  },
+  "options": {
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Options huisserie",
+        "icon": "ruler-combined",
+        "items": [
+          {
+            "label": "Renforts de paumelles",
+            "picto": "/media/pictos-options/1-renforts-paumelles.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Équipements complémentaires",
+        "icon": "circle-plus",
+        "items": [
+          {
+            "label": "Judas optique",
+            "picto": "/media/pictos-options/6-judas-optique.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet-slash",
+        "title": "Époxy bi-couleur",
+        "description": "2 couleurs différentes intérieur/extérieur, 180 RAL."
+      },
+      {
+        "icon": "droplet",
+        "title": "Époxy mono couleur",
+        "description": "180 couleurs RAL au choix."
+      },
+      {
+        "icon": "brush",
+        "title": "Grenaillage polyzing",
+        "description": "Finition texturée résistante."
+      },
+      {
+        "icon": "tree",
+        "title": "Ton bois",
+        "description": "6 décors aspect bois naturel."
+      }
+    ]
+  },
+  "usages": {
+    "intro": "Le blindage de porte CONSONANCE 1 vantail est destiné à fermer les locaux où la porte existante doit être conservée comme par exemple:",
+    "items": [
+      {
+        "icon": "building",
+        "title": "Appartements"
+      },
+      {
+        "icon": "briefcase",
+        "title": "Cabinets"
+      },
+      {
+        "icon": "people-roof",
+        "title": "Espaces publics"
+      },
+      {
+        "icon": "house",
+        "title": "Maisons individuelles"
+      }
+    ]
+  }
+}

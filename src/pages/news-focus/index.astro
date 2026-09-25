@@ -1,0 +1,165 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/ui/PageHero.astro';
+import NewsCard from '@/components/ui/NewsCard.astro';
+import CtaBand from '@/components/ui/CtaBand.astro';
+import VideoEmbed from '@/components/ui/VideoEmbed.astro';
+import { getCollection } from 'astro:content';
+const news = (await getCollection('news', (n) => n.data.published !== false)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const cats = [...new Set(news.map((n) => n.data.category))];
+const featured = news.find((n) => n.data.featured) || news[0];
+const rest = news.filter((n) => n !== featured);
+const videos = news.filter((n) => n.data.video).slice(0, 4);
+---
+
+<BaseLayout title="L'actualité de BDF et de son réseau d'installateurs" description="Actualités, réalisations et essais en laboratoire : suivez Blindages de France et son réseau d'installateurs agréés.">
+  <PageHero title="Actualités" accent="& réalisations" eyebrow="L'actualité de BDF et de son réseau d'installateurs" lead="Installations de blocs-portes certifiés, essais en laboratoire, vie de l'entreprise : des installateurs compétents pour des produits de haute sécurité." crumbs={[{ label: 'Actualités' }]}>
+    <div class="ncats" data-reveal style="--d:.24s" role="group" aria-label="Filtrer par catégorie">
+      <button type="button" class="chip is-active" data-ncat="">Tout</button>
+      {cats.map((c) => <button type="button" class="chip" data-ncat={c}>{c}</button>)}
+    </div>
+  </PageHero>
+
+  {
+    featured && (
+      <section class="section section--tight">
+        <div class="container">
+          <a href={`/news-focus/${featured.id}`} class="feat panel" data-reveal data-spot>
+            <div class="feat__img">
+              <img src={featured.data.cover || `/media/video-thumbnails/${featured.data.video}.jpg`} alt="" />
+              <span class="badge badge--solid">À la une</span>
+            </div>
+            <div class="feat__txt">
+              <p class="mono feat__k">{featured.data.category}</p>
+              <h2 class="h2">{featured.data.title}</h2>
+              {featured.data.excerpt && <p class="lead">{featured.data.excerpt}</p>}
+              <span class="link-arrow">Lire l'article →</span>
+            </div>
+          </a>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="grid grid-3" data-news-grid>
+        {
+          rest.map((n, i) => (
+            <div data-reveal style={`--d:${(i % 3) * 0.1}s`} data-cat={n.data.category}>
+              <NewsCard id={n.id} {...n.data} />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {
+    videos.length > 0 && (
+      <section class="section section--tight">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">L'actu en vidéo</p>
+            <h2 class="h2">
+              Nos vidéos <span class="grad-orange">YouTube</span>
+            </h2>
+          </div>
+          <div class="vids">
+            {videos.map((v) => (
+              <div>
+                <VideoEmbed id={v.data.video!} title={v.data.title} />
+              </div>
+            ))}
+          </div>
+          <p class="more">
+            <a href="https://www.youtube.com/@BlindagesDePortes" class="link-arrow" target="_blank" rel="noopener">
+              Toutes nos vidéos sur YouTube →
+            </a>
+          </p>
+        </div>
+      </section>
+    )
+  }
+  <CtaBand />
+</BaseLayout>
+
+<script>
+  const btns = document.querySelectorAll<HTMLButtonElement>('[data-ncat]');
+  btns.forEach((b) =>
+    b.addEventListener('click', () => {
+      btns.forEach((x) => x.classList.toggle('is-active', x === b));
+      document.querySelectorAll<HTMLElement>('[data-news-grid] > [data-cat]').forEach((el) => (el.hidden = !!b.dataset.ncat && el.dataset.cat !== b.dataset.ncat));
+    }),
+  );
+</script>
+
+<style>
+  .ncats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .feat {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    overflow: hidden;
+    transition: border-color 0.3s;
+    position: relative;
+  }
+  .feat:hover {
+    border-color: rgba(255, 102, 34, 0.5);
+  }
+  .feat__img {
+    position: relative;
+    min-height: 320px;
+  }
+  .feat__img img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .feat__img .badge {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+  }
+  .feat__txt {
+    display: grid;
+    align-content: center;
+    gap: 1rem;
+    padding: clamp(1.4rem, 1rem + 2vw, 2.6rem);
+  }
+  .feat__txt .lead {
+    margin: 0;
+    font-size: 1rem;
+  }
+  .feat__k {
+    margin: 0;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+  .feat .h2 {
+    font-size: var(--fs-xl);
+  }
+  .vids {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+    gap: 1.2rem;
+  }
+  .more {
+    margin-top: 1.2rem;
+  }
+  @media (max-width: 860px) {
+    .feat {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .feat__img {
+      min-height: 220px;
+    }
+  }
+</style>

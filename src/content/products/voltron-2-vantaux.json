@@ -1,0 +1,239 @@
+{
+  "title": "VOLTRON 2 vantaux",
+  "slug": "voltron-2-vantaux",
+  "segment": "blocs-portes-certifies",
+  "categories": [
+    "blocs-portes-certifies-59",
+    "blocs-portes-techniques-61"
+  ],
+  "family": "VOLTRON",
+  "order": 3,
+  "featured": false,
+  "image": "/media/fiches-produits/voltron-2v-0.png",
+  "badges": [
+    "Coupe-feu 60 min"
+  ],
+  "seo": {
+    "title": "Porte blindée Voltron 2 vantaux certifiée coupe feu 60 min Ei2-60-E60",
+    "description": "La porte blindée BDF, Voltron 2V, garantie 10 ans, proposée avec plusieurs serrures encastrée, est certifiée coupe feu 30 min Ei2-30-E60 par le laboratoire Efectis selon la norme EN1634-1 et EN13501-2"
+  },
+  "specs": {
+    "vantaux": "2 vantaux",
+    "dimensions": "Notre tarif pour la porte blindée VOLTRON 2 vantaux s’applique pour les dimensions suivantes:\nLargeur comprise entre 1008 et 2000 mm\nHauteur comprise entre 1619 et 2159 mm",
+    "fermeture": "Contrôle d'accès Serrure à verrouillage contrôlé Serrure encastrée 1 point Serrure encastrée multipoints Serrure motorisée",
+    "certification": "Coupe-feu 60 min"
+  },
+  "filters": {
+    "vantaux": [
+      "2 vantaux"
+    ],
+    "certifications": [
+      "Coupe-feu 60 min"
+    ],
+    "fermetures": [
+      "Serrure encastrée multipoints",
+      "Contrôle d'accès",
+      "Serrure motorisée",
+      "Serrure à verrouillage contrôlé",
+      "Serrure encastrée 1 point"
+    ]
+  },
+  "composition": "<p><strong>Certifiée EFECTIS Porte coupe feu 60 MINUTES</strong></p><p>La porte blindée VOLTRON 2 vantaux est composée de:</p><ul><li>2 faces en acier de 15/10ème électrozinguée</li><li>5 omégas raidisseurs par vantail</li><li>3 paumelles soudées de 140 mm à billes par vantail</li><li>3 renforts de paumelles soudés par vantail</li><li>laine de roche intégrée</li><li>joints intumescents qui s’expandent en cas d’incendie</li><li>cadre de rénovation soudé 4 côtés avec seuil en fer plat</li></ul>",
+  "downloads": [
+    {
+      "label": "voltron-2v.pdf",
+      "file": "/media/fichiers/voltron-2v-0.pdf"
+    }
+  ],
+  "quoteLabel": "VOLTRON 2 vantaux",
+  "locks": {
+    "intro": "La porte blindée VOLTRON 2 vantaux est proposée avec plusieurs serrures encastrées:",
+    "table": [
+      {
+        "brand": "Vachette",
+        "points": "1 pts"
+      },
+      {
+        "brand": "Vachette",
+        "points": "3 pts"
+      },
+      {
+        "brand": "Mécanique ABLOY",
+        "model": "KEL 165"
+      },
+      {
+        "brand": "Verrouillage contrôlé ABLOY",
+        "model": "KEL 564"
+      },
+      {
+        "brand": "Motorisée ABLOY",
+        "model": "KEL 524"
+      }
+    ],
+    "extras": [
+      {
+        "title": "Inclus avec la serrure",
+        "icon": "key",
+        "html": "<p>Dans le cas d’une serrure à verrouillage contrôlé ou d’une serrure motorisée, un passe câble invisible permet de raccorder votre serrure à son alimentation.</p><p>Ces serrures sont fournies avec au choix :</p><ul><li>un cylindre 5 goupilles et 3 clés</li><li>un cylindre Medeco de haute sécurité, 3 clés à reproduction protégée et une carte de propriété pour la reproduction de clés.</li></ul>"
+      },
+      {
+        "title": "Options fermeture",
+        "icon": "circle-plus",
+        "html": "<p>En série l’ensemble extérieur est proposé en:</p><ul><li>béquille intérieure et extérieure</li><li>béquille intérieure et poignée de tirage extérieure.</li></ul>"
+      }
+    ]
+  },
+  "frame": {
+    "intro": "L’huisserie avec joint de la porte blindée VOLTRON 2 vantaux est composée de tôle multi-plis en 20/10ème électrozinguée.\n\nSelon la configuration de votre installation, vous avez le choix entre les huisseries suivantes:",
+    "cards": [
+      {
+        "icon": "rotate",
+        "title": "Rénovation",
+        "description": "Remplacement sans gros travaux. Installation rapide sur bâti existant."
+      },
+      {
+        "icon": "hammer",
+        "title": "Tubulaire",
+        "description": "Constructions neuves et sur mesure. Intégration parfaite en neuf."
+      },
+      {
+        "icon": "arrows-left-right",
+        "title": "Universelle",
+        "description": "Compatible rénovation et neuf. Solution polyvalente."
+      }
+    ]
+  },
+  "options": {
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Équipements complémentaires",
+        "icon": "circle-plus",
+        "items": [
+          {
+            "label": "Ferme porte",
+            "picto": "/media/pictos-options/5-ferme-porte.jpg"
+          },
+          {
+            "label": "Judas coupe feu",
+            "picto": "/media/pictos-options/7-judas-coupe-feu.jpg"
+          },
+          {
+            "label": "Oculus",
+            "picto": "/media/pictos-options/9-oculus.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "brush",
+        "title": "Grenaillage polyzing",
+        "description": "Finition texturée résistante."
+      }
+    ]
+  },
+  "certification": {
+    "badges": [
+      {
+        "type": "feu",
+        "label": "Coupe-feu Ei2-60-E60"
+      }
+    ],
+    "labs": "Certifié par Efectis",
+    "logos": [
+      {
+        "image": "/media/editeur/certidoor-efectis-60.jpg",
+        "caption": "CertiDoor Efectis Ei2-60-E60",
+        "alt": "CertiDoor Certifié Efectis EI2 60 E60"
+      },
+      {
+        "image": "/media/editeur/porte-certifiee-resistance-feu-60.jpg",
+        "caption": "Résistance au feu 60 min",
+        "alt": "Résistance au feu 60 minutes"
+      },
+      {
+        "image": "/media/editeur/sens-feu.jpg",
+        "caption": "Sens du feu indifférent",
+        "alt": "Sens du feu indifférent"
+      }
+    ],
+    "description": "<p>La VOLTRON est un bloc porte blindé 2 vantaux avec un niveau de certification coupe feu 60 min avec les performances suivantes : classement coupe-feu Ei2-60-E60 certifié par le laboratoire Efectis.</p><p>Performance de résistance au feu selon la norme EN1634-1 et classé suivant EN13501-2.</p>",
+    "video": "84tSU8-mMf4",
+    "videoTitle": "Vidéo de test en laboratoire",
+    "links": [
+      "Découvrez les portes résistant au feu de la marque Blindages de France et regardez la vidéo de l'essai de résistance au feu EFECTIS."
+    ]
+  },
+  "closing": {
+    "intro": "Pour la porte blindée VOLTRON 2 Vantaux, trois types de fermeture du vantail semi-fixe vous sont proposés:",
+    "cards": [
+      {
+        "icon": "fire-extinguisher",
+        "title": "Cremone pompier",
+        "description": "Ouverture rapide pour accès pompiers"
+      },
+      {
+        "icon": "hand-pointer",
+        "title": "PAD",
+        "description": "Poignée anti-degondage"
+      },
+      {
+        "icon": "arrows-up-down",
+        "title": "Verrou haut et bas",
+        "description": "Points de fermeture haut et bas"
+      }
+    ]
+  },
+  "usages": {
+    "intro": "La porte blindée VOLTRON est destinée à protéger tous les locaux soumis à la réglementation coupe feu pare flamme comme par exemple:",
+    "items": [
+      {
+        "icon": "fire-burner",
+        "title": "Chaufferies"
+      },
+      {
+        "icon": "shield-halved",
+        "title": "Hôpitaux"
+      },
+      {
+        "icon": "house",
+        "title": "Locaux d'habitation"
+      },
+      {
+        "icon": "industry",
+        "title": "Locaux industriels"
+      },
+      {
+        "icon": "square-parking",
+        "title": "Parkings / Sous-sols"
+      },
+      {
+        "icon": "cart-shopping",
+        "title": "Supermarchés"
+      }
+    ]
+  }
+}

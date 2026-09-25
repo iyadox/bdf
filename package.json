@@ -1,0 +1,33 @@
+{
+  "name": "blindages-de-france",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site vitrine 3D de Blindages de France — portes blindées certifiées, fabrication française depuis 1989.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && node scripts/redirects.mjs",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource-variable/exo-2": "^5.3.0",
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "@fontsource/michroma": "^5.3.0",
+    "astro": "^7.3.5",
+    "gsap": "^3.15.0",
+    "lenis": "^1.3.26",
+    "maplibre-gl": "^6.11.2",
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@types/three": "^0.186.0",
+    "opentype.js": "^2.0.0",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

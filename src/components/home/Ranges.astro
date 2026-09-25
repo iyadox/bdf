@@ -1,0 +1,309 @@
+---
+import Icon from '@/components/Icon.astro';
+import { getCategories, productsOf, categoryUrl } from '@/lib/catalog';
+
+const SHOW = [
+  'blocs-portes-certifies-59',
+  'blocs-portes-techniques-61',
+  'blocs-portes-dappartement-65',
+  'blocs-portes-de-cave-63',
+  'blindages-de-porte-67',
+  'tolerie-pliage-et-profils-71',
+  'grilles-et-accessoires-73',
+];
+const PREFERRED: Record<string, string> = {
+  'blocs-portes-certifies-59': 'signature-bp1-1-vantail',
+  'blocs-portes-techniques-61': 'indus-2011-1-vantail',
+  'blocs-portes-dappartement-65': 'reference-1-vantail',
+  'blocs-portes-de-cave-63': 'helios-1-vantail',
+  'blindages-de-porte-67': 'accord-plus-1-vantail',
+};
+const cats = (await getCategories()).filter((c) => SHOW.includes(c.slug)).sort((a, b) => SHOW.indexOf(a.slug) - SHOW.indexOf(b.slug));
+const items = await Promise.all(
+  cats.map(async (c) => {
+    const ps = await productsOf(c);
+    const pref = ps.find((p) => p.slug === PREFERRED[c.slug]) || ps.find((p) => p.image);
+    return { c, count: ps.length, image: c.image || pref?.image };
+  }),
+);
+---
+
+<section class="ranges" data-ranges aria-labelledby="ranges-title">
+  <div class="ranges__sticky">
+    <div class="container--wide ranges__head">
+      <div>
+        <p class="eyebrow" data-reveal>Découvrir</p>
+        <h2 id="ranges-title" class="h2" data-reveal style="--d:.1s">Nos gammes de produits</h2>
+      </div>
+      <p class="lead" data-reveal style="--d:.2s">Solutions de sécurité sur mesure pour tous vos besoins.</p>
+      <div class="ranges__count mono" aria-hidden="true"><span data-ranges-idx>01</span> / {String(items.length).padStart(2, '0')}</div>
+    </div>
+    <div class="ranges__viewport" data-ranges-viewport>
+      <ul class="ranges__track" data-ranges-track>
+        {
+          items.map(({ c, count, image }, i) => (
+            <li class="rcard" data-rcard>
+              <a href={categoryUrl(c)} class="rcard__in panel" data-spot>
+                <div class="rcard__img product-stage">
+                  {image && <img src={image} alt="" loading="lazy" width="260" height="360" />}
+                  {c.badge && <span class="rcard__badge">{c.badge}</span>}
+                  <span class="rcard__idx">{String(i + 1).padStart(2, '0')}</span>
+                </div>
+                <div class="rcard__body">
+                  <div class="rcard__title-row">
+                    <h3 class="h3">{c.title}</h3>
+                    <span class="rcard__n mono">{count} réf.</span>
+                  </div>
+                  <p>{c.description}</p>
+                  <p class="rcard__label mono">Caractéristiques</p>
+                  <ul>
+                    {c.highlights.map((h) => (
+                      <li>
+                        <Icon name="check" size={15} /> {h}
+                      </li>
+                    ))}
+                  </ul>
+                  <span class="link-arrow">
+                    Découvrir <Icon name="arrow-right" />
+                  </span>
+                </div>
+              </a>
+            </li>
+          ))
+        }
+        <li class="rcard rcard--all" data-rcard>
+          <a href="/catalogue" class="rcard__in rcard__all">
+            <Icon name="grid" size={40} />
+            <span class="h3">Tout le catalogue</span>
+            <span class="muted">Blocs-portes, blindages, vitrés, grilles, tôlerie, travaux spéciaux…</span>
+            <span class="btn">Explorer <Icon name="arrow-right" /></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="container--wide ranges__foot" aria-hidden="true">
+      <div class="ranges__bar"><i data-ranges-bar></i></div>
+      <span class="mono">Faites défiler</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ranges {
+    position: relative;
+    height: var(--rh, auto);
+  }
+  .ranges__sticky {
+    position: sticky;
+    top: 0;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-block: calc(var(--header-h) + 1rem) 2rem;
+    overflow: hidden;
+  }
+  .ranges__head {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: end;
+    gap: 1rem 3rem;
+    margin-bottom: 2.2rem;
+  }
+  .ranges__head .h2 {
+    margin-top: 0.8rem;
+  }
+  .ranges__head .lead {
+    margin: 0;
+  }
+  .ranges__count {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .ranges__count span {
+    color: var(--orange);
+    font-size: 1.6rem;
+  }
+  .ranges__viewport {
+    perspective: 1600px;
+  }
+  .ranges__track {
+    list-style: none;
+    display: flex;
+    gap: 1.6rem;
+    padding-inline: max(var(--gutter), calc((100vw - 1560px) / 2));
+    will-change: transform;
+    transform-style: preserve-3d;
+  }
+  .rcard {
+    flex: none;
+    width: min(400px, 78vw);
+    transform: rotateY(var(--cry, 0deg)) translateZ(var(--crz, 0px));
+    transform-style: preserve-3d;
+    transition: transform 0.15s linear;
+  }
+  .rcard__in {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    transition:
+      border-color 0.4s,
+      transform 0.5s var(--ease);
+  }
+  .rcard__in:hover {
+    border-color: rgba(255, 102, 34, 0.55);
+    transform: translateY(-6px);
+  }
+  .rcard__img {
+    position: relative;
+    height: clamp(170px, 24vh, 250px);
+  }
+  .rcard__img img {
+    height: 88%;
+    width: auto;
+    transition: transform 0.8s var(--ease);
+  }
+  .rcard__in:hover .rcard__img img {
+    transform: scale(1.06) rotate(-2deg);
+  }
+  .rcard__badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 54px;
+    font-family: var(--f-display);
+    font-size: 0.8rem;
+    color: #fff;
+    background: var(--orange);
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  }
+  .rcard__idx {
+    position: absolute;
+    left: 1rem;
+    top: 0.8rem;
+    z-index: 2;
+    font-family: var(--f-display);
+    font-size: 1.8rem;
+    color: rgba(0, 28, 60, 0.18);
+  }
+  .rcard__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    padding: 1.4rem 1.5rem 1.6rem;
+    flex: 1;
+  }
+  .rcard__title-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.8rem;
+  }
+  .rcard__n {
+    flex: none;
+    font-size: 0.7rem;
+    color: var(--orange);
+  }
+  .rcard__body p {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--text-2);
+  }
+  .rcard__label {
+    font-size: 0.66rem !important;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted) !important;
+    margin-top: 0.3rem !important;
+  }
+  .rcard__body ul {
+    list-style: none;
+    display: grid;
+    gap: 0.35rem;
+    font-size: 0.86rem;
+    color: var(--text-2);
+  }
+  .rcard__body li {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+  .rcard__body li :global(svg) {
+    color: var(--orange);
+    margin-top: 3px;
+  }
+  .rcard__body .link-arrow {
+    margin-top: auto;
+    padding-top: 0.6rem;
+  }
+  .rcard__all {
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+    border: 1px dashed rgba(255, 102, 34, 0.45);
+    border-radius: var(--radius);
+    background: radial-gradient(90% 70% at 50% 0%, rgba(255, 102, 34, 0.12), transparent 70%);
+    min-height: 100%;
+  }
+  .rcard__all :global(svg) {
+    color: var(--orange);
+  }
+  .ranges__foot {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-top: 2rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--dim);
+  }
+  .ranges__bar {
+    position: relative;
+    flex: 1;
+    height: 2px;
+    background: var(--line-2);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .ranges__bar i {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, var(--orange), #ffb07a);
+    transform-origin: 0 50%;
+    transform: scaleX(var(--rp, 0.05));
+  }
+  /* mobile : défilement horizontal natif */
+  :global(.ranges.is-native) .ranges__viewport {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding-bottom: 1rem;
+  }
+  :global(.ranges.is-native) .ranges__viewport::-webkit-scrollbar {
+    display: none;
+  }
+  :global(.ranges.is-native) .rcard {
+    scroll-snap-align: center;
+  }
+  :global(.ranges.is-native) .ranges__sticky {
+    position: relative;
+    min-height: 0;
+    padding-block: var(--section) 1rem;
+  }
+  @media (max-width: 900px) {
+    .ranges__head {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .ranges__count {
+      display: none;
+    }
+  }
+</style>
