@@ -18,19 +18,50 @@
       "city": "Aulnay-sous-Bois",
       "country": "France"
     },
-    "geo": { "lat": 48.948395, "lng": 2.477022 },
+    "geo": {
+      "lat": 48.948395,
+      "lng": 2.477022
+    },
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Blindages+de+France+100+Rue+Blaise+Pascal+93600+Aulnay-sous-Bois"
   },
   "hours": {
     "label": "Service administratif & enlèvement",
     "days": [
-      { "day": "Lundi", "open": "08:00", "close": "18:30" },
-      { "day": "Mardi", "open": "08:00", "close": "18:30" },
-      { "day": "Mercredi", "open": "08:00", "close": "18:30" },
-      { "day": "Jeudi", "open": "08:00", "close": "18:30" },
-      { "day": "Vendredi", "open": "08:00", "close": "18:30" },
-      { "day": "Samedi", "open": "", "close": "" },
-      { "day": "Dimanche", "open": "", "close": "" }
+      {
+        "day": "Lundi",
+        "open": "08:00",
+        "close": "18:30"
+      },
+      {
+        "day": "Mardi",
+        "open": "08:00",
+        "close": "18:30"
+      },
+      {
+        "day": "Mercredi",
+        "open": "08:00",
+        "close": "18:30"
+      },
+      {
+        "day": "Jeudi",
+        "open": "08:00",
+        "close": "18:30"
+      },
+      {
+        "day": "Vendredi",
+        "open": "08:00",
+        "close": "18:30"
+      },
+      {
+        "day": "Samedi",
+        "open": "",
+        "close": ""
+      },
+      {
+        "day": "Dimanche",
+        "open": "",
+        "close": ""
+      }
     ]
   },
   "socials": {
@@ -45,10 +76,22 @@
     "linkLabel": "Essayer"
   },
   "stats": [
-    { "value": "35+", "label": "années d'expertise" },
-    { "value": "55+", "label": "salariés experts" },
-    { "value": "< 24h", "label": "délais de production" },
-    { "value": "3", "label": "certifications officielles" }
+    {
+      "value": "35+",
+      "label": "années d'expertise"
+    },
+    {
+      "value": "55+",
+      "label": "salariés experts"
+    },
+    {
+      "value": "< 24h",
+      "label": "délais de production"
+    },
+    {
+      "value": "3",
+      "label": "certifications officielles"
+    }
   ],
   "forms": {
     "provider": "netlify",
@@ -58,7 +101,8 @@
     "successPage": "/merci"
   },
   "pro": {
-    "loginUrl": "https://www.blindagesdefrance.fr/user/login",
+    "loginUrl": "",
+    "passwordUrl": "",
     "registerUrl": "/rejoindre-le-reseau-dinstallateurs-bdf"
   },
   "analytics": {

@@ -1,0 +1,443 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/ui/PageHero.astro';
+import Icon from '@/components/Icon.astro';
+import { settings, telHref, fullAddress } from '@/lib/site';
+const c = settings.contact;
+const days = settings.hours.days;
+const fmt = (t: string) => t.replace(':', 'h');
+const objets = [
+  "Demande d'information produit",
+  'Suivi de commande ou de livraison',
+  'SAV, pièces détachées, clés',
+  'Mise à jour de ma fiche installateur',
+  'Partenariat, presse, recrutement',
+  'Autre demande',
+];
+const access = [
+  { icon: 'truck', title: 'Accès routier', lines: ['A1, A3, N2', '15 min du périphérique'] },
+  { icon: 'dolly', title: 'Enlèvement sur place', lines: ['Zone de chargement', 'Parking poids lourds'] },
+  { icon: 'navigation', title: 'Transports en commun', lines: ['RER B, Tramway T4', 'Arrêt Aulnay-sous-Bois'] },
+];
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Nous contacter',
+  url: new URL('/nous-contacter', Astro.site).href,
+  mainEntity: { '@id': new URL('/#organization', Astro.site).href },
+};
+---
+
+<BaseLayout title="Nous contacter" description={`Contactez Blindages de France : ${c.phone}, ${fullAddress()}. Du lundi au vendredi de 8h00 à 18h30. Formulaire de contact, accès et enlèvement sur place.`} jsonLd={jsonLd}>
+  <PageHero title="Nous" accent="contacter" eyebrow="Blindages de France" lead="Notre équipe est à votre écoute pour répondre à toutes vos questions sur nos produits sur mesure." crumbs={[{ label: 'Contact' }]} compact>
+    <div slot="aside" class="ct-live panel">
+      <p class="mono ct-live__k">Statut en direct</p>
+      <p class="ct-live__v" data-open-status><span class="live-dot live-dot--off"></span> <span data-open-text>Lun.–ven. 8h00–18h30</span></p>
+      <a href={telHref()} class="btn btn--lg btn--block" data-magnetic="0.15"><Icon name="phone" /> {c.phone}</a>
+    </div>
+  </PageHero>
+
+  <section class="section section--tight">
+    <div class="container ct-cards">
+      <article class="ct-card panel" data-reveal data-spotlight>
+        <span class="ct-card__ic"><Icon name="map-pin" size={22} /></span>
+        <h2 class="ct-card__t">Adresse</h2>
+        <p>{c.address.street}<br />{c.address.postalCode} {c.address.city}<br />{c.address.country}</p>
+        <a href={c.mapsUrl} target="_blank" rel="noopener" class="link-arrow">Itinéraire <Icon name="arrow-up-right" /></a>
+      </article>
+      <article class="ct-card panel" data-reveal style="--d:.06s" data-spotlight>
+        <span class="ct-card__ic"><Icon name="phone" size={22} /></span>
+        <h2 class="ct-card__t">Téléphone</h2>
+        <p><a href={telHref()} class="ct-card__big mono">{c.phone}</a><br /><span class="muted">Fax : {c.fax}</span></p>
+        <button type="button" class="link-arrow link-reset" data-copy={c.phone}>Copier le numéro <Icon name="copy" /></button>
+      </article>
+      <article class="ct-card panel" data-reveal style="--d:.12s" data-spotlight>
+        <span class="ct-card__ic"><Icon name="mail" size={22} /></span>
+        <h2 class="ct-card__t">E-mail</h2>
+        {c.email ? <p><a href={`mailto:${c.email}`}>{c.email}</a></p> : <p>Utilisez le formulaire ci-dessous : votre message est transmis directement à nos équipes.</p>}
+        <a href="#formulaire" class="link-arrow">Écrire un message <Icon name="arrow-down" /></a>
+      </article>
+      <article class="ct-card panel" data-reveal style="--d:.18s" data-spotlight>
+        <span class="ct-card__ic"><Icon name="clock" size={22} /></span>
+        <h2 class="ct-card__t">Horaires</h2>
+        <p class="muted">{settings.hours.label}</p>
+        <ul class="ct-hours" data-hours>
+          {
+            days.map((d, i) => (
+              <li data-day={i}>
+                <span>{d.day}</span>
+                <span class="mono">{d.open ? `${fmt(d.open)} – ${fmt(d.close)}` : 'Fermé'}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section--tight" id="formulaire">
+    <div class="container ct-main">
+      <form class="panel ct-form" name="contact" method="POST" action="/merci" data-netlify="true" netlify-honeypot="bot-field" data-bdf-form data-autosave data-form-label="Contact">
+        <input type="hidden" name="form-name" value="contact" />
+        <p class="hp-field"><label>Ne pas remplir <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+        <div>
+          <p class="eyebrow">Formulaire de contact</p>
+          <h2 class="h3">Une question ? Écrivez-nous</h2>
+          <p class="muted">Pour une demande de prix, utilisez plutôt notre <a href="/devis-porte-blindee" class="ul">formulaire de devis</a> : il nous permet de vous répondre plus vite.</p>
+        </div>
+        <div class="form-grid">
+          <label class="field" data-label="Nom"><span>Nom <b class="req">*</b></span><input class="input" name="nom" required autocomplete="name" /></label>
+          <label class="field" data-label="E-mail"><span>E-mail <b class="req">*</b></span><input class="input" type="email" name="email" required autocomplete="email" /></label>
+          <label class="field" data-label="Société"><span>Société</span><input class="input" name="societe" autocomplete="organization" /></label>
+          <label class="field" data-label="Téléphone"><span>Téléphone</span><input class="input" type="tel" name="telephone" autocomplete="tel" /></label>
+          <label class="field full" data-label="Objet"
+            ><span>Objet <b class="req">*</b></span>
+            <input class="input" name="objet" required list="objets" data-prefill placeholder="Choisissez ou saisissez l'objet de votre demande" />
+            <datalist id="objets">{objets.map((o) => <option value={o} />)}</datalist>
+          </label>
+          <label class="field full" data-label="Message"><span>Message <b class="req">*</b></span><textarea class="textarea" name="message" rows="6" required></textarea></label>
+        </div>
+        <label class="check">
+          <input type="checkbox" name="consent" value="oui" required />
+          <span>J'accepte que mes données soient utilisées pour traiter ma demande (<a href="/liens/confidentialite" target="_blank" class="ul">confidentialité</a>). <b class="req">*</b></span>
+        </label>
+        <div class="btn-row">
+          <button type="submit" class="btn btn--lg"><Icon name="send" /> Envoyer le message</button>
+          <span class="hint">Réponse sous 24 h ouvrées</span>
+        </div>
+      </form>
+
+      <div class="ct-map panel" data-reveal="right">
+        <div class="ct-map__canvas" data-hq-map data-lat={c.geo.lat} data-lng={c.geo.lng}>
+          <div class="ct-map__ph">
+            <Icon name="map-pin" size={32} />
+            <p>{fullAddress()}</p>
+          </div>
+        </div>
+        <div class="ct-map__bar">
+          <span class="mono"><Icon name="factory" size={14} /> Siège & usine · Aulnay-sous-Bois (93)</span>
+          <a href={c.mapsUrl} target="_blank" rel="noopener" class="btn btn--sm btn--ghost"><Icon name="navigation" /> Y aller</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <p class="eyebrow">Facilité d'accès</p>
+        <h2 class="h2">Situés dans la couronne parisienne, <span class="grad-orange">au cœur de l'activité française</span></h2>
+      </header>
+      <div class="ct-access">
+        {
+          access.map((a, i) => (
+            <article class="ct-acc panel" data-reveal style={`--d:${i * 0.08}s`} data-tilt>
+              <span class="ct-acc__ic"><Icon name={a.icon} size={26} /></span>
+              <h3 class="h4">{a.title}</h3>
+              {a.lines.map((l, k) => <p class:list={[{ 'ct-acc__main': k === 0, muted: k > 0 }]}>{l}</p>)}
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container ct-net">
+      <a href="/installateurs-portes-blindees" class="ct-net__card panel" data-reveal data-spotlight>
+        <p class="eyebrow">Réseau national</p>
+        <h3 class="h3">Trouvez votre installateur certifié</h3>
+        <p class="muted">Accédez à notre réseau d'installateurs agréés partout en France. Expertise technique et garantie fabricant.</p>
+        <span class="link-arrow">Localiser un pro <Icon name="arrow-right" /></span>
+      </a>
+      <a href="/rejoindre-le-reseau-dinstallateurs-bdf" class="ct-net__card panel" data-reveal style="--d:.08s" data-spotlight>
+        <p class="eyebrow">Réseau partenaire</p>
+        <h3 class="h3">Devenez installateur agréé BDF</h3>
+        <p class="muted">Rejoignez notre réseau de professionnels. Support technique et accès aux produits de haute sécurité.</p>
+        <span class="link-arrow">Nous rejoindre <Icon name="arrow-right" /></span>
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  import { $, $$, hasWebGL, reducedMotion, toast } from '@/scripts/ui/dom';
+
+  // jour courant surligné
+  const today = (new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Paris' })).getDay() + 6) % 7;
+  $(`[data-hours] [data-day="${today}"]`)?.classList.add('is-today');
+
+  $$<HTMLButtonElement>('[data-copy]').forEach((b) =>
+    b.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(b.dataset.copy!);
+        toast('Numéro copié');
+      } catch {
+        toast(b.dataset.copy!);
+      }
+    }),
+  );
+
+  // carte 3D du siège, chargée à l'approche
+  const el = $('[data-hq-map]');
+  if (el && hasWebGL()) {
+    const io = new IntersectionObserver(
+      async ([e]) => {
+        if (!e.isIntersecting) return;
+        io.disconnect();
+        const api = await import('@/scripts/map/map');
+        const center: [number, number] = [Number(el.dataset.lng), Number(el.dataset.lat)];
+        el.innerHTML = '';
+        const map = api.createMap(el, { center, zoom: 15.6 });
+        map.setPitch(58);
+        map.setBearing(-24);
+        map.on('load', () => {
+          api.add3DBuildings(map);
+          api.hqMarker(map, center);
+          if (!reducedMotion()) {
+            let b = -24;
+            let active = true;
+            const spin = () => {
+              if (!active) return;
+              b += 0.04;
+              map.setBearing(b);
+              requestAnimationFrame(spin);
+            };
+            map.once('mousedown', () => (active = false));
+            map.once('touchstart', () => (active = false));
+            map.once('wheel', () => (active = false));
+            spin();
+          }
+        });
+      },
+      { rootMargin: '300px' },
+    );
+    io.observe(el);
+  }
+</script>
+
+<style>
+  .ct-live {
+    display: grid;
+    gap: 0.8rem;
+    padding: 1.4rem;
+    min-width: 300px;
+  }
+  .ct-live p {
+    margin: 0;
+  }
+  .ct-live__k {
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .ct-live__v {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 1.05rem;
+    color: #fff;
+  }
+  .ct-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .ct-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    padding: 1.5rem;
+  }
+  .ct-card p {
+    margin: 0;
+    color: var(--text-2);
+    font-size: 0.93rem;
+  }
+  .ct-card .link-arrow {
+    margin-top: auto;
+  }
+  .ct-card__ic {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 54px;
+    color: var(--orange);
+    background: rgba(255, 102, 34, 0.1);
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  }
+  .ct-card__t {
+    font-family: var(--f-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin: 0.2rem 0 0;
+  }
+  .ct-card__big {
+    font-size: 1.25rem;
+    color: #fff;
+  }
+  .ct-hours {
+    list-style: none;
+    display: grid;
+    gap: 0.15rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  .ct-hours li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+  }
+  .ct-hours li.is-today {
+    color: #fff;
+    background: rgba(255, 102, 34, 0.12);
+    box-shadow: inset 2px 0 0 var(--orange);
+  }
+  .ct-main {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+  .ct-form {
+    display: grid;
+    gap: 1.3rem;
+    padding: clamp(1.3rem, 0.8rem + 2vw, 2.4rem);
+  }
+  .ct-form h2 {
+    margin: 0.3rem 0 0.4rem;
+  }
+  .ct-form .muted {
+    margin: 0;
+  }
+  .ul {
+    color: var(--orange-2);
+    text-decoration: underline;
+  }
+  .ct-map {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 0;
+    min-height: 480px;
+  }
+  .ct-map__canvas {
+    position: relative;
+    flex: 1;
+    min-height: 380px;
+    background:
+      radial-gradient(circle at 50% 55%, rgba(255, 102, 34, 0.18), transparent 45%),
+      repeating-linear-gradient(0deg, transparent 0 39px, rgba(148, 178, 212, 0.07) 39px 40px),
+      repeating-linear-gradient(90deg, transparent 0 39px, rgba(148, 178, 212, 0.07) 39px 40px),
+      #060e1b;
+  }
+  .ct-map__ph {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 0.5rem;
+    color: var(--orange);
+    text-align: center;
+  }
+  .ct-map__ph p {
+    color: var(--text-2);
+    margin: 0;
+  }
+  .ct-map__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.9rem 1.2rem;
+    border-top: 1px solid var(--line);
+  }
+  .ct-map__bar .mono {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: var(--text-2);
+  }
+  .ct-access {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .ct-acc {
+    display: grid;
+    gap: 0.4rem;
+    padding: 1.8rem;
+    text-align: center;
+    justify-items: center;
+  }
+  .ct-acc p {
+    margin: 0;
+  }
+  .ct-acc h3 {
+    margin: 0.5rem 0 0.2rem;
+  }
+  .ct-acc__ic {
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 72px;
+    color: #fff;
+    background: linear-gradient(160deg, var(--orange), var(--orange-3));
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+    box-shadow: 0 0 30px var(--orange-glow);
+  }
+  .ct-acc__main {
+    font-family: var(--f-display);
+    font-size: 1.05rem;
+    color: #fff;
+  }
+  .ct-net {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .ct-net__card {
+    display: grid;
+    gap: 0.6rem;
+    padding: 2rem;
+    transition:
+      border-color 0.3s,
+      transform 0.3s var(--ease);
+  }
+  .ct-net__card:hover {
+    border-color: rgba(255, 102, 34, 0.5);
+    transform: translateY(-3px);
+  }
+  .ct-net__card h3,
+  .ct-net__card p {
+    margin: 0;
+  }
+  @media (max-width: 1100px) {
+    .ct-cards {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 900px) {
+    .ct-main,
+    .ct-net {
+      grid-template-columns: 1fr;
+    }
+    .ct-access {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 560px) {
+    .ct-cards {
+      grid-template-columns: 1fr;
+    }
+    .ct-live {
+      min-width: 0;
+    }
+  }
+</style>

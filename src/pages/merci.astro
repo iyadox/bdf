@@ -27,6 +27,17 @@ import { settings, telHref } from '@/lib/site';
   </section>
 </BaseLayout>
 
+<script>
+  const msgs: Record<string, string> = {
+    devis: 'Votre demande de devis a bien été transmise. Un conseiller étudie votre projet et vous recontacte rapidement.',
+    contact: 'Votre message a bien été envoyé. Nos équipes vous répondent dans les meilleurs délais.',
+    'adhesion-reseau': 'Merci pour votre intérêt ! Votre demande d’inscription au réseau d’installateurs BDF a bien été reçue : nous vous contactons sans délai.',
+  };
+  const f = new URLSearchParams(location.search).get('f') || '';
+  const el = document.querySelector('[data-ty-msg]');
+  if (el && msgs[f]) el.textContent = msgs[f];
+</script>
+
 <style>
   .ty {
     display: grid;
