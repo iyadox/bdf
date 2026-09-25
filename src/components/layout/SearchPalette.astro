@@ -1,0 +1,222 @@
+---
+import Icon from '@/components/Icon.astro';
+---
+
+<dialog class="palette" data-palette aria-label="Recherche">
+  <div class="palette__box">
+    <div class="palette__head">
+      <Icon name="search" size={20} />
+      <input
+        type="search"
+        placeholder="Rechercher un produit, une certification, un installateur, une ville…"
+        autocomplete="off"
+        spellcheck="false"
+        aria-label="Rechercher"
+        data-palette-input
+      />
+      <button type="button" class="kbd" data-palette-close aria-label="Fermer">Échap</button>
+    </div>
+    <div class="palette__filters" role="tablist" aria-label="Filtrer les résultats">
+      <button type="button" class="chip is-active" data-scope="all">Tout</button>
+      <button type="button" class="chip" data-scope="produit">Produits</button>
+      <button type="button" class="chip" data-scope="installateur">Installateurs</button>
+      <button type="button" class="chip" data-scope="page">Pages</button>
+    </div>
+    <ul class="palette__list" role="listbox" data-palette-list></ul>
+    <div class="palette__empty" data-palette-empty hidden>
+      <p>Aucun résultat. Essayez « A2P », « coupe-feu », « cave », un code postal…</p>
+    </div>
+    <div class="palette__foot">
+      <span><span class="kbd">↑</span><span class="kbd">↓</span> naviguer</span>
+      <span><span class="kbd">↵</span> ouvrir</span>
+      <span class="palette__hint">Astuce : tapez un code postal pour trouver un installateur</span>
+    </div>
+  </div>
+</dialog>
+
+<style>
+  .palette {
+    width: min(720px, calc(100% - 2rem));
+    max-height: min(640px, 80vh);
+    margin: 10vh auto auto;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--text);
+    overflow: visible;
+  }
+  .palette::backdrop {
+    background: rgba(2, 5, 10, 0.7);
+    backdrop-filter: blur(6px);
+  }
+  .palette[open] .palette__box {
+    animation: pop 0.35s var(--ease);
+  }
+  @keyframes pop {
+    from {
+      opacity: 0;
+      transform: translateY(-10px) scale(0.98);
+    }
+  }
+  .palette__box {
+    display: flex;
+    flex-direction: column;
+    max-height: min(640px, 80vh);
+    background: rgba(6, 16, 30, 0.97);
+    border: 1px solid var(--line-2);
+    border-radius: 18px;
+    box-shadow:
+      0 40px 120px rgba(0, 0, 0, 0.7),
+      0 0 0 1px rgba(255, 102, 34, 0.15);
+    overflow: hidden;
+  }
+  .palette__head {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .palette__head :global(svg) {
+    color: var(--orange);
+  }
+  .palette__head input {
+    flex: 1;
+    min-width: 0;
+    background: none;
+    border: 0;
+    outline: none;
+    font-size: 1.1rem;
+    color: var(--text);
+  }
+  .palette__head input::placeholder {
+    color: var(--dim);
+  }
+  .palette__head input::-webkit-search-cancel-button {
+    display: none;
+  }
+  .palette__head .kbd {
+    cursor: pointer;
+  }
+  .palette__filters {
+    display: flex;
+    gap: 0.4rem;
+    padding: 0.7rem 1.2rem;
+    border-bottom: 1px solid var(--line);
+    overflow-x: auto;
+  }
+  .palette__filters .chip {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  .palette__list {
+    list-style: none;
+    overflow-y: auto;
+    padding: 0.5rem;
+    flex: 1;
+  }
+  .palette__list :global(li a) {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.7rem 0.8rem;
+    border-radius: 10px;
+    transition: background 0.15s;
+  }
+  .palette__list :global(li[aria-selected='true'] a),
+  .palette__list :global(li a:hover) {
+    background: rgba(46, 104, 148, 0.25);
+  }
+  .palette__list :global(.r-thumb) {
+    flex: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: #e9f0f6;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+  .palette__list :global(.r-thumb img) {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+  }
+  .palette__list :global(.r-thumb--ic) {
+    background: rgba(255, 102, 34, 0.1);
+    color: var(--orange);
+    border: 1px solid rgba(255, 102, 34, 0.3);
+  }
+  .palette__list :global(.r-main) {
+    min-width: 0;
+    flex: 1;
+  }
+  .palette__list :global(.r-title) {
+    display: block;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .palette__list :global(.r-title mark) {
+    background: none;
+    color: var(--orange);
+  }
+  .palette__list :global(.r-sub) {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .palette__list :global(.r-type) {
+    flex: none;
+    font-family: var(--f-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--line);
+    border-radius: 99px;
+    padding: 0.15rem 0.5rem;
+  }
+  .palette__list :global(.r-group) {
+    padding: 0.8rem 0.8rem 0.3rem;
+    font-family: var(--f-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+  .palette__empty {
+    padding: 2rem 1.2rem;
+    text-align: center;
+    color: var(--muted);
+  }
+  .palette__foot {
+    display: flex;
+    gap: 1.2rem;
+    padding: 0.7rem 1.2rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+  .palette__foot > span {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .palette__hint {
+    margin-left: auto;
+  }
+  @media (max-width: 640px) {
+    .palette {
+      margin-top: 1rem;
+    }
+    .palette__hint {
+      display: none;
+    }
+  }
+</style>

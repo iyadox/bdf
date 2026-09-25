@@ -1,0 +1,11 @@
+{
+  "name": "Esmapa",
+  "address": "75 Rue de Lourmel",
+  "postalCode": "75015",
+  "city": "Paris",
+  "phone": "01 42 24 01 23",
+  "lat": 48.8454737,
+  "lng": 2.2880413,
+  "legacyId": 1305,
+  "slug": "esmapa-paris"
+}

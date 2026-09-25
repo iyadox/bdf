@@ -1,0 +1,66 @@
+{
+  "title": "Trappes de visite",
+  "slug": "trappes-de-visite",
+  "segment": "grilles-et-accessoires",
+  "categories": [
+    "grilles-et-accessoires-73"
+  ],
+  "family": "Trappes de visite",
+  "order": 86,
+  "featured": false,
+  "image": "/media/fiches-produits/trappe-2.png",
+  "seo": {
+    "title": "Trappes de visite",
+    "description": ""
+  },
+  "filters": {
+    "vantaux": [],
+    "certifications": [],
+    "fermetures": []
+  },
+  "composition": "<p>Les trappes de visite facilitent l'accès aux installations techniques ou électriques, aux conduits sanitaires, aux compteurs, etc… Les trappes de visite permettent de sécuriser l’ouverture d’un trou dans le sol ou plancher tout en gardant un accès facile.</p><p>Blindages de France conçoit et fabrique sur mesure depuis plus de 30 ans dans son usine en France des trappes de visite en acier soit un vantail soit deux vantaux.</p>",
+  "downloads": [
+    {
+      "label": "gardes-corps-trappes.pdf",
+      "file": "/media/fichiers/gardes-corps-trappes-0.pdf"
+    }
+  ],
+  "quoteLabel": "Trappes de visite",
+  "options": {
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet",
+        "title": "Époxy mono couleur",
+        "description": "180 couleurs RAL au choix."
+      }
+    ]
+  },
+  "characteristics": {
+    "html": "<p>Nos trappes de visite en acier sont composées d'un cadre à profilé, de paumelles soudées et sont réalisées au choix en:</p><ul><li><strong>Tôle pliée</strong></li></ul><p><img alt=\"\" loading=\"lazy\" src=\"/media/editeur/trappe-tole-pliee.jpg\"/></p><ul><li><strong>Tôle larmée</strong></li></ul><p><img alt=\"\" loading=\"lazy\" src=\"/media/editeur/trappe-tole-larmee.jpg\"/></p><p>L'épaisseur de l'acier de nos trappes de visite vous est proposée en:</p><ul><li>15/10ème</li><li>20/10ème</li></ul>"
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "name": "Hostis Snc Serrurier",
+  "address": "118 Av. J.-B. Clément",
+  "postalCode": "92100",
+  "city": "Boulogne",
+  "phone": "01 46 05 16 99",
+  "lat": 48.8418838,
+  "lng": 2.2295928,
+  "legacyId": 1442,
+  "website": "https://serrurerie-lhostis.com/",
+  "email": "serrurerie.lhostis@hotmail.fr",
+  "premium": true,
+  "colors": {
+    "dominante": "#444",
+    "accent": "#e80a0a",
+    "alternance": "#cccccc"
+  },
+  "logo": "/media/2026-06/logo-hostis.webp",
+  "heroImages": [
+    "/media/2026-05/l-hostis.webp",
+    "/media/2026-06/sans-titre.webp"
+  ],
+  "tagline": "Un partenaire pour vos installations de portes blindées",
+  "partnerSince": 2011,
+  "certifications": [
+    "A2P",
+    "EFECTIS",
+    "Banc d'Épreuves"
+  ],
+  "socials": {
+    "facebook": "https://www.facebook.com/serrurerielhostis/"
+  },
+  "stats": [
+    {
+      "value": "+ de 1000",
+      "label": "portes installées"
+    },
+    {
+      "value": "25 ans",
+      "label": "d'expérience"
+    },
+    {
+      "value": "10 compagnons",
+      "label": "à votre service"
+    }
+  ],
+  "presentation": "<h3><img alt=\"histoire\" loading=\"lazy\" src=\"/media/inline-images/472313351-1123704259106070-5392364563131881109-n.webp\"/><strong>La serrurerie L’Hostis existe depuis 1842</strong></h3><p>La serrurerie est une histoire de famille, <strong>Thierry Marcou</strong> et <strong>Thibault Marcou, père et fils</strong>, dirigent cette entreprise depuis plusieurs années.</p><p>L’activité est composée aujourd’hui de plusieurs services et compétences. Contactez-nous pour tous travaux sur mesure.</p>",
+  "services": [
+    {
+      "icon": "key",
+      "title": "Blindage et clés",
+      "description": "Blindage de portes existantes, reproduction et remplacement de clés."
+    },
+    {
+      "icon": "lock",
+      "title": "Contact à clés",
+      "description": "Contacts à clés pour alarmes et contrôle d'accès."
+    },
+    {
+      "icon": "building",
+      "title": "Entretien d'immeuble",
+      "description": "Maintenance des parties communes, portes de hall, interphones."
+    },
+    {
+      "icon": "bolt",
+      "title": "Ferme-porte et gâches électriques",
+      "description": "Installation et remplacement de ferme-portes, gâches et ventouses."
+    },
+    {
+      "icon": "bars",
+      "title": "Grilles et portails",
+      "description": "Grilles de défense, portails métalliques, barreaudage de fenêtres."
+    },
+    {
+      "icon": "shield-halved",
+      "title": "Haute sécurité",
+      "description": "Portes blindées certifiées, serrures haute sûreté, cylindres de sécurité."
+    }
+  ],
+  "servicesText": "<p>Chaque intervention est réalisée par un technicien certifié, du diagnostic initial jusqu'à la mise en service. Nous proposons des devis gratuits et un délai d'intervention de 48 à 72 heures en pose standard, ou sous 4 heures en cas d'urgence (effraction, porte bloquée). Garantie pièces et main-d'œuvre 2 ans sur toutes nos installations.</p>",
+  "gallery": [
+    "/media/2026-05/pub-l-hostis-2024.webp",
+    "/media/2026-05/pub-l-hostis.webp",
+    "/media/2026-06/493069538-4121812134794546-2382962752716042809-n.jpg",
+    "/media/2026-06/493524363-4121812158127877-4627962265055928590-n.jpg",
+    "/media/2026-06/494102467-4121812141461212-5885246941350051645-n-1.jpg",
+    "/media/2026-06/493950844-4121812071461219-2608832947451606308-n.jpg",
+    "/media/2026-06/493242453-4121812131461213-2140880714847643610-n.jpg",
+    "/media/2026-06/serrurerie.png"
+  ],
+  "realisationsText": "<p>Parmi nos chantiers récents : remplacement de 18 portes palières dans une résidence de standing à Vincennes (94), blindage de l'entrée d'une bijouterie à Paris 12e avec pose d'une porte Classe 5, installation de 40 contrôles d'accès à badge dans un immeuble de bureaux à Montreuil (93). Chaque référence est disponible sur demande avec attestation du maître d'ouvrage.</p>",
+  "videos": [
+    "96y0xSgdTgY"
+  ],
+  "zone": "Paris (75), Hauts-de-Seine (92), Seine-Saint-Denis (93), Val-de-Marne (94)",
+  "contactText": "Notre showroom est ouvert du lundi au vendredi de 8h30 à 18h00 et le samedi de 9h00 à 12h30. Prise de rendez-vous recommandée pour les études techniques à domicile. Devis gratuit sous 48 heures.",
+  "slug": "hostis-snc-serrurier-boulogne"
+}

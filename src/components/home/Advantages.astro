@@ -1,0 +1,184 @@
+---
+import Icon from '@/components/Icon.astro';
+const process = [
+  { img: '/media/qui-sommes-nous/atelier-cisaillage.webp', t: 'Cisaillage' },
+  { img: '/media/qui-sommes-nous/atelier-poinconnage.webp', t: 'Poinçonnage' },
+  { img: '/media/qui-sommes-nous/atelier-pliage.webp', t: 'Pliage' },
+  { img: '/media/qui-sommes-nous/atelier-soudage.webp', t: 'Soudage' },
+  { img: '/media/qui-sommes-nous/atelier-peinture.webp', t: 'Peinture époxy' },
+  { img: '/media/qui-sommes-nous/atelier-montage.webp', t: 'Montage & contrôle' },
+];
+---
+
+<section class="section adv" aria-labelledby="adv-title">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow" data-reveal>Pourquoi BDF</p>
+      <h2 id="adv-title" class="h2" data-reveal style="--d:.1s">Nos avantages et <span class="grad-orange">points forts</span></h2>
+    </div>
+
+    <div class="adv__row">
+      <a href="/fabricant-de-portes-blindees-sur-mesure" class="adv__media hud-corners" data-reveal="left" aria-label="Fabrication française — l'entreprise">
+        <img src="/media/custom-blocks/bdf-locaux-accueil.webp" alt="Locaux et usine Blindages de France à Aulnay-sous-Bois" loading="lazy" width="960" height="600" data-parallax="0.06" />
+        <span class="adv__tag mono">01 · Aulnay-sous-Bois (93)</span>
+      </a>
+      <div class="adv__txt" data-reveal="right">
+        <span class="icon-box"><Icon name="factory" /></span>
+        <h3 class="h3">Fabrication française</h3>
+        <p>Tous nos produits sont conçus, développés et fabriqués en France. Notre équipe se rend disponible pour vous recevoir et vous présenter nos produits dans notre <strong>showroom</strong>.</p>
+        <p>Profitez d'un accueil de qualité et de la disponibilité permanente de notre service commercial. Grâce à nos compétences de conseil et nos capacités techniques, nos <strong>délais de réalisation sont inférieurs à la journée</strong>.</p>
+        <a href="/fabricant-de-portes-blindees-sur-mesure" class="link-arrow">En savoir plus <Icon name="arrow-right" /></a>
+      </div>
+    </div>
+
+    <div class="adv__row adv__row--rev">
+      <a href="/fabricant-de-portes-blindees-sur-mesure#savoir-faire" class="adv__media hud-corners" data-reveal="right" aria-label="Savoir-faire et technique éprouvée">
+        <img src="/media/custom-blocks/bdf-savoir-faire-montage.webp" alt="Montage, soudage et livraison des portes blindées BDF" loading="lazy" width="960" height="600" data-parallax="0.06" />
+        <span class="adv__tag mono">02 · Savoir-faire</span>
+      </a>
+      <div class="adv__txt" data-reveal="left">
+        <span class="icon-box icon-box--steel"><Icon name="wrench" /></span>
+        <h3 class="h3">Savoir-faire et technique éprouvée</h3>
+        <p>L'aboutissement d'une longue expérience nous permet la réalisation de produits performants disposant des meilleures conditions techniques. Nos produits sont conçus dans la volonté de vous <strong>faciliter la pose et le montage</strong>.</p>
+        <p>Nous pouvons réaliser du <strong>cisaillage</strong>, du <strong>poinçonnage</strong>, du <strong>pliage</strong>, du <strong>soudage</strong> et vous apporter nos compétences dans le domaine du travail des métaux en feuilles et structures tubulaires inox, acier, alu.</p>
+        <a href="/fabricant-de-portes-blindees-sur-mesure#savoir-faire" class="link-arrow">Lire la suite <Icon name="arrow-right" /></a>
+      </div>
+    </div>
+
+    <ol class="process" aria-label="Processus de fabrication">
+      {
+        process.map((p, i) => (
+          <li class="process__step" data-reveal style={`--d:${i * 0.08}s`}>
+            <div class="process__img">
+              <img src={p.img} alt={p.t} loading="lazy" width="500" height="400" />
+            </div>
+            <span class="mono">{String(i + 1).padStart(2, '0')}</span>
+            <strong>{p.t}</strong>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .adv__row {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: clamp(1.5rem, 4vw, 5rem);
+    align-items: center;
+    margin-bottom: clamp(3rem, 6vw, 6rem);
+  }
+  .adv__row--rev .adv__media {
+    order: 2;
+  }
+  .adv__media {
+    position: relative;
+    display: block;
+    aspect-ratio: 16 / 10;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid var(--line-2);
+    background: #0a1628;
+  }
+  .adv__media img {
+    width: 100%;
+    height: 112%;
+    margin-top: -6%;
+    object-fit: cover;
+    transition: filter 0.6s;
+    filter: saturate(0.9);
+  }
+  .adv__media:hover img {
+    filter: saturate(1.1);
+  }
+  .adv__media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 55%, rgba(3, 7, 14, 0.75));
+  }
+  .adv__tag {
+    position: absolute;
+    left: 1.2rem;
+    bottom: 1rem;
+    z-index: 2;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .adv__txt {
+    display: grid;
+    gap: 1rem;
+    justify-items: start;
+  }
+  .adv__txt p {
+    margin: 0;
+    color: var(--text-2);
+  }
+  .adv__txt strong {
+    color: #fff;
+  }
+  .process {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+    counter-reset: s;
+  }
+  .process__step {
+    display: grid;
+    gap: 0.4rem;
+    position: relative;
+  }
+  .process__step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 30%;
+    right: -0.9rem;
+    width: 0.8rem;
+    height: 1px;
+    background: var(--orange);
+  }
+  .process__img {
+    aspect-ratio: 5 / 4;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    margin-bottom: 0.4rem;
+  }
+  .process__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 70%;
+    transform: scale(1.12);
+    transition: transform 0.8s var(--ease);
+  }
+  .process__step:hover .process__img img {
+    transform: scale(1.2);
+  }
+  .process__step .mono {
+    font-size: 0.7rem;
+    color: var(--orange);
+  }
+  .process__step strong {
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  @media (max-width: 900px) {
+    .adv__row {
+      grid-template-columns: 1fr;
+    }
+    .adv__row--rev .adv__media {
+      order: 0;
+    }
+    .process {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .process__step::after {
+      display: none;
+    }
+  }
+</style>

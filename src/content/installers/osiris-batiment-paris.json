@@ -1,0 +1,12 @@
+{
+  "name": "Osiris Batiment",
+  "address": "73 Rue de Menilmontant",
+  "postalCode": "75020",
+  "city": "Paris",
+  "phone": "01 43 49 26 97",
+  "lat": 48.8685795,
+  "lng": 2.3886909,
+  "legacyId": 1349,
+  "website": "http://www.osirisbatiment.fr/",
+  "slug": "osiris-batiment-paris"
+}

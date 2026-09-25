@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+import NewsCard from '@/components/ui/NewsCard.astro';
+import Icon from '@/components/Icon.astro';
+const news = (await getCollection('news', (n) => n.data.published !== false)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 3);
+---
+
+{
+  news.length > 0 && (
+    <section class="section section--tight" aria-labelledby="news-title">
+      <div class="container">
+        <div class="head">
+          <div class="section-head">
+            <p class="eyebrow" data-reveal>Actualités</p>
+            <h2 id="news-title" class="h2" data-reveal style="--d:.1s">
+              L'actu de BDF <span class="grad-orange">et de son réseau</span>
+            </h2>
+          </div>
+          <a href="/news-focus" class="btn btn--ghost" data-reveal>
+            Toutes les actualités <Icon name="arrow-right" />
+          </a>
+        </div>
+        <div class="grid grid-3">
+          {news.map((n, i) => (
+            <div data-reveal style={`--d:${i * 0.1}s`}>
+              <NewsCard id={n.id} {...n.data} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+</style>

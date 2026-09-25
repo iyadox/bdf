@@ -1,0 +1,66 @@
+{
+  "title": "Les grilles perforées",
+  "slug": "les-grilles-perforees",
+  "segment": "grilles-et-accessoires",
+  "categories": [
+    "grilles-et-accessoires-73"
+  ],
+  "family": "Les grilles perforées",
+  "order": 70,
+  "featured": false,
+  "image": "/media/fiches-produits/grilles-perforees-carre.webp",
+  "seo": {
+    "title": "Les grilles perforées",
+    "description": ""
+  },
+  "filters": {
+    "vantaux": [],
+    "certifications": [],
+    "fermetures": []
+  },
+  "composition": "<p>Les grilles perforées sont employées dans de nombreuses applications:</p><ul><li><p>pour la protection ou la ventilation de machines ou d'armoires informatiques</p></li><li><p>en façade comme brise-soleil, garde-corps ou escaliers.</p></li></ul><p>Blindages de France conçoit et fabrique sur mesure depuis plus de 30 ans dans son usine en France des grilles perforées.</p>",
+  "downloads": [
+    {
+      "label": "grilles-perforees.pdf",
+      "file": "/media/fichiers/grilles-perforees-0.pdf"
+    }
+  ],
+  "quoteLabel": "Les grilles perforées",
+  "options": {
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet",
+        "title": "Époxy mono couleur",
+        "description": "180 couleurs RAL au choix."
+      }
+    ]
+  },
+  "characteristics": {
+    "html": "<p>Deux modèles de grilles perforées vous sont proposés:</p><ul><li><strong>Grilles à trous carrés</strong></li></ul><p><img alt=\"\" loading=\"lazy\" src=\"/media/editeur/grilles-perforees-carre.jpg\"/></p><ul><li><strong>Grilles à trous ronds</strong></li></ul><p><strong><img alt=\"\" loading=\"lazy\" src=\"/media/editeur/grilles-perforees-ronds.jpg\"/></strong></p><p>Les trous carrés et ronds peuvent être alignés, en quinconce ou pas aléatoires.</p><p><img alt=\"\" loading=\"lazy\" src=\"/media/editeur/trous-droit-quinconce-1.jpg\"/><img alt=\"\" loading=\"lazy\" src=\"/media/editeur/trous-droit-quinconce-2.jpg\"/></p>"
+  }
+}

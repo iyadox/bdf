@@ -1,0 +1,121 @@
+---
+import { getInstallers, getProducts } from '@/lib/catalog';
+const [inst, prods] = await Promise.all([getInstallers(), getProducts()]);
+const stats = [
+  { n: new Date().getFullYear() - 1989, suf: '', label: "années d'expertise", sub: 'depuis 1989' },
+  { n: 55, suf: '+', label: 'salariés experts', sub: 'usine d’Aulnay-sous-Bois' },
+  { n: 24, pre: '< ', suf: 'h', label: 'délais de production', sub: 'plateforme automatisée' },
+  { n: inst.length, suf: '', label: 'installateurs agréés', sub: 'partout en France' },
+  { n: prods.length, suf: '', label: 'références', sub: 'au catalogue' },
+  { n: 10, suf: ' ans', label: 'de garantie', sub: 'sur nos portes blindées' },
+];
+---
+
+<section class="stats" aria-label="Blindages de France en chiffres">
+  <div class="stats__marquee" aria-hidden="true">
+    <div class="stats__track">
+      {
+        Array.from({ length: 2 }).map(() => (
+          <span>
+            FABRICATION FRANÇAISE ✦ CERTIFIÉ A2P ✦ COUPE-FEU EFECTIS ✦ PARE-BALLES ✦ SUR MESURE ✦ DÉLAIS &lt; 24H ✦ GARANTIE 10 ANS ✦&nbsp;
+          </span>
+        ))
+      }
+    </div>
+  </div>
+  <div class="container--wide">
+    <ul class="stats__grid">
+      {
+        stats.map((s, i) => (
+          <li class="stat" data-reveal style={`--d:${i * 0.08}s`}>
+            <span class="stat__n">
+              <span data-count={s.n} data-prefix={s.pre || ''} data-suffix={s.suf}>
+                {(s.pre || '') + s.n + s.suf}
+              </span>
+            </span>
+            <span class="stat__l">{s.label}</span>
+            <span class="stat__s mono">{s.sub}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .stats {
+    position: relative;
+    padding: 0 0 calc(var(--section) * 0.6);
+    border-block: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(4, 61, 108, 0.12), rgba(3, 7, 14, 0));
+    overflow: hidden;
+  }
+  .stats__marquee {
+    overflow: hidden;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: calc(var(--section) * 0.5);
+    background: linear-gradient(90deg, rgba(255, 102, 34, 0.08), rgba(46, 104, 148, 0.08));
+  }
+  .stats__track {
+    display: flex;
+    width: max-content;
+    animation: marquee 40s linear infinite;
+    font-family: var(--f-display);
+    font-size: clamp(0.9rem, 0.7rem + 0.8vw, 1.3rem);
+    letter-spacing: 0.08em;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(148, 178, 212, 0.4);
+    white-space: nowrap;
+  }
+  .stats__grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+  }
+  .stat {
+    display: grid;
+    gap: 0.3rem;
+    padding: 1.2rem 1rem 1.2rem 1.4rem;
+    border-left: 1px solid var(--line-2);
+    position: relative;
+  }
+  .stat::before {
+    content: '';
+    position: absolute;
+    left: -1px;
+    top: 1.2rem;
+    width: 2px;
+    height: 34px;
+    background: var(--orange);
+    box-shadow: 0 0 12px var(--orange-glow);
+  }
+  .stat__n {
+    font-family: var(--f-display);
+    font-size: clamp(1.8rem, 1.2rem + 2vw, 3rem);
+    line-height: 1;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .stat__l {
+    font-weight: 600;
+    color: var(--text-2);
+  }
+  .stat__s {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  @media (max-width: 1100px) {
+    .stats__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (max-width: 560px) {
+    .stats__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

@@ -1,0 +1,45 @@
+{
+  "title": "Grilles de défense en tube",
+  "slug": "grilles-de-defense-en-tube",
+  "segment": "travaux-speciaux",
+  "categories": [
+    "travaux-speciaux-75"
+  ],
+  "family": "Grilles de défense en tube",
+  "order": 74,
+  "featured": false,
+  "image": "/media/fiches-produits/grilles-de-defense-en-tube-1024x938.jpg",
+  "seo": {
+    "title": "Travaux spéciaux: réalisation sur mesure de grilles de défense en tube",
+    "description": "BDF a conçu et fabriqué des grilles de défense sur mesure. Ces produits répondent parfaitement aux exigences en terme de sécurité mais aussi aux contraintes imposées par la configuration du client"
+  },
+  "filters": {
+    "vantaux": [],
+    "certifications": [],
+    "fermetures": []
+  },
+  "composition": "<p><img alt=\"Grilles de defense en tube\" loading=\"lazy\" src=\"/media/editeur/grilles-de-defense-en-tube-1024x938.jpg\"/></p><p><br/><img alt=\"Grilles de defense en tube\" loading=\"lazy\" src=\"/media/editeur/grilles-de-defense-en-tube-2-1024x617.jpg\"/></p>",
+  "quoteLabel": "Grilles de défense en tube",
+  "options": {
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      }
+    ]
+  }
+}

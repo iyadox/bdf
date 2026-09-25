@@ -1,0 +1,71 @@
+{
+  "title": "Les grilles en métal déployé",
+  "slug": "les-grilles-en-metal-deploye",
+  "segment": "grilles-et-accessoires",
+  "categories": [
+    "grilles-et-accessoires-73"
+  ],
+  "family": "Les grilles en métal déployé",
+  "order": 69,
+  "featured": false,
+  "image": "/media/fiches-produits/grille-metal-deploye-3.png",
+  "seo": {
+    "title": "Les grilles en métal déployé",
+    "description": ""
+  },
+  "filters": {
+    "vantaux": [],
+    "certifications": [],
+    "fermetures": []
+  },
+  "composition": "<p>Les grilles en métal déployé permettent la fabrication de revêtement de sol de passage extérieur, de planchers intérieurs et extérieurs, de brise-soleil en façade de bâtiment, de marches d'escalier, de grilles de sécurité, de grilles d'aération, de grilles de caniveau, etc...</p><p>Blindages de France conçoit et fabrique sur mesure depuis plus de 30 ans dans son usine en France des grilles en métal déployé.</p>",
+  "downloads": [
+    {
+      "label": "grille-metal-deploye.pdf",
+      "file": "/media/fichiers/grille-metal-deploye.pdf"
+    }
+  ],
+  "quoteLabel": "Les grilles en métal déployé",
+  "options": {
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet",
+        "title": "Époxy mono couleur",
+        "description": "180 couleurs RAL au choix."
+      },
+      {
+        "icon": "brush",
+        "title": "Grenaillage polyzing",
+        "description": "Finition texturée résistante."
+      }
+    ]
+  },
+  "characteristics": {
+    "html": "<p>Plusieurs modèles de grilles en métal déployé vous sont proposés:</p><ul><li><strong>Grille rectangle</strong></li></ul><p><img alt=\"\" loading=\"lazy\" src=\"/media/editeur/grille-deploye-rectangle.jpg\"/></p><ul><li><strong>Grille en L</strong></li></ul><p><img alt=\"\" loading=\"lazy\" src=\"/media/editeur/grille-deploye-en-l.jpg\"/></p><ul><li><strong>Grille en U</strong></li></ul><p><img alt=\"\" loading=\"lazy\" src=\"/media/editeur/grille-deploye-en-u.jpg\"/></p><ul><li>Ou<strong> tout autre section sur mesure</strong></li></ul><p><br/>Plusieurs encadrements au choix:</p><ul><li>Encadrement en U</li></ul><p><img alt=\"\" loading=\"lazy\" src=\"/media/editeur/encadrement-en-u.jpg\"/></p><ul><li>Encadrement en L</li></ul><p><img alt=\"\" loading=\"lazy\" src=\"/media/editeur/encadrement-en-l.jpg\"/></p><ul><li>Encadrement en Z</li></ul><p><img alt=\"\" loading=\"lazy\" src=\"/media/editeur/encadrement-en-z.jpg\"/></p><p>Chaque modèle de grilles en métal déployé est proposé en différentes mailles:</p><ul><li>Maille 28 mm x 13 mm x 2 mm x 1,5 mm</li><li>Maille 43 mm x 20 mm x 2,5 mm x 2 mm</li><li>Maille 62 mm x 30 mm x 3 mm x 3 mm</li></ul><p><br/>Les grilles en métal déployé peuvent être fixées au choix avec:</p><ul><li>4 platines en pose tableau</li><li>4 platines en pose façade</li></ul>"
+  }
+}

@@ -1,0 +1,200 @@
+{
+  "title": "FLAMME 2011 1 Vantail",
+  "slug": "flamme-2011-1-vantail",
+  "segment": "blocs-portes-certifies",
+  "categories": [
+    "blocs-portes-certifies-59",
+    "blocs-portes-techniques-61"
+  ],
+  "family": "FLAMME 2011",
+  "order": 5,
+  "featured": false,
+  "image": "/media/fiches-produits/flamme-1v.png",
+  "badges": [
+    "Coupe-feu 30 min"
+  ],
+  "seo": {
+    "title": "Porte blindée Flamme 2011 1 vantail certifiée coupe feu 30 min Ei2-30-E60",
+    "description": "La porte blindée BDF Flamme, garantie 10 ans, proposée avec plusieurs anti-paniques en applique est certifiée coupe feu 30 min Ei2-30-E60 par le laboratoire Efectis selon la norme EN1634-1 et EN13501-2"
+  },
+  "specs": {
+    "vantaux": "1 vantail",
+    "dimensions": "Notre tarif pour la porte blindée FLAMME 2011 1 vantail s’applique pour les dimensions maximum 1014 x 2191 (mm).",
+    "fermeture": "Anti-panique en applique Serrures multi-points en applique",
+    "certification": "Coupe-feu 30 min"
+  },
+  "filters": {
+    "vantaux": [
+      "1 vantail"
+    ],
+    "certifications": [
+      "Coupe-feu 30 min"
+    ],
+    "fermetures": [
+      "Anti-panique en applique",
+      "Serrures multi-points en applique"
+    ]
+  },
+  "composition": "<p><strong>Certifiée EFECTIS Porte coupe feu 30 MINUTES</strong></p><p>La porte blindée FLAMME 2011 1 vantail est composée de:</p><ul><li>2 faces en acier de 15/10ème électrozinguée</li><li>5 omégas raidisseurs</li><li>3 paumelles soudées de 140 mm à billes</li><li>3 renforts de paumelle soudés</li><li>laine de roche intégrée</li><li>joints intumescents qui s’expandent en cas d’incendie</li><li>un cadre de rénovation soudé 4 côtés avec seuil en fer plat</li><li>un plat de recouvrement</li></ul>",
+  "downloads": [
+    {
+      "label": "flamme2011-1v.pdf",
+      "file": "/media/fichiers/flamme2011-1v.pdf"
+    }
+  ],
+  "quoteLabel": "FLAMME 2011 1 Vantail",
+  "locks": {
+    "intro": "La porte blindée FLAMME 2011 1 vantail est proposée en Push ou Barre avec plusieurs anti-paniques en applique:",
+    "table": [
+      {
+        "brand": "Anti-panique Fapim",
+        "points": "1 pts"
+      },
+      {
+        "brand": "Anti-panique Fapim",
+        "points": "3 pts"
+      },
+      {
+        "brand": "Anti-panique Vachette",
+        "points": "1 pts"
+      },
+      {
+        "brand": "Anti-panique Vachette",
+        "points": "3 pts"
+      }
+    ],
+    "extras": [
+      {
+        "title": "Inclus avec la serrure",
+        "icon": "key",
+        "html": "<p>Ces serrures sont fournies avec au choix :</p><ul><li>un demi-cylindre 5 goupilles et 3 clés</li><li>un demi-cylindre Medeco de haute sécurité, 3 clés à reproduction protégée et une carte de propriété pour la reproduction de clés.</li></ul>"
+      },
+      {
+        "title": "Options fermeture",
+        "icon": "circle-plus",
+        "html": "<p>L’ensemble module extérieur est proposé en plusieurs versions:</p><ul><li>Sans rien à l’extérieur</li><li>Module clé/tirage Fapim (bouton et cylindre)</li><li>Module clé/béquille Fapim (béquille et cylindre)</li><li>Module P12 Vachette (cylindre seul)</li><li>Module P13/23 Vachette (béquille et cylindre)</li></ul>"
+      }
+    ]
+  },
+  "frame": {
+    "intro": "L’huisserie avec joint de la porte blindée FLAMME 2011 1 vantail est composée de tôle multi-plis en 20/10ème électrozinguée.\n\nSelon la configuration de votre installation, vous avez le choix entre les huisseries suivantes:",
+    "cards": [
+      {
+        "icon": "rotate",
+        "title": "Rénovation",
+        "description": "Remplacement sans gros travaux. Installation rapide sur bâti existant."
+      },
+      {
+        "icon": "hammer",
+        "title": "Tubulaire",
+        "description": "Constructions neuves et sur mesure. Intégration parfaite en neuf."
+      },
+      {
+        "icon": "arrows-left-right",
+        "title": "Universelle",
+        "description": "Compatible rénovation et neuf. Solution polyvalente."
+      }
+    ]
+  },
+  "options": {
+    "html": "<p>Nous vous proposons également d’ajouter un ferme porte Groom GR 3400 à votre porte blindée FLAMME 2011 1 vantail. </p>",
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Options huisserie",
+        "icon": "ruler-combined",
+        "items": [
+          {
+            "label": "Pattes à scellement",
+            "picto": "/media/pictos-options/3-pattes-scellement.jpg"
+          },
+          {
+            "label": "Perçage et fraisage",
+            "picto": "/media/pictos-options/2-percage-fraisage.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "brush",
+        "title": "Grenaillage polyzing",
+        "description": "Finition texturée résistante."
+      }
+    ]
+  },
+  "certification": {
+    "badges": [
+      {
+        "type": "feu",
+        "label": "Coupe-feu Ei2-30-E60"
+      }
+    ],
+    "labs": "Certifié par Efectis",
+    "logos": [
+      {
+        "image": "/media/editeur/certidoor-efectis.jpg",
+        "caption": "CertiDoor Efectis Ei2-30-E60",
+        "alt": "CertiDoor Certifié Efectis EI2 30 E60"
+      },
+      {
+        "image": "/media/editeur/porte-certifiee-resistance-feu.jpg",
+        "caption": "Résistance au feu 30 min",
+        "alt": "Résistance au feu 30 minutes"
+      }
+    ],
+    "description": "<p>La FLAMME 2011 est un bloc porte blindé 1 vantail avec un niveau de certification coupe feu 30 min avec les performances suivantes : classement coupe-feu : Ei2-30-E60 certifié par le laboratoire Efectis.</p><p>Performance de résistance au feu selon la norme EN1634-1 et classé suivant EN13501-2.</p>",
+    "video": "84tSU8-mMf4",
+    "videoTitle": "Vidéo de test en laboratoire",
+    "links": [
+      "Découvrez les portes résistant au feu de la marque Blindages de France et regardez la vidéo de l'essai de résistance au feu EFECTIS."
+    ]
+  },
+  "usages": {
+    "intro": "La porte blindée FLAMME 2011 1 vantail est destinée à protéger tous les locaux en sortie de secours soumis à la réglementation coupe feu pare flamme comme par exemple:",
+    "items": [
+      {
+        "icon": "fire-burner",
+        "title": "Chaufferies"
+      },
+      {
+        "icon": "shield-halved",
+        "title": "Hôpitaux"
+      },
+      {
+        "icon": "industry",
+        "title": "Locaux industriels"
+      },
+      {
+        "icon": "square-parking",
+        "title": "Parkings / Sous-sols"
+      },
+      {
+        "icon": "cart-shopping",
+        "title": "Supermarchés"
+      }
+    ]
+  }
+}

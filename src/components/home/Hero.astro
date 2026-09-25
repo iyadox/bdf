@@ -1,0 +1,419 @@
+---
+import Icon from '@/components/Icon.astro';
+import { settings } from '@/lib/site';
+const g = settings.contact.geo;
+---
+
+<section class="hero" data-hero aria-label="Présentation">
+  <div class="hero__sticky">
+    <div class="hero__stage" aria-hidden="true">
+      <canvas class="hero__canvas" data-hero-canvas></canvas>
+      <div class="hero__poster" data-hero-poster></div>
+    </div>
+    <div class="hero__vignette" aria-hidden="true"></div>
+    <div class="scanline" aria-hidden="true"></div>
+
+    <div class="container--wide hero__content" data-hero-content>
+      <p class="eyebrow" data-reveal>{settings.company.baseline}</p>
+      <h1 class="hero__title display">
+        <span class="hero__l1" data-split data-reveal>Protégez ce qui</span>
+        <span class="hero__l2 grad-orange" data-split data-reveal style="--d:.25s">compte vraiment</span>
+      </h1>
+      <p class="lead hero__lead" data-reveal style="--d:.45s">
+        Portes blindées certifiées A2P et solutions de sécurité sur mesure. Conception, fabrication et installation <strong>100&nbsp;% Made in France</strong>.
+      </p>
+      <div class="btn-row" data-reveal style="--d:.6s">
+        <a href="/catalogue" class="btn btn--lg" data-magnetic="0.15">Voir le catalogue <Icon name="arrow-right" /></a>
+        <a href="/configurateur" class="btn btn--lg btn--ghost" data-magnetic="0.15"><Icon name="cube" /> Configurer en 3D</a>
+      </div>
+      <ul class="hero__trust" data-reveal style="--d:.75s">
+        <li><Icon name="shield" size={16} /> A2P · CNPP</li>
+        <li><Icon name="flame" size={16} /> Coupe-feu · EFECTIS</li>
+        <li><Icon name="crosshair" size={16} /> Pare-balles · Banc d'Épreuves</li>
+        <li><Icon name="award" size={16} /> Garantie 10 ans</li>
+      </ul>
+    </div>
+
+    <div class="hero__welcome" data-hero-welcome aria-hidden="true">
+      <p class="mono">Accès autorisé</p>
+      <p class="hero__welcome-t display">Bienvenue</p>
+      <p class="hero__welcome-s">chez Blindages de France</p>
+    </div>
+
+    <div class="hud" data-hud aria-hidden="true">
+      <div class="hud__tag" data-anchor="lock"><span class="hud__dot"></span><span class="hud__txt"><b>Serrure 5 points</b>jusqu'à A2P***</span></div>
+      <div class="hud__tag" data-anchor="cyl"><span class="hud__dot"></span><span class="hud__txt"><b>Cylindre haute sécurité</b>clés à reproduction protégée</span></div>
+      <div class="hud__tag" data-anchor="skin"><span class="hud__dot"></span><span class="hud__txt"><b>Acier électrozingué</b>2 faces 15/10e · 5 omégas</span></div>
+      <div class="hud__tag" data-anchor="frame"><span class="hud__dot"></span><span class="hud__txt"><b>Cadre soudé 4 côtés</b>huisserie 20/10e anti-pince</span></div>
+    </div>
+
+    <div class="hero__rail" aria-hidden="true">
+      <ol>
+        <li data-step="0" class="is-on"><span>Verrouillée</span></li>
+        <li data-step="1"><span>Déverrouillage</span></li>
+        <li data-step="2"><span>Ouverture</span></li>
+        <li data-step="3"><span>Bienvenue</span></li>
+      </ol>
+      <div class="hero__rail-bar"><i data-hero-bar></i></div>
+    </div>
+
+    <div class="hero__meta container--wide" aria-hidden="true">
+      <span class="hero__scroll" data-hero-hint><span class="hero__mouse"><i></i></span> Défilez pour déverrouiller</span>
+      <span class="mono">{g.lat.toFixed(4)}°N · {g.lng.toFixed(4)}°E — Aulnay-sous-Bois</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    height: 260vh;
+    margin-top: calc(-1 * var(--header-h) - 37px);
+  }
+  .hero__sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    height: 100svh;
+    min-height: 620px;
+    overflow: hidden;
+    display: grid;
+    align-items: center;
+  }
+  .hero__stage,
+  .hero__canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .hero__poster {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(40% 55% at 68% 55%, rgba(255, 102, 34, 0.18), transparent 70%),
+      radial-gradient(60% 60% at 70% 40%, rgba(46, 104, 148, 0.25), transparent 70%);
+    opacity: 1;
+    transition: opacity 1.2s;
+  }
+  :global(.hero.is-3d) .hero__poster {
+    opacity: 0;
+  }
+  .hero__vignette {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(90deg, rgba(3, 7, 14, 0.92) 0%, rgba(3, 7, 14, 0.65) 32%, rgba(3, 7, 14, 0) 58%),
+      linear-gradient(180deg, rgba(3, 7, 14, 0.7) 0%, transparent 22%, transparent 70%, rgba(3, 7, 14, 1) 100%);
+  }
+  .hero__content {
+    position: relative;
+    z-index: 2;
+    padding-top: calc(var(--header-h) + 3rem);
+    padding-bottom: 6rem;
+    will-change: opacity, transform;
+  }
+  .hero__title {
+    font-size: clamp(1.9rem, 0.7rem + 3.3vw, 4rem);
+    line-height: 1.06;
+    margin: 1.4rem 0 1.6rem;
+    text-transform: uppercase;
+  }
+  .hero__title span {
+    display: block;
+  }
+  @media (min-width: 901px) {
+    .hero__title span {
+      white-space: nowrap;
+    }
+  }
+  .hero__l2 {
+    padding-bottom: 0.06em;
+  }
+  .hero__lead {
+    max-width: 46ch;
+    margin-bottom: 2.2rem;
+  }
+  .hero__lead strong {
+    color: #fff;
+  }
+  .hero__trust {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.4rem;
+    margin-top: 2.4rem;
+    font-family: var(--f-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .hero__trust li {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+  .hero__trust :global(svg) {
+    color: var(--orange);
+  }
+
+  .hero__welcome {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    z-index: 3;
+    translate: 0 -50%;
+    text-align: center;
+    pointer-events: none;
+    opacity: var(--wo, 0);
+    transform: scale(calc(0.92 + var(--wo, 0) * 0.08));
+    color: #1a0d05;
+  }
+  .hero__welcome .mono {
+    font-size: 0.72rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: #b8450f;
+    margin: 0;
+  }
+  .hero__welcome-t {
+    margin: 0.3em 0 0.1em;
+    font-size: clamp(2.4rem, 1rem + 6vw, 6.4rem);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 0 0 40px rgba(255, 150, 90, 0.9), 0 0 2px rgba(120, 40, 0, 0.4);
+  }
+  .hero__welcome-s {
+    margin: 0;
+    font-size: var(--fs-lg);
+    color: #fff;
+    text-shadow: 0 0 20px rgba(120, 40, 0, 0.6);
+  }
+
+  /* HUD */
+  .hud {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.6s;
+  }
+  :global(.hero.hud-on) .hud {
+    opacity: 1;
+  }
+  .hud__tag {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    transform: translate(var(--x, -999px), var(--y, -999px));
+    will-change: transform;
+  }
+  .hud__dot {
+    position: relative;
+    width: 12px;
+    height: 12px;
+    margin-left: -6px;
+    border-radius: 50%;
+    border: 2px solid var(--orange);
+    background: rgba(255, 102, 34, 0.25);
+    box-shadow: 0 0 14px var(--orange-glow);
+    animation: pulse-dot 2.2s infinite;
+    flex: none;
+  }
+  .hud__dot::after {
+    content: '';
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    width: 46px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--orange), rgba(255, 102, 34, 0.2));
+  }
+  .hud__txt {
+    display: grid;
+    margin-left: 46px;
+    padding: 0.45rem 0.75rem;
+    font-size: 0.72rem;
+    color: var(--text-2);
+    background: rgba(3, 8, 16, 0.7);
+    border: 1px solid rgba(255, 102, 34, 0.35);
+    border-radius: 6px;
+    backdrop-filter: blur(6px);
+    white-space: nowrap;
+  }
+  .hud__txt b {
+    font-family: var(--f-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 600;
+  }
+  .hud__tag--left {
+    flex-direction: row-reverse;
+  }
+  .hud__tag--left .hud__dot {
+    margin-left: 0;
+    margin-right: -6px;
+  }
+  .hud__tag--left .hud__dot::after {
+    left: auto;
+    right: 100%;
+    background: linear-gradient(270deg, var(--orange), rgba(255, 102, 34, 0.2));
+  }
+  .hud__tag--left .hud__txt {
+    margin-left: 0;
+    margin-right: 46px;
+    text-align: right;
+  }
+  .hud__tag--left {
+    translate: -100% 0;
+  }
+
+  /* étapes (bas de l'écran) */
+  .hero__rail {
+    position: absolute;
+    left: 50%;
+    bottom: 1.4rem;
+    translate: -50% 0;
+    z-index: 3;
+    display: grid;
+    gap: 0.6rem;
+    width: min(560px, 60vw);
+  }
+  .hero__rail ol {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--f-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--dim);
+  }
+  .hero__rail li {
+    transition: color 0.4s;
+  }
+  .hero__rail li.is-on {
+    color: #fff;
+  }
+  .hero__rail-bar {
+    position: relative;
+    height: 2px;
+    background: var(--line-2);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .hero__rail-bar i {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, var(--orange), #ffb07a);
+    transform-origin: 0 50%;
+    transform: scaleX(var(--hp, 0.02));
+    box-shadow: 0 0 10px var(--orange-glow);
+  }
+
+  .hero__meta {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 1.6rem;
+    z-index: 3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    color: var(--dim);
+    text-transform: uppercase;
+  }
+  .hero__scroll {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: var(--f-mono);
+    color: var(--text-2);
+    transition: opacity 0.4s;
+  }
+  .hero__mouse {
+    position: relative;
+    width: 22px;
+    height: 34px;
+    border: 1.5px solid var(--text-2);
+    border-radius: 12px;
+  }
+  .hero__mouse i {
+    position: absolute;
+    left: 50%;
+    top: 7px;
+    width: 3px;
+    height: 7px;
+    margin-left: -1.5px;
+    border-radius: 2px;
+    background: var(--orange);
+    animation: wheel 1.8s var(--ease) infinite;
+  }
+  @keyframes wheel {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    70% {
+      transform: translateY(10px);
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @media (max-width: 1080px) {
+    .hero__rail,
+    .hud {
+      display: none;
+    }
+  }
+  @media (max-width: 900px) {
+    .hero {
+      height: 200vh;
+    }
+    .hero__vignette {
+      background: linear-gradient(180deg, rgba(3, 7, 14, 0.55) 0%, rgba(3, 7, 14, 0.2) 35%, rgba(3, 7, 14, 0.75) 62%, rgba(3, 7, 14, 1) 100%);
+    }
+    .hero__sticky {
+      align-items: end;
+    }
+    .hero__content {
+      padding-bottom: 5.5rem;
+    }
+    .hero__meta > .mono {
+      display: none;
+    }
+    .hero__meta {
+      justify-content: center;
+      bottom: 1rem;
+    }
+  }
+  @media (max-width: 760px) {
+    .hero {
+      margin-top: calc(-1 * var(--header-h));
+    }
+    .hero__trust {
+      display: none;
+    }
+    .hero__lead {
+      font-size: 1rem;
+    }
+    .hero__meta {
+      display: none;
+    }
+  }
+</style>

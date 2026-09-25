@@ -1,0 +1,204 @@
+---
+import Icon from '@/components/Icon.astro';
+const steps = [
+  { id: 'front', icon: 'layers', k: 'Parement', title: 'Acier 15/10e électrozingué', text: 'Deux faces en tôle d’acier de 15/10e électrozinguée : la première barrière contre la découpe et l’arrachement.' },
+  { id: 'omegas', icon: 'bars', k: 'Structure', title: '5 omégas raidisseurs', text: 'Des profils en oméga soudés rigidifient le vantail et résistent aux tentatives de pesée et d’enfoncement.' },
+  { id: 'wool', icon: 'box', k: 'Isolation', title: 'Laine de roche', text: 'Le cœur isolant apporte le confort thermique et acoustique — jusqu’à Ud = 2,8 et 39 dB sur la SIGNATURE.' },
+  { id: 'lock', icon: 'lock', k: 'Verrouillage', title: 'Serrure multipoints A2P', text: 'Jusqu’à 7 points de fermeture, cylindre haute sécurité et serrures certifiées jusqu’à A2P*** (Vachette, Picard, AM Locks…).' },
+  { id: 'hinges', icon: 'rotate', k: 'Rotation', title: 'Paumelles à billes 140 mm', text: 'Paumelles soudées à billes et renforts de paumelles, avec anti-dégondage par tenon mortaise BDF.' },
+  { id: 'frame', icon: 'frame', k: 'Huisserie', title: 'Cadre soudé 4 côtés', text: 'Huisserie en tôle multiplis 20/10e électrozinguée, anti-pince, en version rénovation ou tubulaire pour le neuf.' },
+  { id: 'seals', icon: 'flame', k: 'Coupe-feu', title: 'Joints intumescents', text: 'Sur les modèles coupe-feu, les joints gonflent sous la chaleur et bloquent flammes et fumées (EI2 30 à 60 min certifié EFECTIS).' },
+];
+---
+
+<section class="anatomy section" data-anatomy aria-labelledby="anatomy-title">
+  <div class="container--wide anatomy__grid">
+    <div class="anatomy__stage">
+      <div class="anatomy__sticky">
+        <canvas class="anatomy__canvas" data-anatomy-canvas aria-label="Vue éclatée 3D d'une porte blindée" role="img"></canvas>
+        <div class="anatomy__fallback" data-anatomy-fallback hidden>
+          <img src="/media/fiches-produits/signature-1v.png" alt="Porte blindée SIGNATURE" loading="lazy" />
+        </div>
+        <div class="anatomy__hud mono" aria-hidden="true">
+          <span>VUE ÉCLATÉE · SIGNATURE BP1</span>
+          <span data-anatomy-label>{steps[0].k}</span>
+        </div>
+        <div class="anatomy__ctrl">
+          <button type="button" class="chip" data-anatomy-toggle aria-pressed="false"><Icon name="layers" size={16} /> Éclater / assembler</button>
+        </div>
+      </div>
+    </div>
+    <div class="anatomy__steps">
+      <header class="anatomy__head">
+        <p class="eyebrow" data-reveal>Anatomie d'une porte blindée</p>
+        <h2 id="anatomy-title" class="h2" data-reveal style="--d:.1s">Une conception <span class="grad-orange">sans compromis</span></h2>
+        <p class="lead" data-reveal style="--d:.2s">Faites défiler pour démonter couche par couche une porte blindée BDF, conçue et fabriquée dans notre usine d'Aulnay-sous-Bois.</p>
+      </header>
+      <ol class="asteps">
+        {
+          steps.map((s, i) => (
+            <li class="astep" data-astep={s.id} data-k={s.k}>
+              <div class="astep__num mono">{String(i + 1).padStart(2, '0')}</div>
+              <div class="astep__body panel">
+                <span class="icon-box">
+                  <Icon name={s.icon} />
+                </span>
+                <p class="astep__k mono">{s.k}</p>
+                <h3 class="h3">{s.title}</h3>
+                <p>{s.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+      <div class="anatomy__cta">
+        <a href="/catalogue/blocs-portes-certifies/signature-bp1-1-vantail" class="btn">Voir la SIGNATURE <Icon name="arrow-right" /></a>
+        <a href="/configurateur" class="btn btn--ghost"><Icon name="cube" /> Configurer ma porte</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .anatomy__grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: clamp(1.5rem, 4vw, 5rem);
+  }
+  .anatomy__stage {
+    position: relative;
+  }
+  .anatomy__sticky {
+    position: sticky;
+    top: calc(var(--header-h) + 1rem);
+    height: calc(100vh - var(--header-h) - 2rem);
+    height: calc(100svh - var(--header-h) - 2rem);
+    border-radius: 22px;
+    overflow: hidden;
+    background:
+      radial-gradient(60% 50% at 50% 55%, rgba(46, 104, 148, 0.28), transparent 70%),
+      linear-gradient(180deg, rgba(10, 22, 40, 0.6), rgba(3, 7, 14, 0.6));
+    border: 1px solid var(--line);
+  }
+  .anatomy__canvas {
+    width: 100%;
+    height: 100%;
+  }
+  .anatomy__fallback {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 3rem;
+  }
+  .anatomy__fallback img {
+    max-height: 100%;
+    width: auto;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
+  }
+  .anatomy__hud {
+    position: absolute;
+    top: 1.2rem;
+    left: 1.4rem;
+    right: 1.4rem;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    pointer-events: none;
+  }
+  .anatomy__hud span:last-child {
+    color: var(--orange);
+  }
+  .anatomy__ctrl {
+    position: absolute;
+    left: 1.2rem;
+    bottom: 1.2rem;
+  }
+  .anatomy__head {
+    display: grid;
+    gap: 1rem;
+    padding-top: 2rem;
+    margin-bottom: 3rem;
+  }
+  .asteps {
+    list-style: none;
+    display: grid;
+  }
+  .astep {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 1rem;
+    min-height: 58vh;
+    align-items: center;
+    opacity: 0.32;
+    transition: opacity 0.5s var(--ease);
+  }
+  .astep.is-active {
+    opacity: 1;
+  }
+  .astep__num {
+    align-self: center;
+    font-size: 1.4rem;
+    color: var(--dim);
+    transition: color 0.4s;
+  }
+  .astep.is-active .astep__num {
+    color: var(--orange);
+  }
+  .astep__body {
+    display: grid;
+    gap: 0.6rem;
+    padding: 1.6rem;
+    transition:
+      border-color 0.4s,
+      transform 0.6s var(--ease);
+  }
+  .astep.is-active .astep__body {
+    border-color: rgba(255, 102, 34, 0.5);
+    transform: translateX(-6px);
+  }
+  .astep__body p {
+    margin: 0;
+    color: var(--text-2);
+  }
+  .astep__k {
+    font-size: 0.66rem !important;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--orange) !important;
+  }
+  .anatomy__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    padding: 2rem 0 0 72px;
+  }
+  @media (max-width: 960px) {
+    .anatomy__grid {
+      grid-template-columns: 1fr;
+    }
+    .anatomy__stage {
+      position: sticky;
+      top: var(--header-h);
+      z-index: 2;
+      height: 46vh;
+    }
+    .anatomy__sticky {
+      position: relative;
+      top: 0;
+      height: 46vh;
+    }
+    .astep {
+      min-height: 46vh;
+      grid-template-columns: 40px 1fr;
+    }
+    .astep__body {
+      background: rgba(6, 16, 30, 0.92);
+    }
+    .anatomy__cta {
+      padding-left: 0;
+    }
+  }
+</style>

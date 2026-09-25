@@ -1,0 +1,263 @@
+{
+  "title": "TECHNO BP1 BP2 BP3 1 Vantail",
+  "slug": "techno-bp1-bp2-bp3-1-vantail",
+  "segment": "blocs-portes-certifies",
+  "categories": [
+    "blocs-portes-certifies-59",
+    "blocs-portes-techniques-61"
+  ],
+  "family": "TECHNO BP1 BP2 BP3",
+  "order": 7,
+  "featured": false,
+  "image": "/media/fiches-produits/techno-bp1-bp2-bp-1v.png",
+  "badges": [
+    "A2P BP1",
+    "A2P BP2",
+    "A2P BP3"
+  ],
+  "seo": {
+    "title": "Porte blindée Techno 1 vantail certifiée anti-effraction A2P BP1 BP2 BP3",
+    "description": "La porte blindée BDF, Techno, garantie 10 ans, proposée avec plusieurs serrures de haute sécurité multipoints A2P encastrées , est certifiée anti-effraction A2P BP1 BP2 ou BP3 par le CNPP"
+  },
+  "specs": {
+    "vantaux": "1 vantail",
+    "dimensions": "Notre tarif pour la porte blindée TECHNO BP1 BP2 BP3 1 vantail s’applique pour les dimensions maximum 1000 x 2300 (mm).",
+    "fermeture": "Serrure encastrée multipoints",
+    "certification": "A2P BP1 + A2P BP2 + A2P BP3"
+  },
+  "filters": {
+    "vantaux": [
+      "1 vantail"
+    ],
+    "certifications": [
+      "A2P BP1",
+      "A2P BP2",
+      "A2P BP3"
+    ],
+    "fermetures": [
+      "Serrure encastrée multipoints"
+    ]
+  },
+  "composition": "<p><strong>Certifiée CNPP Porte Anti-effraction A2P BP1-BP2-BP3</strong></p><p>La porte blindée TECHNO BP1 BP2 BP3 1 vantail est composée de:</p><ul><li>2 faces en acier de 20/10ème électrozinguée</li><li>5 omégas raidisseurs</li><li>4 paumelles soudées de 140 mm à billes</li><li>4 renforts de paumelles soudés</li><li>une barre de seuil en fer plat</li></ul>",
+  "downloads": [
+    {
+      "label": "techno-bp-1v.pdf",
+      "file": "/media/fichiers/techno-bp-1v.pdf"
+    }
+  ],
+  "quoteLabel": "TECHNO BP1 BP2 BP3 1 Vantail",
+  "locks": {
+    "intro": "La porte blindée TECHNO BP1 BP2 BP3 1 vantail est proposée avec au choix plusieurs serrures de haute sécurité encastrées:",
+    "table": [
+      {
+        "brand": "AM Locks",
+        "points": "3 pts",
+        "certification": "A2P*",
+        "level": "BP1"
+      },
+      {
+        "brand": "Vachette",
+        "points": "3 pts",
+        "certification": "A2P*",
+        "level": "BP1"
+      },
+      {
+        "brand": "Vachette",
+        "points": "3 pts",
+        "certification": "A2P**",
+        "level": "BP2"
+      },
+      {
+        "brand": "Vachette",
+        "points": "5 pts",
+        "certification": "A2P***",
+        "level": "BP3"
+      }
+    ],
+    "extras": [
+      {
+        "title": "Inclus avec la serrure",
+        "icon": "key",
+        "html": "<p>Cette serrure est fournie avec un cylindre de haute sécurité, 4 clés à reproduction protégée et une carte de propriété pour la reproduction de clés.</p>"
+      },
+      {
+        "title": "Options fermeture",
+        "icon": "circle-plus",
+        "html": "<p>En série l’ensemble extérieur est proposé en:</p><ul><li>béquille intérieure et extérieure</li><li>béquille intérieure et poignée de tirage extérieure.</li></ul>"
+      }
+    ]
+  },
+  "frame": {
+    "intro": "L’huisserie avec joint de la porte blindée TECHNO BP1 BP2 BP3 1 vantail est composée de tôle multi-plis en 20/10ème électrozinguée.\n\nSelon la configuration de votre installation, vous avez le choix entre les huisseries suivantes:",
+    "cards": [
+      {
+        "icon": "rotate",
+        "title": "Rénovation",
+        "description": "Remplacement sans gros travaux. Installation rapide sur bâti existant."
+      },
+      {
+        "icon": "hammer",
+        "title": "Tubulaire 50 x 30",
+        "description": "Profil tubulaire 50 x 30 mm. Adapté aux configurations standard."
+      },
+      {
+        "icon": "arrows-left-right",
+        "title": "Universelle",
+        "description": "Compatible rénovation et neuf. Solution polyvalente."
+      }
+    ]
+  },
+  "options": {
+    "intro": "Avec l’huisserie choisie vous avez la possibilité d’intégrer en option:",
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Options huisserie",
+        "icon": "ruler-combined",
+        "items": [
+          {
+            "label": "Barre de seuil",
+            "picto": "/media/pictos-options/12-barre-seuil.jpg"
+          },
+          {
+            "label": "Laine de roche",
+            "picto": "/media/pictos-options/4-laine-roche.jpg"
+          },
+          {
+            "label": "Pattes à scellement",
+            "picto": "/media/pictos-options/3-pattes-scellement.jpg"
+          },
+          {
+            "label": "Perçage et fraisage",
+            "picto": "/media/pictos-options/2-percage-fraisage.jpg"
+          },
+          {
+            "label": "Rejet d'eau en alu",
+            "picto": "/media/pictos-options/14-rejet-eau.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Équipements complémentaires",
+        "icon": "circle-plus",
+        "items": [
+          {
+            "label": "Ferme porte",
+            "picto": "/media/pictos-options/5-ferme-porte.jpg"
+          },
+          {
+            "label": "Judas optique",
+            "picto": "/media/pictos-options/6-judas-optique.jpg"
+          },
+          {
+            "label": "Moulures",
+            "picto": "/media/pictos-options/8-moulures.jpg"
+          },
+          {
+            "label": "Oculus blindé",
+            "picto": "/media/pictos-options/11-oculus-blinde.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet-slash",
+        "title": "Époxy bi-couleur",
+        "description": "2 couleurs différentes intérieur/extérieur, 180 RAL."
+      },
+      {
+        "icon": "droplet",
+        "title": "Époxy mono couleur",
+        "description": "180 couleurs RAL au choix."
+      },
+      {
+        "icon": "brush",
+        "title": "Grenaillage polyzing",
+        "description": "Finition texturée résistante."
+      },
+      {
+        "icon": "tree",
+        "title": "Ton bois",
+        "description": "6 décors aspect bois naturel."
+      }
+    ]
+  },
+  "certification": {
+    "badges": [
+      {
+        "type": "a2p",
+        "label": "A2P BP1-BP2-BP3"
+      }
+    ],
+    "labs": "Certifié par CNPP",
+    "logos": [
+      {
+        "image": "/media/editeur/a2p-bp1-bp2-bp.jpg",
+        "caption": "CertiDoor A2P BP1-BP2-BP3",
+        "alt": "CertiDoor Anti-effraction A2P BP1-BP2-BP3"
+      }
+    ],
+    "description": "<p>La TECHNO BP1 BP2 BP3 est un bloc porte blindé 1 vantail avec un niveau de certification contre l’effraction en fonction de la serrure choisie BP1-BP2-BP3 certifié par le CNPP .</p>",
+    "video": "91cXq-mJ33M",
+    "videoTitle": "Vidéo de test en laboratoire",
+    "links": [
+      "Découvrez les portes anti-effraction de la marque Blindages de France et regardez la vidéo du test anti-effraction CNPP."
+    ]
+  },
+  "usages": {
+    "intro": "La porte blindée TECHNO BP1 BP2 BP3 1 vantail est destinée aux espaces susceptibles d’être vandalisés tels que:",
+    "items": [
+      {
+        "icon": "building",
+        "title": "Appartements"
+      },
+      {
+        "icon": "box-archive",
+        "title": "Archives sensibles"
+      },
+      {
+        "icon": "building-columns",
+        "title": "Banques"
+      },
+      {
+        "icon": "store",
+        "title": "Bureaux de tabac"
+      },
+      {
+        "icon": "briefcase",
+        "title": "Cabinets"
+      },
+      {
+        "icon": "envelope",
+        "title": "Centres postaux"
+      },
+      {
+        "icon": "people-roof",
+        "title": "Espaces publics"
+      }
+    ]
+  }
+}

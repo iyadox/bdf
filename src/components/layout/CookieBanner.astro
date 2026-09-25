@@ -1,0 +1,95 @@
+---
+import Icon from '@/components/Icon.astro';
+---
+
+<div class="cookie-banner panel panel--glow" data-cookie-banner role="dialog" aria-live="polite" aria-label="Préférences de cookies" hidden>
+  <div class="cb__head">
+    <span class="icon-box"><Icon name="cookie" /></span>
+    <p class="cb__title">Votre vie privée</p>
+  </div>
+  <p class="cb__txt">
+    Nous utilisons uniquement des cookies utiles : mesure d'audience anonyme et lecture des vidéos YouTube. Vous gardez le contrôle.
+    <a href="/liens/confidentialite">En savoir plus</a>
+  </p>
+  <div class="cb__opts" data-cookie-opts hidden>
+    <label class="check"><input type="checkbox" checked disabled /> Essentiels (toujours actifs)</label>
+    <label class="check"><input type="checkbox" data-consent="analytics" /> Mesure d'audience</label>
+    <label class="check"><input type="checkbox" data-consent="media" /> Vidéos YouTube intégrées</label>
+  </div>
+  <div class="cb__btns">
+    <button type="button" class="btn btn--sm" data-cookie-accept>Tout accepter</button>
+    <button type="button" class="btn btn--sm btn--ghost" data-cookie-refuse>Refuser</button>
+    <button type="button" class="cb__custom" data-cookie-custom>Personnaliser</button>
+    <button type="button" class="btn btn--sm btn--ghost" data-cookie-save hidden>Enregistrer</button>
+  </div>
+</div>
+
+<style>
+  .cookie-banner {
+    position: fixed;
+    left: 1.2rem;
+    bottom: 1.2rem;
+    z-index: 70;
+    width: min(380px, calc(100% - 2.4rem));
+    padding: 1.1rem 1.2rem;
+    background: rgba(6, 16, 30, 0.96);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+    animation: cb-in 0.6s var(--ease);
+  }
+  @keyframes cb-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+  }
+  .cb__head {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.7rem;
+  }
+  .cb__head .icon-box {
+    width: 40px;
+    height: 40px;
+  }
+  .cb__title {
+    margin: 0;
+    font-family: var(--f-display);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+  }
+  .cb__txt {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--text-2);
+  }
+  .cb__txt a {
+    color: var(--orange-2);
+    text-decoration: underline;
+  }
+  .cb__opts {
+    display: grid;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+  }
+  .cb__btns {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .cb__custom {
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-decoration: underline;
+    margin-left: auto;
+  }
+  @media (max-width: 760px) {
+    .cookie-banner {
+      left: 0.8rem;
+      right: 0.8rem;
+      bottom: calc(76px + env(safe-area-inset-bottom));
+      width: auto;
+    }
+  }
+</style>

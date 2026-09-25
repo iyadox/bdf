@@ -1,0 +1,11 @@
+{
+  "name": "Vsi Batiment",
+  "address": "71 Boulevard Voltaire",
+  "postalCode": "75011",
+  "city": "Paris",
+  "phone": "06 15 27 60 75",
+  "lat": 48.8613714,
+  "lng": 2.3746104,
+  "legacyId": 1282,
+  "slug": "vsi-batiment-paris"
+}

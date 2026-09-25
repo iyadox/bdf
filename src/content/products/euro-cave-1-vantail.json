@@ -1,0 +1,129 @@
+{
+  "title": "EURO CAVE 1 vantail",
+  "slug": "euro-cave-1-vantail",
+  "segment": "blocs-portes-de-cave",
+  "categories": [
+    "blocs-portes-de-cave-63"
+  ],
+  "family": "EURO CAVE",
+  "order": 36,
+  "featured": false,
+  "image": "/media/fiches-produits/euro-cave-1v.png",
+  "badges": [
+    "Sans certification"
+  ],
+  "seo": {
+    "title": "Notre bloc-porte de cave Euro cave 1 vantail avec deux verrous",
+    "description": "Le bloc-porte blindé de cave, Euro Cave, fabrication française sur mesure avec une face en acier, garanti 10 ans, en finition peinture d'apprêt, est équipé de deux verrous de sûreté"
+  },
+  "specs": {
+    "vantaux": "1 vantail",
+    "dimensions": "Notre tarif pour le bloc porte EURO CAVE 1 vantail s’applique pour les dimensions maximum 1000 x 2300 (mm).\nFabricant de blocs portes sur mesure, pour toutes autres dimensions nous vous proposerons une solution personnalisée, n’hésitez pas à nous contacter.",
+    "fermeture": "Verrous",
+    "certification": "Sans certification"
+  },
+  "filters": {
+    "vantaux": [
+      "1 vantail"
+    ],
+    "certifications": [
+      "Sans certification"
+    ],
+    "fermetures": [
+      "Verrous"
+    ]
+  },
+  "composition": "<p>Le bloc porte EURO CAVE 1 vantail est composé de:</p><ul><li>1 face en acier de 15/10ème électrozinguée</li><li>3 omégas raidisseurs</li><li>3 paumelles soudées de 140 mm à billes</li><li>un cadre de rénovation soudé 4 côtés</li></ul>",
+  "downloads": [
+    {
+      "label": "euro-cave-1v.pdf",
+      "file": "/media/fichiers/euro-cave-1v-0.pdf"
+    }
+  ],
+  "quoteLabel": "EURO CAVE 1 vantail",
+  "locks": {
+    "intro": "Le bloc porte EURO CAVE 1 vantail est proposé avec une serrure deux verrous de sûreté avec soit 3 paumelles et 3 omégas ou 4 paumelles et 5 omégas selon la configuration souhaitée."
+  },
+  "frame": {
+    "intro": "L’huisserie du bloc porte EURO CAVE 1 vantail est composée de tôle multi-plis en 20/10ème électrozinguée.\n\nSelon la configuration de votre installation vous avez le choix entre les huisseries suivantes:",
+    "cards": [
+      {
+        "icon": "rotate",
+        "title": "Rénovation",
+        "description": "Remplacement sans gros travaux. Installation rapide sur bâti existant."
+      },
+      {
+        "icon": "hammer",
+        "title": "Tubulaire 50 x 30",
+        "description": "Profil tubulaire 50 x 30 mm. Adapté aux configurations standard."
+      }
+    ]
+  },
+  "options": {
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Options huisserie",
+        "icon": "ruler-combined",
+        "items": [
+          {
+            "label": "Rejet d'eau en alu",
+            "picto": "/media/pictos-options/14-rejet-eau.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Équipements complémentaires",
+        "icon": "circle-plus",
+        "items": [
+          {
+            "label": "Aérations",
+            "picto": "/media/pictos-options/18-aerations.jpg"
+          },
+          {
+            "label": "Imposte fixe",
+            "picto": "/media/pictos-options/15-imposte-fixe.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet",
+        "title": "Époxy mono couleur",
+        "description": "180 couleurs RAL au choix."
+      },
+      {
+        "icon": "brush",
+        "title": "Grenaillage polyzing",
+        "description": "Finition texturée résistante."
+      }
+    ]
+  },
+  "usages": {
+    "intro": "Le bloc porte EURO CAVE 1 vantail est principalement destiné à la fermeture des caves.",
+    "items": []
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "title": "PALIERE XTRA 2 vantaux",
+  "slug": "paliere-xtra-2-vantaux",
+  "segment": "blindages-de-porte",
+  "categories": [
+    "blindages-de-porte-67"
+  ],
+  "family": "PALIERE XTRA",
+  "order": 57,
+  "featured": false,
+  "image": "/media/fiches-produits/paliere-xtra-2v-0.png",
+  "badges": [
+    "Sans certification"
+  ],
+  "seo": {
+    "title": "Notre blindage de porte Palière Xtra 2 vantaux en acier électrozingué",
+    "description": "Vous souhaitez renforcer votre porte en bois? Notre Blindage de porte Paliere Xtra 2 vantaux est spécialement conçu pour conserver votre porte d’origine en la rendant blindée et anti-effraction"
+  },
+  "specs": {
+    "vantaux": "2 vantaux",
+    "dimensions": "Notre tarif pour le blindage de porte PALIERE XTRA 2 vantaux s’applique pour les dimensions maximum 2000 x 2300 (mm).\nFabricant de blocs portes sur mesure, pour toutes autres dimensions nous vous proposerons une solution personnalisée, n’hésitez pas à nous contacter.",
+    "fermeture": "Serrures multi-points en applique",
+    "certification": "Sans certification"
+  },
+  "filters": {
+    "vantaux": [
+      "2 vantaux"
+    ],
+    "certifications": [
+      "Sans certification"
+    ],
+    "fermetures": [
+      "Serrures multi-points en applique"
+    ]
+  },
+  "composition": "<p>Le blindage de porte PALIERE XTRA 2 vantaux est composé de:</p><ul><li>1 face en acier 20/10ème électrozinguée (25/10ème en option)</li><li>4 paumelles soudées de 140 mm à billes par vantail</li><li>un cadre anti-pince soudé 4 côtés</li><li>une barre de seuil avec joint</li><li>une contre plaque soudée</li><li>un verrou de condamnation sur le vantail semi-fixe</li></ul><p>Le blindage de porte PALIERE XTRA 2 vantaux permet de récupérer votre porte en bois d’origine.</p>",
+  "downloads": [
+    {
+      "label": "paliere-xtra-2v.pdf",
+      "file": "/media/fichiers/paliere-xtra-2v.pdf"
+    }
+  ],
+  "quoteLabel": "PALIERE XTRA 2 vantaux",
+  "locks": {
+    "intro": "Le blindage de porte PALIERE XTRA 2 vantaux est proposé avec plusieurs configurations de serrures en applique:",
+    "table": [
+      {
+        "brand": "AM Locks",
+        "points": "3 pts"
+      },
+      {
+        "brand": "Vachette",
+        "points": "3 pts"
+      },
+      {
+        "brand": "AM Locks",
+        "points": "3 pts",
+        "certification": "A2P*",
+        "level": "Standard"
+      },
+      {
+        "brand": "Vachette",
+        "points": "3 pts",
+        "certification": "A2P*",
+        "level": "Standard"
+      },
+      {
+        "brand": "Vachette",
+        "points": "3 pts",
+        "certification": "A2P**",
+        "level": "Renforce"
+      },
+      {
+        "brand": "Vachette",
+        "points": "3 pts",
+        "certification": "A2P***",
+        "level": "Maximum"
+      },
+      {
+        "brand": "Vachette",
+        "points": "5 pts",
+        "certification": "A2P***",
+        "level": "Maximum"
+      }
+    ],
+    "extras": [
+      {
+        "title": "Inclus avec la serrure",
+        "icon": "key",
+        "html": "<p>Chaque serrure est fournie avec un cylindre de haute sécurité, 4 clés à reproduction protégée et une carte de propriété pour la reproduction de clés.</p>"
+      },
+      {
+        "title": "Options fermeture",
+        "icon": "circle-plus",
+        "html": "<p>De série l’ensemble extérieur est proposé en béquille intérieure et extérieure ou en béquille intérieure et poignée de tirage extérieure.</p>"
+      }
+    ]
+  },
+  "frame": {
+    "intro": "L’huisserie du blindage de porte PALIERE XTRA 2 vantaux est composée de tôle multi-plis en 20/10ème électrozinguée.\n\nSelon la configuration de votre installation vous avez le choix entre les huisseries suivantes:",
+    "cards": [
+      {
+        "icon": "rotate",
+        "title": "Rénovation",
+        "description": "Remplacement sans gros travaux. Installation rapide sur bâti existant."
+      },
+      {
+        "icon": "hammer",
+        "title": "Tubulaire",
+        "description": "Constructions neuves et sur mesure. Intégration parfaite en neuf."
+      }
+    ]
+  },
+  "options": {
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Options huisserie",
+        "icon": "ruler-combined",
+        "items": [
+          {
+            "label": "Renforts de paumelles",
+            "picto": "/media/pictos-options/1-renforts-paumelles.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Équipements complémentaires",
+        "icon": "circle-plus",
+        "items": [
+          {
+            "label": "Gâche électrique",
+            "picto": "/media/pictos-options/17-gache-electrique.jpg"
+          },
+          {
+            "label": "Judas optique",
+            "picto": "/media/pictos-options/6-judas-optique.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet-slash",
+        "title": "Époxy bi-couleur",
+        "description": "2 couleurs différentes intérieur/extérieur, 180 RAL."
+      },
+      {
+        "icon": "droplet",
+        "title": "Époxy mono couleur",
+        "description": "180 couleurs RAL au choix."
+      },
+      {
+        "icon": "brush",
+        "title": "Grenaillage polyzing",
+        "description": "Finition texturée résistante."
+      },
+      {
+        "icon": "tree",
+        "title": "Ton bois",
+        "description": "6 décors aspect bois naturel."
+      }
+    ]
+  },
+  "usages": {
+    "intro": "Le blindage de porte PALIERE XTRA 2 vantaux est destiné à fermer les locaux où la porte existante doit être conservée comme par exemple:",
+    "items": [
+      {
+        "icon": "building",
+        "title": "Appartements"
+      },
+      {
+        "icon": "briefcase",
+        "title": "Cabinets"
+      },
+      {
+        "icon": "people-roof",
+        "title": "Espaces publics"
+      },
+      {
+        "icon": "house",
+        "title": "Maisons individuelles"
+      }
+    ]
+  }
+}

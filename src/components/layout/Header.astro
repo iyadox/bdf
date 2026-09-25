@@ -1,0 +1,829 @@
+---
+import Icon from '@/components/Icon.astro';
+import { NAV, settings, telHref } from '@/lib/site';
+import { getCategories, getProducts, categoryUrl } from '@/lib/catalog';
+
+const categories = await getCategories();
+const products = await getProducts();
+const counts = Object.fromEntries(categories.map((c) => [c.slug, products.filter((p) => p.categories.includes(c.slug)).length]));
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) => (href === '/' ? path === '/' : path === href || path.startsWith(href + '/'));
+const ann = settings.announcement;
+---
+
+{
+  ann.enabled && ann.text && (
+    <div class="announce" data-announce>
+      <div class="container--wide announce__in">
+        <span class="live-dot" />
+        <p>{ann.text}</p>
+        {ann.link && (
+          <a href={ann.link} class="announce__link">
+            {ann.linkLabel || 'En savoir plus'} <Icon name="arrow-right" size={14} />
+          </a>
+        )}
+        <button class="announce__close" aria-label="Fermer l'annonce" data-announce-close>
+          <Icon name="x" size={16} />
+        </button>
+      </div>
+    </div>
+  )
+}
+
+<header class="site-header" data-header>
+  <div class="topbar">
+    <div class="container--wide topbar__in">
+      <p class="topbar__q">
+        Une question&nbsp;? Contactez-nous au
+        <a href={telHref()} class="topbar__tel">{settings.contact.phone}</a>
+      </p>
+      <p class="topbar__status" data-open-status>
+        <span class="live-dot live-dot--off"></span>
+        <span data-open-text>Lun.–ven. 8h00–18h30</span>
+      </p>
+      <nav class="topbar__links" aria-label="Accès rapides">
+        <a href="/installateurs-portes-blindees"><Icon name="map-pin" size={14} /> Trouver un installateur</a>
+        <a href="/devis-porte-blindee"><Icon name="file-text" size={14} /> Devis en ligne</a>
+        <a href="/espace-pro"><Icon name="log-in" size={14} /> Espace Pro</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="bar">
+    <div class="container--wide bar__in">
+      <a href="/" class="brand" aria-label="Blindages de France — accueil">
+        <img src="/brand/logo-bdf-blanc.svg" alt="Blindages de France" width="216" height="54" class="brand__logo" />
+        <span class="brand__tag">{settings.company.tagline}</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Navigation principale">
+        <ul class="main-nav__list">
+          {
+            NAV.map((item) => (
+              <li class:list={['main-nav__item', { 'has-menu': item.children || item.mega }]} data-nav-item>
+                <a href={item.href} class:list={['main-nav__link', { 'is-active': isActive(item.href) }]} aria-current={isActive(item.href) ? 'page' : undefined}>
+                  {item.label}
+                  {(item.children || item.mega) && <Icon name="chevron-down" size={14} class="main-nav__chev" />}
+                </a>
+                {item.children && (
+                  <div class="dropdown panel" data-dropdown>
+                    <ul>
+                      {item.children.map((c) => (
+                        <li>
+                          <a href={c.href} class="dropdown__link">
+                            <span class="icon-box icon-box--steel">
+                              <Icon name={c.icon} />
+                            </span>
+                            <span>
+                              <strong>{c.label}</strong>
+                              <small>{c.desc}</small>
+                            </span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {item.mega === 'catalogue' && (
+                  <div class="mega panel" data-dropdown>
+                    <div class="mega__grid">
+                      <div class="mega__cats">
+                        <p class="eyebrow">Nos gammes</p>
+                        <ul>
+                          {categories.map((c, i) => (
+                            <li>
+                              <a href={categoryUrl(c)} class="mega__cat">
+                                <span class="tag-num">{String(i + 1).padStart(2, '0')}</span>
+                                <span class="mega__cat-name">{c.title}</span>
+                                <span class="mega__count">{counts[c.slug]}</span>
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                        <a href="/catalogue" class="link-arrow">
+                          Tout le catalogue <Icon name="arrow-right" />
+                        </a>
+                      </div>
+                      <div class="mega__side">
+                        <a href="/configurateur" class="mega__feature spot" data-spot>
+                          <span class="badge badge--solid">Nouveau</span>
+                          <Icon name="cube" size={34} class="mega__feature-ic" />
+                          <strong class="h4">Configurateur 3D</strong>
+                          <span>Composez votre porte blindée : couleurs, finitions, serrures… et recevez votre devis.</span>
+                          <span class="link-arrow">
+                            Configurer <Icon name="arrow-right" />
+                          </span>
+                        </a>
+                        <div class="mega__quick">
+                          <a href="/catalogue?certification=A2P+BP3">
+                            <Icon name="shield" /> Portes certifiées A2P
+                          </a>
+                          <a href="/catalogue?certification=Coupe-feu+60+min">
+                            <Icon name="flame" /> Portes coupe-feu
+                          </a>
+                          <a href="/comparateur">
+                            <Icon name="scale" /> Comparer des produits
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div class="bar__actions">
+        <button class="search-btn" type="button" data-open-search aria-label="Rechercher (Ctrl+K)">
+          <Icon name="search" size={18} />
+          <span class="search-btn__txt">Rechercher</span>
+          <span class="kbd search-btn__kbd">⌘K</span>
+        </button>
+        <a href="/selection" class="icon-btn sel-btn" aria-label="Ma sélection" data-selection-link>
+          <Icon name="heart" size={19} />
+          <span class="sel-count" data-selection-count hidden>0</span>
+        </a>
+        <a href="/devis-porte-blindee" class="btn btn--sm bar__cta">
+          <Icon name="file-text" /> Devis gratuit
+        </a>
+        <button class="burger" type="button" aria-label="Ouvrir le menu" aria-controls="mobile-menu" aria-expanded="false" data-burger>
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="bar__progress" data-scroll-progress></div>
+  </div>
+</header>
+
+<div id="mobile-menu" class="mobile-menu" data-mobile-menu hidden>
+  <div class="mobile-menu__in">
+    <nav aria-label="Menu mobile">
+      <ul class="mm-list">
+        {
+          NAV.map((item, i) => (
+            <li class="mm-item" style={`--i:${i}`}>
+              {item.children || item.mega ? (
+                <details>
+                  <summary>
+                    <span class="tag-num">{String(i + 1).padStart(2, '0')}</span>
+                    {item.label}
+                    <Icon name="chevron-down" size={18} />
+                  </summary>
+                  <ul class="mm-sub">
+                    {item.mega === 'catalogue' ? (
+                      <>
+                        <li>
+                          <a href="/catalogue">Tout le catalogue</a>
+                        </li>
+                        {categories.map((c) => (
+                          <li>
+                            <a href={categoryUrl(c)}>
+                              {c.title} <small>{counts[c.slug]}</small>
+                            </a>
+                          </li>
+                        ))}
+                        <li>
+                          <a href="/configurateur">Configurateur 3D</a>
+                        </li>
+                        <li>
+                          <a href="/comparateur">Comparateur</a>
+                        </li>
+                      </>
+                    ) : (
+                      item.children?.map((c) => (
+                        <li>
+                          <a href={c.href}>{c.label}</a>
+                        </li>
+                      ))
+                    )}
+                  </ul>
+                </details>
+              ) : (
+                <a href={item.href} class="mm-link">
+                  <span class="tag-num">{String(i + 1).padStart(2, '0')}</span>
+                  {item.label}
+                </a>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <div class="mm-cta">
+      <a href="/devis-porte-blindee" class="btn btn--block"><Icon name="file-text" /> Demander un devis</a>
+      <a href={telHref()} class="btn btn--ghost btn--block"><Icon name="phone" /> {settings.contact.phone}</a>
+      <a href="/espace-pro" class="btn btn--ghost btn--block"><Icon name="log-in" /> Espace Pro</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .announce {
+    position: relative;
+    z-index: 60;
+    background: linear-gradient(90deg, #c7400c, var(--orange) 50%, #c7400c);
+    color: #fff;
+    font-size: var(--fs-sm);
+  }
+  .announce__in {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    min-height: 40px;
+    padding-right: 2.5rem;
+  }
+  .announce p {
+    margin: 0;
+  }
+  .announce .live-dot {
+    background: #fff;
+  }
+  .announce__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .announce__close {
+    position: absolute;
+    right: 0.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.8;
+  }
+
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    transition: transform 0.45s var(--ease);
+  }
+  .site-header.is-hidden {
+    transform: translateY(calc(-100% - 2px));
+  }
+
+  /* barre du haut */
+  .topbar {
+    background: rgba(2, 6, 12, 0.85);
+    border-bottom: 1px solid var(--line);
+    font-size: 0.78rem;
+    color: var(--muted);
+    transition:
+      margin 0.4s var(--ease),
+      opacity 0.3s;
+  }
+  .topbar__in {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    min-height: 36px;
+  }
+  .topbar p {
+    margin: 0;
+  }
+  .topbar__tel {
+    color: var(--text);
+    font-family: var(--f-mono);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .topbar__tel:hover {
+    color: var(--orange);
+  }
+  .topbar__status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--f-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+  }
+  .topbar__links {
+    margin-left: auto;
+    display: flex;
+    gap: 1.4rem;
+  }
+  .topbar__links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color 0.2s;
+  }
+  .topbar__links a:hover {
+    color: var(--orange);
+  }
+  .site-header.is-scrolled .topbar {
+    margin-top: -37px;
+    opacity: 0;
+  }
+
+  /* barre principale */
+  .bar {
+    position: relative;
+    background: rgba(3, 8, 16, 0.55);
+    backdrop-filter: blur(18px) saturate(1.4);
+    -webkit-backdrop-filter: blur(18px) saturate(1.4);
+    border-bottom: 1px solid var(--line);
+    transition: background 0.3s;
+  }
+  .site-header.is-scrolled .bar {
+    background: rgba(3, 8, 16, 0.82);
+  }
+  .bar__in {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    height: var(--header-h);
+  }
+  .bar__progress {
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    height: 2px;
+    width: 100%;
+    transform-origin: 0 50%;
+    transform: scaleX(var(--p, 0));
+    background: linear-gradient(90deg, var(--orange-3), var(--orange), #ffb07a);
+    box-shadow: 0 0 12px var(--orange-glow);
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: none;
+  }
+  .brand__logo {
+    width: auto;
+    height: 46px;
+    transition: filter 0.4s;
+  }
+  .brand:hover .brand__logo {
+    filter: drop-shadow(0 0 14px rgba(58, 120, 173, 0.65));
+  }
+  .brand__tag {
+    display: none;
+    max-width: 150px;
+    font-size: 0.68rem;
+    line-height: 1.3;
+    color: var(--muted);
+    padding-left: 1rem;
+    border-left: 1px solid var(--line-2);
+  }
+  @media (min-width: 1500px) {
+    .brand__tag {
+      display: block;
+    }
+  }
+
+  .main-nav {
+    margin-inline: auto;
+  }
+  .main-nav__list {
+    display: flex;
+    list-style: none;
+    gap: 0.25rem;
+  }
+  .main-nav__item {
+    position: relative;
+  }
+  .main-nav__link {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.6rem 0.85rem;
+    font-size: 0.92rem;
+    font-weight: 550;
+    color: var(--text-2);
+    border-radius: 8px;
+    transition:
+      color 0.2s,
+      background 0.2s;
+    position: relative;
+  }
+  .main-nav__link::after {
+    content: '';
+    position: absolute;
+    left: 0.85rem;
+    right: 0.85rem;
+    bottom: 0.2rem;
+    height: 2px;
+    background: var(--orange);
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    transition: transform 0.35s var(--ease);
+    box-shadow: 0 0 10px var(--orange-glow);
+  }
+  .main-nav__link:hover,
+  .main-nav__item:focus-within > .main-nav__link,
+  .main-nav__item.is-open > .main-nav__link {
+    color: #fff;
+  }
+  .main-nav__link.is-active {
+    color: #fff;
+  }
+  .main-nav__link.is-active::after,
+  .main-nav__link:hover::after {
+    transform: scaleX(1);
+  }
+  :global(.main-nav__chev) {
+    transition: transform 0.3s;
+    opacity: 0.7;
+  }
+  .main-nav__item.is-open :global(.main-nav__chev) {
+    transform: rotate(180deg);
+  }
+
+  .dropdown,
+  .mega {
+    position: absolute;
+    top: calc(100% + 14px);
+    left: 50%;
+    translate: -50% 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px) scale(0.98);
+    transform-origin: 50% 0;
+    transition:
+      opacity 0.25s var(--ease),
+      transform 0.35s var(--ease),
+      visibility 0.25s;
+    background: rgba(6, 16, 30, 0.96);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  }
+  .dropdown::before,
+  .mega::before {
+    content: '';
+    position: absolute;
+    inset: -16px 0 auto;
+    height: 16px;
+  }
+  .main-nav__item.is-open > .dropdown,
+  .main-nav__item.is-open > .mega {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+  .dropdown {
+    width: 340px;
+    padding: 0.6rem;
+  }
+  .dropdown ul {
+    list-style: none;
+    display: grid;
+    gap: 0.2rem;
+  }
+  .dropdown__link {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.7rem;
+    border-radius: 10px;
+    transition: background 0.2s;
+  }
+  .dropdown__link:hover {
+    background: rgba(46, 104, 148, 0.2);
+  }
+  .dropdown__link strong {
+    display: block;
+    font-weight: 600;
+    font-size: 0.92rem;
+  }
+  .dropdown__link small {
+    color: var(--muted);
+    font-size: 0.78rem;
+  }
+  .dropdown .icon-box {
+    width: 40px;
+    height: 40px;
+  }
+  .dropdown .icon-box :global(svg) {
+    width: 18px;
+    height: 18px;
+  }
+
+  .mega {
+    width: min(880px, 90vw);
+    padding: 1.5rem;
+    left: 0;
+    translate: -8% 0;
+  }
+  .mega__grid {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 1.5rem;
+  }
+  .mega__cats ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.15rem 1rem;
+    margin: 1rem 0 1.2rem;
+  }
+  .mega__cat {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.55rem 0.6rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+  }
+  .mega__cat:hover {
+    background: rgba(46, 104, 148, 0.2);
+  }
+  .mega__cat:hover .mega__cat-name {
+    color: #fff;
+  }
+  .mega__cat-name {
+    color: var(--text-2);
+  }
+  .mega__count {
+    margin-left: auto;
+    font-family: var(--f-mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    border: 1px solid var(--line);
+    border-radius: 99px;
+    padding: 0 0.45rem;
+  }
+  .mega__side {
+    display: grid;
+    gap: 0.8rem;
+  }
+  .mega__feature {
+    position: relative;
+    display: grid;
+    gap: 0.6rem;
+    padding: 1.3rem;
+    border-radius: 12px;
+    overflow: hidden;
+    background:
+      radial-gradient(120% 90% at 100% 0%, rgba(255, 102, 34, 0.28), transparent 55%),
+      linear-gradient(160deg, #0f2d4d, #07172b);
+    border: 1px solid rgba(255, 102, 34, 0.35);
+    font-size: 0.86rem;
+    color: var(--text-2);
+  }
+  .mega__feature .badge {
+    justify-self: start;
+  }
+  :global(.mega__feature-ic) {
+    position: absolute;
+    right: 1.2rem;
+    top: 1.2rem;
+    color: var(--orange);
+    opacity: 0.9;
+  }
+  .mega__feature strong {
+    color: #fff;
+  }
+  .mega__quick {
+    display: grid;
+    gap: 0.2rem;
+  }
+  .mega__quick a {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 0.7rem;
+    border-radius: 8px;
+    font-size: 0.86rem;
+    color: var(--text-2);
+    transition: background 0.2s;
+  }
+  .mega__quick a:hover {
+    background: rgba(46, 104, 148, 0.2);
+    color: #fff;
+  }
+  .mega__quick :global(svg) {
+    color: var(--orange);
+  }
+
+  .bar__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex: none;
+  }
+  .search-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    height: 40px;
+    padding: 0 0.6rem 0 0.8rem;
+    border: 1px solid var(--line-2);
+    border-radius: 10px;
+    color: var(--muted);
+    font-size: 0.85rem;
+    transition: all 0.2s;
+  }
+  .search-btn:hover {
+    border-color: rgba(255, 102, 34, 0.6);
+    color: var(--text);
+  }
+  .icon-btn {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid var(--line-2);
+    color: var(--text-2);
+    transition: all 0.2s;
+  }
+  .icon-btn:hover {
+    color: var(--orange);
+    border-color: rgba(255, 102, 34, 0.6);
+  }
+  .sel-count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border-radius: 99px;
+    background: var(--orange);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 0 12px var(--orange-glow);
+  }
+  .burger {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--line-2);
+    border-radius: 10px;
+    position: relative;
+  }
+  .burger span {
+    position: absolute;
+    left: 11px;
+    right: 11px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition:
+      transform 0.35s var(--ease),
+      opacity 0.2s;
+  }
+  .burger span:nth-child(1) {
+    top: 14px;
+  }
+  .burger span:nth-child(2) {
+    top: 21px;
+    right: 17px;
+    background: var(--orange);
+  }
+  .burger span:nth-child(3) {
+    top: 28px;
+  }
+  .burger[aria-expanded='true'] span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .burger[aria-expanded='true'] span:nth-child(2) {
+    opacity: 0;
+  }
+  .burger[aria-expanded='true'] span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* menu mobile */
+  .mobile-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 45;
+    padding-top: calc(var(--header-h) + 10px);
+    background:
+      radial-gradient(90% 60% at 100% 0%, rgba(46, 104, 148, 0.3), transparent 60%),
+      rgba(3, 7, 14, 0.97);
+    backdrop-filter: blur(20px);
+    overflow-y: auto;
+    opacity: 0;
+    transition: opacity 0.35s var(--ease);
+  }
+  .mobile-menu.is-open {
+    opacity: 1;
+  }
+  .mobile-menu__in {
+    width: min(100% - 2 * var(--gutter), 640px);
+    margin-inline: auto;
+    padding-bottom: 6rem;
+  }
+  .mm-list {
+    list-style: none;
+  }
+  .mm-item {
+    border-bottom: 1px solid var(--line);
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.5s var(--ease),
+      transform 0.5s var(--ease);
+    transition-delay: calc(var(--i) * 45ms + 80ms);
+  }
+  .mobile-menu.is-open .mm-item {
+    opacity: 1;
+    transform: none;
+  }
+  .mm-link,
+  .mm-item summary {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.05rem 0.2rem;
+    font-family: var(--f-display);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    list-style: none;
+  }
+  .mm-item summary::-webkit-details-marker {
+    display: none;
+  }
+  .mm-item summary :global(svg) {
+    margin-left: auto;
+    transition: transform 0.3s;
+    color: var(--orange);
+  }
+  .mm-item details[open] summary :global(svg) {
+    transform: rotate(180deg);
+  }
+  .mm-sub {
+    list-style: none;
+    padding: 0 0 1rem 2.6rem;
+    display: grid;
+    gap: 0.1rem;
+  }
+  .mm-sub a {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.55rem 0;
+    color: var(--text-2);
+  }
+  .mm-sub small {
+    font-family: var(--f-mono);
+    color: var(--muted);
+  }
+  .mm-cta {
+    display: grid;
+    gap: 0.7rem;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 1240px) {
+    .search-btn__txt,
+    .search-btn__kbd {
+      display: none;
+    }
+    .search-btn {
+      width: 40px;
+      padding: 0;
+      justify-content: center;
+    }
+    .main-nav__link {
+      padding-inline: 0.6rem;
+      font-size: 0.88rem;
+    }
+    .main-nav__link::after {
+      left: 0.6rem;
+      right: 0.6rem;
+    }
+  }
+  @media (max-width: 1080px) {
+    .main-nav,
+    .topbar__status {
+      display: none;
+    }
+    .burger {
+      display: block;
+    }
+    .bar__actions {
+      margin-left: auto;
+    }
+  }
+  @media (max-width: 760px) {
+    .topbar {
+      display: none;
+    }
+    .bar__cta {
+      display: none;
+    }
+    :global(:root) {
+      --header-h: 66px;
+    }
+    .brand__logo {
+      height: 38px;
+    }
+  }
+</style>

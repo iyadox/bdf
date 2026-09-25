@@ -1,0 +1,232 @@
+{
+  "title": "ECKO 2 vantaux",
+  "slug": "ecko-2-vantaux",
+  "segment": "blocs-portes-d-appartement",
+  "categories": [
+    "blocs-portes-dappartement-65"
+  ],
+  "family": "ECKO",
+  "order": 46,
+  "featured": false,
+  "image": "/media/fiches-produits/ecko-2v-0.png",
+  "badges": [
+    "Sans certification"
+  ],
+  "seo": {
+    "title": "Bloc-porte blindé d'appartement Ecko 2 vantaux avec serrure certifiée multi-points",
+    "description": "La porte blindée d'appartement, Ecko 2V, fabriquée sur mesure, garantie 10 ans, est proposée avec plusieurs serrures multi-points certifiées anti-effraction reconnues par les assurances"
+  },
+  "specs": {
+    "vantaux": "2 vantaux",
+    "dimensions": "Notre tarif pour le bloc porte ECKO 2 vantaux s’applique pour les dimensions maximum 2000 x 2300 (mm).\nFabricant de blocs portes sur mesure, pour toutes autres dimensions nous vous proposerons une solution personnalisée, n’hésitez pas à nous contacter.",
+    "fermeture": "Sans serrure Serrures multi-points en applique",
+    "certification": "Sans certification"
+  },
+  "filters": {
+    "vantaux": [
+      "2 vantaux"
+    ],
+    "certifications": [
+      "Sans certification"
+    ],
+    "fermetures": [
+      "Sans serrure",
+      "Serrures multi-points en applique"
+    ]
+  },
+  "composition": "<p>Le bloc porte ECKO 2 vantaux est composé de:</p><ul><li>2 faces en acier 20/10ème électrozinguée</li><li>4 paumelles soudées de 140 mm à billes par vantail</li><li>un cadre de rénovation soudé 4 côtés</li><li>un recouvrement anti-pince</li><li>une barre de seuil avec joint</li></ul>",
+  "downloads": [
+    {
+      "label": "ecko-2v.pdf",
+      "file": "/media/fichiers/ecko-2v.pdf"
+    }
+  ],
+  "quoteLabel": "ECKO 2 vantaux",
+  "locks": {
+    "intro": "Le bloc porte ECKO 2 vantaux est proposé avec plusieurs configurations de serrures en applique:",
+    "table": [
+      {
+        "brand": "Sans serrure (option)"
+      },
+      {
+        "brand": "Vachette",
+        "model": "Exclusive",
+        "certification": "A2P*",
+        "level": "Standard"
+      },
+      {
+        "brand": "Vachette",
+        "model": "Exclusive",
+        "certification": "A2P***",
+        "level": "Maximum"
+      },
+      {
+        "brand": "Picard",
+        "model": "Ermetis",
+        "points": "4/6 pts",
+        "certification": "A2P*",
+        "level": "Standard"
+      },
+      {
+        "brand": "Picard",
+        "model": "Serenis 710",
+        "points": "5/7 pts",
+        "certification": "A2P***",
+        "level": "Maximum"
+      },
+      {
+        "brand": "Mottura",
+        "model": "630",
+        "points": "3 pts",
+        "certification": "A2P*",
+        "level": "Standard"
+      }
+    ],
+    "extras": [
+      {
+        "title": "Inclus avec la serrure",
+        "icon": "key",
+        "html": "<p>Pour les serrures 5/7 points Picard Serenis 710 A2P*** et Vachette Exclusive A2P* et A2P*** un entrebâilleur est intégré.</p>"
+      },
+      {
+        "title": "Options fermeture",
+        "icon": "circle-plus",
+        "html": "<p>En option vous avez la possibilité d’ajouter des points de fermeture haut et bas (de série pour la serrure Mottura).</p><p>En option l’ensemble extérieur est proposé en (de série pour la serrure Mottura):</p><ul><li>béquille intérieure et extérieure</li><li>béquille intérieure et poignée de tirage extérieure.</li></ul>"
+      }
+    ]
+  },
+  "frame": {
+    "intro": "L’huisserie avec joint du bloc porte ECKO 2 vantaux est composée de tôle multi-plis en 20/10ème électrozinguée.\n\nSelon la configuration de votre installation vous avez le choix entre les huisseries suivantes:",
+    "cards": [
+      {
+        "icon": "rotate",
+        "title": "Rénovation",
+        "description": "Remplacement sans gros travaux. Installation rapide sur bâti existant."
+      },
+      {
+        "icon": "hammer",
+        "title": "Tenon mortaise BDF",
+        "description": "Assemblage tenon mortaise BDF. Structure haute résistance."
+      },
+      {
+        "icon": "hammer",
+        "title": "Tubulaire 50 x 30",
+        "description": "Profil tubulaire 50 x 30 mm. Adapté aux configurations standard."
+      },
+      {
+        "icon": "arrows-left-right",
+        "title": "Universelle",
+        "description": "Compatible rénovation et neuf. Solution polyvalente."
+      }
+    ]
+  },
+  "options": {
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Options huisserie",
+        "icon": "ruler-combined",
+        "items": [
+          {
+            "label": "Laine de roche",
+            "picto": "/media/pictos-options/4-laine-roche.jpg"
+          },
+          {
+            "label": "Renforts de paumelles",
+            "picto": "/media/pictos-options/1-renforts-paumelles.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Équipements complémentaires",
+        "icon": "circle-plus",
+        "items": [
+          {
+            "label": "Boîte aux lettres",
+            "picto": "/media/pictos-options/16-boite-lettres.jpg"
+          },
+          {
+            "label": "Judas optique",
+            "picto": "/media/pictos-options/6-judas-optique.jpg"
+          },
+          {
+            "label": "Moulures",
+            "picto": "/media/pictos-options/8-moulures.jpg"
+          },
+          {
+            "label": "Oculus",
+            "picto": "/media/pictos-options/9-oculus.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet-slash",
+        "title": "Époxy bi-couleur",
+        "description": "2 couleurs différentes intérieur/extérieur, 180 RAL."
+      },
+      {
+        "icon": "droplet",
+        "title": "Époxy mono couleur",
+        "description": "180 couleurs RAL au choix."
+      },
+      {
+        "icon": "brush",
+        "title": "Grenaillage polyzing",
+        "description": "Finition texturée résistante."
+      },
+      {
+        "icon": "tree",
+        "title": "Ton bois",
+        "description": "6 décors aspect bois naturel."
+      }
+    ]
+  },
+  "closing": {
+    "intro": "Trois types de fermeture du vantail semi-fixe vous sont proposés:",
+    "cards": [
+      {
+        "icon": "door-closed",
+        "title": "Gâche répétition",
+        "description": "Vantail semi-fixe libre"
+      },
+      {
+        "icon": "xmark",
+        "title": "Sans fermeture",
+        "description": "Vantail semi-fixe libre"
+      },
+      {
+        "icon": "arrows-up-down",
+        "title": "Verrou haut et bas",
+        "description": "Points de fermeture haut et bas"
+      }
+    ]
+  },
+  "usages": {
+    "intro": "Le bloc porte ECKO 1 vantail est principalement destiné à la fermeture des appartements mais peut également équiper mais peut également équiper des commerces, des entreprises ou des sites sensibles.",
+    "items": []
+  }
+}

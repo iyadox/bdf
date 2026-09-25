@@ -1,0 +1,213 @@
+{
+  "title": "VOLTRON MECA 1 vantail",
+  "slug": "voltron-meca-1-vantail",
+  "segment": "blocs-portes-certifies",
+  "categories": [
+    "blocs-portes-certifies-59",
+    "blocs-portes-techniques-61"
+  ],
+  "family": "VOLTRON MECA",
+  "order": 4,
+  "featured": false,
+  "image": "/media/fiches-produits/voltron-meca-1v.png",
+  "badges": [
+    "Coupe-feu 30 min"
+  ],
+  "seo": {
+    "title": "Porte blindée Voltron Meca 1 vantail certifiée coupe feu 30 min Ei2-30-E60",
+    "description": "La porte blindée BDF, Voltron Meca, garantie 10 ans, proposée avec une serrure encastrée Vachette 1 point de fermeture axe 50, est certifiée coupe feu 30 min Ei2-30-E60 par le laboratoire Efectis"
+  },
+  "specs": {
+    "vantaux": "1 vantail",
+    "dimensions": "Notre tarif pour la porte blindée VOLTRON MECA 1 vantail s’applique pour les dimensions suivantes:\nLargeur comprise entre 507 et 1166 mm\nHauteur comprise entre 1643 et 2520 mm",
+    "fermeture": "Serrure encastrée 1 point",
+    "certification": "Coupe-feu 30 min"
+  },
+  "filters": {
+    "vantaux": [
+      "1 vantail"
+    ],
+    "certifications": [
+      "Coupe-feu 30 min"
+    ],
+    "fermetures": [
+      "Serrure encastrée 1 point"
+    ]
+  },
+  "composition": "<p><strong>Certifiée EFECTIS Porte coupe feu 30 MINUTES</strong></p><p>La porte blindée VOLTRON MECA 1 vantail est composée de:</p><ul><li>2 faces en acier de 15/10ème électrozinguée</li><li>5 omégas raidisseurs</li><li>3 paumelles soudées de 140 mm à billes</li><li>3 renforts de paumelles soudés</li><li>laine de roche intégrée/panneau coupe feu (à confirmer avec M.Simoes)</li><li>joints intumescents qui s’expandent en cas d’incendie</li><li>un cadre de rénovation soudé 4 côtés avec seuil en fer plat.</li></ul>",
+  "downloads": [
+    {
+      "label": "voltron-meca-1v.pdf",
+      "file": "/media/fichiers/voltron-meca-1v.pdf"
+    }
+  ],
+  "quoteLabel": "VOLTRON MECA 1 vantail",
+  "locks": {
+    "intro": "La porte blindée VOLTRON MECA 1 vantail est proposée avec une serrure encastrée Vachette 1 point de fermeture axe 50.",
+    "extras": [
+      {
+        "title": "Inclus avec la serrure",
+        "icon": "key",
+        "html": "<p>Cette serrure est fournie avec au choix :</p><ul><li>un cylindre 5 goupilles et 3 clés</li><li>un cylindre Medeco de haute sécurité, 3 clés à reproduction protégée et une carte de propriété pour la reproduction de clés.</li></ul>"
+      },
+      {
+        "title": "Options fermeture",
+        "icon": "circle-plus",
+        "html": "<p>En série l’ensemble extérieur est proposé:</p><ul><li>sans poignée</li><li>en béquille intérieure et extérieure</li><li>en béquille intérieure et poignée de tirage extérieure.</li></ul>"
+      }
+    ]
+  },
+  "frame": {
+    "intro": "L’huisserie avec joint de la porte blindée VOLTRON MECA 1 vantail est composée de tôle multi-plis en 20/10ème électrozinguée.\n\nSelon la configuration de votre installation, vous avez le choix entre les huisseries suivantes:",
+    "cards": [
+      {
+        "icon": "rotate",
+        "title": "Rénovation",
+        "description": "Remplacement sans gros travaux. Installation rapide sur bâti existant."
+      },
+      {
+        "icon": "hammer",
+        "title": "Tubulaire",
+        "description": "Constructions neuves et sur mesure. Intégration parfaite en neuf."
+      },
+      {
+        "icon": "hammer",
+        "title": "Tubulaire 55 x 55",
+        "description": "Profil tubulaire 55 x 55 mm. Résistance maximale."
+      },
+      {
+        "icon": "arrows-left-right",
+        "title": "Universelle",
+        "description": "Compatible rénovation et neuf. Solution polyvalente."
+      }
+    ]
+  },
+  "options": {
+    "intro": "Avec l’huisserie choisie vous avez la possibilité d’intégrer en option:",
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Options huisserie",
+        "icon": "ruler-combined",
+        "items": [
+          {
+            "label": "Barre de seuil avec joint",
+            "picto": "/media/pictos-options/13-barre-seuil-joint.jpg"
+          },
+          {
+            "label": "Pattes à scellement",
+            "picto": "/media/pictos-options/3-pattes-scellement.jpg"
+          },
+          {
+            "label": "Perçage et fraisage",
+            "picto": "/media/pictos-options/2-percage-fraisage.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Équipements complémentaires",
+        "icon": "circle-plus",
+        "items": [
+          {
+            "label": "Ferme porte",
+            "picto": "/media/pictos-options/5-ferme-porte.jpg"
+          },
+          {
+            "label": "Judas coupe feu",
+            "picto": "/media/pictos-options/7-judas-coupe-feu.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "brush",
+        "title": "Grenaillage polyzing",
+        "description": "Finition texturée résistante."
+      }
+    ]
+  },
+  "certification": {
+    "badges": [
+      {
+        "type": "feu",
+        "label": "Coupe-feu Ei2-30-E60"
+      }
+    ],
+    "labs": "Certifié par Efectis",
+    "logos": [
+      {
+        "image": "/media/editeur/certidoor-efectis.jpg",
+        "caption": "CertiDoor Efectis Ei2-30-E60",
+        "alt": "CertiDoor Certifié Efectis EI2 30 E60"
+      },
+      {
+        "image": "/media/editeur/porte-certifiee-resistance-feu.jpg",
+        "caption": "Résistance au feu 30 min",
+        "alt": "Résistance au feu 30 minutes"
+      },
+      {
+        "image": "/media/editeur/sens-feu.jpg",
+        "caption": "Sens du feu indifférent",
+        "alt": "Sens du feu indifférent"
+      }
+    ],
+    "description": "<p>La VOLTRON MECA est un bloc porte blindé 1 vantail avec un niveau de certification coupe feu 30 min avec les performances suivantes : classement coupe-feu Ei2-30-E60 certifié par le laboratoire Efectis.</p><p>Performance de résistance au feu selon la norme EN1634-1 et classé suivant EN13501-2.</p>",
+    "video": "84tSU8-mMf4",
+    "videoTitle": "Vidéo de test en laboratoire",
+    "links": [
+      "Découvrez les portes résistant au feu de la marque Blindages de France et regardez la vidéo de l'essai de résistance au feu EFECTIS."
+    ]
+  },
+  "usages": {
+    "intro": "La porte blindée VOLTRON MECA 1 vantail est destinée à protéger tous les locaux soumis à la réglementation coupe feu pare flamme comme par exemple:",
+    "items": [
+      {
+        "icon": "fire-burner",
+        "title": "Chaufferies"
+      },
+      {
+        "icon": "shield-halved",
+        "title": "Hôpitaux"
+      },
+      {
+        "icon": "house",
+        "title": "Locaux d'habitation"
+      },
+      {
+        "icon": "industry",
+        "title": "Locaux industriels"
+      },
+      {
+        "icon": "square-parking",
+        "title": "Parkings / Sous-sols"
+      },
+      {
+        "icon": "cart-shopping",
+        "title": "Supermarchés"
+      }
+    ]
+  }
+}

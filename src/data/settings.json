@@ -1,0 +1,74 @@
+{
+  "company": {
+    "name": "Blindages de France",
+    "shortName": "BDF",
+    "tagline": "Portes blindées et travaux spéciaux sur mesure",
+    "baseline": "Fabrication française depuis 1989",
+    "founded": 1989,
+    "description": "Fabricant français de blocs-portes blindés certifiés A2P, coupe-feu et pare-balles, de blindages de portes, grilles, tôlerie et travaux spéciaux sur mesure. Conception, fabrication et installation 100 % Made in France."
+  },
+  "contact": {
+    "phone": "01 48 65 32 78",
+    "phoneIntl": "+33148653278",
+    "fax": "01 48 65 45 74",
+    "email": "",
+    "address": {
+      "street": "100 Rue Blaise Pascal",
+      "postalCode": "93600",
+      "city": "Aulnay-sous-Bois",
+      "country": "France"
+    },
+    "geo": { "lat": 48.948395, "lng": 2.477022 },
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Blindages+de+France+100+Rue+Blaise+Pascal+93600+Aulnay-sous-Bois"
+  },
+  "hours": {
+    "label": "Service administratif & enlèvement",
+    "days": [
+      { "day": "Lundi", "open": "08:00", "close": "18:30" },
+      { "day": "Mardi", "open": "08:00", "close": "18:30" },
+      { "day": "Mercredi", "open": "08:00", "close": "18:30" },
+      { "day": "Jeudi", "open": "08:00", "close": "18:30" },
+      { "day": "Vendredi", "open": "08:00", "close": "18:30" },
+      { "day": "Samedi", "open": "", "close": "" },
+      { "day": "Dimanche", "open": "", "close": "" }
+    ]
+  },
+  "socials": {
+    "linkedin": "https://www.linkedin.com/company/blindages-de-france/about/",
+    "youtube": "https://www.youtube.com/@BlindagesDePortes",
+    "x": "https://x.com/portesbdf?lang=fr"
+  },
+  "announcement": {
+    "enabled": false,
+    "text": "Nouveau : configurez votre porte blindée en 3D et recevez votre devis.",
+    "link": "/configurateur",
+    "linkLabel": "Essayer"
+  },
+  "stats": [
+    { "value": "35+", "label": "années d'expertise" },
+    { "value": "55+", "label": "salariés experts" },
+    { "value": "< 24h", "label": "délais de production" },
+    { "value": "3", "label": "certifications officielles" }
+  ],
+  "forms": {
+    "provider": "netlify",
+    "endpoint": "",
+    "web3formsKey": "",
+    "recipientEmail": "",
+    "successPage": "/merci"
+  },
+  "pro": {
+    "loginUrl": "https://www.blindagesdefrance.fr/user/login",
+    "registerUrl": "/rejoindre-le-reseau-dinstallateurs-bdf"
+  },
+  "analytics": {
+    "plausibleDomain": "",
+    "gaMeasurementId": ""
+  },
+  "features": {
+    "enable3D": true,
+    "introAnimation": true,
+    "showConfigurator": true,
+    "showCompare": true
+  }
+}

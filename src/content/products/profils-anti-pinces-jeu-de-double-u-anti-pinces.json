@@ -1,0 +1,74 @@
+{
+  "title": "Profils anti-pinces - Jeu de double U anti-pinces",
+  "slug": "profils-anti-pinces-jeu-de-double-u-anti-pinces",
+  "segment": "tolerie-pliage-et-profils",
+  "categories": [
+    "tolerie-pliage-et-profils-71"
+  ],
+  "family": "Profils anti-pinces - Jeu de double U anti-pinces",
+  "order": 85,
+  "featured": false,
+  "image": "/media/fiches-produits/pliage-u-anti-pince.jpg",
+  "seo": {
+    "title": "Profils anti-pinces - Jeu de double U anti-pinces",
+    "description": ""
+  },
+  "specs": {
+    "dimensions": "Le jeu de cornières double U anti pinces pour porte blindée ou blindage de porte existe en plusieurs longueurs:\n2300 mm\n2500 mm\n3000 mm"
+  },
+  "filters": {
+    "vantaux": [],
+    "certifications": [],
+    "fermetures": []
+  },
+  "composition": "<p>Les cornières double U anti pinces pour porte blindée ou blindage de porte empêchent l'introduction d'un outil de type pied de biche ou tournevis entre la porte et la menuiserie.</p><p>La cornière double U anti-pince fait le tour de la porte blindée ou blindage de porte et comble cet espace vide.</p>",
+  "downloads": [
+    {
+      "label": "profils-anti-pinces.pdf",
+      "file": "/media/fichiers/profils-anti-pinces-2.pdf"
+    }
+  ],
+  "quoteLabel": "Profils anti-pinces - Jeu de double U anti-pinces",
+  "options": {
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet",
+        "title": "Époxy mono couleur",
+        "description": "180 couleurs RAL au choix."
+      },
+      {
+        "icon": "tree",
+        "title": "Ton bois",
+        "description": "6 décors aspect bois naturel."
+      }
+    ]
+  },
+  "characteristics": {
+    "html": "<p>Les cornières double U anti pinces sont fabriquées en tôle électrozinguée 15/10ème et percées et fraisées en usine.<br/><br/>Le jeu complet cornières double U anti pinces pour équiper une porte blindée ou blindage de porte est composé de:</p><ul><li>2 montants latéraux</li><li>1 traverse haute</li></ul><p>Vous avez la possibilité de compléter votre jeu de cornières double U anti pinces pour porte blindée ou blindage de porte d'<a href=\"/catalogue/tolerie-pliage-et-profils/barres-de-seuil\">une barre de seuil.</a></p>"
+  }
+}

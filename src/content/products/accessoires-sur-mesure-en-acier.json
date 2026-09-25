@@ -1,0 +1,60 @@
+{
+  "title": "Accessoires sur mesure en acier",
+  "slug": "accessoires-sur-mesure-en-acier",
+  "segment": "grilles-et-accessoires",
+  "categories": [
+    "grilles-et-accessoires-73"
+  ],
+  "family": "Accessoires sur mesure en acier",
+  "order": 89,
+  "featured": false,
+  "image": "/media/fiches-produits/accessoire-armoire-blindee-2.png",
+  "seo": {
+    "title": "Accessoires sur mesure en acier",
+    "description": ""
+  },
+  "filters": {
+    "vantaux": [],
+    "certifications": [],
+    "fermetures": []
+  },
+  "composition": "<p>Blindages de France conçoit et fabrique tous types d’accessoires en acier sur mesure pour protéger certains effets ou éléments.</p>",
+  "quoteLabel": "Accessoires sur mesure en acier",
+  "options": {
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet",
+        "title": "Époxy mono couleur",
+        "description": "180 couleurs RAL au choix."
+      }
+    ]
+  },
+  "characteristics": {
+    "html": "<p>Pour garder votre courrier et colis en toute sécurité nous fabriquons des boîtes aux lettres sur mesure en acier.</p><p><img alt=\"\" loading=\"lazy\" src=\"/media/editeur/accessoire-boite-aux-lettres.png\"/></p><p>Pour vos objets les plus précieux ou confidentiels, nous pouvons réaliser des armoires blindées sur mesure.</p><p><img alt=\"\" loading=\"lazy\" src=\"/media/editeur/accessoire-armoire-blindee.png\"/></p><p>Pour protéger votre compteur électrique, des façades de compteur sur mesure en tôle cache vue vous sont proposées.</p><p><img alt=\"\" loading=\"lazy\" src=\"/media/editeur/accessoire-armoire-blindee-2.png\"/></p>"
+  }
+}

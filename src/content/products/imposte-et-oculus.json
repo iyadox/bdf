@@ -1,0 +1,44 @@
+{
+  "title": "Imposte et oculus",
+  "slug": "imposte-et-oculus",
+  "segment": "blocs-portes-techniques",
+  "categories": [
+    "blocs-portes-techniques-61"
+  ],
+  "family": "Imposte et oculus",
+  "order": 31,
+  "featured": false,
+  "seo": {
+    "title": "Ajouter des options à vos portes avec nos impostes fixes et nos oculus",
+    "description": "Blindages de France fabrique des impostes pour créer une notion d'ensemble avec votre porte et des oculus, petite ouverture vitrée dans votre porte, permettant de laisser passer la lumière"
+  },
+  "filters": {
+    "vantaux": [],
+    "certifications": [],
+    "fermetures": []
+  },
+  "composition": "<h3>CARACTERISTIQUES:</h3><ul><li>Pour porte 1 vantail</li><li>Pour porte 2 vantaux</li><li>Pour les impostes latérales</li></ul>",
+  "quoteLabel": "Imposte et oculus",
+  "options": {
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      }
+    ]
+  }
+}

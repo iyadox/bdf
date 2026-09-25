@@ -1,0 +1,69 @@
+{
+  "title": "Poteau ventouses",
+  "slug": "poteau-ventouses",
+  "segment": "tolerie-pliage-et-profils",
+  "categories": [
+    "tolerie-pliage-et-profils-71"
+  ],
+  "family": "Poteau ventouses",
+  "order": 83,
+  "featured": false,
+  "image": "/media/fiches-produits/poteau-technique-porte.webp",
+  "seo": {
+    "title": "Poteau ventouses",
+    "description": ""
+  },
+  "specs": {
+    "dimensions": "Blindages de France conçoit et fabrique dans son usine en France sur mesure et suivant votre configuration des Bandeaux Ventouses - Poteaux techniques."
+  },
+  "filters": {
+    "vantaux": [],
+    "certifications": [],
+    "fermetures": []
+  },
+  "composition": "<p>Bandeau Ventouse - Poteau technique en 30/10ème.</p><p>Le Bandeau Ventouse - Poteau technique se monte sur tous les types de portes tirantes et affleurantes.</p><p>Chaque Bandeau Ventouse - Poteau technique est composé de deux profilés:</p><ul><li><p>un profilé avec deux ventouses et une poignée de tirage intégrée</p></li><li><p>un profilé avec des contreplaques à fixer sur le vantail de la porte</p></li></ul>",
+  "downloads": [
+    {
+      "label": "poteau-ventouses.pdf",
+      "file": "/media/fichiers/poteau-ventouses.pdf"
+    }
+  ],
+  "quoteLabel": "Poteau ventouses",
+  "options": {
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet",
+        "title": "Époxy mono couleur",
+        "description": "180 couleurs RAL au choix."
+      }
+    ]
+  },
+  "characteristics": {
+    "html": "<p>Les deux ventouses du Bandeau Ventouse - Poteau technique ont une force de retention chacune de 300 Kg.</p><p>Le Bandeau Ventouse - Poteau technique s’installe sur des portes d’un ou deux vantaux.</p><p><strong>Application pour 1 vantail:</strong></p><p><img alt=\"\" loading=\"lazy\" src=\"/media/editeur/poteau-technique-1vantail.webp\"/></p><p><strong>Application pour 2 vantaux:</strong></p><p><img alt=\"\" loading=\"lazy\" src=\"/media/editeur/poteau-technique-2vantaux.webp\"/></p>"
+  }
+}

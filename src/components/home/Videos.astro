@@ -1,0 +1,70 @@
+---
+import VideoEmbed from '@/components/ui/VideoEmbed.astro';
+import Icon from '@/components/Icon.astro';
+const vids = [
+  { id: '91cXq-mJ33M', t: 'Test anti-effraction CNPP', k: 'A2P', href: '/certifications/anti-effraction' },
+  { id: '84tSU8-mMf4', t: 'Essai de résistance au feu EFECTIS', k: 'Coupe-feu', href: '/certification-porte-blindee/coupe-feu' },
+  { id: '_8vfvCZxY9M', t: "Test balistique — Banc National d'Épreuves", k: 'Pare-balles', href: '/certification-porte-blindee/pare-balles' },
+];
+---
+
+<section class="section videos" aria-labelledby="videos-title">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow" data-reveal>Voir nos tests en action</p>
+      <h2 id="videos-title" class="h2" data-reveal style="--d:.1s">Testées en <span class="grad-orange">laboratoire</span></h2>
+      <p class="lead" data-reveal style="--d:.2s">Nos portes subissent des tests destructifs dans les laboratoires officiels. Les performances ne sont pas théoriques : elles sont mesurées et vérifiées.</p>
+    </div>
+    <div class="videos__grid">
+      {
+        vids.map((v, i) => (
+          <article class="vcard" data-reveal style={`--d:${i * 0.1}s`}>
+            <VideoEmbed id={v.id} title={v.t} />
+            <div class="vcard__meta">
+              <span class="badge badge--a2p">{v.k}</span>
+              <a href={v.href} class="link-arrow">
+                La certification <Icon name="arrow-right" />
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .videos__grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1.2rem;
+  }
+  .vcard:first-child {
+    grid-row: span 2;
+  }
+  .vcard:first-child :global(.yt) {
+    height: calc(100% - 3rem);
+    aspect-ratio: auto;
+    min-height: 300px;
+  }
+  .vcard__meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0.2rem 0;
+  }
+  @media (max-width: 860px) {
+    .videos__grid {
+      grid-template-columns: 1fr;
+    }
+    .vcard:first-child {
+      grid-row: auto;
+    }
+    .vcard:first-child :global(.yt) {
+      height: auto;
+      aspect-ratio: 16 / 9;
+      min-height: 0;
+    }
+  }
+</style>
