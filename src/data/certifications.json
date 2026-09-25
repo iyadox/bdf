@@ -1,0 +1,155 @@
+{
+  "overview": {
+    "title": "Savoir-faire certifié",
+    "lead": "Des portes blindées testées et certifiées par les laboratoires officiels français.",
+    "highlights": [
+      { "icon": "badge-check", "title": "3 laboratoires officiels", "text": "Tests rigoureux reconnus par les assurances et normes françaises" },
+      { "icon": "factory", "title": "100 % Made in France", "text": "Fabrication locale • Matériaux traçables • Circuit court" }
+    ],
+    "intro": "Nous disposons de plusieurs gammes de produits certifiés anti-effraction par le CNPP (le Centre National de Prévention et de Protection), des produits certifiés pare-balles par le Banc National d'Épreuves et plusieurs gammes de produits certifiés résistance au feu par le laboratoire d'essais EFECTIS.",
+    "intro2": "Nos produits sont réalisés sur mesure et adaptés en fonction de vos besoins, tout en ayant la garantie d'un travail rapide et de très bonne facture. Nous fabriquons des produits résistant à l'effraction, étanches, avec isolation thermique et acoustique.",
+    "why": [
+      { "icon": "activity", "title": "Performance garantie", "text": "Les tests en laboratoire garantissent que votre porte résistera aux conditions réelles d'agression. Chaque niveau de certification correspond à un temps de résistance mesuré et vérifié par des organismes indépendants." },
+      { "icon": "landmark", "title": "Conformité réglementaire", "text": "Les certifications A2P, EFECTIS et Banc d'Épreuves sont reconnues par les assurances et souvent exigées pour certains bâtiments. Elles facilitent vos démarches administratives et peuvent réduire vos primes d'assurance." },
+      { "icon": "eye", "title": "Transparence totale", "text": "Contrairement aux allégations marketing, les certifications sont délivrées après des tests rigoureux et normalisés. Vous savez exactement ce que vous achetez et le niveau de protection que vous obtenez." },
+      { "icon": "list-checks", "title": "Traçabilité complète", "text": "Chaque porte certifiée est accompagnée de son certificat d'origine. Les numéros de série permettent une traçabilité totale et prouvent l'authenticité de la certification auprès de votre assureur ou des autorités." }
+    ],
+    "process": [
+      { "title": "Conception & développement", "text": "Nos ingénieurs conçoivent les portes selon les normes en vigueur, en intégrant les matériaux et techniques nécessaires pour atteindre le niveau de certification visé." },
+      { "title": "Fabrication du prototype", "text": "Production d'exemplaires témoins qui seront soumis aux tests en laboratoire. Ces prototypes respectent strictement les plans validés." },
+      { "title": "Tests en laboratoire", "text": "Les organismes officiels (CNPP, EFECTIS, Banc d'Épreuves) réalisent des tests destructifs pour mesurer la résistance réelle de nos portes." },
+      { "title": "Délivrance du certificat", "text": "Si les tests sont concluants, le laboratoire délivre le certificat officiel qui atteste du niveau de performance atteint." },
+      { "title": "Production & traçabilité", "text": "Chaque porte produite respecte scrupuleusement les plans certifiés et reçoit un numéro de série unique garantissant sa conformité." }
+    ]
+  },
+  "pages": {
+    "anti-effraction": {
+      "slug": "anti-effraction",
+      "path": "/certifications/anti-effraction",
+      "short": "Anti-effraction A2P",
+      "norm": "Norme EN 1627-1630",
+      "title": "Certification anti-effraction",
+      "lead": "Des portes blindées testées et certifiées contre les tentatives d'effraction selon les niveaux de résistance RC2 à RC6.",
+      "lab": "CNPP",
+      "labLogo": "/media/custom-blocks/certification-labos-cnpp-trans.png",
+      "icon": "shield",
+      "color": "#ff6622",
+      "video": "91cXq-mJ33M",
+      "videoTitle": "Test anti-effraction en laboratoire CNPP",
+      "testsTitle": "Tests en conditions réelles",
+      "testsText": "Nos portes blindées sont soumises à des tests rigoureux au laboratoire du CNPP pour obtenir la certification A2P. Découvrez les épreuves qu'elles subissent.",
+      "tests": [
+        "Résistance aux tentatives d'ouverture non autorisée",
+        "Attaques destructives avec outils professionnels",
+        "Tests de crochetage et manipulation de serrure",
+        "Résistance du bâti et des points d'ancrage",
+        "Tenue au châssis sous contrainte extrême"
+      ],
+      "levelsTitle": "Choisissez le niveau adapté à votre menace",
+      "levelsText": "La certification A2P classe les portes blindées selon 3 niveaux de résistance, du cambrioleur opportuniste au professionnel équipé.",
+      "levels": [
+        { "code": "BP1", "name": "Résistance de base", "value": "5", "unit": "min", "gauge": 33, "text": "Équipée d'une serrure certifiée A2P*. Protection contre les tentatives d'effraction simples utilisant des outils basiques.", "tag": "Menace : Opportuniste" },
+        { "code": "BP2", "name": "Résistance moyenne", "value": "10", "unit": "min", "gauge": 66, "text": "Équipée d'une serrure certifiée A2P**. Protection renforcée contre les cambrioleurs utilisant des outils courants.", "tag": "Menace : Cambrioleur" },
+        { "code": "BP3", "name": "Résistance optimale", "value": "15", "unit": "min", "gauge": 100, "text": "Équipée d'une serrure certifiée A2P***. Protection maximale contre les professionnels équipés d'outils spécialisés.", "tag": "Menace : Professionnel" }
+      ],
+      "whyTitle": "Pourquoi choisir une porte certifiée A2P ?",
+      "why": [
+        { "icon": "shield-check", "title": "Reconnaissance assurance", "text": "La certification A2P est reconnue par toutes les compagnies d'assurance. Elle peut réduire vos primes et facilite les démarches en cas de sinistre." },
+        { "icon": "activity", "title": "Tests rigoureux", "text": "Chaque porte certifiée a subi des tests destructifs en laboratoire CNPP. La performance n'est pas théorique, elle est mesurée et vérifiée." },
+        { "icon": "rotate", "title": "Contrôle qualité continu", "text": "Nos produits certifiés sont soumis à des contrôles annuels pour le maintien de la certification. La qualité est garantie dans le temps." },
+        { "icon": "badge-check", "title": "Norme NF validée", "text": "La certification A2P respecte la norme NF. C'est un gage de confiance et de conformité aux standards les plus stricts du marché français." }
+      ],
+      "productsTitle": "Nos portes blindées certifiées A2P",
+      "productsText": "Découvrez notre gamme complète de portes blindées certifiées anti-effraction. Tous nos produits sont testés et validés par le CNPP.",
+      "filter": ["A2P BP1", "A2P BP2", "A2P BP3"],
+      "ctaTitle": "Besoin d'une porte certifiée A2P ?",
+      "ctaText": "Nos experts vous conseillent pour choisir le niveau de protection adapté."
+    },
+    "coupe-feu": {
+      "slug": "coupe-feu",
+      "path": "/certification-porte-blindee/coupe-feu",
+      "short": "Coupe-feu",
+      "norm": "Norme EN 1634-1",
+      "title": "Certification coupe-feu",
+      "lead": "Des portes blindées testées et certifiées pour leur résistance au feu, de 30 minutes à 2 heures selon la norme européenne.",
+      "lab": "EFECTIS",
+      "labLogo": "/media/custom-blocks/certification-labos-efectis-trans.png",
+      "icon": "flame",
+      "color": "#e74c3c",
+      "video": "84tSU8-mMf4",
+      "videoTitle": "Test de résistance au feu en laboratoire EFECTIS",
+      "testsTitle": "Tests en conditions réelles",
+      "testsText": "Nos portes coupe-feu sont soumises à des tests rigoureux au laboratoire EFECTIS pour obtenir la certification. Découvrez les épreuves qu'elles subissent face au feu.",
+      "tests": [
+        "Résistance mécanique face aux contraintes thermiques",
+        "Étanchéité aux flammes et aux gaz chauds",
+        "Isolation thermique (limitation de l'échauffement à 140 °C)",
+        "Stabilité structurelle pendant toute la durée",
+        "Test d'exposition progressive selon la norme EN 1634-1"
+      ],
+      "levelsTitle": "Durées de résistance au feu certifiées",
+      "levelsText": "La certification coupe-feu classe les portes selon leur temps de résistance au feu, de 30 à 120 minutes de protection contre les flammes et la chaleur.",
+      "levels": [
+        { "code": "EI 30", "name": "Résistance de base", "value": "30", "unit": "min", "gauge": 25, "text": "Étanchéité aux flammes et isolation thermique pendant 30 minutes. Idéal pour les locaux à risque standard.", "tag": "Usage : Locaux techniques" },
+        { "code": "EI 60", "name": "Résistance renforcée", "value": "60", "unit": "min", "gauge": 50, "text": "Protection d'une heure contre le feu. Recommandé pour les établissements recevant du public et les immeubles de grande hauteur.", "tag": "Usage : ERP / IGH" },
+        { "code": "EI 90", "name": "Résistance haute", "value": "90", "unit": "min", "gauge": 75, "text": "Protection prolongée de 90 minutes. Nécessaire pour les bâtiments sensibles ou à forte densité d'occupation.", "tag": "Usage : Bâtiments sensibles" },
+        { "code": "EI 120", "name": "Résistance maximale", "value": "120", "unit": "min", "gauge": 100, "text": "Protection maximale de 2 heures contre les incendies. Pour les sites critiques nécessitant la sécurité la plus élevée.", "tag": "Usage : Sites critiques" }
+      ],
+      "whyTitle": "Pourquoi choisir une porte certifiée coupe-feu ?",
+      "why": [
+        { "icon": "users", "title": "Protection des vies", "text": "Les portes coupe-feu sauvent des vies en contenant flammes et fumées. Elles permettent l'évacuation sécurisée et l'intervention des secours." },
+        { "icon": "landmark", "title": "Conformité réglementaire", "text": "Installation obligatoire dans les ERP et IGH. La certification EFECTIS garantit la conformité aux normes EN 1634-1 et facilite les audits." },
+        { "icon": "activity", "title": "Tests rigoureux EFECTIS", "text": "Chaque porte certifiée a subi un test destructif en laboratoire EFECTIS. Les performances sont mesurées scientifiquement, pas estimées." },
+        { "icon": "flame", "title": "Isolation thermique garantie", "text": "Les portes EI limitent l'échauffement à 140 °C en moyenne sur la face non exposée. Protection thermique validée pendant toute la durée certifiée." }
+      ],
+      "productsTitle": "Nos portes blindées certifiées coupe-feu",
+      "productsText": "Découvrez notre gamme complète de portes blindées certifiées coupe-feu. Tous nos produits sont testés et validés par le laboratoire EFECTIS.",
+      "filter": ["Coupe-feu 30 min", "Coupe-feu 60 min"],
+      "ctaTitle": "Besoin d'une porte certifiée coupe-feu ?",
+      "ctaText": "Nos experts vous conseillent pour choisir la durée de résistance adaptée."
+    },
+    "pare-balles": {
+      "slug": "pare-balles",
+      "path": "/certification-porte-blindee/pare-balles",
+      "short": "Pare-balles",
+      "norm": "Norme EN 1522-1523",
+      "title": "Certification pare-balles",
+      "lead": "Protection maximale contre les attaques balistiques, du calibre 9 mm aux armes de guerre, certifiée par le Banc National d'Épreuves.",
+      "lab": "Banc National d'Épreuves",
+      "labLogo": "/media/custom-blocks/certification-labos-banc-national-trans.png",
+      "icon": "crosshair",
+      "color": "#c9d4df",
+      "video": "_8vfvCZxY9M",
+      "videoTitle": "Test balistique au Banc National d'Épreuves",
+      "testsTitle": "Tests balistiques en conditions réelles",
+      "testsText": "Nos portes pare-balles sont soumises à des tests balistiques rigoureux au Banc National d'Épreuves de Saint-Étienne pour obtenir la certification. Tirs à différents calibres, distances et angles.",
+      "tests": [
+        "Résistance à la perforation par projectiles",
+        "Tests multi-calibres (pistolets, fusils, armes de guerre)",
+        "Vérification des angles et distances de tir normalisés",
+        "Absence d'éclats côté protégé (suffixe NS)",
+        "Validation selon la norme européenne EN 1522-1523"
+      ],
+      "levelsTitle": "Classification selon le type d'arme",
+      "levelsText": "La norme EN 1522 classe les portes pare-balles de FB1 à FB7 selon leur résistance aux projectiles. Nos portes couvrent les niveaux FB4 à FB7 pour une protection maximale.",
+      "levels": [
+        { "code": "FB4", "name": "Armes de poing courantes", "value": ".357", "unit": "Magnum", "gauge": 25, "text": "Protection contre les armes de poing courantes. Calibre .357 Magnum et calibres inférieurs (9 mm, .38 Special).", "tag": "Menace : Armes de poing standard" },
+        { "code": "FB5", "name": "Armes de poing puissantes", "value": ".44", "unit": "Magnum", "gauge": 50, "text": "Protection renforcée contre les armes de poing puissantes. Calibre .44 Magnum et équivalents haute vélocité.", "tag": "Menace : Revolvers puissants" },
+        { "code": "FB6", "name": "Fusils de chasse", "value": "12/70", "unit": "Slug", "gauge": 75, "text": "Protection contre les fusils de chasse. Calibre 12/70 avec munition slug (balle unique). Notre porte Electre Plus est certifiée FB6 NS.", "tag": "Menace : Fusils de chasse" },
+        { "code": "FB7", "name": "Armes de guerre", "value": "7.62", "unit": "×39", "gauge": 100, "text": "Protection maximale contre les armes de guerre. Calibre 7.62×39 mm (AK-47/Kalachnikov) et fusils d'assaut militaires.", "tag": "Menace : Fusils d'assaut" }
+      ],
+      "whyTitle": "Pourquoi choisir une porte certifiée pare-balles ?",
+      "why": [
+        { "icon": "shield-check", "title": "Protection ultime", "text": "Niveau de sécurité maximum pour les sites sensibles : ambassades, banques, bâtiments gouvernementaux. Protection éprouvée contre les attaques armées." },
+        { "icon": "badge-check", "title": "Norme européenne EN 1522", "text": "Certification selon un standard européen reconnu. Tests balistiques normalisés avec calibres, distances et angles définis scientifiquement." },
+        { "icon": "target", "title": "Tests Banc National d'Épreuves", "text": "Certifié par l'organisme officiel français de Saint-Étienne. Expertise balistique reconnue au niveau international pour l'armement et les blindages." },
+        { "icon": "shield", "title": "Absence d'éclats (NS)", "text": "La certification NS (No Spalling) garantit l'absence d'éclats côté protégé. Protection totale des occupants sans risque de projection secondaire." }
+      ],
+      "productsTitle": "Notre porte blindée certifiée pare-balles",
+      "productsText": "Découvrez notre porte blindée certifiée pare-balles. Produit testé et validé par le Banc National d'Épreuves.",
+      "filter": ["Pare-balles"],
+      "ctaTitle": "Besoin d'une porte certifiée pare-balles ?",
+      "ctaText": "Nos experts vous conseillent pour choisir le niveau de protection balistique adapté."
+    }
+  }
+}

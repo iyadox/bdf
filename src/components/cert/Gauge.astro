@@ -1,0 +1,78 @@
+---
+interface Props {
+  value: string;
+  unit: string;
+  pct: number;
+  color?: string;
+}
+const { value, unit, pct, color = '#ff6622' } = Astro.props;
+const R = 52;
+const C = 2 * Math.PI * R;
+---
+
+<div class="gauge" style={`--gc:${color}`}>
+  <svg viewBox="0 0 120 120" aria-hidden="true">
+    <circle cx="60" cy="60" r={R} class="gauge__bg"></circle>
+    <circle cx="60" cy="60" r={R} class="gauge__fg" style={`--c:${C};--off:${C * (1 - pct / 100)}`}></circle>
+    {Array.from({ length: 24 }).map((_, i) => <line x1="60" y1="3" x2="60" y2={i % 6 === 0 ? 11 : 8} transform={`rotate(${i * 15} 60 60)`} class="gauge__tick" />)}
+  </svg>
+  <div class="gauge__txt">
+    <strong>{value}</strong>
+    <span>{unit}</span>
+  </div>
+</div>
+
+<style>
+  .gauge {
+    position: relative;
+    width: 132px;
+    aspect-ratio: 1;
+  }
+  .gauge svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+  }
+  .gauge__bg {
+    fill: none;
+    stroke: rgba(148, 178, 212, 0.12);
+    stroke-width: 7;
+  }
+  .gauge__fg {
+    fill: none;
+    stroke: var(--gc);
+    stroke-width: 7;
+    stroke-linecap: round;
+    stroke-dasharray: var(--c);
+    stroke-dashoffset: var(--c);
+    filter: drop-shadow(0 0 6px var(--gc));
+    transition: stroke-dashoffset 1.8s var(--ease) 0.2s;
+  }
+  :global(.is-in) .gauge__fg {
+    stroke-dashoffset: var(--off);
+  }
+  .gauge__tick {
+    stroke: rgba(148, 178, 212, 0.3);
+    stroke-width: 1;
+  }
+  .gauge__txt {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    line-height: 1.1;
+  }
+  .gauge__txt strong {
+    font-family: var(--f-display);
+    font-size: 1.5rem;
+    color: #fff;
+  }
+  .gauge__txt span {
+    font-family: var(--f-mono);
+    font-size: 0.68rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+</style>

@@ -1,0 +1,82 @@
+{
+  "groups": [
+    {
+      "title": "Choisir sa porte",
+      "icon": "door-closed",
+      "items": [
+        {
+          "q": "Quelle différence entre un blindage de porte et un bloc-porte blindé ?",
+          "a": "Le **blindage de porte** renforce votre porte existante (plaque métallique anti-effraction, fixation par rivets industriels, serrure multipoints renforcée) : vous conservez votre porte. Le **bloc-porte blindé** est un ensemble complet — vantail blindé et huisserie — qui remplace la porte existante, en rénovation comme dans le neuf."
+        },
+        {
+          "q": "Que signifient les niveaux A2P BP1, BP2 et BP3 ?",
+          "a": "La certification A2P, délivrée par le CNPP, classe les portes blindées selon leur temps de résistance à l'effraction : **BP1** (5 minutes, équipée d'une serrure A2P*), **BP2** (10 minutes, serrure A2P**) et **BP3** (15 minutes, serrure A2P***). [Tout savoir sur la certification A2P](/certifications/anti-effraction)."
+        },
+        {
+          "q": "Une porte coupe-feu est-elle obligatoire ?",
+          "a": "Les portes coupe-feu sont obligatoires dans de nombreux bâtiments, notamment les établissements recevant du public (ERP) et les immeubles de grande hauteur (IGH), ainsi que pour les locaux à risque (chaufferies, parkings…). Nos portes sont certifiées par le laboratoire EFECTIS selon la norme EN 1634-1. [Voir la certification coupe-feu](/certification-porte-blindee/coupe-feu)."
+        },
+        {
+          "q": "Vos portes sont-elles fabriquées sur mesure ?",
+          "a": "Oui. Toutes nos portes sont fabriquées sur mesure dans notre usine d'Aulnay-sous-Bois. Chaque fiche produit indique les plages de dimensions standard ; pour toutes autres dimensions, nous vous proposons une solution personnalisée."
+        },
+        {
+          "q": "Quelles couleurs et finitions sont possibles ?",
+          "a": "De série, nos portes sont livrées en peinture d'apprêt. En option : peinture **époxy** mono ou bi-couleur (intérieur/extérieur différents) parmi 180 teintes RAL, **grenaillage polyzing** (finition texturée résistante) et **ton bois** (6 décors). Visualisez le rendu dans notre [configurateur 3D](/configurateur)."
+        },
+        {
+          "q": "Les portes blindées isolent-elles du froid et du bruit ?",
+          "a": "Nos portes intègrent une isolation en laine de roche. Certains modèles sont testés pour leurs performances thermiques et acoustiques : la porte SIGNATURE atteint par exemple Ud = 2,8 W/(m².K) et 39 dB."
+        },
+        {
+          "q": "Comment protéger un logement vide contre les squatteurs ?",
+          "a": "Notre **bloc-porte blindé ANTI-SQUAT** est idéal pour protéger un bien avant des travaux, une vente ou une location, ou pendant une longue absence. [Découvrir le bloc-porte ANTI-SQUAT](/catalogue/blocs-portes-d-appartement/bloc-porte-blinde-anti-squat)."
+        }
+      ]
+    },
+    {
+      "title": "Installation & service",
+      "icon": "wrench",
+      "items": [
+        {
+          "q": "Qui installe les portes Blindages de France ?",
+          "a": "Nos produits sont posés par un réseau de plus de 500 installateurs agréés partout en France, qui bénéficient de notre support technique. [Trouvez l'installateur le plus proche de chez vous](/installateurs-portes-blindees)."
+        },
+        {
+          "q": "Quels sont vos délais de fabrication ?",
+          "a": "Grâce à notre plateforme de production automatisée et à un logiciel de fabrication spécifique, nos délais de production sont extrêmement courts : inférieurs à la journée. Le délai de pose dépend ensuite de votre installateur."
+        },
+        {
+          "q": "Quelle est la garantie de vos portes blindées ?",
+          "a": "Nos portes blindées sont garanties **10 ans**. Les produits sont garantis dans des conditions normales d'utilisation et contre tout vice de fabrication (voir nos [conditions générales de vente](/liens/conditions-generales-de-vente))."
+        },
+        {
+          "q": "Puis-je venir voir les produits ?",
+          "a": "Oui, notre showroom vous accueille au **100 rue Blaise Pascal à Aulnay-sous-Bois** (93), du lundi au vendredi de 8h00 à 18h30. Accès par l'A1, l'A3 et la N2 (15 minutes du périphérique) ou en RER B / tramway T4. L'enlèvement sur place est possible (zone de chargement, parking poids lourds)."
+        },
+        {
+          "q": "Une porte certifiée peut-elle faire baisser mon assurance ?",
+          "a": "La certification A2P est reconnue par les compagnies d'assurance. Elle facilite les démarches en cas de sinistre et peut réduire vos primes. Chaque porte certifiée est accompagnée de son certificat et d'un numéro de série garantissant sa traçabilité."
+        }
+      ]
+    },
+    {
+      "title": "Professionnels",
+      "icon": "briefcase",
+      "items": [
+        {
+          "q": "Comment devenir installateur agréé BDF ?",
+          "a": "Remplissez le [formulaire d'inscription au réseau](/rejoindre-le-reseau-dinstallateurs-bdf) : nous vous contactons sans délai. Les installateurs agréés figurent dans notre annuaire et accèdent à l'espace professionnel."
+        },
+        {
+          "q": "Comment obtenir vos tarifs professionnels ?",
+          "a": "Les tarifs professionnels, fiches techniques détaillées et l'historique de vos demandes sont accessibles depuis l'[Espace Pro](/espace-pro). Vous pouvez aussi [demander un devis](/devis-porte-blindee) directement, sans compte."
+        },
+        {
+          "q": "Réalisez-vous des pièces métalliques sur mesure ?",
+          "a": "Oui : cisaillage, poinçonnage, pliage, soudage et travail des métaux en feuilles et structures tubulaires (inox, acier, alu). Découvrez notre gamme [tôlerie, pliages et profils](/catalogue/categorie/tolerie-pliage-et-profils-71) et nos [travaux spéciaux](/catalogue/categorie/travaux-speciaux-75)."
+        }
+      ]
+    }
+  ]
+}

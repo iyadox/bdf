@@ -1,0 +1,255 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/ui/PageHero.astro';
+import Icon from '@/components/Icon.astro';
+import { getProducts, getCategories, productUrl, quoteUrl } from '@/lib/catalog';
+const [products, categories] = await Promise.all([getProducts(), getCategories()]);
+const catNames = Object.fromEntries(categories.map((c) => [c.slug, c.title]));
+const data = products.map((p) => ({
+  slug: p.slug,
+  title: p.title,
+  url: productUrl(p),
+  quote: quoteUrl(p),
+  image: p.image,
+  cat: p.categories.map((c) => catNames[c]).filter(Boolean),
+  vantaux: p.filters.vantaux,
+  dimensions: p.specs?.dimensions || '',
+  fermetures: p.filters.fermetures,
+  certifications: p.filters.certifications.filter((c) => c !== 'Sans certification'),
+  certDetail: p.certification?.badges.map((b) => b.label) || [],
+  locks: (p.locks?.table || []).map((r) => [r.brand, r.points, r.certification].filter(Boolean).join(' · ')),
+  frames: (p.frame?.cards || []).map((c) => c.title),
+  options: (p.options?.groups || []).flatMap((g) => g.items.map((i) => i.label)),
+  finishes: [...(p.finishes?.standard || []), ...(p.finishes?.options || []).map((o) => o.title)],
+  usages: (p.usages?.items || []).map((u) => u.title),
+  pdf: p.downloads[0]?.file || '',
+}));
+const groups = categories.map((c) => ({ label: c.title, items: products.filter((p) => p.segment === c.segment) }));
+---
+
+<BaseLayout title="Comparateur de produits" description="Comparez jusqu'à 3 portes blindées, blindages ou blocs-portes Blindages de France : certifications, serrures, huisseries, options et finitions.">
+  <PageHero title="Comparateur" accent="produits" eyebrow="Choisir en toute sérénité" lead="Comparez jusqu'à 3 produits côte à côte : certifications, dimensions, serrures, huisseries, options et finitions." crumbs={[{ label: 'Catalogue', href: '/catalogue' }, { label: 'Comparateur' }]} compact />
+
+  <section class="section section--tight">
+    <div class="container--wide">
+      <div class="cmp-tools">
+        <label class="check"><input type="checkbox" data-diff /> Afficher uniquement les différences</label>
+        <div class="btn-row">
+          <button type="button" class="btn btn--ghost btn--sm" data-cmp-share><Icon name="share" /> Partager</button>
+          <button type="button" class="btn btn--ghost btn--sm" onclick="window.print()"><Icon name="printer" /> Imprimer</button>
+        </div>
+      </div>
+      <div class="cmp-wrap">
+        <table class="cmp" data-cmp-table>
+          <thead>
+            <tr>
+              <th scope="col" class="cmp__corner"><span class="mono">Critères</span></th>
+              {
+                [0, 1, 2].map((i) => (
+                  <th scope="col">
+                    <label class="sr-only" for={`slot-${i}`}>
+                      Produit {i + 1}
+                    </label>
+                    <select class="select" id={`slot-${i}`} data-slot={i}>
+                      <option value="">+ Choisir un produit</option>
+                      {groups
+                        .filter((g) => g.items.length)
+                        .map((g) => (
+                          <optgroup label={g.label}>
+                            {g.items.map((p) => (
+                              <option value={p.slug}>{p.title}</option>
+                            ))}
+                          </optgroup>
+                        ))}
+                    </select>
+                  </th>
+                ))
+              }
+            </tr>
+          </thead>
+          <tbody data-cmp-body></tbody>
+        </table>
+      </div>
+      <p class="cmp-note muted"><Icon name="info" size={16} /> Tous nos produits sont fabriqués sur mesure : des combinaisons non listées peuvent être réalisées. <a href="/nous-contacter">Contactez-nous</a>.</p>
+    </div>
+  </section>
+  <script type="application/json" id="cmp-data" set:html={JSON.stringify(data)} />
+</BaseLayout>
+
+<script>
+  import { $, $$, escapeHtml, toast } from '@/scripts/ui/dom';
+  import { compare } from '@/scripts/ui/compare';
+
+  type P = Record<string, any>;
+  const data: P[] = JSON.parse(document.getElementById('cmp-data')!.textContent || '[]');
+  const bySlug = new Map(data.map((p) => [p.slug, p]));
+  const selects = $$<HTMLSelectElement>('[data-slot]');
+  const body = $('[data-cmp-body]')!;
+  const diff = $<HTMLInputElement>('[data-diff]')!;
+
+  const init = (new URLSearchParams(location.search).get('p') || '').split(',').filter((s) => bySlug.has(s));
+  const start = init.length ? init : compare.all().map((c) => c.slug).filter((s) => bySlug.has(s));
+  selects.forEach((s, i) => (s.value = start[i] || ''));
+
+  const list = (a: string[]) => (a && a.length ? `<ul>${a.map((x) => `<li>${escapeHtml(x)}</li>`).join('')}</ul>` : '<span class="na">—</span>');
+  const rows: [string, (p: P) => string, (p: P) => string][] = [
+    ['', (p) => `<a href="${p.url}" class="cmp__prod"><span class="cmp__img product-stage">${p.image ? `<img src="${p.image}" alt="">` : ''}</span><strong>${escapeHtml(p.title)}</strong></a>`, () => 'x'],
+    ['Gamme', (p) => list(p.cat), (p) => p.cat.join()],
+    ['Vantaux', (p) => list(p.vantaux), (p) => p.vantaux.join()],
+    ['Dimensions', (p) => (p.dimensions ? `<span class="pre">${escapeHtml(p.dimensions)}</span>` : '<span class="na">Sur mesure</span>'), (p) => p.dimensions],
+    ['Certifications', (p) => (p.certifications.length ? p.certifications.map((c: string) => `<span class="badge ${/feu/i.test(c) ? 'badge--feu' : /balle/i.test(c) ? 'badge--balles' : 'badge--a2p'}">${escapeHtml(c)}</span>`).join(' ') : '<span class="na">Sans certification</span>'), (p) => p.certifications.join()],
+    ['Détail certification', (p) => list(p.certDetail), (p) => p.certDetail.join()],
+    ['Fermeture', (p) => list(p.fermetures), (p) => p.fermetures.join()],
+    ['Serrures proposées', (p) => list(p.locks), (p) => p.locks.join()],
+    ['Huisseries', (p) => list(p.frames), (p) => p.frames.join()],
+    ['Options', (p) => list(p.options), (p) => p.options.join()],
+    ['Finitions', (p) => list(p.finishes), (p) => p.finishes.join()],
+    ['Usages', (p) => list(p.usages), (p) => p.usages.join()],
+    ['Documentation', (p) => (p.pdf ? `<a class="link-arrow" href="${p.pdf}" target="_blank" rel="noopener">Fiche PDF ↓</a>` : '<span class="na">—</span>'), (p) => p.pdf],
+    ['', (p) => `<div class="cmp__cta"><a href="${p.url}" class="btn btn--sm btn--ghost">Voir la fiche</a><a href="${p.quote}" class="btn btn--sm">Devis</a></div>`, () => 'x'],
+  ];
+
+  const render = () => {
+    const chosen = selects.map((s) => bySlug.get(s.value));
+    body.innerHTML = rows
+      .map(([label, fmt, key]) => {
+        const vals = chosen.filter(Boolean).map((p) => key(p!));
+        const same = vals.length > 1 && vals.every((v) => v === vals[0]);
+        if (diff.checked && label && same) return '';
+        return `<tr class="${same && label ? 'is-same' : ''}"><th scope="row">${label ? `<span class="mono">${label}</span>` : ''}</th>${chosen
+          .map((p) => `<td>${p ? fmt(p) : label === '' ? '<div class="cmp__empty">Sélectionnez un produit ci-dessus</div>' : ''}</td>`)
+          .join('')}</tr>`;
+      })
+      .join('');
+    const slugs = chosen.filter(Boolean).map((p) => p!.slug);
+    history.replaceState(null, '', location.pathname + (slugs.length ? `?p=${slugs.join(',')}` : ''));
+    compare.clear();
+    chosen.filter(Boolean).forEach((p) => compare.toggle({ slug: p!.slug, title: p!.title, image: p!.image }, true));
+  };
+  selects.forEach((s) => s.addEventListener('change', render));
+  diff.addEventListener('change', render);
+  $('[data-cmp-share]')?.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(location.href);
+      toast('Lien de comparaison copié');
+    } catch {
+      toast('Copiez l’adresse de la page pour partager');
+    }
+  });
+  render();
+</script>
+
+<style>
+  .cmp-tools {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+  }
+  .cmp-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: rgba(6, 16, 30, 0.6);
+  }
+  .cmp {
+    min-width: 860px;
+    table-layout: fixed;
+  }
+  .cmp :global(th),
+  .cmp :global(td) {
+    padding: 1rem 1.1rem;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+    text-align: left;
+    font-weight: 400;
+  }
+  .cmp thead th {
+    position: sticky;
+    top: 0;
+    background: rgba(6, 16, 30, 0.96);
+    z-index: 2;
+  }
+  .cmp__corner {
+    width: 190px;
+  }
+  .cmp :global(tbody th .mono) {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .cmp :global(td) {
+    font-size: 0.88rem;
+    color: var(--text-2);
+  }
+  .cmp :global(td ul) {
+    list-style: none;
+    display: grid;
+    gap: 0.25rem;
+  }
+  .cmp :global(td li)::before {
+    content: '▸ ';
+    color: var(--orange);
+  }
+  .cmp :global(.na) {
+    color: var(--dim);
+  }
+  .cmp :global(.pre) {
+    white-space: pre-line;
+    font-size: 0.82rem;
+  }
+  .cmp :global(tr.is-same td) {
+    opacity: 0.7;
+  }
+  .cmp :global(.cmp__prod) {
+    display: grid;
+    gap: 0.7rem;
+  }
+  .cmp :global(.cmp__img) {
+    height: 220px;
+    border-radius: 12px;
+  }
+  .cmp :global(.cmp__img img) {
+    height: 90%;
+    width: auto;
+  }
+  .cmp :global(.cmp__prod strong) {
+    font-family: var(--f-display);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .cmp :global(.cmp__empty) {
+    display: grid;
+    place-items: center;
+    height: 220px;
+    border: 1px dashed var(--line-2);
+    border-radius: 12px;
+    color: var(--dim);
+    font-size: 0.85rem;
+    text-align: center;
+    padding: 1rem;
+  }
+  .cmp :global(.cmp__cta) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .cmp :global(.badge) {
+    margin: 0 0.2rem 0.2rem 0;
+  }
+  .cmp-note {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    font-size: 0.86rem;
+  }
+  .cmp-note a {
+    color: var(--orange-2);
+    text-decoration: underline;
+  }
+</style>

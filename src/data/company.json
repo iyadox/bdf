@@ -1,0 +1,74 @@
+{
+  "hero": {
+    "eyebrow": "Fabricant français depuis 1989",
+    "title": "Blindages de France",
+    "lead": "Plus de 35 ans d'expertise au service de la sécurité des biens et des personnes.",
+    "images": ["/media/qui-sommes-nous/facade-bdf.jpg", "/media/qui-sommes-nous/atelier-production.webp", "/media/qui-sommes-nous/equipe-bdf.webp"]
+  },
+  "history": {
+    "title": "Plus de 30 ans d'expérience",
+    "lead": "De l'ambition de nos fondateurs, issus du secteur de l'industrie métallurgique, à notre position actuelle d'expert dans le domaine de la sécurité.",
+    "steps": [
+      { "year": "1989", "title": "La création", "text": "La société Blindages de France a été créée de l'ambition de ses fondateurs, issus du secteur de l'industrie métallurgique, de mettre leurs connaissances et expériences en commun sous un seul nom : BLINDAGES DE FRANCE." },
+      { "year": "1990", "title": "Spécialisation sécurité", "text": "Pour répondre à un besoin grandissant en matière de sécurité, Blindages de France s'est rapidement spécialisée vers des solutions sur mesure pour la protection des biens et des personnes. Installation du siège social et de la fabrication dans le Bassin parisien à Aulnay-sous-Bois, en Seine-Saint-Denis." },
+      { "year": "2000", "title": "Innovation & automatisation", "text": "Entreprise dotée d'une plateforme automatisée pour le site de logistique-production, la conception d'un logiciel spécifique a facilité et augmenté la rapidité de fabrication. Les délais de production deviennent extrêmement courts, inférieurs à la journée." },
+      { "year": "2025", "title": "Leader reconnu", "text": "Cette constante aspiration à la recherche de la performance a permis à Blindages de France de se positionner aujourd'hui comme experte dans le domaine de la sécurité en proposant des blocs-portes blindés et blindages de portes certifiés A2P, coupe-feu et pare-balles." }
+    ]
+  },
+  "stats": [
+    { "value": 35, "suffix": "+", "label": "Années d'expertise" },
+    { "value": 55, "suffix": "+", "label": "Salariés experts" },
+    { "value": 24, "prefix": "< ", "suffix": "h", "label": "Délais de production" },
+    { "value": 3, "suffix": "", "label": "Certifications officielles" }
+  ],
+  "knowhow": {
+    "title": "L'innovation technique au cœur de nos préoccupations",
+    "subtitle": "Une technique éprouvée",
+    "text": [
+      "Les équipes de recherche et développement de Blindages de France, entreprise dynamique en constante évolution, conçoivent des produits de très haute technicité. Réalisés dans notre usine d'Aulnay-sous-Bois, ces produits de nouvelle génération sont prévus pour résister à des sollicitations bien supérieures aux conditions habituelles.",
+      "Une technique éprouvée, de l'innovation et l'aboutissement d'une expérience de plus de 30 ans permettent à Blindages de France la réalisation de produits sur mesure, performants et adaptés à tous les besoins."
+    ],
+    "list": ["Cisaillage de précision sur métaux", "Poinçonnage et découpe laser", "Pliage automatisé haute performance", "Soudage robot et manuel", "Peinture époxy en cabine", "Montage et contrôle qualité final"],
+    "image": "/media/qui-sommes-nous/atelier-cisaillage.webp"
+  },
+  "values": [
+    { "icon": "hexagon", "title": "Identité", "text": "Plus de 35 ans d'expertise. Entreprise de taille humaine avec de fortes valeurs relationnelles. Siège social et fabrication en Région parisienne. Équipe de professionnels impliqués dans la fabrication." },
+    { "icon": "shield", "title": "Savoir-faire", "text": "Au service de la sécurité des biens et des personnes. Blocs-portes blindés et blindages certifiés de très haute technicité. Fabrication d'accessoires métalliques. Travail des métaux (inox, acier, alu)." },
+    { "icon": "award", "title": "Engagement", "text": "Délais de production extrêmement courts. Démarche de développement durable. Constante aspiration à la recherche de la performance. Fortes valeurs relationnelles tant à l'interne qu'à l'externe." }
+  ],
+  "organisation": {
+    "title": "Une équipe de professionnels impliqués",
+    "text": "Forte d'une équipe de professionnels impliqués dans la fabrication de produits standard et sur mesure, Blindages de France veille à son bon déroulement, ce qui lui permet de proposer des produits de qualité.",
+    "teams": [
+      { "icon": "users", "title": "Accueil & Commercial", "text": "Équipe administrative et commerciale à votre écoute" },
+      { "icon": "ruler", "title": "Bureau d'études", "text": "Équipe conceptrice et R&D" },
+      { "icon": "factory", "title": "Production", "text": "Programmation, pliage, soudure, peinture, montage" },
+      { "icon": "truck", "title": "Livraison", "text": "Équipe logistique et livraison" }
+    ]
+  },
+  "facilities": {
+    "workshops": [
+      { "image": "/media/qui-sommes-nous/atelier-1.webp", "caption": "Plateforme automatisée de production" },
+      { "image": "/media/qui-sommes-nous/atelier-2.webp", "caption": "Zone de pliage et cisaillage" },
+      { "image": "/media/qui-sommes-nous/atelier-3.webp", "caption": "Soudage et assemblage" },
+      { "image": "/media/qui-sommes-nous/atelier-4.webp", "caption": "Cabine de peinture" },
+      { "image": "/media/qui-sommes-nous/atelier-5.webp", "caption": "Zone de montage final" },
+      { "image": "/media/qui-sommes-nous/atelier-6.webp", "caption": "Contrôle qualité" }
+    ],
+    "showroom": [
+      { "image": "/media/custom-blocks/bdf-locaux-accueil.webp", "caption": "Accueil et showroom — 100 rue Blaise Pascal, Aulnay-sous-Bois" },
+      { "image": "/media/qui-sommes-nous/facade-bdf.jpg", "caption": "Siège social et usine" }
+    ]
+  },
+  "environment": {
+    "title": "Pour l'environnement",
+    "text": "Le respect de l'environnement et la démarche de développement durable sont pris très au sérieux au sein de Blindages de France, éléments essentiels à sa croissance et à sa transformation.",
+    "badge": "Matériaux 100 % recyclés et 100 % recyclables",
+    "list": [
+      "Les déchets ménagers et industriels sont triés et valorisés",
+      "L'ensemble de l'établissement est équipé d'ampoules LED basse consommation",
+      "Les documents commerciaux ne sont plus imprimés, un support numérique est proposé aux clients",
+      "Circuit court : fabrication locale réduisant l'empreinte carbone"
+    ]
+  }
+}

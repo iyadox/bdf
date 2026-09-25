@@ -1,0 +1,70 @@
+---
+import Icon from '@/components/Icon.astro';
+export interface Crumb {
+  label: string;
+  href?: string;
+}
+interface Props {
+  items: Crumb[];
+}
+const { items } = Astro.props;
+const site = Astro.site ?? new URL('https://www.blindagesdefrance.fr');
+const all: Crumb[] = [{ label: 'Accueil', href: '/' }, ...items];
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: all.map((c, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: c.label,
+    ...(c.href ? { item: new URL(c.href, site).href } : {}),
+  })),
+};
+---
+
+<nav class="crumbs" aria-label="Fil d'Ariane">
+  <ol>
+    {
+      all.map((c, i) => (
+        <li>
+          {c.href && i < all.length - 1 ? <a href={c.href}>{i === 0 ? <Icon name="home" size={14} label="Accueil" /> : c.label}</a> : <span aria-current="page">{c.label}</span>}
+          {i < all.length - 1 && <Icon name="chevron-right" size={12} class="crumbs__sep" />}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+<script type="application/ld+json" set:html={JSON.stringify(ld)} />
+
+<style>
+  .crumbs ol {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--f-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .crumbs li {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .crumbs a {
+    display: inline-flex;
+    transition: color 0.2s;
+  }
+  .crumbs a:hover {
+    color: var(--orange);
+  }
+  .crumbs [aria-current] {
+    color: var(--text-2);
+  }
+  :global(.crumbs__sep) {
+    opacity: 0.5;
+  }
+</style>

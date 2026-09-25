@@ -1,0 +1,773 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import Icon from '@/components/Icon.astro';
+import CtaBand from '@/components/ui/CtaBand.astro';
+import company from '@/data/company.json';
+const c = company;
+const labs = [
+  { img: '/media/custom-blocks/certification-labos-cnpp-trans.png', t: 'Certification A2P', d: "Nos blocs-portes blindés sont certifiés anti-effraction A2P par le CNPP, garantissant une résistance optimale aux tentatives d'intrusion.", href: '/certifications/anti-effraction' },
+  { img: '/media/custom-blocks/certification-labos-efectis-trans.png', t: 'Certification coupe-feu', d: "Certifications coupe-feu EFECTIS jusqu'à 120 minutes, protégeant vos biens et les personnes contre les incendies.", href: '/certification-porte-blindee/coupe-feu' },
+  { img: '/media/custom-blocks/certification-labos-banc-national-trans.png', t: 'Certification pare-balles', d: "Produits certifiés pare-balles par le Banc National d'Épreuves pour les sites nécessitant une protection maximale.", href: '/certification-porte-blindee/pare-balles' },
+];
+---
+
+<BaseLayout title="L'entreprise" description="Blindages de France, fabricant français de portes blindées depuis 1989 à Aulnay-sous-Bois : histoire, savoir-faire, ateliers, certifications et engagement environnemental.">
+  <header class="ehero">
+    <div class="ehero__imgs" aria-hidden="true">
+      {c.hero.images.map((im, i) => <div class="ehero__img" style={`--i:${i}`} data-parallax={0.05 + i * 0.04}><img src={im} alt="" loading={i ? 'lazy' : 'eager'} /></div>)}
+    </div>
+    <div class="ehero__shade" aria-hidden="true"></div>
+    <div class="container ehero__in">
+      <Breadcrumbs items={[{ label: "L'entreprise" }]} />
+      <p class="eyebrow" data-reveal>{c.hero.eyebrow}</p>
+      <h1 class="ehero__title display" data-split data-reveal>{c.hero.title}</h1>
+      <p class="lead" data-reveal style="--d:.3s">{c.hero.lead}</p>
+      <div class="btn-row" data-reveal style="--d:.4s">
+        <a href="#histoire" class="btn">Notre histoire <Icon name="arrow-down" /></a>
+        <a href="/nous-contacter" class="btn btn--ghost"><Icon name="map-pin" /> Visiter le showroom</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="section" id="histoire">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" data-reveal>Notre histoire</p>
+        <h2 class="h2" data-reveal style="--d:.08s">{c.history.title}</h2>
+        <p class="lead" data-reveal style="--d:.16s">{c.history.lead}</p>
+      </div>
+      <ol class="hist">
+        {
+          c.history.steps.map((s, i) => (
+            <li class="hist__step" data-reveal="tilt" style={`--d:${i * 0.12}s`}>
+              <span class="hist__year">{s.year}</span>
+              <span class="hist__dot" aria-hidden="true" />
+              <div class="hist__card panel">
+                <h3 class="h4">{s.title}</h3>
+                <p class="muted">{s.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--tight nums">
+    <div class="container">
+      <p class="eyebrow" data-reveal>Blindages de France en chiffres</p>
+      <h2 class="h2 nums__t" data-reveal style="--d:.08s">Notre expertise en quelques chiffres</h2>
+      <ul class="nums__grid">
+        {
+          c.stats.map((s, i) => (
+            <li class="nums__item" data-reveal style={`--d:${i * 0.08}s`}>
+              <strong>
+                <span data-count={s.value} data-prefix={s.prefix || ''} data-suffix={s.suffix}>
+                  {(s.prefix || '') + s.value + s.suffix}
+                </span>
+              </strong>
+              <span>{s.label}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="savoir-faire">
+    <div class="container kh">
+      <div class="kh__txt">
+        <p class="eyebrow" data-reveal>Notre savoir-faire</p>
+        <h2 class="h2" data-reveal style="--d:.08s">{c.knowhow.title}</h2>
+        <h3 class="h4 accent" data-reveal style="--d:.12s">{c.knowhow.subtitle}</h3>
+        {c.knowhow.text.map((t) => <p class="muted" data-reveal>{t}</p>)}
+        <ul class="kh__list" data-reveal>
+          {
+            c.knowhow.list.map((l, i) => (
+              <li>
+                <span class="mono">{String(i + 1).padStart(2, '0')}</span> {l}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="kh__media hud-corners" data-reveal="right">
+        <img src={c.knowhow.image} alt="Cisaillage de précision dans l'usine Blindages de France" loading="lazy" />
+        <div class="kh__scan" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="section-head center">
+        <p class="eyebrow eyebrow--center" data-reveal>Nos valeurs</p>
+        <h2 class="h2" data-reveal style="--d:.08s">Les piliers de notre <span class="grad-orange">engagement</span></h2>
+      </div>
+      <div class="vals">
+        {
+          c.values.map((v, i) => (
+            <div data-reveal="tilt" style={`--d:${i * 0.1}s`}>
+              <article class="val" data-tilt="8" data-spot>
+                <span class="val__hex">
+                  <Icon name={v.icon} size={30} />
+                </span>
+                <h3 class="h3">{v.title}</h3>
+                <p class="muted">{v.text}</p>
+              </article>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container org">
+      <div>
+        <p class="eyebrow" data-reveal>Notre organisation</p>
+        <h2 class="h2" data-reveal style="--d:.08s">{c.organisation.title}</h2>
+        <p class="lead" data-reveal style="--d:.16s">{c.organisation.text}</p>
+      </div>
+      <ul class="org__teams">
+        {
+          c.organisation.teams.map((t, i) => (
+            <li class="panel" data-reveal style={`--d:${i * 0.08}s`}>
+              <span class="icon-box icon-box--steel">
+                <Icon name={t.icon} />
+              </span>
+              <span>
+                <strong>{t.title}</strong>
+                <span class="muted">{t.text}</span>
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--tight" id="installations">
+    <div class="container">
+      <div class="fac__head">
+        <div class="section-head">
+          <p class="eyebrow" data-reveal>Nos installations</p>
+          <h2 class="h2" data-reveal style="--d:.08s">Découvrez nos ateliers <span class="grad-orange">et showroom</span></h2>
+        </div>
+        <div class="tabs" role="tablist" data-reveal>
+          <button type="button" role="tab" class="chip is-active" aria-selected="true" data-fac="ateliers">Nos ateliers</button>
+          <button type="button" role="tab" class="chip" aria-selected="false" data-fac="showroom">Notre showroom</button>
+        </div>
+      </div>
+      <div class="fac" data-fac-panel="ateliers">
+        {
+          c.facilities.workshops.map((w, i) => (
+            <figure class="fac__item" data-reveal style={`--d:${i * 0.06}s`}>
+              <button type="button" data-lightbox={w.image} data-alt={w.caption} class="fac__btn">
+                <img src={w.image} alt={w.caption} loading="lazy" />
+              </button>
+              <figcaption>
+                <span class="mono">{String(i + 1).padStart(2, '0')}</span> {w.caption}
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+      <div class="fac fac--show" data-fac-panel="showroom" hidden>
+        {
+          c.facilities.showroom.map((w) => (
+            <figure class="fac__item">
+              <button type="button" data-lightbox={w.image} data-alt={w.caption} class="fac__btn">
+                <img src={w.image} alt={w.caption} loading="lazy" />
+              </button>
+              <figcaption>{w.caption}</figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" data-reveal>Nos certifications</p>
+        <h2 class="h2" data-reveal style="--d:.08s">Expert dans le domaine <span class="grad-orange">de la sécurité</span></h2>
+        <p class="lead" data-reveal style="--d:.16s">Cette constante aspiration à la recherche de la performance a permis à Blindages de France de se positionner aujourd'hui comme experte dans le domaine de la sécurité.</p>
+      </div>
+      <div class="labs">
+        {
+          labs.map((l, i) => (
+            <a href={l.href} class="lab panel" data-reveal style={`--d:${i * 0.1}s`} data-spot>
+              <span class="lab__img">
+                <img src={l.img} alt="" loading="lazy" />
+              </span>
+              <strong class="h4">{l.t}</strong>
+              <span class="muted">{l.d}</span>
+              <span class="link-arrow">
+                En savoir plus <Icon name="arrow-right" />
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight env">
+    <div class="container env__in panel" data-reveal="scale">
+      <div class="env__txt">
+        <p class="eyebrow">Notre engagement</p>
+        <h2 class="h2">{c.environment.title}</h2>
+        <p class="muted">{c.environment.text}</p>
+        <ul>
+          {
+            c.environment.list.map((l) => (
+              <li>
+                <Icon name="check-circle" size={18} /> {l}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="env__badge">
+        <div class="env__ring" aria-hidden="true"></div>
+        <strong>100 %</strong>
+        <span>Fabrication française</span>
+        <em>{c.environment.badge}</em>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="section-head center">
+        <p class="eyebrow eyebrow--center" data-reveal>Contactez-nous</p>
+        <h2 class="h2" data-reveal style="--d:.08s">Votre projet <span class="grad-orange">démarre ici</span></h2>
+      </div>
+      <div class="two">
+        <a href="/installateurs-portes-blindees" class="two__card panel" data-reveal="left" data-spot>
+          <Icon name="home" size={30} />
+          <strong class="h3">Vous êtes un particulier</strong>
+          <span class="muted">Vous souhaitez installer l'un de nos produits ? Consultez notre annuaire pour trouver un installateur compétent proche de chez vous en quelques clics.</span>
+          <span class="btn btn--sm">Trouver un installateur <Icon name="arrow-right" /></span>
+        </a>
+        <a href="/devis-porte-blindee" class="two__card panel" data-reveal="right" data-spot>
+          <Icon name="briefcase" size={30} />
+          <strong class="h3">Vous êtes un professionnel</strong>
+          <span class="muted">Ne perdez pas de temps : un formulaire de demande de devis en ligne est mis à votre disposition, il sera directement traité par nos équipes.</span>
+          <span class="btn btn--sm btn--steel">Demander un devis <Icon name="arrow-right" /></span>
+        </a>
+      </div>
+    </div>
+  </section>
+  <CtaBand />
+</BaseLayout>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-fac]').forEach((b) =>
+    b.addEventListener('click', () => {
+      document.querySelectorAll<HTMLButtonElement>('[data-fac]').forEach((x) => {
+        const on = x === b;
+        x.classList.toggle('is-active', on);
+        x.setAttribute('aria-selected', String(on));
+      });
+      document.querySelectorAll<HTMLElement>('[data-fac-panel]').forEach((p) => (p.hidden = p.dataset.facPanel !== b.dataset.fac));
+    }),
+  );
+</script>
+
+<style>
+  .ehero {
+    position: relative;
+    min-height: min(88vh, 820px);
+    display: grid;
+    align-items: end;
+    padding: 3rem 0 calc(var(--section) * 0.6);
+    overflow: hidden;
+    isolation: isolate;
+    margin-top: -1px;
+  }
+  .ehero__imgs {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 6px;
+  }
+  .ehero__img {
+    overflow: hidden;
+    will-change: transform;
+  }
+  .ehero__img:first-child {
+    grid-row: span 2;
+  }
+  .ehero__img img {
+    width: 100%;
+    height: 118%;
+    object-fit: cover;
+    filter: saturate(0.85) brightness(0.8);
+    animation: kenburns 24s ease-in-out infinite alternate;
+    animation-delay: calc(var(--i) * -6s);
+  }
+  @keyframes kenburns {
+    to {
+      transform: scale(1.12) translate(-2%, -2%);
+    }
+  }
+  .ehero__shade {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(0deg, var(--bg) 4%, rgba(3, 7, 14, 0.65) 45%, rgba(3, 7, 14, 0.25) 100%),
+      linear-gradient(90deg, rgba(3, 7, 14, 0.85), transparent 70%);
+  }
+  .ehero__in {
+    display: grid;
+    gap: 1.2rem;
+  }
+  .ehero__title {
+    font-size: clamp(2.2rem, 1rem + 5vw, 5.4rem);
+    line-height: 1.02;
+    text-transform: uppercase;
+    max-width: 12ch;
+  }
+  .ehero__in .lead {
+    margin: 0;
+  }
+  .hist {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+    position: relative;
+    perspective: 1200px;
+  }
+  .hist::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 5.1rem;
+    height: 2px;
+    background: linear-gradient(90deg, var(--orange), rgba(46, 104, 148, 0.8), rgba(46, 104, 148, 0.1));
+  }
+  .hist__step {
+    display: grid;
+    gap: 1rem;
+    align-content: start;
+  }
+  .hist__year {
+    font-family: var(--f-display);
+    font-size: clamp(2rem, 1.4rem + 1.6vw, 3rem);
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 102, 34, 0.9);
+  }
+  .hist__dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--orange);
+    box-shadow:
+      0 0 0 6px rgba(255, 102, 34, 0.2),
+      0 0 20px var(--orange-glow);
+  }
+  .hist__card {
+    display: grid;
+    gap: 0.6rem;
+    padding: 1.3rem;
+  }
+  .hist__card p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+  .nums {
+    border-block: 1px solid var(--line);
+    background: linear-gradient(90deg, rgba(4, 61, 108, 0.2), rgba(255, 102, 34, 0.06));
+  }
+  .nums__t {
+    margin: 0.8rem 0 2rem;
+    font-size: var(--fs-xl);
+  }
+  .nums__grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .nums__item {
+    display: grid;
+    gap: 0.3rem;
+    padding-left: 1.2rem;
+    border-left: 2px solid var(--orange);
+  }
+  .nums__item strong {
+    font-family: var(--f-display);
+    font-size: clamp(2rem, 1.4rem + 2vw, 3.4rem);
+    font-weight: 400;
+    line-height: 1;
+  }
+  .nums__item > span {
+    color: var(--muted);
+  }
+  .kh {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: clamp(1.5rem, 4vw, 4rem);
+    align-items: center;
+  }
+  .kh__txt {
+    display: grid;
+    gap: 1rem;
+  }
+  .kh__txt p {
+    margin: 0;
+  }
+  .kh__list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-top: 0.6rem;
+  }
+  .kh__list li {
+    display: flex;
+    gap: 0.6rem;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: rgba(8, 20, 38, 0.55);
+    font-size: 0.9rem;
+  }
+  .kh__list .mono {
+    color: var(--orange);
+    font-size: 0.72rem;
+    padding-top: 0.15rem;
+  }
+  .kh__media {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    aspect-ratio: 5 / 4;
+    border: 1px solid var(--line-2);
+  }
+  .kh__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 80%;
+    transform: scale(1.15);
+  }
+  .kh__scan {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 30%;
+    top: -30%;
+    background: linear-gradient(180deg, transparent, rgba(255, 102, 34, 0.25), transparent);
+    animation: scan 4s var(--ease-io) infinite;
+    mix-blend-mode: screen;
+  }
+  @keyframes scan {
+    to {
+      top: 100%;
+    }
+  }
+  .vals {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    perspective: 1200px;
+  }
+  .vals > div {
+    display: grid;
+  }
+  .val {
+    position: relative;
+    display: grid;
+    gap: 0.9rem;
+    align-content: start;
+    justify-items: center;
+    text-align: center;
+    padding: 2rem 1.6rem;
+    border-radius: 20px;
+    border: 1px solid var(--line-2);
+    background: linear-gradient(170deg, rgba(20, 44, 74, 0.6), rgba(5, 13, 25, 0.85));
+    transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transition:
+      transform 0.6s var(--ease),
+      border-color 0.3s;
+    overflow: hidden;
+  }
+  :global(.val.is-tilting) {
+    transition: border-color 0.3s;
+  }
+  .val:hover {
+    border-color: rgba(255, 102, 34, 0.5);
+  }
+  .val p {
+    margin: 0;
+    font-size: 0.92rem;
+  }
+  .val__hex {
+    display: grid;
+    place-items: center;
+    width: 84px;
+    height: 94px;
+    color: #fff;
+    background: linear-gradient(160deg, var(--orange-2), var(--orange-3));
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+    box-shadow: 0 0 40px var(--orange-glow);
+  }
+  .org {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  .org .lead {
+    margin-top: 1rem;
+  }
+  .org__teams {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.9rem;
+  }
+  .org__teams li {
+    display: grid;
+    gap: 0.8rem;
+    padding: 1.3rem;
+  }
+  .org__teams li > span:last-child {
+    display: grid;
+    gap: 0.2rem;
+    font-size: 0.88rem;
+  }
+  .fac__head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: end;
+    gap: 1rem;
+  }
+  .tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  .fac {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .fac--show {
+    grid-template-columns: 1.4fr 1fr;
+  }
+  .fac__item {
+    margin: 0;
+    display: grid;
+    gap: 0.6rem;
+  }
+  .fac__btn {
+    display: block;
+    width: 100%;
+    aspect-ratio: 5 / 3.6;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    cursor: zoom-in;
+  }
+  .fac__btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 75%;
+    transform: scale(1.12);
+    transition: transform 0.8s var(--ease);
+  }
+  .fac__btn:hover img {
+    transform: scale(1.2);
+  }
+  .fac__item figcaption {
+    font-size: 0.88rem;
+    color: var(--text-2);
+  }
+  .fac__item .mono {
+    color: var(--orange);
+    font-size: 0.72rem;
+    margin-right: 0.3rem;
+  }
+  .labs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+  .lab {
+    position: relative;
+    display: grid;
+    gap: 0.8rem;
+    padding: 1.5rem;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .lab:hover {
+    border-color: rgba(255, 102, 34, 0.5);
+  }
+  .lab__img {
+    display: grid;
+    place-items: center;
+    height: 110px;
+    border-radius: 12px;
+    background: rgba(246, 249, 252, 0.95);
+  }
+  .lab__img img {
+    max-height: 84px;
+    width: auto;
+  }
+  .lab .muted {
+    font-size: 0.9rem;
+  }
+  .env__in {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    padding: clamp(1.6rem, 1rem + 3vw, 3.4rem);
+    background:
+      radial-gradient(60% 80% at 100% 50%, rgba(62, 207, 142, 0.12), transparent 70%),
+      linear-gradient(160deg, rgba(20, 44, 74, 0.6), rgba(6, 16, 30, 0.8));
+  }
+  .env__txt {
+    display: grid;
+    gap: 1rem;
+  }
+  .env__txt p {
+    margin: 0;
+  }
+  .env__txt ul {
+    list-style: none;
+    display: grid;
+    gap: 0.6rem;
+  }
+  .env__txt li {
+    display: flex;
+    gap: 0.6rem;
+    color: var(--text-2);
+  }
+  .env__txt li :global(svg) {
+    color: #3ecf8e;
+    flex: none;
+    margin-top: 2px;
+  }
+  .env__badge {
+    position: relative;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: 0.3rem;
+    aspect-ratio: 1;
+    max-width: 300px;
+    width: 100%;
+    margin-inline: auto;
+    text-align: center;
+  }
+  .env__ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px dashed rgba(62, 207, 142, 0.5);
+    animation: spin 30s linear infinite;
+  }
+  .env__ring::after {
+    content: '';
+    position: absolute;
+    inset: 12%;
+    border-radius: 50%;
+    border: 1px solid rgba(62, 207, 142, 0.3);
+    background: radial-gradient(circle, rgba(62, 207, 142, 0.14), transparent 70%);
+  }
+  .env__badge strong {
+    font-family: var(--f-display);
+    font-size: 3rem;
+    font-weight: 400;
+    color: #fff;
+  }
+  .env__badge span {
+    font-family: var(--f-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #8fe3bd;
+  }
+  .env__badge em {
+    font-style: normal;
+    font-size: 0.82rem;
+    color: var(--text-2);
+    max-width: 18ch;
+  }
+  .two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+  }
+  .two__card {
+    position: relative;
+    display: grid;
+    gap: 0.9rem;
+    justify-items: start;
+    padding: 2rem;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .two__card:hover {
+    border-color: rgba(255, 102, 34, 0.5);
+  }
+  .two__card > :global(svg) {
+    color: var(--orange);
+  }
+  @media (max-width: 1000px) {
+    .hist {
+      grid-template-columns: 1fr 1fr;
+    }
+    .hist::before {
+      display: none;
+    }
+    .nums__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 1.6rem;
+    }
+    .kh,
+    .org,
+    .env__in {
+      grid-template-columns: 1fr;
+    }
+    .vals,
+    .labs {
+      grid-template-columns: 1fr;
+    }
+    .fac {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 640px) {
+    .hist,
+    .two,
+    .org__teams,
+    .kh__list,
+    .fac,
+    .fac--show {
+      grid-template-columns: 1fr;
+    }
+    .ehero__imgs {
+      grid-template-columns: 1fr;
+    }
+    .ehero__img:not(:first-child) {
+      display: none;
+    }
+  }
+</style>

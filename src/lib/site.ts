@@ -122,3 +122,12 @@ export const fold = (s = '') =>
     .normalize('NFD')
     .replace(/[̀-ͯ]/g, '')
     .toLowerCase();
+
+/** Mini-markdown (gras + liens) pour les textes courts édités dans l'admin. */
+export function miniMd(s = '') {
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '<a href="$2">$1</a>');
+}

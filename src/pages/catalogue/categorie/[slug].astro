@@ -1,0 +1,92 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/ui/PageHero.astro';
+import CatalogBrowser from '@/components/catalog/CatalogBrowser.astro';
+import CtaBand from '@/components/ui/CtaBand.astro';
+import Icon from '@/components/Icon.astro';
+import { getProducts, getCategories, categoryUrl, type Category } from '@/lib/catalog';
+
+export async function getStaticPaths() {
+  const cats = await getCategories();
+  return cats.map((c) => ({ params: { slug: c.slug }, props: { cat: c } }));
+}
+const { cat } = Astro.props as { cat: Category };
+const [all, categories] = await Promise.all([getProducts(), getCategories()]);
+const products = all.filter((p) => p.categories.includes(cat.slug));
+const others = categories.filter((c) => c.slug !== cat.slug);
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: cat.title,
+  description: cat.description,
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: products.length,
+    itemListElement: products.slice(0, 30).map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: new URL(`/catalogue/${p.segment}/${p.slug}`, Astro.site).href, name: p.title })),
+  },
+};
+---
+
+<BaseLayout title={`${cat.title} — Catalogue`} description={`${cat.title} Blindages de France : ${cat.description} ${products.length} références fabriquées en France.`} jsonLd={ld}>
+  <PageHero title={cat.title} eyebrow={`Gamme · ${products.length} référence${products.length > 1 ? 's' : ''}`} lead={cat.description} crumbs={[{ label: 'Catalogue', href: '/catalogue' }, { label: cat.title }]}>
+    <ul class="hl" data-reveal style="--d:.24s">
+      {
+        cat.highlights.map((h) => (
+          <li>
+            <Icon name="check" size={15} /> {h}
+          </li>
+        ))
+      }
+    </ul>
+  </PageHero>
+
+  <section class="section section--tight">
+    <div class="container--wide">
+      <CatalogBrowser products={products} categories={categories} preset={cat.slug} />
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <p class="eyebrow">Autres gammes</p>
+      <div class="others">
+        {
+          others.map((c) => (
+            <a href={categoryUrl(c)} class="chip">
+              <Icon name={c.icon} size={15} /> {c.title}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <CtaBand />
+</BaseLayout>
+
+<style>
+  .hl {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.4rem;
+    color: var(--text-2);
+    font-size: 0.92rem;
+  }
+  .hl li {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .hl :global(svg) {
+    color: var(--orange);
+  }
+  .others {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+</style>
+<script>
+  import '@/scripts/pages/catalog';
+</script>
