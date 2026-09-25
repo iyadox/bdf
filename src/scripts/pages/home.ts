@@ -38,7 +38,7 @@ function initHero() {
 
   if (can3D()) {
     import('../three/hero-scene').then(({ createHero }) => {
-      api = createHero(canvas);
+      api = createHero(canvas, { skipIntro: runtime().features?.introAnimation === false });
       hero.classList.add('is-3d');
       api.intro(() => hero.classList.add('hud-on'));
       if (reducedMotion()) hero.classList.add('hud-on');

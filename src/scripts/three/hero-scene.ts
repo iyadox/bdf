@@ -15,7 +15,7 @@ const ease = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 
 const clamp01 = (t: number) => Math.min(1, Math.max(0, t));
 const seg = (p: number, a: number, b: number) => clamp01((p - a) / (b - a));
 
-export function createHero(canvas: HTMLCanvasElement): HeroApi {
+export function createHero(canvas: HTMLCanvasElement, opts: { skipIntro?: boolean } = {}): HeroApi {
   const mobile = isMobileGpu();
   const stage = createStage({ canvas, fov: 30, bloom: { strength: 0.55, radius: 0.55, threshold: 0.82 }, shadows: !mobile, exposure: 1.0 });
   const { scene, camera, renderer } = stage;
@@ -244,7 +244,7 @@ export function createHero(canvas: HTMLCanvasElement): HeroApi {
   stage.onResize(layout);
 
   const ptr = pointer();
-  const state = { progress: 0, intro: mobile ? 1 : 0 };
+  const state = { progress: 0, intro: mobile || opts.skipIntro ? 1 : 0 };
   const tmpPos = new THREE.Vector3();
   const tmpLook = new THREE.Vector3();
 

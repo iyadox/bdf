@@ -6,7 +6,7 @@
   "description": "Site vitrine 3D de Blindages de France — portes blindées certifiées, fabrication française depuis 1989.",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/redirects.mjs",
     "preview": "astro preview",
     "check": "astro check"
   },
@@ -26,5 +26,8 @@
     "@types/three": "^0.186.0",
     "opentype.js": "^2.0.0",
     "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }

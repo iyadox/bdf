@@ -82,6 +82,7 @@ const a = settings.contact.address;
       <nav aria-label="Liens légaux" class="legal">
         {LEGAL_LINKS.map((l) => <a href={l.href}>{l.label}</a>)}
         <button type="button" data-cookie-settings>Gérer les cookies</button>
+        <button type="button" data-lite-toggle title="Désactive les animations 3D pour économiser la batterie et les données">Mode allégé : <span data-lite-state>désactivé</span></button>
       </nav>
       <a href="#top" class="totop" aria-label="Revenir en haut" data-to-top><Icon name="arrow-up" size={18} /></a>
     </div>

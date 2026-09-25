@@ -19,6 +19,9 @@ interface Props {
   hideFooter?: boolean;
 }
 const { bodyClass = '', hideFooter = false, ...seo } = Astro.props;
+// interrupteurs des réglages (src/data/settings.json → features)
+const f = settings.features;
+const htmlClass = ['no-js', f.enable3D === false && 'lite no-3d', f.showConfigurator === false && 'no-cfg', f.showCompare === false && 'no-compare'].filter(Boolean).join(' ');
 const runtime = {
   hours: settings.hours.days,
   analytics: settings.analytics,
@@ -28,7 +31,7 @@ const runtime = {
 ---
 
 <!doctype html>
-<html lang="fr" class="no-js">
+<html lang="fr" class={htmlClass}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -40,7 +43,7 @@ const runtime = {
         d.classList.remove('no-js');
         d.classList.add('js');
         try {
-          if (localStorage.getItem('bdf-lite') === '1') d.classList.add('lite');
+          if (localStorage.getItem('bdf-lite') === '1' || d.classList.contains('no-3d')) d.classList.add('lite');
         } catch (e) {}
         if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('reduced');
       })();
@@ -73,6 +76,12 @@ const runtime = {
 </html>
 
 <style is:global>
+  html.no-cfg a[href^='/configurateur'],
+  html.no-compare .cmp,
+  html.no-compare a[href='/comparateur'],
+  html.no-compare [data-cmpbar] {
+    display: none !important;
+  }
   .toasts {
     position: fixed;
     left: 50%;
