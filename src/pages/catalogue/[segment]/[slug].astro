@@ -679,6 +679,7 @@ const ld = {
 
   .pinfo {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1.3rem;
     align-content: start;
   }
@@ -1358,7 +1359,7 @@ const ld = {
   }
   @media (max-width: 1000px) {
     .phead__grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
     .viewer {
       position: relative;
@@ -1367,13 +1368,26 @@ const ld = {
     .comp,
     .finish,
     .cert__grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
   }
   @media (max-width: 560px) {
     .specs,
     .pcta {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .pdf,
+    .cfgpromo {
+      flex-wrap: wrap;
+    }
+    .pdf__txt {
+      flex: 1 1 60%;
+    }
+    .pdf__btns {
+      flex: 1 1 100%;
+    }
+    .cfgpromo > span:nth-child(2) {
+      flex: 1 1 60%;
     }
   }
   @media print {

@@ -366,7 +366,7 @@ const groups = [
     gap: 1.1rem;
   }
   .cb__grid.is-list {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .cb__empty {
     display: grid;
@@ -384,7 +384,7 @@ const groups = [
 
   @media (max-width: 1000px) {
     .cb {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
     .cb__open {
       display: inline-flex;

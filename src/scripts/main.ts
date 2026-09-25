@@ -21,6 +21,32 @@ initConsent();
 initPalette();
 initForms();
 
+// Grands titres : sur petit écran, réduit la taille si un mot très long dépasse
+const fitHeadings = () => {
+  const small = window.innerWidth <= 760;
+  document.querySelectorAll<HTMLElement>('h1, h2, .h1, .h2').forEach((h) => {
+    if (h.dataset.fit) h.style.fontSize = '';
+    if (!small || !h.offsetWidth) return;
+    let fs = parseFloat(getComputedStyle(h).fontSize);
+    const min = fs * 0.62;
+    let n = 0;
+    const vw = document.documentElement.clientWidth;
+    const over = () => h.scrollWidth > h.clientWidth + 1 || h.getBoundingClientRect().right > vw;
+    while (over() && fs > min && n++ < 16) {
+      fs *= 0.94;
+      h.style.fontSize = `${fs}px`;
+      h.dataset.fit = '1';
+    }
+  });
+};
+fitHeadings();
+document.fonts?.ready.then(fitHeadings);
+let fitT: number | undefined;
+window.addEventListener('resize', () => {
+  clearTimeout(fitT);
+  fitT = window.setTimeout(fitHeadings, 200);
+});
+
 // Mode allégé (sans 3D) : mémorisé sur l'appareil du visiteur
 document.querySelectorAll<HTMLButtonElement>('[data-lite-toggle]').forEach((b) => {
   const on = document.documentElement.classList.contains('lite');

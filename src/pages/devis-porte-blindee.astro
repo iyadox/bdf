@@ -493,7 +493,7 @@ const certifs = ['A2P BP1', 'A2P BP2', 'A2P BP3', 'Coupe-feu', 'Pare-balles', 'Ã
   }
   @media (max-width: 1000px) {
     .qgrid {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
     .qside {
       position: static;
@@ -508,7 +508,7 @@ const certifs = ['A2P BP1', 'A2P BP2', 'A2P BP3', 'Coupe-feu', 'Pare-balles', 'Ã
       justify-content: space-between;
     }
     .recap {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
     .recap :global(dt) {
       border-bottom: 0;

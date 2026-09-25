@@ -421,6 +421,7 @@ const labs = [
     align-items: center;
   }
   .kh__txt {
+    grid-template-columns: minmax(0, 1fr);
     display: grid;
     gap: 1rem;
   }
@@ -644,6 +645,7 @@ const labs = [
   }
   .env__txt {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1rem;
   }
   .env__txt p {
@@ -744,11 +746,11 @@ const labs = [
     .kh,
     .org,
     .env__in {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
     .vals,
     .labs {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
     .fac {
       grid-template-columns: 1fr 1fr;
@@ -761,10 +763,10 @@ const labs = [
     .kh__list,
     .fac,
     .fac--show {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
     .ehero__imgs {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
     .ehero__img:not(:first-child) {
       display: none;
