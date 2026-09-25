@@ -1,0 +1,52 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/ui/PageHero.astro';
+import CatalogBrowser from '@/components/catalog/CatalogBrowser.astro';
+import CtaBand from '@/components/ui/CtaBand.astro';
+import Icon from '@/components/Icon.astro';
+import { getProducts, getCategories, categoryUrl } from '@/lib/catalog';
+const [products, categories] = await Promise.all([getProducts(), getCategories()]);
+const counts = Object.fromEntries(categories.map((c) => [c.slug, products.filter((p) => p.categories.includes(c.slug)).length]));
+---
+
+<BaseLayout
+  title="Catalogue blocs-portes blindés"
+  description="Catalogue Blindages de France : blocs-portes certifiés A2P, coupe-feu et pare-balles, portes d'appartement, portes de cave, blindages de portes, grilles, tôlerie et travaux spéciaux. Fabrication française sur mesure."
+>
+  <PageHero
+    title="Catalogue"
+    accent="produits"
+    eyebrow={`${products.length} références · fabrication française`}
+    lead="Blocs-portes blindés, blindages de portes, grilles, tôlerie et travaux spéciaux : filtrez par gamme, nombre de vantaux, certification ou type de fermeture."
+    crumbs={[{ label: 'Catalogue' }]}
+  >
+    <div class="quickcats" data-reveal style="--d:.24s">
+      {
+        categories.map((c) => (
+          <a href={categoryUrl(c)} class="chip">
+            <Icon name={c.icon} size={15} /> {c.title} <span class="count">{counts[c.slug]}</span>
+          </a>
+        ))
+      }
+    </div>
+  </PageHero>
+
+  <section class="section section--tight">
+    <div class="container--wide">
+      <CatalogBrowser products={products} categories={categories} />
+    </div>
+  </section>
+  <CtaBand title="Une porte sur mesure ?" text="Toutes nos portes sont fabriquées sur mesure dans notre usine d'Aulnay-sous-Bois. Configurez-la en 3D ou demandez un devis." />
+</BaseLayout>
+
+<style>
+  .quickcats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.6rem;
+  }
+</style>
+<script>
+  import '@/scripts/pages/catalog';
+</script>

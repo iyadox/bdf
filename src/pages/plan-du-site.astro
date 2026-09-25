@@ -1,0 +1,79 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/ui/PageHero.astro';
+import { getCollection } from 'astro:content';
+import { getProducts, getCategories, productUrl, categoryUrl } from '@/lib/catalog';
+import { NAV, LEGAL_LINKS } from '@/lib/site';
+const [products, categories, news] = await Promise.all([getProducts(), getCategories(), getCollection('news', (n) => n.data.published !== false)]);
+const main = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Catalogue', href: '/catalogue' },
+  { label: 'Configurateur 3D', href: '/configurateur' },
+  { label: 'Comparateur', href: '/comparateur' },
+  ...NAV.flatMap((n) => (n.children ? n.children : n.mega ? [] : [n])),
+  { label: 'Demande de devis', href: '/devis-porte-blindee' },
+  { label: 'Questions fréquentes', href: '/faq' },
+  { label: 'Ma sélection', href: '/selection' },
+  ...LEGAL_LINKS,
+];
+---
+
+<BaseLayout title="Plan du site" description="Plan du site Blindages de France : toutes les pages, gammes et fiches produits.">
+  <PageHero title="Plan" accent="du site" crumbs={[{ label: 'Plan du site' }]} compact />
+  <section class="section section--tight">
+    <div class="container map">
+      <div>
+        <h2 class="h4">Pages</h2>
+        <ul>{main.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+        <h2 class="h4">Actualités</h2>
+        <ul>{news.map((n) => <li><a href={`/news-focus/${n.id}`}>{n.data.title}</a></li>)}</ul>
+      </div>
+      {
+        categories.map((c) => (
+          <div>
+            <h2 class="h4">
+              <a href={categoryUrl(c)}>{c.title}</a>
+            </h2>
+            <ul>
+              {products
+                .filter((p) => p.segment === c.segment)
+                .map((p) => (
+                  <li>
+                    <a href={productUrl(p)}>{p.title}</a>
+                  </li>
+                ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .map {
+    columns: 3 280px;
+    column-gap: 2.5rem;
+  }
+  .map > div {
+    break-inside: avoid;
+    margin-bottom: 2rem;
+  }
+  .map h2 {
+    margin: 0 0 0.8rem;
+    color: var(--orange);
+  }
+  .map ul {
+    list-style: none;
+    display: grid;
+    gap: 0.35rem;
+    margin-bottom: 1.6rem;
+  }
+  .map li a {
+    color: var(--text-2);
+    font-size: 0.92rem;
+  }
+  .map li a:hover {
+    color: #fff;
+  }
+</style>

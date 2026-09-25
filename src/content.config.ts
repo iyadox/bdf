@@ -179,4 +179,13 @@ const news = defineCollection({
   }),
 });
 
-export const collections = { products, categories, installers, news };
+const pages = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/pages' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    updated: z.coerce.date().optional(),
+  }),
+});
+
+export const collections = { products, categories, installers, news, pages };

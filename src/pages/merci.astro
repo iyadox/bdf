@@ -1,0 +1,101 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Icon from '@/components/Icon.astro';
+import { settings, telHref } from '@/lib/site';
+---
+
+<BaseLayout title="Merci, votre demande est envoyée" noindex>
+  <section class="ty">
+    <div class="ty__check" aria-hidden="true">
+      <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52"></circle><path d="M38 62 l15 15 l30 -34"></path></svg>
+    </div>
+    <p class="eyebrow eyebrow--center">Demande reçue</p>
+    <h1 class="h1">Merci <span class="grad-orange">!</span></h1>
+    <p class="lead" data-ty-msg>Votre demande a bien été transmise à nos équipes. Nous vous recontactons dans les meilleurs délais.</p>
+    <div class="ty__next panel">
+      <p class="mono">Et maintenant ?</p>
+      <ul>
+        <li><Icon name="check" /> Un conseiller étudie votre demande</li>
+        <li><Icon name="phone" /> Pour toute urgence : <a href={telHref()}>{settings.contact.phone}</a></li>
+        <li><Icon name="map-pin" /> Particulier ? <a href="/installateurs-portes-blindees">Trouvez un installateur</a></li>
+      </ul>
+    </div>
+    <div class="btn-row">
+      <a href="/" class="btn"><Icon name="home" /> Accueil</a>
+      <a href="/catalogue" class="btn btn--ghost">Continuer la visite</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .ty {
+    display: grid;
+    justify-items: center;
+    gap: 1.2rem;
+    text-align: center;
+    width: min(100% - 2 * var(--gutter), 760px);
+    margin-inline: auto;
+    padding-block: 5rem;
+  }
+  .ty .lead {
+    margin: 0;
+  }
+  .ty__check {
+    width: 120px;
+  }
+  .ty__check circle {
+    fill: rgba(62, 207, 142, 0.08);
+    stroke: #3ecf8e;
+    stroke-width: 4;
+    stroke-dasharray: 330;
+    stroke-dashoffset: 330;
+    animation: draw 1s var(--ease) forwards;
+  }
+  .ty__check path {
+    fill: none;
+    stroke: #3ecf8e;
+    stroke-width: 7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 90;
+    stroke-dashoffset: 90;
+    animation: draw 0.6s var(--ease) 0.7s forwards;
+  }
+  @keyframes draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  .ty__next {
+    display: grid;
+    gap: 0.8rem;
+    padding: 1.4rem 1.6rem;
+    text-align: left;
+    width: 100%;
+  }
+  .ty__next .mono {
+    margin: 0;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+  .ty__next ul {
+    list-style: none;
+    display: grid;
+    gap: 0.6rem;
+  }
+  .ty__next li {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    color: var(--text-2);
+  }
+  .ty__next :global(svg) {
+    color: var(--orange);
+  }
+  .ty__next a {
+    color: var(--orange-2);
+    text-decoration: underline;
+  }
+</style>
