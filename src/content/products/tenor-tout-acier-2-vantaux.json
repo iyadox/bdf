@@ -1,0 +1,228 @@
+{
+  "title": "TENOR tout acier 2 Vantaux",
+  "slug": "tenor-tout-acier-2-vantaux",
+  "segment": "blocs-portes-certifies",
+  "categories": [
+    "blocs-portes-certifies-59",
+    "blocs-portes-dappartement-65"
+  ],
+  "family": "TENOR tout acier",
+  "order": 2,
+  "featured": false,
+  "image": "/media/fiches-produits/tenor-tout-acier-bp1-bp3-2v.png",
+  "badges": [
+    "A2P BP1",
+    "A2P BP3"
+  ],
+  "seo": {
+    "title": "[Porte blindée Tenor tout acier 2 vantaux certifiée anti-effraction A2P BP1 BP3",
+    "description": "La porte blindée BDF Tenor tout acier 2V, garantie 10 ans, proposée avec plusieurs serrures de haute sécurité A2P en applique, est certifiée anti-effraction A2P BP1 BP3 par le CNPP"
+  },
+  "specs": {
+    "vantaux": "2 vantaux",
+    "dimensions": "Notre tarif pour la porte blindée TENOR TOUT ACIER BP1 BP3 2 vantaux s’applique pour les dimensions maximum 1000 x 2300 (mm).",
+    "fermeture": "Serrures multi-points en applique",
+    "certification": "A2P BP1 + A2P BP3"
+  },
+  "filters": {
+    "vantaux": [
+      "2 vantaux"
+    ],
+    "certifications": [
+      "A2P BP1",
+      "A2P BP3"
+    ],
+    "fermetures": [
+      "Serrures multi-points en applique"
+    ]
+  },
+  "composition": "<p><strong>Certifiée CNPP Porte Anti-effraction A2P BP1-BP3</strong></p><p>La porte blindée TENOR TOUT ACIER BP1 BP3 2 vantaux est composée par de:</p><ul><li>2 faces en acier de 20/10ème électrozinguée</li><li>5 omégas raidisseurs par vantail</li><li>4 paumelles soudées de 140 mm à bille par vantail</li><li>4 renforts de paumelles soudés par vantail</li><li>laine de roche</li><li>une barre de seuil avec joint</li><li>un cadre anti-pince soudé 4 côtés</li><li>un entrebâilleur intégré (sauf modèle Ermetis)</li></ul>",
+  "downloads": [
+    {
+      "label": "tenor-tout-acier-bp-2v.pdf",
+      "file": "/media/fichiers/tenor-tout-acier-bp-2v.pdf"
+    }
+  ],
+  "quoteLabel": "TENOR tout acier 2 Vantaux",
+  "locks": {
+    "intro": "La porte blindée TENOR TOUT ACIER BP1 BP3 2 vantaux est proposée avec au choix plusieurs serrures de haute sécurité en applique:",
+    "table": [
+      {
+        "brand": "Vachette",
+        "model": "Exclusive",
+        "certification": "A2P*",
+        "level": "BP1"
+      },
+      {
+        "brand": "Vachette",
+        "model": "Exclusive",
+        "certification": "A2P***",
+        "level": "BP3"
+      },
+      {
+        "brand": "Picard",
+        "model": "Ermetis",
+        "certification": "A2P*",
+        "level": "BP1"
+      },
+      {
+        "brand": "Picard",
+        "model": "Serenis 710",
+        "certification": "A2P***",
+        "level": "BP3"
+      }
+    ],
+    "extras": [
+      {
+        "title": "Inclus avec la serrure",
+        "icon": "key",
+        "html": "<p>Le bloc-porte RESONANCE TENOR TOUT ACIER BP1 BP3 2 vantaux est prepercé en usine pour recevoir les serrures proposées.</p><p>Ces serrures sont fournies avec un cylindre de haute sécurité, 3 ou 4 clés à reproduction protégée et une carte de propriété pour la reproduction de clés.</p>"
+      },
+      {
+        "title": "Options fermeture",
+        "icon": "circle-plus",
+        "html": "<p>En option vous avez la possibilité d’ajouter des points de fermeture haut et bas.</p><p>En option l’ensemble extérieur est proposé en:</p><ul><li>béquille intérieure et extérieure</li><li>béquille intérieure et poignée de tirage extérieure.</li></ul>"
+      }
+    ]
+  },
+  "frame": {
+    "intro": "L’huisserie de la porte blindée TENOR TOUT ACIER BP1 BP3 2 vantaux est composée de tôle multi-plis en 20/10ème électrozinguée. Selon la configuration de votre installation, vous avez le choix entre les huisseries suivantes:",
+    "cards": [
+      {
+        "icon": "rotate",
+        "title": "Rénovation",
+        "description": "Remplacement sans gros travaux. Installation rapide sur bâti existant."
+      },
+      {
+        "icon": "hammer",
+        "title": "Tubulaire",
+        "description": "Constructions neuves et sur mesure. Intégration parfaite en neuf."
+      }
+    ]
+  },
+  "options": {
+    "html": "<p>Nous vous proposons également d’ajouter à votre porte blindée TENOR TOUT ACIER BP1 BP3 2 vantaux un jeu de 3 moulures par vantail. </p>",
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Options huisserie",
+        "icon": "ruler-combined",
+        "items": [
+          {
+            "label": "Pattes à scellement",
+            "picto": "/media/pictos-options/3-pattes-scellement.jpg"
+          },
+          {
+            "label": "Perçage et fraisage",
+            "picto": "/media/pictos-options/2-percage-fraisage.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet-slash",
+        "title": "Époxy bi-couleur",
+        "description": "2 couleurs différentes intérieur/extérieur, 180 RAL."
+      },
+      {
+        "icon": "droplet",
+        "title": "Époxy mono couleur",
+        "description": "180 couleurs RAL au choix."
+      },
+      {
+        "icon": "brush",
+        "title": "Grenaillage polyzing",
+        "description": "Finition texturée résistante."
+      },
+      {
+        "icon": "tree",
+        "title": "Ton bois",
+        "description": "6 décors aspect bois naturel."
+      }
+    ]
+  },
+  "certification": {
+    "badges": [
+      {
+        "type": "a2p",
+        "label": "A2P BP1-BP3"
+      }
+    ],
+    "labs": "Certifié par CNPP",
+    "logos": [
+      {
+        "image": "/media/editeur/a2p-2.jpg",
+        "caption": "A2P BP1",
+        "alt": "Logo A2P BP1"
+      },
+      {
+        "image": "/media/editeur/a2p-2.jpg",
+        "caption": "A2P BP3",
+        "alt": "Logo A2P BP3"
+      },
+      {
+        "image": "/media/editeur/a2p-bp1-bp3.jpg",
+        "caption": "CertiDoor A2P BP1-BP3",
+        "alt": "CertiDoor Anti-effraction A2P BP1-BP3"
+      }
+    ],
+    "description": "<p>La TENOR TOUT ACIER BP1 BP3 est un bloc porte blindé 2 vantaux avec un niveau de certification contre l’effraction BP1-BP3 en fonction de la serrure choisie certifié par le CNPP .</p>",
+    "video": "91cXq-mJ33M",
+    "videoTitle": "Vidéo de test en laboratoire",
+    "links": [
+      "Découvrez les portes anti-effraction de la marque Blindages de France et regardez la vidéo du test anti-effraction CNPP."
+    ]
+  },
+  "usages": {
+    "intro": "La porte blindée TENOR TOUT ACIER BP1 BP3 2 vantaux est destinée aux espaces susceptibles d’être vandalisés tels que:",
+    "items": [
+      {
+        "icon": "building",
+        "title": "Appartements"
+      },
+      {
+        "icon": "box-archive",
+        "title": "Archives sensibles"
+      },
+      {
+        "icon": "building-columns",
+        "title": "Banques"
+      },
+      {
+        "icon": "briefcase",
+        "title": "Cabinets"
+      },
+      {
+        "icon": "envelope",
+        "title": "Centres postaux"
+      },
+      {
+        "icon": "people-roof",
+        "title": "Espaces publics"
+      }
+    ]
+  }
+}

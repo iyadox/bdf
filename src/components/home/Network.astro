@@ -1,0 +1,227 @@
+---
+import Icon from '@/components/Icon.astro';
+import { getInstallers } from '@/lib/catalog';
+import { settings } from '@/lib/site';
+const inst = await getInstallers();
+const pts = inst.filter((i) => i.lat != null && i.lng != null).map((i) => [+(i.lat as number).toFixed(3), +(i.lng as number).toFixed(3)]);
+const hq = [settings.contact.geo.lat, settings.contact.geo.lng];
+const depts = new Set(inst.map((i) => i.postalCode.slice(0, 2)).filter(Boolean)).size;
+---
+
+<section class="section network" data-network aria-labelledby="network-title">
+  <div class="container--wide network__grid">
+    <div class="network__txt">
+      <p class="eyebrow" data-reveal>Réseau national</p>
+      <h2 id="network-title" class="h2" data-reveal style="--d:.1s">Trouvez votre installateur <span class="grad-orange">certifié</span></h2>
+      <p class="lead" data-reveal style="--d:.2s">Accédez à notre réseau d'installateurs agréés partout en France. Expertise technique et garantie fabricant.</p>
+
+      <form class="finder panel" action="/installateurs-portes-blindees" method="get" data-reveal style="--d:.3s" role="search">
+        <label class="sr-only" for="finder-q">Code postal ou ville</label>
+        <Icon name="map-pin" size={20} class="finder__ic" />
+        <input id="finder-q" class="finder__in" name="q" type="text" inputmode="search" placeholder="Code postal ou ville (ex. 75009, Lyon…)" autocomplete="postal-code" />
+        <button class="btn" type="submit">Localiser un pro</button>
+      </form>
+      <a href="/installateurs-portes-blindees?near=1" class="link-arrow near" data-reveal style="--d:.35s"><Icon name="locate" /> Utiliser ma position</a>
+
+      <ul class="network__kpis" data-reveal style="--d:.4s">
+        <li><strong data-count={inst.length}>{inst.length}</strong><span>installateurs agréés</span></li>
+        <li><strong data-count={depts}>{depts}</strong><span>départements couverts</span></li>
+        <li><strong>1</strong><span>usine en Île-de-France</span></li>
+      </ul>
+
+      <a href="/rejoindre-le-reseau-dinstallateurs-bdf" class="joincard panel" data-reveal style="--d:.5s" data-spot>
+        <img src="/media/2026-01/pictos-annuaire-pros.png" alt="" width="72" height="72" loading="lazy" />
+        <span>
+          <span class="mono joincard__k">Réseau partenaire</span>
+          <strong>Devenez installateur agréé BDF</strong>
+          <span class="muted">Rejoignez notre réseau de professionnels. Support technique et accès aux produits de haute sécurité.</span>
+        </span>
+        <Icon name="arrow-up-right" size={22} class="joincard__go" />
+      </a>
+    </div>
+    <div class="network__stage">
+      <canvas class="network__canvas" data-network-canvas role="img" aria-label="Carte 3D du réseau d'installateurs BDF en France"></canvas>
+      <img class="network__fallback" src="/media/2026-01/pictos-installateurs-particuliers.png" alt="" data-network-fallback hidden />
+      <div class="network__legend mono" aria-hidden="true">
+        <span><i class="lg lg--o"></i> Installateur agréé</span>
+        <span><i class="lg lg--b"></i> Siège & usine BDF</span>
+      </div>
+    </div>
+  </div>
+  <script type="application/json" data-network-data set:html={JSON.stringify({ pts, hq })} />
+</section>
+
+<style>
+  .network__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: clamp(1.5rem, 4vw, 4rem);
+    align-items: center;
+  }
+  .network__txt {
+    display: grid;
+    gap: 1.2rem;
+    justify-items: start;
+  }
+  .network__txt .lead {
+    margin: 0;
+  }
+  .finder {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    width: 100%;
+    max-width: 560px;
+    padding: 0.45rem 0.45rem 0.45rem 1rem;
+    border-radius: 14px;
+  }
+  :global(.finder__ic) {
+    color: var(--orange);
+  }
+  .finder__in {
+    flex: 1;
+    min-width: 0;
+    background: none;
+    border: 0;
+    outline: none;
+    font-size: 1rem;
+    color: var(--text);
+    height: 48px;
+  }
+  .finder__in::placeholder {
+    color: var(--dim);
+  }
+  .finder:focus-within {
+    border-color: rgba(255, 102, 34, 0.7);
+    box-shadow: 0 0 0 4px rgba(255, 102, 34, 0.12);
+  }
+  .network__kpis {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 2.4rem;
+    margin: 0.6rem 0;
+  }
+  .network__kpis li {
+    display: grid;
+  }
+  .network__kpis strong {
+    font-family: var(--f-display);
+    font-size: 1.8rem;
+    color: #fff;
+  }
+  .network__kpis span {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  .joincard {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    padding: 1.1rem 3.4rem 1.1rem 1.1rem;
+    max-width: 560px;
+    transition: border-color 0.3s;
+  }
+  .joincard:hover {
+    border-color: rgba(255, 102, 34, 0.55);
+  }
+  .joincard img {
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    background: #fff;
+    padding: 6px;
+    flex: none;
+  }
+  .joincard > span {
+    display: grid;
+    gap: 0.2rem;
+    font-size: 0.86rem;
+  }
+  .joincard strong {
+    font-size: 1rem;
+  }
+  .joincard__k {
+    font-size: 0.64rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+  :global(.joincard__go) {
+    position: absolute;
+    right: 1.1rem;
+    top: 1.1rem;
+    color: var(--orange);
+    transition: transform 0.3s var(--ease);
+  }
+  .joincard:hover :global(.joincard__go) {
+    transform: translate(3px, -3px);
+  }
+  .network__stage {
+    position: relative;
+    aspect-ratio: 1 / 0.9;
+    border-radius: 24px;
+    overflow: hidden;
+    background: radial-gradient(70% 60% at 50% 50%, rgba(4, 61, 108, 0.35), transparent 70%);
+  }
+  .network__canvas {
+    width: 100%;
+    height: 100%;
+  }
+  .network__fallback {
+    position: absolute;
+    inset: 15%;
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+    filter: invert(1) hue-rotate(180deg) brightness(1.2);
+    opacity: 0.6;
+  }
+  .network__legend {
+    position: absolute;
+    left: 1.2rem;
+    bottom: 1rem;
+    display: flex;
+    gap: 1.2rem;
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .network__legend span {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+  .lg {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+  .lg--o {
+    background: var(--orange);
+    box-shadow: 0 0 10px var(--orange);
+  }
+  .lg--b {
+    background: #5aa3e0;
+    box-shadow: 0 0 10px #5aa3e0;
+  }
+  @media (max-width: 960px) {
+    .network__grid {
+      grid-template-columns: 1fr;
+    }
+    .network__stage {
+      order: -1;
+    }
+  }
+  @media (max-width: 520px) {
+    .finder {
+      flex-wrap: wrap;
+      padding: 0.7rem;
+    }
+    .finder .btn {
+      width: 100%;
+    }
+  }
+</style>

@@ -1,0 +1,82 @@
+{
+  "title": "Barres de seuil",
+  "slug": "barres-de-seuil",
+  "segment": "tolerie-pliage-et-profils",
+  "categories": [
+    "tolerie-pliage-et-profils-71"
+  ],
+  "family": "Barres de seuil",
+  "order": 62,
+  "featured": false,
+  "image": "/media/fiches-produits/barres-de-seuil-1.webp",
+  "seo": {
+    "title": "Barres de seuil",
+    "description": ""
+  },
+  "filters": {
+    "vantaux": [],
+    "certifications": [],
+    "fermetures": []
+  },
+  "composition": "<p>La barre de seuil est une pièce en renfort sur la porte qui permet également d'éviter les déperditions de chaleur. Les avantages d'une barre de seuil sont l'isolation et la sécurité.</p><p>Pour améliorer sa sécurité contre l’intrusion au pied de biche, il est également recommandé d'installer des cornières anti-pince.</p><p>Nos barres de seuil sont constituées en tôle électro-zinguée 20/10e.</p>",
+  "downloads": [
+    {
+      "label": "barres-de-seuil.pdf",
+      "file": "/media/fichiers/barres-de-seuil-0.pdf"
+    }
+  ],
+  "quoteLabel": "Barres de seuil",
+  "options": {
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Options huisserie",
+        "icon": "ruler-combined",
+        "items": [
+          {
+            "label": "Encoche",
+            "picto": "/media/pictos-options/24-encoche.jpg"
+          },
+          {
+            "label": "Joint",
+            "picto": "/media/pictos-options/25-joint.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet",
+        "title": "Époxy mono couleur",
+        "description": "180 couleurs RAL au choix."
+      },
+      {
+        "icon": "tree",
+        "title": "Ton bois",
+        "description": "6 décors aspect bois naturel."
+      }
+    ]
+  }
+}

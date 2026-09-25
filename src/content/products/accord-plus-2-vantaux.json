@@ -1,0 +1,213 @@
+{
+  "title": "ACCORD PLUS 2 vantaux",
+  "slug": "accord-plus-2-vantaux",
+  "segment": "blindages-de-porte",
+  "categories": [
+    "blindages-de-porte-67"
+  ],
+  "family": "ACCORD PLUS",
+  "order": 53,
+  "featured": false,
+  "image": "/media/fiches-produits/accord-plus-2v-0.png",
+  "badges": [
+    "Sans certification"
+  ],
+  "seo": {
+    "title": "Notre blindage de porte Accord Plus 2 vantaux en acier électrozingué",
+    "description": "Vous souhaitez renforcer votre porte en bois? Notre Blindage de porte Accord Plus 2 vantaux est spécialement conçu pour conserver votre porte d’origine en la rendant blindée et anti-effraction"
+  },
+  "specs": {
+    "vantaux": "2 vantaux",
+    "dimensions": "Notre tarif pour le blindage de porte ACCORD PLUS 2 vantaux  s’applique pour les dimensions maximum 2000 x 2300 (mm).\nFabricant de blocs portes sur mesure, pour toutes autres dimensions nous vous proposerons une solution personnalisée, n’hésitez pas à nous contacter.",
+    "fermeture": "Serrures multi-points en applique",
+    "certification": "Sans certification"
+  },
+  "filters": {
+    "vantaux": [
+      "2 vantaux"
+    ],
+    "certifications": [
+      "Sans certification"
+    ],
+    "fermetures": [
+      "Serrures multi-points en applique"
+    ]
+  },
+  "composition": "<p>Le blindage de porte ACCORD PLUS 2 vantaux est composé de:</p><ul><li>1 face en acier 20/10ème électrozinguée (25/10ème en option)</li><li>4 paumelles soudées de 140 mm à billes par vantail</li><li>un cadre anti-pince soudé 4 côtés</li><li>une barre de seuil avec joint</li></ul><p><br/>Le blindage de porte ACCORD PLUS 2 vantaux permet de récupérer votre porte en bois d’origine.</p>",
+  "downloads": [
+    {
+      "label": "accord-plus-2v.pdf",
+      "file": "/media/fichiers/accord-plus-2v.pdf"
+    }
+  ],
+  "quoteLabel": "ACCORD PLUS 2 vantaux",
+  "locks": {
+    "intro": "Le blindage de porte ACCORD PLUS 2 vantaux est proposé avec plusieurs configurations de serrures en applique:",
+    "table": [
+      {
+        "brand": "Sans serrure (option)"
+      },
+      {
+        "brand": "Vachette",
+        "model": "Exclusive",
+        "certification": "A2P*",
+        "level": "Standard"
+      },
+      {
+        "brand": "Vachette",
+        "model": "Exclusive",
+        "certification": "A2P***",
+        "level": "Maximum"
+      },
+      {
+        "brand": "Picard",
+        "model": "Ermetis",
+        "points": "4/6 pts",
+        "certification": "A2P*",
+        "level": "Standard"
+      },
+      {
+        "brand": "Picard",
+        "model": "Serenis 710",
+        "points": "5/7 pts",
+        "certification": "A2P***",
+        "level": "Maximum"
+      }
+    ],
+    "extras": [
+      {
+        "title": "Inclus avec la serrure",
+        "icon": "key",
+        "html": "<p>Pour les serrures 5/7 points Picard Serenis 710 A2P*** et Vachette Exclusive A2P* et A2P*** un entrebâilleur est intégré.</p>"
+      },
+      {
+        "title": "Options fermeture",
+        "icon": "circle-plus",
+        "html": "<p>En option vous avez la possibilité d’ajouter des points de fermeture haut et bas (de série pour la serrure Mottura).</p><p>En option l’ensemble extérieur est proposé en (de série pour la serrure Mottura):</p><ul><li>béquille intérieure et extérieure</li><li>béquille intérieure et poignée de tirage extérieure.</li></ul>"
+      }
+    ]
+  },
+  "frame": {
+    "intro": "L’huisserie du blindage de porte ACCORD PLUS 2 vantaux est composée de tôle multi-plis en 20/10ème électrozinguée.\n\nSelon la configuration de votre installation vous avez le choix entre les huisseries suivantes:",
+    "cards": [
+      {
+        "icon": "rotate",
+        "title": "Rénovation",
+        "description": "Remplacement sans gros travaux. Installation rapide sur bâti existant."
+      },
+      {
+        "icon": "hammer",
+        "title": "Tubulaire",
+        "description": "Constructions neuves et sur mesure. Intégration parfaite en neuf."
+      }
+    ]
+  },
+  "options": {
+    "intro": "Avec l’huisserie choisie vous avez la possibilité d’intégrer en option:",
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Options huisserie",
+        "icon": "ruler-combined",
+        "items": [
+          {
+            "label": "Pattes à scellement",
+            "picto": "/media/pictos-options/3-pattes-scellement.jpg"
+          },
+          {
+            "label": "Perçage et fraisage",
+            "picto": "/media/pictos-options/2-percage-fraisage.jpg"
+          },
+          {
+            "label": "Renforts de paumelles",
+            "picto": "/media/pictos-options/1-renforts-paumelles.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Équipements complémentaires",
+        "icon": "circle-plus",
+        "items": [
+          {
+            "label": "Anti-pince",
+            "picto": "/media/pictos-options/19-anti-pince.jpg"
+          },
+          {
+            "label": "Judas optique",
+            "picto": "/media/pictos-options/6-judas-optique.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet",
+        "title": "Époxy mono couleur",
+        "description": "180 couleurs RAL au choix."
+      },
+      {
+        "icon": "brush",
+        "title": "Grenaillage polyzing",
+        "description": "Finition texturée résistante."
+      }
+    ]
+  },
+  "closing": {
+    "intro": "Deux types de fermeture du vantail semi-fixe vous sont proposés:",
+    "cards": [
+      {
+        "icon": "door-closed",
+        "title": "Gâche répétition",
+        "description": "Vantail semi-fixe libre"
+      },
+      {
+        "icon": "xmark",
+        "title": "Sans fermeture",
+        "description": "Vantail semi-fixe libre"
+      }
+    ]
+  },
+  "usages": {
+    "intro": "Le blindage de porte ACCORD PLUS 2 vantaux est destiné à fermer les locaux où la porte existante doit être conservée comme par exemple:",
+    "items": [
+      {
+        "icon": "building",
+        "title": "Appartements"
+      },
+      {
+        "icon": "briefcase",
+        "title": "Cabinets"
+      },
+      {
+        "icon": "people-roof",
+        "title": "Espaces publics"
+      },
+      {
+        "icon": "house",
+        "title": "Maisons individuelles"
+      }
+    ]
+  }
+}

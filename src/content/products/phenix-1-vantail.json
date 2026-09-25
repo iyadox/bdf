@@ -1,0 +1,235 @@
+{
+  "title": "PHENIX 1 Vantail",
+  "slug": "phenix-1-vantail",
+  "segment": "blocs-portes-certifies",
+  "categories": [
+    "blocs-portes-certifies-59",
+    "blocs-portes-techniques-61"
+  ],
+  "family": "PHENIX",
+  "order": 81,
+  "featured": false,
+  "image": "/media/fiches-produits/phenix-1v.png",
+  "badges": [
+    "Coupe-feu 60 min"
+  ],
+  "seo": {
+    "title": "Porte blindée Phenix 1 vantail certifiée coupe feu 60 min Ei2-60-E60",
+    "description": "La porte blindée BDF Phenix, garantie 10 ans, proposée avec plusieurs anti-paniques encastrés est certifiée coupe feu 60 min Ei2-60-E60 par le laboratoire Efectis selon la norme EN1634-1 et EN13501-2"
+  },
+  "specs": {
+    "vantaux": "1 vantail",
+    "dimensions": "Notre tarif pour la porte blindée PHENIX 1 vantail s’applique pour les dimensions suivantes:\nLargeur comprise entre 530 et 1219 mm\nHauteur comprise entre 1620 et 2484 mm",
+    "fermeture": "Anti-panique encastrée",
+    "certification": "Coupe-feu 60 min"
+  },
+  "filters": {
+    "vantaux": [
+      "1 vantail"
+    ],
+    "certifications": [
+      "Coupe-feu 60 min"
+    ],
+    "fermetures": [
+      "Anti-panique encastrée"
+    ]
+  },
+  "composition": "<p><strong>Certifiée EFECTIS Porte Coupe feu 60 MINUTES</strong></p><p>La porte blindée PHENIX 1 vantail est composée de:</p><ul><li>deux faces en acier de 15/10ème électrozinguée</li><li>5 omégas raidisseurs</li><li>4 paumelles soudées de 140 mm à billes</li><li>joints intumescents qui s’expandent en cas d’incendie</li><li>un cadre de rénovation soudé 4 côtés</li><li>une barre de seuil en fer plat</li></ul>",
+  "downloads": [
+    {
+      "label": "phenix-1v.pdf",
+      "file": "/media/fichiers/phenix-1v.pdf"
+    }
+  ],
+  "quoteLabel": "PHENIX 1 Vantail",
+  "locks": {
+    "intro": "La porte blindée PHENIX 1 vantail est proposée avec plusieurs anti-paniques encastrés:",
+    "table": [
+      {
+        "brand": "Anti-panique",
+        "points": "1 pts"
+      },
+      {
+        "brand": "Anti-panique",
+        "points": "1 pts"
+      }
+    ],
+    "extras": [
+      {
+        "title": "Options fermeture",
+        "icon": "circle-plus",
+        "html": "<p>L’ensemble module extérieur est proposé en plusieurs versions:</p><ul><li>Sans rien à l’extérieur</li><li>Module P31 bouton fixe et cylindre</li><li>Module P32 béquille et cylindre</li></ul>"
+      }
+    ]
+  },
+  "frame": {
+    "intro": "L’huisserie avec joint de la porte blindée PHENIX 1 vantail est composée de tôle multi-plis en 20/10ème électrozinguée.\n\nSelon la configuration de votre installation vous avez le choix entre les huisseries suivantes:",
+    "cards": [
+      {
+        "icon": "rotate",
+        "title": "Rénovation",
+        "description": "Remplacement sans gros travaux. Installation rapide sur bâti existant."
+      },
+      {
+        "icon": "hammer",
+        "title": "Tubulaire 50 x 50",
+        "description": "Profil tubulaire 50 x 50 mm. Résistance accrue."
+      }
+    ]
+  },
+  "options": {
+    "intro": "Avec l’huisserie choisie vous avez la possibilité d’intégrer en option:",
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Options huisserie",
+        "icon": "ruler-combined",
+        "items": [
+          {
+            "label": "Barre de seuil avec joint",
+            "picto": "/media/pictos-options/13-barre-seuil-joint.jpg"
+          },
+          {
+            "label": "Pattes à scellement",
+            "picto": "/media/pictos-options/3-pattes-scellement.jpg"
+          },
+          {
+            "label": "Perçage et fraisage",
+            "picto": "/media/pictos-options/2-percage-fraisage.jpg"
+          },
+          {
+            "label": "Plinthe escamotable",
+            "picto": "/media/pictos-options/20-plinthe-escamotable.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Équipements complémentaires",
+        "icon": "circle-plus",
+        "items": [
+          {
+            "label": "Ferme porte",
+            "picto": "/media/pictos-options/5-ferme-porte.jpg"
+          },
+          {
+            "label": "Judas optique",
+            "picto": "/media/pictos-options/6-judas-optique.jpg"
+          },
+          {
+            "label": "Moulures",
+            "picto": "/media/pictos-options/8-moulures.jpg"
+          },
+          {
+            "label": "Ventouses contrôle d'accès",
+            "picto": "/media/pictos-options/21-ventouses-acces.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet-slash",
+        "title": "Époxy bi-couleur",
+        "description": "2 couleurs différentes intérieur/extérieur, 180 RAL."
+      },
+      {
+        "icon": "brush",
+        "title": "Grenaillage polyzing",
+        "description": "Finition texturée résistante."
+      },
+      {
+        "icon": "tree",
+        "title": "Ton bois",
+        "description": "6 décors aspect bois naturel."
+      }
+    ]
+  },
+  "certification": {
+    "badges": [
+      {
+        "type": "feu",
+        "label": "Coupe-feu Ei2-60-E60"
+      },
+      {
+        "type": "perf",
+        "label": "Performances"
+      }
+    ],
+    "labs": "Certifié par Efectis",
+    "logos": [
+      {
+        "image": "/media/editeur/certidoor-efectis-60.jpg",
+        "caption": "CertiDoor Efectis Ei2-60-E60",
+        "alt": "CertiDoor Certifié Efectis EI2 60 E60"
+      },
+      {
+        "image": "/media/editeur/porte-certifiee-resistance-feu-60.jpg",
+        "caption": "Résistance au feu 60 min",
+        "alt": "Résistance au feu 60 minutes"
+      },
+      {
+        "image": "/media/editeur/sens-feu.jpg",
+        "caption": "Sens du feu indifférent",
+        "alt": "Sens du feu indifférent"
+      },
+      {
+        "image": "/media/editeur/performances.jpg",
+        "caption": "Performances Ud=2,8 / 39 dB",
+        "alt": "Isolation thermique Ud=2,8 W/(m2.K), phonique 39 dB"
+      }
+    ],
+    "description": "<p>La PHENIX est un bloc porte blindé 1 vantail avec un niveau de certification coupe feu 60 min avec les performances suivantes : classement coupe-feu Ei2-60-E60 certifié par le laboratoire Efectis.</p><p>Performance de résistance au feu selon la norme EN1634-1 et classé suivant EN13501-2.</p><p>La porte blindée PHENIX 1 vantail a été testée pour ses performances en terme d'isolation phonique et thermique.</p>",
+    "video": "84tSU8-mMf4",
+    "videoTitle": "Vidéo de test en laboratoire",
+    "links": [
+      "Découvrez les portes résistant au feu de la marque Blindages de France et regardez la vidéo de l'essai de résistance au feu EFECTIS."
+    ]
+  },
+  "usages": {
+    "intro": "La porte blindée PHENIX 1 vantail est destinée à protéger tous les locaux soumis à la réglementation coupe feu pare flamme comme par exemple:",
+    "items": [
+      {
+        "icon": "fire-burner",
+        "title": "Chaufferies"
+      },
+      {
+        "icon": "shield-halved",
+        "title": "Hôpitaux"
+      },
+      {
+        "icon": "industry",
+        "title": "Locaux industriels"
+      },
+      {
+        "icon": "square-parking",
+        "title": "Parkings / Sous-sols"
+      },
+      {
+        "icon": "cart-shopping",
+        "title": "Supermarchés"
+      }
+    ]
+  }
+}

@@ -1,0 +1,280 @@
+{
+  "title": "SIGNATURE BP1 1 Vantail",
+  "slug": "signature-bp1-1-vantail",
+  "segment": "blocs-portes-certifies",
+  "categories": [
+    "blocs-portes-certifies-59",
+    "blocs-portes-dappartement-65",
+    "blocs-portes-techniques-61"
+  ],
+  "family": "SIGNATURE BP1",
+  "order": 78,
+  "featured": true,
+  "image": "/media/fiches-produits/signature-1v.png",
+  "situationImage": "/media/custom-blocks/signature-situation.jpg",
+  "teaser": "Certifiée EFECTIS Porte Coupe feu 60 MINUTES. La porte blindée SIGNATURE 1 vantail est certifiée anti-effraction A2P BP1 par le CNPP et coupe-feu 60 min avec les performances suivantes : classement coupe-feu Ei2-60-E60 certifié par le laboratoire Efectis.",
+  "badges": [
+    "A2P BP1",
+    "Coupe-feu 60 min"
+  ],
+  "seo": {
+    "title": "Porte blindée Signature 1 vantail certifiée anti-effraction A2P BP1, coupe feu Ei2-60-E60",
+    "description": "La porte blindée BDF, Signature, garantie 10 ans, proposée avec plusieurs serrures encastrées est certifiée anti-effraction A2P BP1 par le CNPP et coupe feu 60 min Ei2-60-E60 par le laboratoire Efectis"
+  },
+  "summary": "<p><strong>Certifiée EFECTIS Porte Coupe feu 60 MINUTES</strong> - La porte blindée SIGNATURE 1 vantail est certifiée anti-effraction A2P BP1 par le CNPP et coupe feu 60 min avec les performances suivantes : classement coupe-feu Ei2-60-E60 certifié par le laboratoire Efectis.</p>",
+  "specs": {
+    "vantaux": "1 vantail",
+    "dimensions": "L: 530-1219 mm\nH: 1620-2484 mm",
+    "fermeture": "Serrure encastrée multipoints",
+    "certification": "A2P BP1 + Coupe-feu 60 min"
+  },
+  "filters": {
+    "vantaux": [
+      "1 vantail"
+    ],
+    "certifications": [
+      "A2P BP1",
+      "Coupe-feu 60 min"
+    ],
+    "fermetures": [
+      "Serrure encastrée multipoints"
+    ]
+  },
+  "composition": "<p><strong>Certifiée EFECTIS Porte Coupe feu 60 MINUTES</strong></p><p>La porte blindée SIGNATURE 1 vantail est composée de:</p><ul><li>2 faces en acier de 15/10ème électrozinguée</li><li>5 omégas raidisseurs</li><li>4 paumelles soudées de 140 mm à billes</li><li>4 renforts de paumelle soudés</li><li>joints intumescents qui s’expandent en cas d’incendie</li><li>un cadre de rénovation soudé 4 côtés</li><li>une barre de seuil en fer plat</li></ul>",
+  "downloads": [
+    {
+      "label": "signature-1v.pdf",
+      "file": "/media/fichiers/signature-1v.pdf"
+    }
+  ],
+  "quoteLabel": "SIGNATURE BP1 1 Vantail",
+  "locks": {
+    "intro": "La porte blindée SIGNATURE 1 vantail est proposée avec plusieurs serrures encastrées:",
+    "table": [
+      {
+        "brand": "AM Locks",
+        "points": "3 pts",
+        "certification": "A2P*",
+        "level": "Standard"
+      },
+      {
+        "brand": "Vachette",
+        "points": "3 pts",
+        "certification": "A2P*",
+        "level": "Standard"
+      },
+      {
+        "brand": "Vachette",
+        "points": "3 pts",
+        "certification": "A2P**",
+        "level": "Renforcé"
+      },
+      {
+        "brand": "Vachette",
+        "points": "3 pts",
+        "certification": "A2P***",
+        "level": "Maximum"
+      },
+      {
+        "brand": "Vachette",
+        "points": "5 pts",
+        "certification": "A2P***",
+        "level": "Maximum"
+      }
+    ],
+    "extras": [
+      {
+        "title": "Inclus avec la serrure",
+        "icon": "key",
+        "html": "<p>Ces serrures sont fournies avec un cylindre de haute sécurité, 4 clés à reproduction protégée et une carte de propriété pour la reproduction de clés.</p>"
+      },
+      {
+        "title": "Options fermeture",
+        "icon": "circle-plus",
+        "html": "<p>En série l’ensemble extérieur est proposé:</p><ul><li>en béquille intérieure et extérieure</li><li>en béquille intérieure et poignée de tirage extérieure.</li></ul>"
+      }
+    ]
+  },
+  "frame": {
+    "intro": "L’huisserie avec joint de la porte blindée SIGNATURE 1 vantail est composée de tôle multiplis en 20/10ᵉ électro zinguée. Selon la configuration de votre installation, vous avez le choix entre les huisseries suivantes:",
+    "cards": [
+      {
+        "title": "Huisserie de rénovation",
+        "description": "Remplacer une porte existante sans gros travaux. Solution idéale pour les appartements et maisons déjà construites. Installation rapide sans démolition du bâti existant."
+      },
+      {
+        "title": "Huisserie tubulaire",
+        "description": "Constructions neuves et installations sur mesure. Intégration parfaite dans les projets neufs. Structure renforcée pour une durabilité exceptionnelle."
+      }
+    ]
+  },
+  "options": {
+    "intro": "Avec l’huisserie choisie vous avez la possibilité d’intégrer en option:",
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Options huisserie",
+        "icon": "ruler-combined",
+        "items": [
+          {
+            "label": "Barre de seuil avec joint",
+            "picto": "/media/pictos-options/13-barre-seuil-joint.jpg"
+          },
+          {
+            "label": "Pattes à scellement",
+            "picto": "/media/pictos-options/3-pattes-scellement.jpg"
+          },
+          {
+            "label": "Perçage et fraisage",
+            "picto": "/media/pictos-options/2-percage-fraisage.jpg"
+          },
+          {
+            "label": "Plinthe escamotable",
+            "picto": "/media/pictos-options/20-plinthe-escamotable.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Équipements complémentaires",
+        "icon": "circle-plus",
+        "items": [
+          {
+            "label": "Ferme porte",
+            "picto": "/media/pictos-options/5-ferme-porte.jpg"
+          },
+          {
+            "label": "Judas optique",
+            "picto": "/media/pictos-options/6-judas-optique.jpg"
+          },
+          {
+            "label": "Moulures",
+            "picto": "/media/pictos-options/8-moulures.jpg"
+          },
+          {
+            "label": "Ventouses contrôle d'accès",
+            "picto": "/media/pictos-options/21-ventouses-acces.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet-slash",
+        "title": "Époxy bi-couleur",
+        "description": "2 couleurs différentes intérieur/extérieur, 180 RAL."
+      },
+      {
+        "icon": "brush",
+        "title": "Grenaillage polyzing",
+        "description": "Finition texturée résistante."
+      },
+      {
+        "icon": "tree",
+        "title": "Ton bois",
+        "description": "6 décors aspect bois naturel."
+      }
+    ]
+  },
+  "certification": {
+    "badges": [
+      {
+        "type": "a2p",
+        "label": "A2P BP1"
+      },
+      {
+        "type": "feu",
+        "label": "Coupe-feu Ei2-60-E60"
+      },
+      {
+        "type": "perf",
+        "label": "Performances"
+      }
+    ],
+    "labs": "Certifié par CNPP et Efectis",
+    "logos": [
+      {
+        "image": "/media/editeur/certidoor-efectis-60.jpg",
+        "caption": "CertiDoor Efectis Ei2-60-E60",
+        "alt": "CertiDoor Certifié Efectis EI2 60 E60"
+      },
+      {
+        "image": "/media/editeur/porte-certifiee-resistance-feu-60.jpg",
+        "caption": "Résistance au feu 60 min",
+        "alt": "Résistance au feu 60 minutes"
+      },
+      {
+        "image": "/media/editeur/sens-feu.jpg",
+        "caption": "Sens du feu indifférent",
+        "alt": "Sens du feu indifférent"
+      },
+      {
+        "image": "/media/editeur/a2p-2.jpg",
+        "caption": "A2P BP1",
+        "alt": "Logo A2P BP1"
+      },
+      {
+        "image": "/media/editeur/performances.jpg",
+        "caption": "Performances Ud=2,8 / 39 dB",
+        "alt": "Isolation thermique Ud=2,8 W/(m2.K), phonique 39 dB"
+      }
+    ],
+    "description": "<p>La SIGNATURE est un bloc porte blindé 1 vantail avec un niveau de certification contre l’effraction BP1 certifié par le CNPP et un niveau de certification coupe feu 60 min avec les performances suivantes : classement coupe-feu Ei2-60-E60 certifié par le laboratoire Efectis.</p><p>Performance de résistance au feu selon la norme EN1634-1 et classé suivant EN13501-2.</p><p>La porte blindée SIGNATURE 1 vantail a été testée pour ses performances en terme d'isolation phonique et thermique.</p>",
+    "video": "84tSU8-mMf4",
+    "videoTitle": "Vidéo de test en laboratoire",
+    "links": [
+      "Découvrez les portes anti-effraction de la marque Blindages de France et regardez la vidéo du test anti-effraction CNPP.",
+      "Découvrez les portes résistant au feu de la marque Blindages de France et regardez la vidéo de l'essai de résistance au feu EFECTIS."
+    ]
+  },
+  "usages": {
+    "intro": "La porte blindée SIGNATURE 1 vantail est destinée à protéger tous les locaux soumis à la réglementation coupe feu pare flamme comme par exemple:",
+    "items": [
+      {
+        "icon": "fire-burner",
+        "title": "Chaufferies"
+      },
+      {
+        "icon": "shield-halved",
+        "title": "Hôpitaux"
+      },
+      {
+        "icon": "house",
+        "title": "Locaux d'habitation"
+      },
+      {
+        "icon": "industry",
+        "title": "Locaux industriels"
+      },
+      {
+        "icon": "square-parking",
+        "title": "Parkings / Sous-sols"
+      },
+      {
+        "icon": "cart-shopping",
+        "title": "Supermarchés"
+      }
+    ]
+  }
+}

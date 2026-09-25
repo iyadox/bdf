@@ -1,0 +1,96 @@
+---
+import Icon from '@/components/Icon.astro';
+import { settings, telHref } from '@/lib/site';
+interface Props {
+  title?: string;
+  text?: string;
+}
+const { title = 'Un projet ? Parlons-en.', text = 'Particuliers, professionnels, collectivités : recevez un devis sur mesure ou trouvez l’installateur agréé le plus proche.' } = Astro.props;
+---
+
+<section class="cta section--tight">
+  <div class="container">
+    <div class="cta__box" data-reveal="scale">
+      <div class="cta__grid" aria-hidden="true"></div>
+      <div class="cta__glow" aria-hidden="true"></div>
+      <div class="cta__txt">
+        <p class="eyebrow">Merci pour votre confiance</p>
+        <h2 class="h2">{title}</h2>
+        <p class="lead">{text}</p>
+      </div>
+      <div class="cta__actions">
+        <a href="/devis-porte-blindee" class="btn btn--lg" data-magnetic="0.2"><Icon name="file-text" /> Demander un devis</a>
+        <a href="/installateurs-portes-blindees" class="btn btn--lg btn--ghost"><Icon name="map-pin" /> Trouver un installateur</a>
+        <a href={telHref()} class="cta__tel mono"><Icon name="phone" size={16} /> {settings.contact.phone}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta {
+    padding-block: calc(var(--section) * 0.6);
+  }
+  .cta__box {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    padding: clamp(2rem, 1.2rem + 3vw, 4rem);
+    border-radius: 26px;
+    overflow: hidden;
+    isolation: isolate;
+    border: 1px solid rgba(255, 102, 34, 0.35);
+    background: linear-gradient(135deg, #0e2f52 0%, #07182c 55%, #1a0d08 100%);
+  }
+  .cta__grid {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: linear-gradient(90deg, transparent, #000 60%);
+  }
+  .cta__glow {
+    position: absolute;
+    right: -10%;
+    top: -60%;
+    width: 60%;
+    height: 220%;
+    z-index: -1;
+    background: radial-gradient(closest-side, rgba(255, 102, 34, 0.35), transparent);
+    animation: float 8s ease-in-out infinite;
+  }
+  .cta__txt {
+    display: grid;
+    gap: 1rem;
+  }
+  .cta__txt .lead {
+    margin: 0;
+  }
+  .cta__actions {
+    display: grid;
+    gap: 0.8rem;
+    justify-items: stretch;
+  }
+  .cta__tel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding-top: 0.4rem;
+    font-size: 1.05rem;
+    color: #fff;
+  }
+  .cta__tel:hover {
+    color: var(--orange);
+  }
+  @media (max-width: 860px) {
+    .cta__box {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

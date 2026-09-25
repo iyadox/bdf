@@ -1,0 +1,66 @@
+{
+  "title": "Gardes-Corps",
+  "slug": "gardes-corps",
+  "segment": "grilles-et-accessoires",
+  "categories": [
+    "grilles-et-accessoires-73"
+  ],
+  "family": "Gardes-Corps",
+  "order": 68,
+  "featured": false,
+  "image": "/media/fiches-produits/garde-corps-trappes.png",
+  "seo": {
+    "title": "Gardes-Corps",
+    "description": ""
+  },
+  "filters": {
+    "vantaux": [],
+    "certifications": [],
+    "fermetures": []
+  },
+  "composition": "<p>Pour sécuriser vos espaces, un balcon, une piscine ou un escalier, en pose en intérieur ou extérieur pour tous supports, Blindages de France conçoit et fabrique sur mesure dans son usine en France des gardes-corps en acier.</p>",
+  "downloads": [
+    {
+      "label": "gardes-corps-trappes.pdf",
+      "file": "/media/fichiers/gardes-corps-trappes-0.pdf"
+    }
+  ],
+  "quoteLabel": "Gardes-Corps ",
+  "options": {
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet",
+        "title": "Époxy mono couleur",
+        "description": "180 couleurs RAL au choix."
+      }
+    ]
+  },
+  "characteristics": {
+    "html": "<p>Nos gardes-corps possèdent:</p><ul><li>un cadre extérieur de 40 mm x 27 mm</li><li>des éléments intérieurs en tube de 20 mm x 20 mm</li><li>ou totalement sur mesure, section à votre choix.</li></ul><p>Nos gardes-corps sont fixés à plat au sol par une platine.</p><p><img alt=\"\" loading=\"lazy\" src=\"/media/editeur/platine-de-fixation-sol.jpg\"/></p>"
+  }
+}

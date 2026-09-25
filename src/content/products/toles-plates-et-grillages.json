@@ -1,0 +1,50 @@
+{
+  "title": "Tôles plates et grillages",
+  "slug": "toles-plates-et-grillages",
+  "segment": "tolerie-pliage-et-profils",
+  "categories": [
+    "tolerie-pliage-et-profils-71"
+  ],
+  "family": "Tôles plates et grillages",
+  "order": 65,
+  "featured": false,
+  "image": "/media/fiches-produits/toles-electozinguees.jpg",
+  "seo": {
+    "title": "Tôles plates et grillages",
+    "description": ""
+  },
+  "filters": {
+    "vantaux": [],
+    "certifications": [],
+    "fermetures": []
+  },
+  "downloads": [
+    {
+      "label": "toles-plates-grillages.pdf",
+      "file": "/media/fichiers/toles-plates-grillages-0.pdf"
+    }
+  ],
+  "quoteLabel": "Tôles plates et grillages",
+  "options": {
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      }
+    ]
+  }
+}

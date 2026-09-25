@@ -1,0 +1,38 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/home/Hero.astro';
+import Profiles from '@/components/home/Profiles.astro';
+import Ranges from '@/components/home/Ranges.astro';
+import Anatomy from '@/components/home/Anatomy.astro';
+import Certifs from '@/components/home/Certifs.astro';
+import Stats from '@/components/home/Stats.astro';
+import Featured from '@/components/home/Featured.astro';
+import Advantages from '@/components/home/Advantages.astro';
+import Network from '@/components/home/Network.astro';
+import Videos from '@/components/home/Videos.astro';
+import LatestNews from '@/components/home/LatestNews.astro';
+import CtaBand from '@/components/ui/CtaBand.astro';
+---
+
+<BaseLayout
+  title="Blocs-portes métalliques, blindages, tôleries, grilles et accessoires | Blindages de France"
+  description="Fabricant français de portes blindées certifiées A2P, coupe-feu et pare-balles depuis 1989. Blocs-portes, blindages de portes, grilles, tôlerie et travaux spéciaux sur mesure. Plus de 500 installateurs agréés."
+  bodyClass="page-home"
+>
+  <Hero />
+  <Profiles />
+  <Ranges />
+  <Anatomy />
+  <Certifs />
+  <Stats />
+  <Featured />
+  <Advantages />
+  <Network />
+  <Videos />
+  <LatestNews />
+  <CtaBand />
+</BaseLayout>
+
+<script>
+  import '@/scripts/pages/home';
+</script>

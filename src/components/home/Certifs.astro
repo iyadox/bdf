@@ -1,0 +1,282 @@
+---
+import Icon from '@/components/Icon.astro';
+const certs = [
+  {
+    lab: 'CNPP',
+    logo: '/media/custom-blocks/certification-labos-cnpp-trans.png',
+    name: 'Anti-effraction A2P',
+    icon: 'shield',
+    color: 'var(--orange)',
+    text: "La certification A2P garantit la résistance de nos portes blindées aux tentatives d'effraction. Délivrée par le CNPP, elle classe les portes selon 3 niveaux de sécurité.",
+    levels: [
+      { k: 'BP1', v: '5 min', d: 'Tentative opportuniste', w: 33 },
+      { k: 'BP2', v: '10 min', d: 'Tentative élaborée', w: 66 },
+      { k: 'BP3', v: '15 min', d: 'Tentative avec outils', w: 100 },
+    ],
+    href: '/certifications/anti-effraction',
+    products: '/catalogue?certification=A2P+BP1&certification=A2P+BP2&certification=A2P+BP3',
+  },
+  {
+    lab: 'EFECTIS',
+    logo: '/media/custom-blocks/certification-labos-efectis-trans.png',
+    name: 'Coupe-feu',
+    icon: 'flame',
+    color: 'var(--fire)',
+    text: 'La certification coupe-feu EFECTIS garantit la résistance au feu de nos portes, protégeant vos biens et les personnes contre la propagation des incendies.',
+    levels: [
+      { k: 'EI 30', v: '30 min', d: 'Locaux techniques', w: 25 },
+      { k: 'EI 60', v: '60 min', d: 'ERP / IGH', w: 50 },
+      { k: 'EI 90', v: '90 min', d: 'Bâtiments sensibles', w: 75 },
+      { k: 'EI 120', v: '120 min', d: 'Sites critiques', w: 100 },
+    ],
+    href: '/certification-porte-blindee/coupe-feu',
+    products: '/catalogue?certification=Coupe-feu+30+min&certification=Coupe-feu+60+min',
+  },
+  {
+    lab: "Banc National d'Épreuves",
+    logo: '/media/custom-blocks/certification-labos-banc-national-trans.png',
+    name: 'Pare-balles',
+    icon: 'crosshair',
+    color: '#c9d4df',
+    text: "La certification pare-balles du Banc National d'Épreuves garantit une protection maximale pour les sites sensibles nécessitant une sécurité renforcée.",
+    levels: [
+      { k: 'FB4', v: '.357 Magnum', d: 'Armes de poing courantes', w: 25 },
+      { k: 'FB5', v: '.44 Magnum', d: 'Armes de poing puissantes', w: 50 },
+      { k: 'FB6', v: '12/70 Slug', d: 'Fusils de chasse', w: 75 },
+      { k: 'FB7', v: '7.62×39', d: 'Armes de guerre', w: 100 },
+    ],
+    href: '/certification-porte-blindee/pare-balles',
+    products: '/catalogue/blocs-portes-certifies/electre-plus-1-vantail',
+  },
+];
+---
+
+<section class="section certifs" aria-labelledby="certifs-title">
+  <div class="certifs__bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="section-head center">
+      <p class="eyebrow eyebrow--center" data-reveal>Nos garanties de qualité</p>
+      <h2 id="certifs-title" class="h2" data-reveal style="--d:.1s">Savoir-faire <span class="grad-orange">certifié</span></h2>
+      <p class="lead" data-reveal style="--d:.2s">Des portes blindées testées et certifiées par les laboratoires officiels français. Tests rigoureux reconnus par les assurances et normes françaises.</p>
+    </div>
+    <div class="certifs__grid">
+      {
+        certs.map((c, i) => (
+          <div data-reveal="tilt" style={`--d:${i * 0.12}s`}>
+            <article class="ccard" style={`--c:${c.color}`} data-tilt="7" data-spot>
+              <div class="ccard__holo" aria-hidden="true" />
+              <div class="ccard__logo">
+                <img src={c.logo} alt={c.lab} loading="lazy" width="200" height="140" />
+              </div>
+              <div class="ccard__title">
+                <span class="ccard__ic">
+                  <Icon name={c.icon} size={22} />
+                </span>
+                <div>
+                  <p class="mono ccard__lab">{c.lab}</p>
+                  <h3 class="h3">{c.name}</h3>
+                </div>
+              </div>
+              <p class="ccard__txt">{c.text}</p>
+              <ul class="ccard__levels">
+                {c.levels.map((l) => (
+                  <li>
+                    <span class="lv__k mono">{l.k}</span>
+                    <span class="lv__bar">
+                      <i style={`--w:${l.w}%`} />
+                    </span>
+                    <span class="lv__v mono">{l.v}</span>
+                    <span class="lv__d">{l.d}</span>
+                  </li>
+                ))}
+              </ul>
+              <div class="ccard__links">
+                <a href={c.href} class="link-arrow">
+                  <Icon name="play-circle" /> Voir les tests en vidéo
+                </a>
+                <a href={c.products} class="link-arrow">
+                  Nos produits certifiés <Icon name="arrow-right" />
+                </a>
+              </div>
+            </article>
+          </div>
+        ))
+      }
+    </div>
+    <p class="certifs__note" data-reveal>
+      <Icon name="badge-check" /> 3 certifications officielles · Des tests en conditions réelles · Une garantie de performance
+      <a href="/certification-porte-blindee" class="link-arrow">Comparer les certifications <Icon name="arrow-right" /></a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .certifs {
+    position: relative;
+    overflow: hidden;
+  }
+  .certifs__bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(50% 40% at 50% 0%, rgba(46, 104, 148, 0.25), transparent 70%),
+      repeating-linear-gradient(120deg, transparent 0 60px, rgba(148, 178, 212, 0.025) 60px 61px);
+  }
+  .certifs__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+    gap: 1.5rem;
+    perspective: 1400px;
+  }
+  .certifs__grid > div {
+    display: grid;
+  }
+  .ccard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    padding: 1.8rem;
+    border-radius: 18px;
+    border: 1px solid var(--line-2);
+    background: linear-gradient(165deg, rgba(20, 44, 74, 0.7), rgba(5, 13, 25, 0.85));
+    overflow: hidden;
+    transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transition:
+      transform 0.6s var(--ease),
+      border-color 0.4s,
+      box-shadow 0.4s;
+  }
+  :global(.ccard.is-tilting) {
+    transition:
+      border-color 0.4s,
+      box-shadow 0.4s;
+  }
+  .ccard:hover {
+    border-color: color-mix(in srgb, var(--c) 60%, transparent);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+  }
+  .ccard__holo {
+    position: absolute;
+    inset: -40%;
+    background: conic-gradient(from 0deg at var(--gx, 50%) var(--gy, 50%), transparent 0 20%, rgba(255, 102, 34, 0.1) 25%, rgba(46, 104, 148, 0.16) 35%, transparent 45% 70%, rgba(255, 255, 255, 0.06) 80%, transparent 90%);
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
+  .ccard:hover .ccard__holo {
+    opacity: 1;
+  }
+  .ccard__logo {
+    display: grid;
+    place-items: center;
+    height: 118px;
+    border-radius: 12px;
+    background: rgba(246, 249, 252, 0.95);
+    padding: 1rem;
+  }
+  .ccard__logo img {
+    max-height: 90px;
+    width: auto;
+  }
+  .ccard__title {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+  }
+  .ccard__ic {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    color: var(--c);
+    border: 1px solid color-mix(in srgb, var(--c) 50%, transparent);
+    background: color-mix(in srgb, var(--c) 12%, transparent);
+    clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+    flex: none;
+  }
+  .ccard__lab {
+    margin: 0;
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .ccard__txt {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--text-2);
+  }
+  .ccard__levels {
+    list-style: none;
+    display: grid;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-radius: 12px;
+    background: rgba(3, 8, 16, 0.5);
+    border: 1px solid var(--line);
+  }
+  .ccard__levels li {
+    display: grid;
+    grid-template-columns: 58px 1fr auto;
+    align-items: center;
+    gap: 0.2rem 0.8rem;
+  }
+  .lv__k {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  .lv__bar {
+    position: relative;
+    height: 6px;
+    border-radius: 6px;
+    background: rgba(148, 178, 212, 0.12);
+    overflow: hidden;
+  }
+  .lv__bar i {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: var(--w);
+    background: linear-gradient(90deg, color-mix(in srgb, var(--c) 40%, transparent), var(--c));
+    box-shadow: 0 0 12px var(--c);
+    border-radius: 6px;
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+    transition: transform 1.4s var(--ease) 0.3s;
+  }
+  :global(.is-in) .lv__bar i {
+    transform: none;
+  }
+  .lv__v {
+    font-size: 0.72rem;
+    color: var(--text-2);
+  }
+  .lv__d {
+    grid-column: 2 / -1;
+    font-size: 0.74rem;
+    color: var(--muted);
+  }
+  .ccard__links {
+    display: grid;
+    gap: 0.6rem;
+    margin-top: auto;
+    padding-top: 0.4rem;
+  }
+  .certifs__note {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem 1.4rem;
+    margin: 2.5rem 0 0;
+    font-size: 0.9rem;
+    color: var(--muted);
+    text-align: center;
+  }
+  .certifs__note > :global(svg) {
+    color: var(--orange);
+  }
+</style>

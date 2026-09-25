@@ -1,0 +1,166 @@
+---
+import Icon from '@/components/Icon.astro';
+import { settings, telHref } from '@/lib/site';
+---
+
+<nav class="dock" aria-label="Actions rapides" data-dock>
+  <a href={telHref()} class="dock__item" data-dock-call>
+    <Icon name="phone" size={20} />
+    <span class="dock__label">Appeler</span>
+    <span class="dock__tip">{settings.contact.phone}</span>
+  </a>
+  <a href="/devis-porte-blindee" class="dock__item dock__item--main">
+    <Icon name="file-text" size={20} />
+    <span class="dock__label">Devis</span>
+    <span class="dock__tip">Devis gratuit en ligne</span>
+  </a>
+  <a href="/installateurs-portes-blindees" class="dock__item">
+    <Icon name="map-pin" size={20} />
+    <span class="dock__label">Installateur</span>
+    <span class="dock__tip">Trouver un installateur</span>
+  </a>
+  <a href="/selection" class="dock__item">
+    <Icon name="heart" size={20} />
+    <span class="dock__label">Sélection</span>
+    <span class="dock__badge" data-selection-count hidden>0</span>
+    <span class="dock__tip">Ma sélection de produits</span>
+  </a>
+</nav>
+
+<style>
+  .dock {
+    position: fixed;
+    right: 1.2rem;
+    bottom: 1.2rem;
+    z-index: 40;
+    display: grid;
+    gap: 0.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition:
+      opacity 0.4s var(--ease),
+      transform 0.4s var(--ease);
+  }
+  .dock.is-visible {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+  .dock__item {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    color: var(--text);
+    background: rgba(8, 20, 38, 0.85);
+    border: 1px solid var(--line-2);
+    border-radius: 14px;
+    backdrop-filter: blur(12px);
+    transition: all 0.3s var(--ease);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  }
+  .dock__item:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+    transform: translateX(-4px);
+  }
+  .dock__item--main {
+    background: linear-gradient(135deg, var(--orange-2), var(--orange-3));
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(255, 102, 34, 0.4);
+  }
+  .dock__item--main:hover {
+    color: #fff;
+  }
+  .dock__label {
+    display: none;
+  }
+  .dock__tip {
+    position: absolute;
+    right: calc(100% + 12px);
+    top: 50%;
+    translate: 0 -50%;
+    white-space: nowrap;
+    padding: 0.45rem 0.8rem;
+    font-size: 0.8rem;
+    color: var(--text);
+    background: rgba(6, 16, 30, 0.95);
+    border: 1px solid var(--line-2);
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateX(8px);
+    pointer-events: none;
+    transition: all 0.25s var(--ease);
+  }
+  .dock__item:hover .dock__tip,
+  .dock__item:focus-visible .dock__tip {
+    opacity: 1;
+    transform: none;
+  }
+  .dock__badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border-radius: 99px;
+    background: var(--orange);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    display: grid;
+    place-items: center;
+  }
+  @media (max-width: 760px) {
+    .dock {
+      left: 0;
+      right: 0;
+      bottom: 0;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      padding: 0.35rem 0.5rem calc(0.35rem + env(safe-area-inset-bottom));
+      background: rgba(3, 8, 16, 0.92);
+      backdrop-filter: blur(16px);
+      border-top: 1px solid var(--line-2);
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
+    }
+    .dock__item {
+      width: auto;
+      height: 54px;
+      background: none;
+      border: 0;
+      box-shadow: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+    }
+    .dock__item:hover {
+      transform: none;
+    }
+    .dock__item--main {
+      background: linear-gradient(135deg, var(--orange-2), var(--orange-3));
+      margin: 0 0.25rem;
+    }
+    .dock__label {
+      display: block;
+      font-size: 0.66rem;
+      letter-spacing: 0.04em;
+    }
+    .dock__tip {
+      display: none;
+    }
+    .dock__badge {
+      top: 2px;
+      right: calc(50% - 22px);
+    }
+  }
+</style>

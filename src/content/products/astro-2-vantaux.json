@@ -1,0 +1,224 @@
+{
+  "title": "ASTRO 2 vantaux",
+  "slug": "astro-2-vantaux",
+  "segment": "blocs-portes-techniques",
+  "categories": [
+    "blocs-portes-techniques-61"
+  ],
+  "family": "ASTRO",
+  "order": 22,
+  "featured": false,
+  "image": "/media/fiches-produits/astro-2v.png",
+  "badges": [
+    "Sans certification"
+  ],
+  "seo": {
+    "title": "Notre bloc-porte technique Astro 2 vantaux avec serrure multi-points",
+    "description": "Le bloc-porte blindé technique, Astro 2V, de fabrication française sur mesure avec deux faces en acier, garanti 10 ans, destiné à une sécurité accrue est équipé d'une serrure multi-points"
+  },
+  "specs": {
+    "vantaux": "2 vantaux",
+    "dimensions": "Notre tarif pour le bloc porte ASTRO 2 vantaux s’applique pour les dimensions maximum 2000 x 2300 (mm).\nFabricant de blocs portes sur mesure, pour toutes autres dimensions nous vous proposerons une solution personnalisée, n’hésitez pas à nous contacter.",
+    "fermeture": "Serrure encastrée 1 point Serrure encastrée multipoints",
+    "certification": "Sans certification"
+  },
+  "filters": {
+    "vantaux": [
+      "2 vantaux"
+    ],
+    "certifications": [
+      "Sans certification"
+    ],
+    "fermetures": [
+      "Serrure encastrée multipoints",
+      "Serrure encastrée 1 point"
+    ]
+  },
+  "composition": "<p>Le bloc porte ASTRO 2 vantaux est composé de:</p><ul><li>2 faces en acier de 15/10ème ou 20/10ème électrozinguée par vantail</li><li>5 omégas raidisseurs par vantail</li><li>4 paumelles soudées de 140 mm à billes par vantail</li><li>un cadre de rénovation soudé 4 côtés</li><li>une barre de seuil en fer plat</li></ul>",
+  "downloads": [
+    {
+      "label": "astro-2v.pdf",
+      "file": "/media/fichiers/astro-2v-0.pdf"
+    }
+  ],
+  "quoteLabel": "ASTRO 2 vantaux",
+  "locks": {
+    "intro": "Le bloc porte ASTRO 2 vantaux est proposé avec plusieurs configurations de serrures encastrées:",
+    "table": [
+      {
+        "points": "1 pts"
+      },
+      {
+        "points": "3 pts"
+      }
+    ],
+    "extras": [
+      {
+        "title": "Inclus avec la serrure",
+        "icon": "key",
+        "html": "<p>Pour ce modèle de bloc porte vous adaptez le cylindre et la poignée de votre choix.</p>"
+      }
+    ]
+  },
+  "frame": {
+    "intro": "L’huisserie avec joint du bloc porte ASTRO 2 vantaux est composée de tôle multi-plis en 20/10ème électrozinguée.\n\nSelon la configuration de votre installation vous avez le choix entre les huisseries avec joint suivantes:",
+    "cards": [
+      {
+        "icon": "ruler-combined",
+        "title": "Cornière 50 x 30",
+        "description": "Profil cornière 50 x 30 mm. Fixation en applique renforcée."
+      },
+      {
+        "icon": "rotate",
+        "title": "Rénovation",
+        "description": "Remplacement sans gros travaux. Installation rapide sur bâti existant."
+      },
+      {
+        "icon": "hammer",
+        "title": "Tenon mortaise BDF",
+        "description": "Assemblage tenon mortaise BDF. Structure haute résistance."
+      },
+      {
+        "icon": "hammer",
+        "title": "Tubulaire 50 x 30",
+        "description": "Profil tubulaire 50 x 30 mm. Adapté aux configurations standard."
+      },
+      {
+        "icon": "arrows-left-right",
+        "title": "Universelle",
+        "description": "Compatible rénovation et neuf. Solution polyvalente."
+      }
+    ]
+  },
+  "options": {
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Options huisserie",
+        "icon": "ruler-combined",
+        "items": [
+          {
+            "label": "Barre de seuil",
+            "picto": "/media/pictos-options/12-barre-seuil.jpg"
+          },
+          {
+            "label": "Rejet d'eau en alu",
+            "picto": "/media/pictos-options/14-rejet-eau.jpg"
+          },
+          {
+            "label": "Renforts de paumelles",
+            "picto": "/media/pictos-options/1-renforts-paumelles.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Équipements complémentaires",
+        "icon": "circle-plus",
+        "items": [
+          {
+            "label": "Aérations",
+            "picto": "/media/pictos-options/18-aerations.jpg"
+          },
+          {
+            "label": "Anti-pince",
+            "picto": "/media/pictos-options/19-anti-pince.jpg"
+          },
+          {
+            "label": "Boîte aux lettres",
+            "picto": "/media/pictos-options/16-boite-lettres.jpg"
+          },
+          {
+            "label": "Ferme porte",
+            "picto": "/media/pictos-options/5-ferme-porte.jpg"
+          },
+          {
+            "label": "Gâche électrique",
+            "picto": "/media/pictos-options/17-gache-electrique.jpg"
+          },
+          {
+            "label": "Imposte fixe",
+            "picto": "/media/pictos-options/15-imposte-fixe.jpg"
+          },
+          {
+            "label": "Judas optique",
+            "picto": "/media/pictos-options/6-judas-optique.jpg"
+          },
+          {
+            "label": "Moulures",
+            "picto": "/media/pictos-options/8-moulures.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet",
+        "title": "Époxy mono couleur",
+        "description": "180 couleurs RAL au choix."
+      },
+      {
+        "icon": "brush",
+        "title": "Grenaillage polyzing",
+        "description": "Finition texturée résistante."
+      }
+    ]
+  },
+  "closing": {
+    "intro": "Deux types de fermeture du vantail semi-fixe vous sont proposés:",
+    "cards": [
+      {
+        "icon": "fire-extinguisher",
+        "title": "Cremone pompier",
+        "description": "Ouverture rapide pour accès pompiers"
+      },
+      {
+        "icon": "arrows-up-down",
+        "title": "Verrou haut et bas",
+        "description": "Points de fermeture haut et bas"
+      }
+    ]
+  },
+  "usages": {
+    "intro": "Le bloc porte ASTRO 2 vantaux est destiné à fermer les locaux suivants qui ne sont pas soumis à une réglementation particulière:",
+    "items": [
+      {
+        "icon": "door-open",
+        "title": "Accès collectifs"
+      },
+      {
+        "icon": "school",
+        "title": "Écoles"
+      },
+      {
+        "icon": "industry",
+        "title": "Locaux industriels"
+      },
+      {
+        "icon": "square-parking",
+        "title": "Parkings / Sous-sols"
+      }
+    ]
+  }
+}

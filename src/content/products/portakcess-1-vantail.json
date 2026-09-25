@@ -1,0 +1,200 @@
+{
+  "title": "PORTAKCESS 1 vantail",
+  "slug": "portakcess-1-vantail",
+  "segment": "blocs-portes-techniques",
+  "categories": [
+    "blocs-portes-techniques-61"
+  ],
+  "family": "PORTAKCESS",
+  "order": 11,
+  "featured": false,
+  "image": "/media/fiches-produits/portakcess-1v.png",
+  "badges": [
+    "Sans certification"
+  ],
+  "seo": {
+    "title": "Notre bloc-porte technique Portakcess 1 vantail avec contrôle d'accès",
+    "description": "Le bloc-porte blindé technique, Portakcess, de fabrication française sur mesure avec deux faces en acier, garanti 10 ans, destiné à une sécurité accrue est équipé d'une fermeture contrôle d'accès"
+  },
+  "specs": {
+    "vantaux": "1 vantail",
+    "dimensions": "Notre tarif pour le bloc porte PORTACKCESS 1 vantail s’applique pour les dimensions maximum 1000 x 2300 (mm).",
+    "fermeture": "Contrôle d'accès",
+    "certification": "Sans certification"
+  },
+  "filters": {
+    "vantaux": [
+      "1 vantail"
+    ],
+    "certifications": [
+      "Sans certification"
+    ],
+    "fermetures": [
+      "Contrôle d'accès"
+    ]
+  },
+  "composition": "<p>Le bloc porte PORTACKCESS 1 vantail est composé de:</p><ul><li>2 faces en acier de 20/10ème électrozinguée</li><li>5 omégas raidisseurs</li><li>4 paumelles soudées de 140 mm à billes</li><li>un cadre de rénovation soudé 4 côtés</li></ul>",
+  "downloads": [
+    {
+      "label": "portakcess-1v.pdf",
+      "file": "/media/fichiers/portakcess-1v.pdf"
+    }
+  ],
+  "quoteLabel": "PORTAKCESS 1 vantail",
+  "locks": {
+    "intro": "Le bloc porte PORTACKCESS 1 vantail est proposé avec plusieurs types de ventouses électromagnétiques:",
+    "table": [
+      {
+        "model": "V3E35R"
+      },
+      {
+        "model": "V3E35R",
+        "points": "1 pts"
+      },
+      {}
+    ],
+    "extras": [
+      {
+        "title": "Inclus avec la serrure",
+        "icon": "key",
+        "html": "<p>La serrure 1 point est fournie avec au choix :</p><ul><li>un cylindre 5 goupilles et 3 clés</li><li>un cylindre Medeco de haute sécurité, 3 clés à reproduction protégée et une carte de propriété pour la reproduction de clés.</li></ul>"
+      },
+      {
+        "title": "Options fermeture",
+        "icon": "circle-plus",
+        "html": "<p>En option l’ensemble extérieur est proposé avec:</p><ul><li>une poignée bâton de maréchal inox petit modèle intérieur et/ou extérieur.</li><li>une poignée bâton de maréchal inox grand modèle intérieur et/ou extérieur.</li></ul>"
+      }
+    ]
+  },
+  "frame": {
+    "intro": "L’huisserie avec joint du bloc porte PORTACKCESS 1 vantail est composée de tôle multi-plis en 20/10ème électrozinguée.\n\nSelon la configuration de votre installation vous avez le choix entre les huisseries suivantes:",
+    "cards": [
+      {
+        "icon": "rotate",
+        "title": "Rénovation",
+        "description": "Remplacement sans gros travaux. Installation rapide sur bâti existant."
+      },
+      {
+        "icon": "hammer",
+        "title": "Tubulaire 55 x 55",
+        "description": "Profil tubulaire 55 x 55 mm. Résistance maximale."
+      }
+    ]
+  },
+  "options": {
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Options huisserie",
+        "icon": "ruler-combined",
+        "items": [
+          {
+            "label": "Barre de seuil",
+            "picto": "/media/pictos-options/12-barre-seuil.jpg"
+          },
+          {
+            "label": "Laine de roche",
+            "picto": "/media/pictos-options/4-laine-roche.jpg"
+          },
+          {
+            "label": "Rejet d'eau en alu",
+            "picto": "/media/pictos-options/14-rejet-eau.jpg"
+          },
+          {
+            "label": "Renforts de paumelles",
+            "picto": "/media/pictos-options/1-renforts-paumelles.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Équipements complémentaires",
+        "icon": "circle-plus",
+        "items": [
+          {
+            "label": "Aérations",
+            "picto": "/media/pictos-options/18-aerations.jpg"
+          },
+          {
+            "label": "Boîte aux lettres",
+            "picto": "/media/pictos-options/16-boite-lettres.jpg"
+          },
+          {
+            "label": "Ferme porte",
+            "picto": "/media/pictos-options/5-ferme-porte.jpg"
+          },
+          {
+            "label": "Imposte fixe",
+            "picto": "/media/pictos-options/15-imposte-fixe.jpg"
+          },
+          {
+            "label": "Judas optique",
+            "picto": "/media/pictos-options/6-judas-optique.jpg"
+          },
+          {
+            "label": "Moulures",
+            "picto": "/media/pictos-options/8-moulures.jpg"
+          },
+          {
+            "label": "Oculus",
+            "picto": "/media/pictos-options/9-oculus.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet",
+        "title": "Époxy mono couleur",
+        "description": "180 couleurs RAL au choix."
+      },
+      {
+        "icon": "brush",
+        "title": "Grenaillage polyzing",
+        "description": "Finition texturée résistante."
+      }
+    ]
+  },
+  "usages": {
+    "intro": "Le bloc porte PORTACKCESS 1 vantail permet de garantir un contrôle d'accès facile grâce aux ventouses électromagnétiques et peut équiper:",
+    "items": [
+      {
+        "icon": "door-open",
+        "title": "Accès collectifs"
+      },
+      {
+        "icon": "school",
+        "title": "Écoles"
+      },
+      {
+        "icon": "industry",
+        "title": "Locaux industriels"
+      },
+      {
+        "icon": "square-parking",
+        "title": "Parkings / Sous-sols"
+      }
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "title": "Profils anti-pinces - Jeu de cornières",
+  "slug": "profils-anti-pinces-jeu-de-cornieres",
+  "segment": "tolerie-pliage-et-profils",
+  "categories": [
+    "tolerie-pliage-et-profils-71"
+  ],
+  "family": "Profils anti-pinces - Jeu de cornières",
+  "order": 84,
+  "featured": false,
+  "image": "/media/fiches-produits/cornieres-anti-pince.jpg",
+  "seo": {
+    "title": "Profils anti-pinces - Jeu de cornières",
+    "description": ""
+  },
+  "specs": {
+    "dimensions": "Le jeu de cornières anti pinces pour porte blindée ou blindage de porte mesurent 20 x 20 cm et a une épaisseur de 3 mm."
+  },
+  "filters": {
+    "vantaux": [],
+    "certifications": [],
+    "fermetures": []
+  },
+  "composition": "<p>Les cornières anti pinces pour porte blindée ou blindage de porte empêchent l'introduction d'un outil de type pied de biche ou tournevis entre la porte et la menuiserie.</p><p>La cornière anti-pince fait le tour de la porte blindée ou blindage de porte et comble cet espace vide.</p>",
+  "downloads": [
+    {
+      "label": "profils-anti-pinces.pdf",
+      "file": "/media/fichiers/profils-anti-pinces-1.pdf"
+    }
+  ],
+  "quoteLabel": "Profils anti-pinces - Jeu de cornières",
+  "options": {
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet",
+        "title": "Époxy mono couleur",
+        "description": "180 couleurs RAL au choix."
+      }
+    ]
+  },
+  "characteristics": {
+    "html": "<p>Les cornières anti pinces sont fabriquées en acier, percées et fraisées en usine, elles peuvent équiper les blindages de porte ou portes blindées de 1 ou 2 vantaux.<br/><br/>Le jeu complet cornières anti pinces pour équiper une porte blindée ou blindage de porte est composé de:</p><ul><li>2 montants latéraux</li><li>1 traverse haute</li></ul><p>Vous avez la possibilité de compléter votre jeu de cornières anti pinces pour porte blindée ou blindage de porte d'<a href=\"/catalogue/tolerie-pliage-et-profils/barres-de-seuil\">une barre de seuil.</a></p>"
+  }
+}

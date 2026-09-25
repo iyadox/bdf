@@ -1,0 +1,92 @@
+{
+  "title": "Bloc-porte blindé ANTI-SQUAT",
+  "slug": "bloc-porte-blinde-anti-squat",
+  "segment": "blocs-portes-d-appartement",
+  "categories": [
+    "blocs-portes-dappartement-65"
+  ],
+  "family": "Bloc-porte blindé ANTI-SQUAT",
+  "order": 47,
+  "featured": true,
+  "image": "/media/fiches-produits/anti-squat.png",
+  "situationImage": "/media/custom-blocks/antisquat.png",
+  "teaser": "Idéal pour protéger votre bien, votre appartement ou votre local avant de faire des travaux, de vendre ou de louer. Les bloc-portes ANTI SQUAT sont aussi une solution efficace pour protéger sa maison ou son appartement pendant les vacances ou une longue période d'absence.",
+  "badges": [
+    "Sans certification"
+  ],
+  "seo": {
+    "title": "Notre bloc-porte d'appartement fermeture provisoire Anti-squat 1 vantail",
+    "description": "Les bloc portes BDF Anti squat, solution de défense contre les squatters, permet de protéger son habitation pendant une période d'absence, avant de faire des travaux, de vendre, de louer."
+  },
+  "specs": {
+    "vantaux": "1 vantail",
+    "dimensions": "Notre tarif pour le bloc porte ANTI-SQUAT 1 vantail s’applique pour les dimensions maximum 1000 x 2300 (mm).\nFabricant de blocs portes sur mesure, pour toutes autres dimensions nous vous proposerons une solution personnalisée, n’hésitez pas à nous contacter.\nCe modèle est réalisé sur mesure sous un délai de 48h.",
+    "fermeture": "Fermeture provisoire",
+    "certification": "Sans certification"
+  },
+  "filters": {
+    "vantaux": [
+      "1 vantail"
+    ],
+    "certifications": [
+      "Sans certification"
+    ],
+    "fermetures": [
+      "Fermeture provisoire"
+    ]
+  },
+  "composition": "<p>Le bloc porte ANTI-SQUAT 1 vantail est composé de:</p><ul><li>1 face en acier 20/10ème électrozinguée</li><li>4 paumelles soudées de 140 mm à billes</li><li>3 barres de force</li><li>un cadre anti-dégondage par tenon</li><li>une barre de seuil</li></ul>",
+  "downloads": [
+    {
+      "label": "anti-squat-1v.pdf",
+      "file": "/media/fichiers/anti-squat-1v.pdf"
+    }
+  ],
+  "quoteLabel": "Bloc-porte blindé ANTI-SQUAT",
+  "locks": {
+    "intro": "Le bloc porte ANTI-SQUAT 1 vantail est proposé avec une serrure Mottura 3 points. La fixation à serrage est réglable à deux niveaux."
+  },
+  "options": {
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet",
+        "title": "Époxy mono couleur",
+        "description": "180 couleurs RAL au choix."
+      },
+      {
+        "icon": "brush",
+        "title": "Grenaillage polyzing",
+        "description": "Finition texturée résistante."
+      }
+    ]
+  },
+  "usages": {
+    "intro": "Idéal pour protéger votre bien, votre appartement ou votre local avant de faire des travaux, de vendre ou de louer. Les bloc portes ANTI SQUAT sont aussi une solution efficace pour protéger sa maison ou son appartement pendant les vacances ou une longue période d'absence. C’est une défense efficace pour protégez vos locaux inoccupés contre les squatters.",
+    "items": []
+  }
+}

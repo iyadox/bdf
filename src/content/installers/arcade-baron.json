@@ -1,0 +1,11 @@
+{
+  "name": "Arcade",
+  "address": "3 Route de Rosieres",
+  "postalCode": "60300",
+  "city": "Baron",
+  "phone": "03 44 99 07 07",
+  "lat": 49.1773987,
+  "lng": 2.7382442,
+  "legacyId": 1234,
+  "slug": "arcade-baron"
+}

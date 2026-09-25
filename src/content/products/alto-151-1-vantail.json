@@ -1,0 +1,123 @@
+{
+  "title": "ALTO 151 1 vantail",
+  "slug": "alto-151-1-vantail",
+  "segment": "blocs-portes-de-cave",
+  "categories": [
+    "blocs-portes-de-cave-63"
+  ],
+  "family": "ALTO 151",
+  "order": 35,
+  "featured": false,
+  "image": "/media/fiches-produits/alto-151-1v.png",
+  "badges": [
+    "Sans certification"
+  ],
+  "seo": {
+    "title": "Notre bloc-porte de cave Alto 151 1 vantail avec serrure multi-points",
+    "description": "Le bloc-porte blindé de cave, Alto 151, fabrication française sur mesure avec une face en acier, garanti 10 ans, en finition peinture d'apprêt, est équipé d'une serrure trois points double panneton"
+  },
+  "specs": {
+    "vantaux": "1 vantail",
+    "dimensions": "Notre tarif pour le bloc porte ALTO 151 1 vantail s’applique pour les dimensions maximum 1000 x 2300 (mm).\nFabricant de blocs portes sur mesure, pour toutes autres dimensions nous vous proposerons une solution personnalisée, n’hésitez pas à nous contacter.",
+    "fermeture": "Serrure encastrée multipoints",
+    "certification": "Sans certification"
+  },
+  "filters": {
+    "vantaux": [
+      "1 vantail"
+    ],
+    "certifications": [
+      "Sans certification"
+    ],
+    "fermetures": [
+      "Serrure encastrée multipoints"
+    ]
+  },
+  "composition": "<p>Le bloc porte ALTO 151 1 vantail est composé de:</p><ul><li>1 face en acier de 15/10ème électrozinguée</li><li>3 omégas raidisseurs</li><li>3 paumelles soudées de 140 mm à billes</li><li>3 renforts de paumelles par tenon mortaise BDF</li><li>un cadre de rénovation soudé 4 côtés</li><li>une plaque de protection pour la serrure épaisseur 50/10ème</li><li>une poignée de tirage sur toute la hauteur</li></ul>",
+  "quoteLabel": "ALTO 151 1 vantail",
+  "locks": {
+    "intro": "Le bloc porte ALTO 151 1 vantail est proposé avec une serrure encastrée Mottura 3 points avec soit 3 paumelles et 3 omégas ou 4 paumelles et 5 omégas selon la configuration souhaitée. Cette serrure est fournie avec 3 clés double panneton."
+  },
+  "frame": {
+    "intro": "L’huisserie du bloc porte ALTO 151 1 vantail est composée de tôle multi-plis en 20/10ème électrozinguée.\n\nSelon la configuration de votre installation vous avez le choix entre les huisseries suivantes:",
+    "cards": [
+      {
+        "icon": "rotate",
+        "title": "Rénovation",
+        "description": "Remplacement sans gros travaux. Installation rapide sur bâti existant."
+      },
+      {
+        "icon": "hammer",
+        "title": "Tubulaire 50 x 30",
+        "description": "Profil tubulaire 50 x 30 mm. Adapté aux configurations standard."
+      }
+    ]
+  },
+  "options": {
+    "groups": [
+      {
+        "title": "De série",
+        "icon": "check-double",
+        "items": [
+          {
+            "label": "Apprêt gris",
+            "picto": "/media/pictos-options/48-appret-gris.jpg"
+          },
+          {
+            "label": "Cadre soudé 4 côtés",
+            "picto": "/media/pictos-options/49-cadre-soude-4-cotes.jpg"
+          },
+          {
+            "label": "Paumelle 140 mm à billes",
+            "picto": "/media/pictos-options/47-paumelle-140-a-billes.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Options huisserie",
+        "icon": "ruler-combined",
+        "items": [
+          {
+            "label": "Rejet d'eau en alu",
+            "picto": "/media/pictos-options/14-rejet-eau.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Équipements complémentaires",
+        "icon": "circle-plus",
+        "items": [
+          {
+            "label": "Aérations",
+            "picto": "/media/pictos-options/18-aerations.jpg"
+          },
+          {
+            "label": "Imposte fixe",
+            "picto": "/media/pictos-options/15-imposte-fixe.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  "finishes": {
+    "standard": [
+      "Peinture d'apprêt"
+    ],
+    "options": [
+      {
+        "icon": "droplet",
+        "title": "Époxy mono couleur",
+        "description": "180 couleurs RAL au choix."
+      },
+      {
+        "icon": "brush",
+        "title": "Grenaillage polyzing",
+        "description": "Finition texturée résistante."
+      }
+    ]
+  },
+  "usages": {
+    "intro": "Le bloc porte ALTO 151 1 vantail est principalement destiné à la fermeture des caves.",
+    "items": []
+  }
+}
